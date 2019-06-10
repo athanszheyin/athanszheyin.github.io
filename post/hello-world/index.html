@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>30分钟建立静态博客指南 | athans blog</title>
+<meta name="description" content="&lt;h2&gt;&lt;i&gt;&lt;b&gt;云物如故乡，山川知异路&lt;/b&gt;&lt;/i&gt;&lt;/h2&gt;">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1560132579816">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://athanszheyin.github.io">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1560132579816" class="site-logo">
+        <h1 class="site-title">athans blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://athanszheyin.github.io/post/about/" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/athanszheyin" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/zheyin-zhao/" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      <h2><i><b>云物如故乡，山川知异路</b></i></h2>
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://athanszheyin.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">30分钟建立静态博客指南</h2>
+            <div class="post-date">2019-06-03</div>
+            
+              <div class="feature-container" style="background-image: url('https://cdn-images-1.medium.com/max/1600/1*pv5LukDtyQx5JXQee2uNgA.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <p>作为 Hello World 开篇博文，简单记录一下建站的步骤和所需技术栈👇</p>
+<ul>
+<li>GitHub Page作为博客后端服务器</li>
+<li>基于Node.js的Hexo作为前端框架</li>
+<li>使用Gridea作为用户界面来更新维护博客</li>
+</ul>
+<p>一个完美的MVC架构，而且简易实用，便于上手。</p>
+<!-- more -->
+<h2 id="modelergithub-pages">Modeler：GitHub Pages</h2>
+<p>作为全球最大同性交友平台，Github于三年前推出免费的个人页面 <a href="https://pages.github.com/">GitHub Pages</a> 方便各位技术宅展示自己。三年来Github pages仍然是我所知道的唯一便捷的blog搭建平台，同时空间免费，流量免费。Github被微软收购之后，我推测在可预见的未来这些福利将会持续下去。因此如果你要我推荐一个博客平台，我将自信地安利给你GitHub Pages。具体建立自己的Github Pages的方法一目了然，参阅官方教程即可。如果你已经有GitHub账户并且熟悉Git commands，整个过程不会超过  <em><strong>5分钟</strong></em> 。</p>
+<h2 id="controlerhexo">Controler：Hexo</h2>
+<p>完成GitHub Pages的设置后，会收到<code>Jekyll</code>模板植入的提示。即你编辑的<code>html/css</code>文件会经过<code>Jekyll</code>的静态编辑生成网页。但是我并不推荐这一套流程，因为<code>Jekyll</code>模板太过繁琐，创建页面编辑页面不太直观。基于<code>Hexo</code>的静态网页生成器就要灵活得多，主题数量也很丰富。安装 <a href="https://hexo.io/">Hexo</a> 需要预装 <a href="https://nodejs.org/en/download/">Node.js</a> ,整个过程也是无比丝滑，预计费时 <em><strong>10分钟</strong></em> 。</p>
+<blockquote>
+<p>我发现hexo同时也是美国一家上市医药公司的ticker，该公司应属于小盘股，最近走势不错，可是医药股一向波动较大，投资需谨慎。</p>
+</blockquote>
+<h2 id="viewer-gridea">Viewer: Gridea</h2>
+<p><a href="http://hvenotes.fehey.com/">Gridea</a>  是我最近找到的一个开源博客编辑交互界面，与hexo无缝链接，甚至可以省略刚才的 <strong>10分钟</strong>  <code>Hexo</code>配置时间。基本上下载安装，然后在配置界面和GitHub Pages和repository对接起来即可。但是使用<code>Gridea</code>的缺憾在于放弃了Github的双向同步特性，<code>Gridea</code>会在本地保存好你编辑的网页文件，然后单向推送给Github，如果你通过其他途径修改了Github repo上的文件，本地并不会收到这些更新。所以如果你可能在多个终端上更新和编辑博客，那么你需要使用一个双向同步的工具（比如one drive，google drive，dropbox）来保证所有<code>Gridea</code>文件下的一切都是同步的。这最后一步大概耗时 <em><strong>20分钟</strong></em> 。</p>
+<p>大多数人会更倾向于自己选择主题建站，甚至申请个性域名。但我本着如无必要，勿增实体的原则，选择了最简洁的法门。博客最重要的是内容，忠实记录自己的生活点滴，成长轨迹。如果你对于Hexo建站感兴趣，以下分享一些有用的链接以飨读者：</p>
+<p><a href="https://changchen.me/blog/20180819/deploy-hexo-blog-to-gcp-oss/">部署 Hexo 静态博客</a></p>
+<p><a href="https://chenhuichao.com/2016/02/21/hexo/hexo-guide-1/">Hexo博客搭建教程</a></p>
+<p><a href="https://medium.com/@zainzafar/create-publish-your-startup-landing-page-with-github-pages-in-5-minutes-b1ba0787ba46">Publish in 5 minutes 😘</a></p>
+<p>📝 🌉🏷️ 📋  💻  🌎  💬  🌁  🖥 🌱</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://athanszheyin.github.io/tag/tech" class="tag">
+                    Tech
+                  </a>
+                
+                  <a href="https://athanszheyin.github.io/tag/life" class="tag">
+                    Life
+                  </a>
+                
+              </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
