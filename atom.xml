@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2019-08-03T19:13:13.241Z</updated>
+    <updated>2019-08-03T19:16:43.463Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -15,14 +15,15 @@
         <id>https://athanszheyin.github.io/post/crystal-ball-for-value</id>
         <link href="https://athanszheyin.github.io/post/crystal-ball-for-value">
         </link>
-        <updated>2019-07-16T03:57:27.000Z</updated>
+        <updated>2019-07-15T03:57:27.000Z</updated>
         <summary type="html"><![CDATA[<p>Part II of why value factor failed recently and what we could achieve?</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>Part II of why value factor failed recently and what we could achieve?</p>
 <!-- more -->
 <p>In Eugene Fama and Ken French’s monumental paper, value factor premium is referred to as the HML(High Minus Low) Book-to-Market ratio. However the factor portfolio is constructed on annual basis, which incurs a huge information lag on the company valuation. Theoretically we could face a lag as long as 18 month; say on May 2019 right before the mid-year rebalance (the case when company delayed its financial statements releasing until last minute), we will still be using book value at the end of 2017. Modified the factor portfolio rebalance frequency can bring in immediate profit gain on the strategy, as pointed out by Assness and Frazzini in &quot;The Devil in HML's Details&quot;. By refreshing the company Book value and its market value every month, the lag is constraint within one month and the strategy produce better performance.
 ![HML free fall in recent years]
-<img src="https://athanszheyin.github.io/post-images/1564859512102.jpg" alt=""></p>
+<img src="https://athanszheyin.github.io/post-images/1564859512102.jpg" alt="">
+<em><strong>HML free fall in recent years</strong></em></p>
 <h2 id="value-forecasting">Value Forecasting</h2>
 <p>What if we take one step further? Raise the historical company valuation frequency could diminish the information lag, but how about predicting the company valuation in advance?</p>
 <p>Analysts have long been forecasting company fundamentals using their fancy excel models, but they seem to be focusing the contemporary information along with their discretionary judgement. Academia proposed another approach of using historical figures along with neural network models to predict the look-ahead factors. In paper, the machine predicted ex-post factor yields better back-test results than their ex-ante peers. We could argue that, given more data points (such as historical company fundamentals from the company's supplier/customer) and we could achieve a more accurate prediction.</p>
@@ -31,9 +32,9 @@
 <h3 id="residual-income-valuation">Residual Income Valuation</h3>
 <p>Frankel and Lee (1998) decompose the company value into two components: book value and discounted value of future residual income. The current value of future residual income relates to the future ROE, future cost of equity capital, future dividend ratio and most importantly, the discounted rate. In a low interest rate environment, the future residual income will account more in company's valuation, book value alone is not deemed to estimate company value accurately.</p>
 <h3 id="rd-capitalization">R&amp;D Capitalization</h3>
-<p>technology sector and pharmaceutical sector are the main players in US market, one of their common traits is their enormous expense in research and development (R&amp;D). They are willing to invest more than their gross profit on R&amp;D, as long as it will benefit the company in the long run and harvest potential gain from being in the technical frontier. however, R&amp;D expenditure was only viewed as costs in the book value (we covered similar topic in the last piece). Lev(2019) argues that capitalizing R&amp;D (and SG&amp;A) could help, adding back R&amp;D and partial SG&amp;A to book value justify companies' intangible investment.</p>
+<p>Technology sector and pharmaceutical sector are the main players in US market, one of their common traits is their enormous expense in research and development (R&amp;D). They are willing to invest more than their gross profit on R&amp;D, as long as it will benefit the company in the long run and harvest potential gain from being in the technical frontier. however, R&amp;D expenditure was only viewed as costs in the book value (we covered similar topic in the last piece). Lev(2019) argues that capitalizing R&amp;D (and SG&amp;A) could help, adding back R&amp;D and partial SG&amp;A to book value justify companies' intangible investment.</p>
 <h3 id="balance-sheet-restructuring">Balance Sheet Restructuring</h3>
-<p>the very core formula for accounting is that total asset = total equity (book value) + total liabilities. total assets consists of financial assets and operating assets, and total liabilities likewise. Thus we could re-write book value = net operating assets - net financial liabilities. It reflects the fact that book value is both affected by company's operating risk and financial risk. Nevertheless, Richardson and Tuna (2007) states that future return is related more to the operating efficiency than financing activities, thus we should pay more attention to Net Operating Assets to Price ratio as a alternative to BM.</p>
+<p>The very core formula for accounting is that total asset = total equity (book value) + total liabilities. total assets consists of financial assets and operating assets, and total liabilities likewise. Thus we could re-write book value = net operating assets - net financial liabilities. It reflects the fact that book value is both affected by company's operating risk and financial risk. Nevertheless, Richardson and Tuna (2007) states that future return is related more to the operating efficiency than financing activities, thus we should pay more attention to Net Operating Assets to Price ratio as a alternative to BM.</p>
 <h3 id="retained-earnings">Retained Earnings</h3>
 <p>Ball (2019) gives out the secret source of Book Value: BV = Retained Earnings + Contributed Capital. Contributed Capital, which is essentially the net issuance, only indicates investors' risk appetite whilst less related with the company's future performance (think about the frequent share buybacks and re-issuance nowadays). Retained earnings, on the other hand, reflects accumulated net profit in the past, thus a better mirror for company's realistic profiting capability. Moreover if we are proxy retained earnings for book value, then BV becomes some sort of earning to price ratio, which links the stock return to company earnings (we all know PE ratio).</p>
 ]]></content>
@@ -43,7 +44,7 @@
         <id>https://athanszheyin.github.io/post/intangible-value</id>
         <link href="https://athanszheyin.github.io/post/intangible-value">
         </link>
-        <updated>2019-07-15T04:17:51.000Z</updated>
+        <updated>2019-07-14T16:17:51.000Z</updated>
         <summary type="html"><![CDATA[<p>Part I of why value factor failed recently and what have we neglected?</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>Part I of why value factor failed recently and what have we neglected?</p>
@@ -53,14 +54,16 @@
 <p>Price is the creature of fickle sentiment like greed and fear. Value, in contrast, depends on a firm’s capabilities. There are various shorthand measures for value, but both academia and practitioners put the greatest store by the price-to-book ratio. Since the seminal Fama-French three factor paper, countless study have shown buying stocks with low price-to-book is a winning strategy.</p>
 <p>As the industrial age gives way to the digital age, value stocks have lagged a long way behind growth stocks. The key factor here is that the increasing intangible assets. The tangible world is easy, factories, machines, and office buildings count as capital assets on companies’ books. It is fairly straightforward to come up with a value for them – it is what the company paid, and this value is gradually written off over time to reflect wear and tear. Such fixed capital assets along with current assets (cash equivalent) typically make up the bulk of the book value.</p>
 <p>Intangible assets are left out here. These days the value of a company lies as much in its reputation, its processes, the know-how of staff and customer-suppliers relationships as in tangible assets. Putting an accounting value on these intangibles is tricky. Not every dollar of R&amp;D or advertising expenditure can be ascribed to a well-defined asset, such as a brand or patent.
-<img src="https://athanszheyin.github.io/post-images/1563337549378.jpg" alt="Intangible Asset increases in market value percentage"></p>
+<img src="https://athanszheyin.github.io/post-images/1563337549378.jpg" alt="Intangible Asset increases in market value percentage">
+<em><strong>Intangible Asset increases in market value percentage</strong></em></p>
 <p>On the stock market, price is increasingly detached from book value. Plenty of well know companies (like FANG) – whose competitive edge rest on brands and patents – have much higher ratios or even negative book values. Yet these companies usually conducts routine buyback around earning seasons, which will rise the price-to-book value further. That is because for any company with a price-to-book ratio greater than one, buyback will diminish book value by proportionately more than it lowers the outstanding stock values.</p>
 <p>The effects of mergers will only make things murkier. If, say one company pays $100 mil for another company which has $30 mil of tangible assets, the residual $70 mil is counted as intangible assets (usually as “goodwill”. As a result, a company has acquired brands by merger will have those reflected in its book value while a company has developed its own brands will not.</p>
 <h3 id="forecast-earnings-dilemma">Forecast Earnings Dilemma</h3>
 <p>Imagine that investors could perfectly forecast the next quarters’ earnings for all companies. Then we construct a portfolio that long all the stocks that are expected to meet or beat the analysts’ forecasts consensus; while short the stocks that are supposed to fail the estimates. We start the trades two months before the quarter end and liquidate the positions one month after the quarter ends. This “perfect foresight” portfolio achieved excess return of 4+% every quarter in 1990s, but the abnormal returns dropped to 2% quarterly in recent years.</p>
 <p>We argue that the decay of the strategy is due to the rising importance of intangible investments in recent decades. The financial statements have struggled to adapt to the modern business models. If a company purchase an intangible asset (such as a patent) from other companies, it is classified as an asset on the balance sheet. However if they develop an intangible within their own business, that is classified as an expense, and will be deducted from the profits. As a result, a company pursuing an innovation strategy based on acquisitions will appear more profitable than a similar company internally developing its innovations.</p>
 <p>The outcome is – we argue – the reported earnings are no longer such a good measure of the company’s profitability, and thus not indicatable of future share performance. To test this proposition, we divided companies into five quintiles based on their intangible investment to re-run the previous “perfect foresight” strategy. Not surprisingly, the more companies spent on intangibles, the lower the excess return get harnessed by those who can correctly forecast the earnings.
-<img src="https://athanszheyin.github.io/post-images/1563337566712.jpg" alt="Increasing investment in intangibles"></p>
+<img src="https://athanszheyin.github.io/post-images/1563337566712.jpg" alt="Increasing investment in intangibles">
+<em><strong>Increasing investment in intangibles</strong></em></p>
 <p>Yet the intangibles have spillovers. A company may undertake expensive R&amp;D, but the gains may be realized by other businesses. Only a few companies (the industry leaders like Google) can achieve the scale needed to benefit from the sunken cost. Unlike machines and equipment, intangibles have unpredictable resale values. So the risk of failure will put most companies off intangible investments</p>
 <p>The reluctance of many companies to invest in intangibles may restrict their growth scope in future. Investors looking for growth stocks will face a narrow choice and such companies will be so apparent to everyone that they will command a “seemingly too high” valuation. They are not seen as the value stocks, but they are the real “nifty fifty” (if not nifty five) stocks in the present.</p>
 ]]></content>
