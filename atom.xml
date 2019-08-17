@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2019-08-03T19:17:07.599Z</updated>
+    <updated>2019-08-17T04:27:11.288Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -10,6 +10,24 @@
     <logo>https://athanszheyin.github.io/images/avatar.png</logo>
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, athans blog</rights>
+    <entry>
+        <title type="html"><![CDATA[华为与腾讯的双城记]]></title>
+        <id>https://athanszheyin.github.io/post/hua-wei-yu-teng-xun-de-shuang-cheng-ji</id>
+        <link href="https://athanszheyin.github.io/post/hua-wei-yu-teng-xun-de-shuang-cheng-ji">
+        </link>
+        <updated>2019-08-16T16:06:25.000Z</updated>
+        <summary type="html"><![CDATA[<p>华为可以逃离北上广，而腾讯必须留守北上广，为什么？</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>华为可以逃离北上广，而腾讯必须留守北上广，为什么？</p>
+<!-- more -->
+<p>华为其实不能算作一个高科技企业而只能算高端制造业企业，它的核心竞争力是硬件 —- 把业内已有的高精尖硬件以相对低廉的成本量产出来，而这需要堆砌大量工程师（不需要业内顶尖高手，只需要专业对口）以及厂房和设备来实现。高端人才集中在硬件设计领域，硬件制造上并不需要什么精英，而华为从来不是硬件设计领域的玩家。华为并不是没有高精尖人才，之前大价钱招的phd（千金买马骨）那肯定就是行业精英了，但华为不靠他们赚钱，<strong>华为真正盈利的产品是要靠人海战术堆出来的</strong>，比如海思芯片，比如荣耀手机，更比如遍布全球各地的通讯服务。</p>
+<p>想想看，如果腾讯搬到东莞，它的成本可能会微降，但会有多少员工立刻转头跳到头条，阿里和美团，腾讯绝对无法承受这样的决策风险。但是华为搬到东莞，难道会有大批人跳到中兴？所以<strong>华为可以逃离北上广，而腾讯必须留守北上广</strong>。如果员工有议价能力，你当然希望居住在生活最便捷的地区，况且你的房产还有很大升值空间。土地价格会联动劳动力成本，地价便宜的地方一般劳动力也低廉，制造业就会不断迁徙到那里去，而<strong>如果员工依附于企业，那就只能像牛羊一样只能随牧民去迁徙去垦荒。</strong></p>
+<p><strong>企业的经营模式不同就注定了它的选址</strong>，对于腾讯和阿里来说，盖一栋新楼是增加资产而非成本，而他们必须扎根于一线城市的核心区来吸引高端人才，哪怕这些核心区的房价再怎么飞涨也不会影响它的成本，反倒会让它的资产升值 （比如盖一栋写字楼然后外租部分楼层，还可以带来租金收入）。华为以及更多的中低端制造业企业就不同了，房价每涨一分，它们的厂房租金，员工宿舍建设费用，园区管理费用就要涨一分，这些都要计入成本摊薄它们本来就低的毛利润率。</p>
+<p><strong>制造业企业比IT企业才在乎房价，因为地租和厂房建设成本占有总成本很大比例。</strong> 所以就如前文所说，我们看到的挤出效应大多是在制造业，为了维持毛利润率，制造业需要像牧民一样不停迁徙到低价房租低廉的地区（劳动力成本也会相对低廉）来控制成本。IT企业体现得更多是马太效应。<strong>IT企业最大的支出是人力（高端人才），它希望地处一个人力资源昂贵的地域，比如高等教育发达的地区，因为人力的投入产出比是非线性的。</strong> 你招到了市场价格两倍的程序员，但这个程序员的产出可能顶得上一个十人团队。而这些地方的房价通常昂贵。硅谷的公司只是把占地较多的数据中心和售后服务等低端业务挪到佛州德州（投行也这么做），但真正的研发并未离开硅谷。</p>
+<p>IT行业渐渐显得与银行业相似，因为这类企业80%的利润可能由小于1%的员工创造，Andriod系统有大牛程序员Andy Rubin一个人就可以写出来，王者荣耀的团队不过30-40人，T-Mobile合并sprint的大单，可能只需要一个少于十人的投行团队搞定。<em>为了更大概率的攫取这样的高端人才或是精英团队，相应的企业就不能吝惜地价，租金这样的成本，而是要不顾一切地靠近他们集中的区域，例如高校附近或是城市的核心区。</em></p>
+<p>举个例子吧，8090年代房价相对平稳，区域分化不大的时候，硅谷的初创企业都是车库模式，我们熟知的苹果和谷歌就是从车库发家的，因为那时候IT还不是高端产业，程序员的议价能力不高，在哪办公无所谓，不如就去便宜简陋的车库。但三十年后就不一样了，我们发现uber和airbnb这样的初创企业直接选址在旧金山市中心，租金成本那可比湾区高到不知道哪里去了。原因就是IT产业如今是高端产业，程序员觉得自身需要享受城区便利，需要高档社区的安全感，需要在市中心办公，那这些企业就得乖乖驻扎在市中心。因为Uber和airbnb们深知，租金高点无所谓（可以继续烧vc的钱来填成本窟窿），招不到顶尖程序员和产品经理才是灭顶之灾。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Crystal Ball for Value]]></title>
         <id>https://athanszheyin.github.io/post/crystal-ball-for-value</id>
