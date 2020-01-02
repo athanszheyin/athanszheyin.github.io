@@ -2,14 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2019-12-29T16:34:37.645Z</updated>
+    <updated>2020-01-02T04:23:42.470Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
     <subtitle>&lt;h2&gt;&lt;i&gt;&lt;b&gt;云物如故乡，山川知异路&lt;/b&gt;&lt;/i&gt;&lt;/h2&gt;</subtitle>
     <logo>https://athanszheyin.github.io/images/avatar.png</logo>
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, athans blog</rights>
+    <rights>All rights reserved 2020, athans blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Expected Returns on Stocks and Bonds]]></title>
+        <id>https://athanszheyin.github.io/post/expected-returns-on-stocks-and-bonds</id>
+        <link href="https://athanszheyin.github.io/post/expected-returns-on-stocks-and-bonds">
+        </link>
+        <updated>2020-01-01T15:19:12.000Z</updated>
+        <summary type="html"><![CDATA[<p>So the author Antti Ilmanen later wrote a book based on this article...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>So the author Antti Ilmanen later wrote a book based on this article...</p>
+<!-- more -->
+<p>The paper proposed a core idea which contrasted backward-looking “subjective” expectations of long-run equity returns and premia with forward-looking “objectively feasible” return expectations. The equity premium was traditionally viewed as the historical average outperformance of equities over bonds or cash. Investor expectations were similarly backward-looking and distorted further by behavioral biases, as investors tended to over-weight recent return experience, extrapolate past nominal returns and growth rates despite lower inflation, and succumb to the exuberant “New Era” optimism. One problem with using simple historical averages is that the equity premium is not constant over time; the trend richening of equities has boosted realized past returns beyond investors’ expectations. Forward-looking expectations take into account current valuations and other conditioning information; hence they provide more realistic estimates when required returns vary over time, whter because of time varying risk premia or investor irrationality.</p>
+<p><img src="https://athanszheyin.github.io/post-images/1577939014767.png" alt=""></p>
+<p>Many empirical surveys of academics, chief financial officers, and private investors confirm that long-run equity return expectations have moderated from the unrealistic double-digit levels seen in the late 1990s to 7%-8% today (seem to have picked up in the recent 2010s), while equity valuations have improved thus narrowing from both sides the gap between subjective and objective expectations.</p>
+<p>The author argued that if we were to form a better estimate of forward-looking expected returns, we could rely on either the simple valuation ratios or the DDM (Dividend Discount Model). Both models requires evaluation on several macro parameters such as inflation level and output volatility.</p>
+<p>The author reviewed the active literatures and list out the nuts and bolts of forward-looking expected returns inputs:
+•	The dividend payout yield has undergone a structural change due to the rising of stock buybacks and the impact of tax changes.
+•	The sustainable long-run growth rate of earnings and dividends has influenced by the trend GDP growth rate, which used to serve as the floor in this debate, has now become the ceiling more appropriately.
+•	The fairness of current valuation levels including the consistent use of trailing versus operating P/E and their relation to low yield and inflation levels.
+•	The low level of ex-ante risk premia in all major markets including real estate and government/corporate bonds; and better understanding of behavioral biases (extrapolating due to availability bias, overconfidence, optimism etc.) which influence subjective return expectations.</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Literature Review -- The History of Finance]]></title>
         <id>https://athanszheyin.github.io/post/literature-review-the-history-of-finance</id>
@@ -220,44 +241,6 @@ The discussion of the M&amp;M propositions (also known as irrelevance of debt-eq
 <code>柴荣：灭佛导致的悲剧早夭？</code></p>
 <p><strong>柴荣的离奇病因史无定论，但这份遗憾却让两宋三百年始终立于危墙之下，使得”遗民泪尽胡尘里，南望王师又一年“的悲愤轮回响彻在燕云大地。辽朝在之后悉心经营十六州旧地之后，在本属中州故地的工匠，艺人，文士助力下，从散漫的游牧民族一跃成为有农业后盾，文化基石的马上帝国。以至于后来的金，蒙两族，也将这样来之不易的国家系统一并继承。</strong> 柴荣身后，无论是宋太宗的高梁河，还是岳少保的朱仙镇，虽然在军事层面更进一步，但是打下来又能否守住，守得住又能否不再失，细细想来又都显得不那么遗憾了。</p>
 <p>说到这里，又会想到宋太祖先南后北，先易后难的统一策略是否有失误，如果先征辽国可以携后周余威一战定北面。其实赵大从未明确在政策高度确定先南后北的方针，只是当时的形势不允许他拼尽禁军主力与北汉和辽军决一死战。先扫平南方，攥住钱粮后备，再集天下之资之兵，与胡人决战是在正常不过的选择。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[30分钟建立静态博客指南]]></title>
-        <id>https://athanszheyin.github.io/post/hello-world</id>
-        <link href="https://athanszheyin.github.io/post/hello-world">
-        </link>
-        <updated>2019-06-04T01:51:02.000Z</updated>
-        <summary type="html"><![CDATA[<p>作为 Hello World 开篇博文，简单记录一下建站的步骤和所需技术栈👇</p>
-<ul>
-<li>GitHub Page作为博客后端服务器</li>
-<li>基于Node.js的Hexo作为前端框架</li>
-<li>使用Gridea作为用户界面来更新维护博客</li>
-</ul>
-<p>一个完美的MVC架构，而且简易实用，便于上手。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>作为 Hello World 开篇博文，简单记录一下建站的步骤和所需技术栈👇</p>
-<ul>
-<li>GitHub Page作为博客后端服务器</li>
-<li>基于Node.js的Hexo作为前端框架</li>
-<li>使用Gridea作为用户界面来更新维护博客</li>
-</ul>
-<p>一个完美的MVC架构，而且简易实用，便于上手。</p>
-<!-- more -->
-<h2 id="modelergithub-pages">Modeler：GitHub Pages</h2>
-<p>作为全球最大同性交友平台，Github于三年前推出免费的个人页面 <a href="https://pages.github.com/">GitHub Pages</a> 方便各位技术宅展示自己。三年来Github pages仍然是我所知道的唯一便捷的blog搭建平台，同时空间免费，流量免费。Github被微软收购之后，我推测在可预见的未来这些福利将会持续下去。因此如果你要我推荐一个博客平台，我将自信地安利给你GitHub Pages。具体建立自己的Github Pages的方法一目了然，参阅官方教程即可。如果你已经有GitHub账户并且熟悉Git commands，整个过程不会超过  <em><strong>5分钟</strong></em> 。</p>
-<h2 id="controlerhexo">Controler：Hexo</h2>
-<p>完成GitHub Pages的设置后，会收到<code>Jekyll</code>模板植入的提示。即你编辑的<code>html/css</code>文件会经过<code>Jekyll</code>的静态编辑生成网页。但是我并不推荐这一套流程，因为<code>Jekyll</code>模板太过繁琐，创建页面编辑页面不太直观。基于<code>Hexo</code>的静态网页生成器就要灵活得多，主题数量也很丰富。安装 <a href="https://hexo.io/">Hexo</a> 需要预装 <a href="https://nodejs.org/en/download/">Node.js</a> ,整个过程也是无比丝滑，预计费时 <em><strong>10分钟</strong></em> 。</p>
-<blockquote>
-<p>我发现hexo同时也是美国一家上市医药公司的ticker，该公司应属于小盘股，最近走势不错，可是医药股一向波动较大，投资需谨慎。</p>
-</blockquote>
-<h2 id="viewer-gridea">Viewer: Gridea</h2>
-<p><a href="http://hvenotes.fehey.com/">Gridea</a>  是我最近找到的一个开源博客编辑交互界面，与hexo无缝链接，甚至可以省略刚才的 <strong>10分钟</strong>  <code>Hexo</code>配置时间。基本上下载安装，然后在配置界面和GitHub Pages和repository对接起来即可。但是使用<code>Gridea</code>的缺憾在于放弃了Github的双向同步特性，<code>Gridea</code>会在本地保存好你编辑的网页文件，然后单向推送给Github，如果你通过其他途径修改了Github repo上的文件，本地并不会收到这些更新。所以如果你可能在多个终端上更新和编辑博客，那么你需要使用一个双向同步的工具（比如one drive，google drive，dropbox）来保证所有<code>Gridea</code>文件下的一切都是同步的。这最后一步大概耗时 <em><strong>20分钟</strong></em> 。</p>
-<p>大多数人会更倾向于自己选择主题建站，甚至申请个性域名。但我本着如无必要，勿增实体的原则，选择了最简洁的法门。博客最重要的是内容，忠实记录自己的生活点滴，成长轨迹。如果你对于Hexo建站感兴趣，以下分享一些有用的链接以飨读者：</p>
-<p><a href="https://changchen.me/blog/20180819/deploy-hexo-blog-to-gcp-oss/">部署 Hexo 静态博客</a></p>
-<p><a href="https://chenhuichao.com/2016/02/21/hexo/hexo-guide-1/">Hexo博客搭建教程</a></p>
-<p><a href="https://medium.com/@zainzafar/create-publish-your-startup-landing-page-with-github-pages-in-5-minutes-b1ba0787ba46">Publish in 5 minutes 😘</a></p>
-<p>📝 🌉🏷️ 📋  💻  🌎  💬  🌁  🖥 🌱</p>
 ]]></content>
     </entry>
 </feed>
