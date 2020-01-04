@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2020-01-02T04:29:46.400Z</updated>
+    <updated>2020-01-04T02:51:26.630Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -11,24 +11,26 @@
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, athans blog</rights>
     <entry>
-        <title type="html"><![CDATA[Expected Returns on Stocks and Bonds]]></title>
-        <id>https://athanszheyin.github.io/post/expected-returns-on-stocks-and-bonds</id>
-        <link href="https://athanszheyin.github.io/post/expected-returns-on-stocks-and-bonds">
+        <title type="html"><![CDATA[Literature Review -- Expected Returns on Stocks and Bonds]]></title>
+        <id>https://athanszheyin.github.io/post/literature-review-expected-returns-on-stocks-and-bonds</id>
+        <link href="https://athanszheyin.github.io/post/literature-review-expected-returns-on-stocks-and-bonds">
         </link>
-        <updated>2020-01-01T15:19:12.000Z</updated>
-        <summary type="html"><![CDATA[<p>So the author Antti Ilmanen later wrote a book based on this article...</p>
+        <updated>2020-01-03T13:48:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>So the author published a book based on this paper.</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>So the author Antti Ilmanen later wrote a book based on this article...</p>
+        <content type="html"><![CDATA[<p>So the author published a book based on this paper.</p>
 <!-- more -->
 <p>The paper proposed a core idea which contrasted backward-looking “subjective” expectations of long-run equity returns and premia with forward-looking “objectively feasible” return expectations. The equity premium was traditionally viewed as the historical average outperformance of equities over bonds or cash. Investor expectations were similarly backward-looking and distorted further by behavioral biases, as investors tended to over-weight recent return experience, extrapolate past nominal returns and growth rates despite lower inflation, and succumb to the exuberant “New Era” optimism. One problem with using simple historical averages is that the equity premium is not constant over time; the trend richening of equities has boosted realized past returns beyond investors’ expectations. Forward-looking expectations take into account current valuations and other conditioning information; hence they provide more realistic estimates when required returns vary over time, whter because of time varying risk premia or investor irrationality.</p>
-<p><img src="https://athanszheyin.github.io/post-images/1577939014767.png" alt=""></p>
 <p>Many empirical surveys of academics, chief financial officers, and private investors confirm that long-run equity return expectations have moderated from the unrealistic double-digit levels seen in the late 1990s to 7%-8% today (seem to have picked up in the recent 2010s), while equity valuations have improved thus narrowing from both sides the gap between subjective and objective expectations.</p>
-<p>The author argued that if we were to form a better estimate of forward-looking expected returns, we could rely on either the simple valuation ratios or the DDM (Dividend Discount Model). Both models requires evaluation on several macro parameters such as inflation level and output volatility.</p>
-<p>The author reviewed the active literatures and list out the nuts and bolts of forward-looking expected returns inputs:
-•	The dividend payout yield has undergone a structural change due to the rising of stock buybacks and the impact of tax changes.
-•	The sustainable long-run growth rate of earnings and dividends has influenced by the trend GDP growth rate, which used to serve as the floor in this debate, has now become the ceiling more appropriately.
-•	The fairness of current valuation levels including the consistent use of trailing versus operating P/E and their relation to low yield and inflation levels.
-•	The low level of ex-ante risk premia in all major markets including real estate and government/corporate bonds; and better understanding of behavioral biases (extrapolating due to availability bias, overconfidence, optimism etc.) which influence subjective return expectations.</p>
+<p><img src="https://athanszheyin.github.io/post-images/1578106144793.png" alt=""></p>
+<p>The author argued that if we were to form a better estimate of forward-looking expected returns, we could rely on either the simple valuation ratios or the DDM (Dividend Discount Model). Both models requires evaluation on several macro parameters such as inflation level and output volatility.
+The author reviewed the active literatures and list out the nuts and bolts of forward-looking expected returns inputs:</p>
+<ul>
+<li>The dividend payout yield has undergone a structural change due to the rising of stock buybacks and the impact of tax changes.</li>
+<li>The sustainable long-run growth rate of earnings and dividends has influenced by the trend GDP growth rate, which used to serve as the floor in this debate, has now become the ceiling more appropriately.</li>
+<li>The fairness of current valuation levels including the consistent use of trailing versus operating P/E and their relation to low yield and inflation levels.</li>
+<li>The low level of ex-ante risk premia in all major markets including real estate and government/corporate bonds; and better understanding of behavioral biases (extrapolating due to availability bias, overconfidence, optimism etc.) which influence subjective return expectations.</li>
+</ul>
 ]]></content>
     </entry>
     <entry>
