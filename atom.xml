@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2020-02-21T02:53:48.689Z</updated>
+    <updated>2020-02-21T04:27:08.860Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -11,11 +11,31 @@
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, athans blog</rights>
     <entry>
-        <title type="html"><![CDATA[Literature Review -- Minimum Variance Portfolio Composition]]></title>
+        <title type="html"><![CDATA[Literature Review -- Multiple Alpha Sources and Active Management [PanAgora]]]></title>
+        <id>https://athanszheyin.github.io/post/literature-review-multiple-alpha-sources-and-active-management-panagora</id>
+        <link href="https://athanszheyin.github.io/post/literature-review-multiple-alpha-sources-and-active-management-panagora">
+        </link>
+        <updated>2020-02-20T02:01:58.000Z</updated>
+        <summary type="html"><![CDATA[<p>Over the years, quantitative equity portfolio management have evolved from a niche product to a generally accepted investment process. Along the way, practitioners have also made many improvements. Following this article, the authors extended their research to contextual models in which each stock has a unique model based on its firm characteristics or contexts (&quot;Contextual Fundamentals, Models and Active Management&quot;, 2005), to integrated models in which transaction costs and information decay of factors are balanced to maximize the net alpha instead of &quot;paper&quot; alpha (&quot;Information Horizon, Portfolio Turnover, and Optimal Alpha Models&quot;, 2007). Other relaed research are summarized in the book《Quantitative Equity Portfolio Management: Modern Techniques and Applications》 (2007).</p>
+<blockquote>
+<p>Personally I think this is one of the two must-read books for people in the quantitative investing business, I will introduce the second must-read in the next article：）</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<p>Over the years, quantitative equity portfolio management have evolved from a niche product to a generally accepted investment process. Along the way, practitioners have also made many improvements. Following this article, the authors extended their research to contextual models in which each stock has a unique model based on its firm characteristics or contexts (&quot;Contextual Fundamentals, Models and Active Management&quot;, 2005), to integrated models in which transaction costs and information decay of factors are balanced to maximize the net alpha instead of &quot;paper&quot; alpha (&quot;Information Horizon, Portfolio Turnover, and Optimal Alpha Models&quot;, 2007). Other relaed research are summarized in the book《Quantitative Equity Portfolio Management: Modern Techniques and Applications》 (2007).</p>
+<blockquote>
+<p>Personally I think this is one of the two must-read books for people in the quantitative investing business, I will introduce the second must-read in the next article：）</p>
+</blockquote>
+<!-- more -->
+<p>This article is one of the early papers on quantitative equity investment with the focus on combining factors in a multi-factor forecasting model. When the paper was out in early 2000, the conventional approach in the industry was to combine factors using either equal weights or weights proportional to factors; information coefficients, or ICs. These methods are simple and easy to use, but they ignore risks embedded in factor returns and correlations among different factor returns.</p>
+<p>We showed in the paper that a superior approach is to use a mean-variance framework, in which each factor represents an alpha-generating portfolio with expected return (average IC) and standard deviation (IC standard deviation), and different alpha-generating portfolios have different correlations (IC correlation). When viewed in that light, the traditional mean-variance analysis can be used for combining factors.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Literature Review -- Minimum Variance Portfolio Composition ]]></title>
         <id>https://athanszheyin.github.io/post/literature-reviews-minimum-variance-portfolio-composition</id>
         <link href="https://athanszheyin.github.io/post/literature-reviews-minimum-variance-portfolio-composition">
         </link>
-        <updated>2020-02-19T11:31:54.000Z</updated>
+        <updated>2020-02-18T09:31:54.000Z</updated>
         <summary type="html"><![CDATA[<p>This paper, along with &quot;Minimum Variance Portfolios in the US Equity Market&quot;, &quot;Risk Parity, Maximum Diversification, and Minimum Variance: An analytic perspective&quot;, examine the empirical and analytic properties of minimal-risk equity portfolios, which is now a separate area of investment strategy called &quot;low risk&quot; or &quot;managed risk&quot;, and the basis of several indexes indexes and ETFs, such as SPLV and USMV.</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>This paper, along with &quot;Minimum Variance Portfolios in the US Equity Market&quot;, &quot;Risk Parity, Maximum Diversification, and Minimum Variance: An analytic perspective&quot;, examine the empirical and analytic properties of minimal-risk equity portfolios, which is now a separate area of investment strategy called &quot;low risk&quot; or &quot;managed risk&quot;, and the basis of several indexes indexes and ETFs, such as SPLV and USMV.</p>
@@ -203,39 +223,6 @@ The discussion of the M&amp;M propositions (also known as irrelevance of debt-eq
 <p>底层没有改弦更张的动力，上层却有因循守旧的决心。在中国，统治阶层长久以来都奉行着稳定大于发展，公平大于效率的价值观。试问这样一个暮气丛生的大一统政权如何诞生？一个流行的观点与黄河有关。华夏文明起源于黄河流域，而近三千年里黄河的频繁改道导致无止尽的洪涝泛滥，而恰恰因为黄河流域之广，牵扯之大，非有一疆土庞大的国家无以治理。同时兴修一整套水利工程所需的财力物力人力，非有一权力集中的政府无以兴修。因此，中国天然地担上此类国家级别的水利工程，使得政府早熟地获得了它能力范围以外地集权和资源。它亟需消化内部的种种矛盾，以至于忘记了自身的进化和对外的探索。</p>
 <p>简单来说，广袤的耕地使得航海和地理大发现远离了中国，而以黄河长城为首的国家工程给了政府过度的权力。从这里推出制度改革和技术进步与中国无缘也许太过武断， 但这至少是我较为认可的重要原因之一。</p>
 <p>我的史观大略来自于黄仁宇和钱穆两位大师，他们都不算是科班出身，倒也符合我作为一个历史学票友的身份。黄仁宇心心念的中国之<code>缺乏数目字上的管理</code> 深得我心，高官大员们的管理思路是泛道德而非泛逻辑的，非黑即白的二元论，道重于术的形而上学等等简略又玄虚的思维模式大行其道，然而不进行精细的运筹管理，财政，军事等等国力象征始终无法突破瓶颈，最终的革命性变革也不可能到来。钱穆对于制度的研究更为深刻，<code>中国历代政治得失</code> 一书刻画出了一个周而复始的王朝更迭中日趋稳定的统治模式。这样的统治模式本质上不断轧平社会阶层，达到一个天子驭万民的理想国，可是以中国之广阔疆域，光靠皇帝一支而没有代理阶层施政司法又不可能真正进行管理。于是在皇权与行政代理阶层（可以是贵族阶层，也可以是士大夫阶层）地此消彼长中，厚黑学和阴谋论得到了进化，实用的思想与技术却停滞不前了。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[中华式封建]]></title>
-        <id>https://athanszheyin.github.io/post/zhong-hua-shi-feng-jian</id>
-        <link href="https://athanszheyin.github.io/post/zhong-hua-shi-feng-jian">
-        </link>
-        <updated>2019-06-07T03:54:29.000Z</updated>
-        <summary type="html"><![CDATA[<p>小说演义中所写的分久必合 合久必分只叙述了表象上的朝代更替。甚至在正史中我们也可以看到诸如 <code>霸祖孤身下二州，子孙多以百城亡</code> 的论调。可是真实的历史并非是创业之主励精图治，朝代中期改革挣扎，亡国之君昏聩误国的简单循环。每个朝代都有着自己的节奏，推动宏观制度阶段性的发展和进步。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>小说演义中所写的分久必合 合久必分只叙述了表象上的朝代更替。甚至在正史中我们也可以看到诸如 <code>霸祖孤身下二州，子孙多以百城亡</code> 的论调。可是真实的历史并非是创业之主励精图治，朝代中期改革挣扎，亡国之君昏聩误国的简单循环。每个朝代都有着自己的节奏，推动宏观制度阶段性的发展和进步。</p>
-<!-- more -->
-<p>民族情绪高涨的今天，很想捋一捋国家三千年来的文明史。中国作为封建制度存在时间最长的文明古国，其地缘环境和民族构成的独特性决定了政治和经济制度的独特性。简单地将春秋战国相交到鸦片战争之前的约2300年定性为封建社会太过笼统。即使以最粗浅的聚类分析，我们也应该将1840年之前的中国划分为 <strong>秦汉第一帝国，唐宋第二帝国和明清第三帝国</strong> 三个不同的发展时期。</p>
-<h3 id="第一帝国">第一帝国</h3>
-<p>秦汉时期是中国的第一次思想启蒙时期，第一次民族意识形成时期，第一次以统一疆域的大帝国姿态君临东亚。<strong>我们不妨把秦汉时期的时间期限拉得更广一些，春秋时期列国的统治模式最接近于封建制度 — 君主与贵族/贵戚共治天下。此时的社会层级稳定，呈金字塔状，公侯伯子男各尊其位。</strong>  但从战国初期各国开始的变法来看，虽然改革手段各显神通，但共通的方针是从贵族手中回收财政和土地资源，加强中央集权。从变法效果最好的商鞅改革来看，基本是将秦国变成了组织极为扁平的农战合作社---一个东亚版的斯巴达城邦。</p>
-<p>待到 <code>秦王扫六合，虎视何雄哉</code> 的秦王朝建立时，变法的力度却因为统治地域的扩大而遭到削弱。六国的君主摇身变成了秦帝国的诸侯贵族，甚至当高祖取而代之建立的汉帝国也未能很好的建立一套合理的统治制度。这当然情有可原，第一次在如此广大的地理区位上建立统一的帝国，各方势力需要调和，统治经验也需积累。</p>
-<p>秦皇汉武相比，汉武帝是更重要的节点。推恩令将土地所有权逐步回收，平准均输将货币政策国有化，而盐铁专营则给予政府充分的财政自主。贵族们的土地，财税，行政职能全面被替代，在皇帝和能吏的精诚合作下黯然走下历史舞台，一系列颠覆式的政策创新缔造了一个全新的国家机器。其直接后果是对外强悍的军事征服，在汉武帝统治的半个世纪内，汉朝的国土和人口都达到了顶峰。</p>
-<p><img src="https://athanszheyin.github.io/post-images/1560134343967.jpg" alt="">
-<code>桑弘羊：汉武帝的马歇尔+凯恩斯</code></p>
-<h3 id="第二帝国">第二帝国</h3>
-<p>在第一帝国的末尾，士族大家们对皇权进行了相当程度的反扑复辟，由于中国在此阶段一直处于分裂状态，他们在后来的魏晋南北朝时期享受了实质性的统治效力。似乎皇权的旁落已经无可挽回，但是随着隋唐君主在武力统一上的发力，新的制度创新阶段已然开启。</p>
-<p><strong>唐宋开始的第二帝国开启了君主的独裁模式，此时的政治制度已经和西欧中世纪的封建制度相距甚远。由于科举的出现，稳定的社会阶层金字塔被打破，<code>朝为田舍郎，暮登天子堂</code> 式的阶级跃迁成为可能。此时君主发现和贵族分权已无必要，一种新的统治模式 — 与士大夫共治天下 — 得以建立。</strong> 科举制度的建立诞生了皇帝和贵族之外的第三级 --- 士大夫集团。士大夫集团的权力由皇帝赐予，天然具有拥护皇权的动机，而因为士大夫的官衔取之予之全凭君意，这个阶层的高流动性帮助皇权进一步的集中和稳固。</p>
-<p><strong>向上争权不能，自然要向下逐利。</strong> 虽然士大夫大多出自底层民众，然而一旦通过科举脱胎换骨进入决策层，便会开始与民争利。尤其因为科举不同于贵族头衔无法世袭，权力寻租的期限短暂，官员们只会比旧时贵族们更变本加厉地进行土地兼并和金融掠夺。不幸的是，开国皇帝们通常在草创初期默许文官集团与民争利的动作，用以换取他们对君权的绝对忠诚，那么在有限的土地和经济资源下，这样的对内掠夺和倾轧总会走到尽头。是时 <code>民无立锥之地，有田者不耕，欲耕者无田</code> ，王朝必会倾覆。</p>
-<p><img src="https://athanszheyin.github.io/post-images/1560134620265.jpg" alt="">
-<code>刘晏：凯恩斯式国家干预主义者二代目</code></p>
-<p><strong>由于唐代之后中国耕地面积（不包括游牧面积）的相对固定，我们甚至可以量化这一土地兼并 -》贫富悬殊-》王朝崩溃临界点的跨度---大略是一百年。王朝历经了百年发展，财政和行政能力都会达到一个不破不立的节点。重新洗牌成为必要，国家需要二度从士大夫阶层回收资源。</strong> 于是我们看到改革者的出身年月和王朝建立的年月有着有趣的巧合：贞观元年：626年，刘晏主政：762年（这其中我们需要考虑安史之乱时，国家施政近乎瘫痪的20年）， 北宋建立：960年，青苗法（王安石）：1069年。元朝：历经97年。明朝建立：1368年， 弘治中兴：1487年，一条鞭法（张居正）：1581年。清朝建立：1644年，摊丁入亩（雍正）：1723年。</p>
-<p><img src="https://athanszheyin.github.io/post-images/1560134751420.jpg" alt="">
-<code>王安石：继承政府专营意志の三代目</code></p>
-<h3 id="第三帝国">第三帝国</h3>
-<p>后续的明清第三帝国沿袭了这样的制度 — 事实上他们在别的政治经济领域也没有太多的创新 — 并使得社会阶层变得愈加扁平。君主得以更加直接（至少是名义上）地统御万民，<code>普天之下 莫非王土 率土之滨 莫非王臣</code> 不再是一句空话。</p>
-<p><strong>明清王朝在制度创新上乏善可陈，但我们仍然需要尊重当权者们的尝试和努力，如果说元代以前的制度设计是以一种豪迈的方式把资源大包大揽然后慢慢统筹，那么明清时期则像是精巧地进行沙盘推演从而调平天枰两端。</strong></p>
-<p>我们可以试着将与士大夫共治天下的统治模式看作一种原始的君主立宪制，因为古时的皇帝并没有我们想象的拥有绝对的统治自由，相反皇帝需要与他的大臣们做出权力的博弈，甚至在很多方面收到大臣们的制约。历代皇族因此从未放弃获取绝对权力的努力。</p>
-<p>一个简单的例子，从隋朝到明朝，皇帝一再做的事情是收缩相权，宰相的职位到唐朝分为左右宰相，再到宋朝的同中书省门下平章事（分归为三省六部中的两省和六部），再到明朝取消宰相改任内阁（通常有4-6人，首辅，次辅，大概是政治局常务委员会前身），再到清朝从内阁中继续分出军机处。可是这努力却难以成功。这其中的原因可以简单归纳为，偌大的帝国单靠寡头的强人政治难以掌控，必须以至少二元的力量平衡。</p>
 ]]></content>
     </entry>
 </feed>
