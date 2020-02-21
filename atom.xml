@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2020-01-04T02:51:26.630Z</updated>
+    <updated>2020-02-21T02:51:14.410Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -10,6 +10,29 @@
     <logo>https://athanszheyin.github.io/images/avatar.png</logo>
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, athans blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Literature Review -- Minimum Variance Portfolio Composition]]></title>
+        <id>https://athanszheyin.github.io/post/literature-reviews-minimum-variance-portfolio-composition</id>
+        <link href="https://athanszheyin.github.io/post/literature-reviews-minimum-variance-portfolio-composition">
+        </link>
+        <updated>2020-02-20T00:31:54.000Z</updated>
+        <summary type="html"><![CDATA[<p>This paper, along with &quot;Minimum Variance Portfolios in the US Equity Market&quot;, &quot;Risk Parity, Maximum Diversification, and Minimum Variance: An analytic perspective&quot;, examine the empirical and analytic properties of minimal-risk equity portfolios, which is now a separate area of investment strategy called &quot;low risk&quot; or &quot;managed risk&quot;, and the basis of several indexes indexes and ETFs, such as SPLV and USMV.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>This paper, along with &quot;Minimum Variance Portfolios in the US Equity Market&quot;, &quot;Risk Parity, Maximum Diversification, and Minimum Variance: An analytic perspective&quot;, examine the empirical and analytic properties of minimal-risk equity portfolios, which is now a separate area of investment strategy called &quot;low risk&quot; or &quot;managed risk&quot;, and the basis of several indexes indexes and ETFs, such as SPLV and USMV.</p>
+<!-- more -->
+<p>The reason we should care is that low relative returns to volatile stocks translates into high relative return to stable stocks. Volatile minus stable portfolios, or &quot;VMS&quot; portfolios to use a Fama/French style acronym, have negative returns. But turn the VMS factor on its head and that means positive returns against the market for carefully constructed portfolios. And even if those relatively higher returns are reduced by transaction costs and other implementation issues, returns that merely match the market with lower overall risk have a higher Sharpe ratio. A higher Sharpe ratio allows for larger equity exposures without violating risk budgets, or for explicit leveraging to market benchmark volatility and expected returns above the market. Yet another study showing how one could have beaten the market historically on a risk adjusted basis -- what's so novel about that? The collective data-mining efforts of academics and industry professionals over the past half century have produced more market anomalies than one can count.</p>
+<p>What's so novel and interesting is that minimum-variance portfolios are a concept developed by Harry Markowitz in 1952, not in 2006. Nothing has been added to the mean-variance algorithm of his &quot;Portfolio Selection&quot; (1952) paper except the computing power and econometrics to apply what Markowitz prescribed to a large number of individual securities. Construct a minimum variance portfolio on the left-most tip of the efficient frontier back then, and you would have done very well indeed. No return forecasting, no CAPM, no reliance on what we have subsequently leaned about the factors that perform well --- just aim to minimize portfolio risk. We thought that was interesting enough to publish and study.
+<img src="https://athanszheyin.github.io/post-images/1582253047972.jpg" alt=""></p>
+<p>The unique contribution of &quot;Minimum-Variance Portfolio Composition&quot; is a simple and intuitive analytic solution for the individual security weights in a long-only minimum-variance portfolio. The formula shows that, while high idiosyncratic risk can lead to low security weights, securities with high systematic risk are completely taken out of the long-only solution. In fact, the relatively small set of securities that remain all have market betas below an analytically specified threshold beta. The analytic and empirical results of this study are part of an increasing awareness that the “low volatility” anomaly is a function of the long-standing empirical critique of the traditional CAPM; low-beta stocks have relatively high average returns.</p>
+<p>In retrospect, what the institutional investing community now calls &quot;low volatility&quot; or &quot;managed
+volatility&quot; portfolio strategies were well timed for the financial crisis and other volatile regimes. We anticipate that low volatility portfolios will continue to have attractive properties in the years ahead. Results based on methodologies that are less dependent on researchers' collective data mining of the historical databases are arguably more reliable in the out-of-sample test.</p>
+<p>We are still engaged in related research, further study documents that the returns to a pure beta
+factor in the US equity market and explain that the distinction between the market return and the
+return to the cross-sectional variation in security betas also applies to portfolio performance
+measurement. All would lead to the emergence of volatility as a market-wide equity factor
+comparable to size, value and momentum.</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Literature Review -- Expected Returns on Stocks and Bonds]]></title>
         <id>https://athanszheyin.github.io/post/literature-review-expected-returns-on-stocks-and-bonds</id>
@@ -213,36 +236,6 @@ The discussion of the M&amp;M propositions (also known as irrelevance of debt-eq
 <p><strong>明清王朝在制度创新上乏善可陈，但我们仍然需要尊重当权者们的尝试和努力，如果说元代以前的制度设计是以一种豪迈的方式把资源大包大揽然后慢慢统筹，那么明清时期则像是精巧地进行沙盘推演从而调平天枰两端。</strong></p>
 <p>我们可以试着将与士大夫共治天下的统治模式看作一种原始的君主立宪制，因为古时的皇帝并没有我们想象的拥有绝对的统治自由，相反皇帝需要与他的大臣们做出权力的博弈，甚至在很多方面收到大臣们的制约。历代皇族因此从未放弃获取绝对权力的努力。</p>
 <p>一个简单的例子，从隋朝到明朝，皇帝一再做的事情是收缩相权，宰相的职位到唐朝分为左右宰相，再到宋朝的同中书省门下平章事（分归为三省六部中的两省和六部），再到明朝取消宰相改任内阁（通常有4-6人，首辅，次辅，大概是政治局常务委员会前身），再到清朝从内阁中继续分出军机处。可是这努力却难以成功。这其中的原因可以简单归纳为，偌大的帝国单靠寡头的强人政治难以掌控，必须以至少二元的力量平衡。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[南北易俗因何而起]]></title>
-        <id>https://athanszheyin.github.io/post/south and north</id>
-        <link href="https://athanszheyin.github.io/post/south and north">
-        </link>
-        <updated>2019-06-05T14:46:40.000Z</updated>
-        <summary type="html"><![CDATA[<p>纵观华夏两千年帝制轮回，长期的南北分裂出现过两次，一是强汉之后的十六国南北朝时期，二是盛唐之后的五代两宋时期。而这两次南北分裂本有机会早早结束的，历史的进程偏偏于此不遂人愿，让天下一统的局面迟延数百年。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>纵观华夏两千年帝制轮回，长期的南北分裂出现过两次，一是强汉之后的十六国南北朝时期，二是盛唐之后的五代两宋时期。而这两次南北分裂本有机会早早结束的，历史的进程偏偏于此不遂人愿，让天下一统的局面迟延数百年。</p>
-<!-- more -->
-<h3 id="灞上与坊头">灞上与坊头</h3>
-<p>永和年间东晋的军事实力呈现着中兴之势，在桓温第一次北伐之前就已经有褚裒和殷浩的两次出征。当时北方的形势一片混乱，后赵新亡，苻式前秦和慕容前燕还在襁褓之中。桓元子只带着四万荆州兵甲出军江陵，就在蓝田附近两败苻氏子弟，杀伤过半前秦主力。此时更有司马勋兵出子午谷， 前凉王擢奔袭陈仓（这路线实在眼熟，“ 天下有变，则命一上将将荆州之军以向宛洛，将军身率益州之众出于秦川 ”）。桓温正是在稳步实现着百余年前的隆中遗梦，但不知何故他却在灞上停了下来，兵锋一堕后面的事也就不难预料。灞上的驻军导致关中百姓的那句 “不图今日复睹官军！” 又苦等了两百多年。</p>
-<p><img src="https://athanszheyin.github.io/post-images/1559704590132.jpeg" alt="桓温：大丈夫不能流芳百世,亦当遗臭万年">
-<code>桓温：大丈夫不能流芳百世,亦当遗臭万年</code></p>
-<p>然而桓温仍有第二次机会，第一次北伐时手下的荆州兵并未遭到围歼，两年后他率晋军戮力同心收复洛阳，苦心经营河南十几年后终于再次北伐。此时前秦羽翼未丰，前燕内乱将起，可是已经年过半百的桓温一开始就尽弃漕运，逆渡黄河，又在坊头遭遇燕秦联军的冲击，很快溃退。一向用兵持重的桓温最终在黄河边上的襄邑葬送了东晋几乎全部荆州和京口的主力，东晋中兴的军事力量自此夭折。</p>
-<p><strong>”树犹如此，人何以堪“，桓温时期的东晋政局稳定，军事勃兴，而北方大地在经历了刘渊和石勒不算成功的短期征服后形势板荡，人心思归。刘备孔明未能做到的宏业桓温本有机会达成，却因在灞上的迟疑和坊头的失策而功败垂成。</strong></p>
-<p>有趣的是，桓温也确实是以诸葛亮作为人生标杆身体力行的，野史说在他伐蜀之时，曾遇见一个历经诸葛亮时期年过百岁的小吏。他当时便问小吏：“今天谁可与诸葛丞相相比？”小吏答曰：“诸葛在时，不觉得有异。自他死后，无人可以与他相比。”不曾想一语成谶，隆中对最终也没能在桓温手上实现，而他最终也活成了曹操的样子。</p>
-<p>至于五十年后刘寄奴的北伐，表面上攻城掠池甚至超过桓元子，然而刘裕攻下的长安已经不是当年桓温进驻的关中了。两京落入胡人近百年，在前秦之后北方的统治者也逐步汉化，政府体制民族政策日臻成熟。这时候占据两京如同端平入洛，注定是昙花一现。刘裕不傻，知道经营关中及河南风险太大，相比之下捞足政治资本之后，回去统领东南是真正合理的决策。所谓的刘穆之去世时刘裕的悲叹，就如同黄袍加身时赵匡胤的无奈，只是政治的道具罢了。</p>
-<blockquote>
-<p>再提及一句淝水之战，前秦苻坚所面对的是经营吴蜀两地数十年的东晋，当时南军在川蜀，荆襄和京湖的防御都很坚实，哪怕是投鞭断流的百万雄师也几无胜算。苻坚的统一形势甚至不如曹孟德当年的赤壁鏖兵，所以即使草木皆兵也并无遗憾。</p>
-</blockquote>
-<h3 id="燕云病龙台">燕云病龙台</h3>
-<p>古时帝王常常生年不永，但后周世宗柴荣在短短的39年寿命里如同亚历山大大帝一样开启开挂人生，”世宗区区五六年间，取秦陇，平淮右，复三关，威武之声震慑夷夏“。当公元959年柴荣踏上北伐之路时，所有人都相信他能一战功成， “实足以一天下而绍汉唐者也！”</p>
-<p>是时，南唐臣服，南疆俯首，蜀地纳首，北汉新败，十国皆为世宗北伐让路，辽世宗刚刚被废杀，辽穆宗名号宿醉王，关键是幽云十六州易手夷狄才二十年，辽国上下甚至没有十足把握控制关南（从战事上看更是如此，辽军几无抵抗，不战而降者极多）。柴荣手上历经高平大战，三征南唐的精锐禁军，” 威方张而未竭 “。但历史仿佛玩笑般的让盛年的周世宗在澶州突患急疾，一病不起，只能班师回朝。世传周世宗夺取瓦桥关后登高望远，检阅军队。当地父老将牛酒劳军，周世宗好言抚慰，乘间问道：“此地叫什么名字？”父老们回答：“此高坡名为病龙台。”周世宗闻之默然，当夜就病倒高卧。同年，英明神武的柴荣就去世了，后周王朝也随之寿终正寝。</p>
-<p><img src="https://athanszheyin.github.io/post-images/1559704764471.png" alt="柴荣：灭佛导致的悲剧早夭？">
-<code>柴荣：灭佛导致的悲剧早夭？</code></p>
-<p><strong>柴荣的离奇病因史无定论，但这份遗憾却让两宋三百年始终立于危墙之下，使得”遗民泪尽胡尘里，南望王师又一年“的悲愤轮回响彻在燕云大地。辽朝在之后悉心经营十六州旧地之后，在本属中州故地的工匠，艺人，文士助力下，从散漫的游牧民族一跃成为有农业后盾，文化基石的马上帝国。以至于后来的金，蒙两族，也将这样来之不易的国家系统一并继承。</strong> 柴荣身后，无论是宋太宗的高梁河，还是岳少保的朱仙镇，虽然在军事层面更进一步，但是打下来又能否守住，守得住又能否不再失，细细想来又都显得不那么遗憾了。</p>
-<p>说到这里，又会想到宋太祖先南后北，先易后难的统一策略是否有失误，如果先征辽国可以携后周余威一战定北面。其实赵大从未明确在政策高度确定先南后北的方针，只是当时的形势不允许他拼尽禁军主力与北汉和辽军决一死战。先扫平南方，攥住钱粮后备，再集天下之资之兵，与胡人决战是在正常不过的选择。</p>
 ]]></content>
     </entry>
 </feed>
