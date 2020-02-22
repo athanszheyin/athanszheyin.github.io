@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1582259620370">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1582332790881">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://athanszheyin.github.io">
-        <img src="https://athanszheyin.github.io/images/avatar.png?v=1582259620370" class="site-logo">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1582332790881" class="site-logo">
         <h1 class="site-title">athans blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -118,12 +118,18 @@
             <div class="post-content">
               <p>[PanAgora] <strong>Edward Qian, Eric H.Sorensen and Ronald Hua</strong></p>
 <p>Over the years, quantitative equity portfolio management have evolved from a niche product to a generally accepted investment process. Along the way, practitioners have also made many improvements. Following this article, the authors extended their research to contextual models in which each stock has a unique model based on its firm characteristics or contexts (&quot;Contextual Fundamentals, Models and Active Management&quot;, 2005), to integrated models in which transaction costs and information decay of factors are balanced to maximize the net alpha instead of &quot;paper&quot; alpha (&quot;Information Horizon, Portfolio Turnover, and Optimal Alpha Models&quot;, 2007). Other relaed research are summarized in the book《Quantitative Equity Portfolio Management: Modern Techniques and Applications》 (2007).</p>
+<!-- more -->
 <blockquote>
 <p>Personally I think this is one of the two must-read books for people in the quantitative investing business, I will introduce the second one in the next article：）</p>
 </blockquote>
-<!-- more -->
 <p>This article is one of the early papers on quantitative equity investment with the focus on combining factors in a multi-factor forecasting model. When the paper was out in early 2000, the conventional approach in the industry was to combine factors using either equal weights or weights proportional to factors; information coefficients, or ICs. These methods are simple and easy to use, but they ignore risks embedded in factor returns and correlations among different factor returns.</p>
-<p>We showed in the paper that a superior approach is to use a mean-variance framework, in which each factor represents an alpha-generating portfolio with expected return (average IC) and standard deviation (IC standard deviation), and different alpha-generating portfolios have different correlations (IC correlation). When viewed in that light, the traditional mean-variance analysis can be used for combining factors.</p>
+<p>We showed in the paper that a superior approach is to use a mean-variance framework, in which each factor represents an alpha-generating portfolio with expected return (average IC) and standard deviation (IC standard deviation), and different alpha-generating portfolios have different correlations (IC correlation). When viewed in that light, the traditional mean-variance analysis can be used for combining factors.
+<img src="https://athanszheyin.github.io/post-images/1582332775601.png" alt=""></p>
+<p>Clearly the largest drag on equity portfolio performance dampening the theoretical value of an alpha model is implementation cost. Trading cost or implementation shortfall is a direct function of realized transaction costs that increase with turnover., and an indirect function of the opportunity cost of not trading as the strength of the alpha model dwindles and becomes stale. As assets under management grow (for a specific manger with similar models), the problem becomes larger. One partial solution is to limit turnover. Indeed, many managers first develop and calibrate their alpha models, then implement by setting turnover constraints. This approach is ad hoc and potentially inefficient and does not consider either the likely autocorrelation and/or the investment horizon of an alpha source, or the cross-correlation structure of multiple alpha sources.</p>
+<p>Our approach here, as with prior work, is to set forth the normative objective function that maximizes the information ratio (IR). The strength and autocorrelation of alpha signals are important exogenous forces. For example, the typical momentum factor decays quite rapidly. This is the predominant ingredient of high turnover strategies. In contrast, the typical value factor may last months, quarters, and even years, depending on how it is constructed. These factors have positive information coefficients (ICs) as single factors as well as more stable combined ICs (composite ICs) depending on the cross-correlations of the individual ICs.</p>
+<p>Our work is to develop a model in which portfolio turnover is endogenous. It is determined jointly with the statistical properties of the exogenous factor returns. We develop the concepts of lagged IC and horizon IC for an alpha model. An optimal model that maximizes net IR with explicit turnover consideration would use multiple signals over multiple periods depending on an expanded IC inputs as well as cross-correlation and autocorrelation structure of signals.
+<img src="https://athanszheyin.github.io/post-images/1582332785580.png" alt=""></p>
+<p>Our results are important in several ways. First, we introduce the importance of factor return autocorrelation, horizon IC and lagged IC. Second, it is imperative to consider trading costs and turnover explicitly as key elements of the optimal alpha model, especially in the current environment with the increasing volume of high frequency trading. High frequency trading has the character of acute trend following with extreme momentum signals, which can benefit some participants at the expense of others. Third, this work can expand to the broader issue of strategy capacity, including universal capacity that extends beyond the assets of a single asset manager. Convergence of the many on a common signal impacts the capacity of the few.</p>
 
             </div>
             
