@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1582436002735">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1582436129441">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://athanszheyin.github.io">
-        <img src="https://athanszheyin.github.io/images/avatar.png?v=1582436002735" class="site-logo">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1582436129441" class="site-logo">
         <h1 class="site-title">athans blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -125,8 +125,8 @@
 <p>In an attempt to test and, better yet, verify some of the ideas, the author suggested that the portfolios themselves could provide a record of their dynamic history. If we could know 11 month ago the new information that arrived 10 months ago, and so forth down to the new information that arrived last month, then we could try to explain the positions in the portfolio in terms of those relatively uncorrelated bundles of information. This question launched the research.</p>
 <p>The inquiry into the vintage of information in a portfolio raised a more general question of attributing the positions in a portfolio to any collection of possible sources. This effort soon crossed paths with factor models of risk. The author resolved to separate the two by assuming that we started with a good model of risk and by not allowing any factor structure in the risk model to influence or constrain my choice of sources in the unrelated problem of attributing positions in a portfolio.
 <img src="https://athanszheyin.github.io/post-images/1582435748530.jpg" alt=""></p>
-<p>Most of our efforts have been spent on building sizable calculation engines. This was effective, although it wasn’t all that illuminating. I resolved to go in the other direction and reduce the problem to its simplest form. This reacquainted me with the paradox that it is difficult to make something appear simple. The model in the article has two parameters called g and d. The first parameter, g, describes the speed at which new information is arriving. Since this is an equilibrium model, g is also the speed at which old information is getting stale. The second parameter, d, measures the speed at which the portfolio is incorporating new information. Fast trading means d is large, slow trading means d is small.
-With these two parameters, it is possible to characterize the resulting strategy to a remarkable extent. The transfer coefficient and the opportunity loss due to slow trading are relatively simple functions of g and d. In a tie-in to the attribution article in this collection, the parameters g and d lead to an analytic profile of the age distribution of information in the portfolio. In a completely unanticipated tie-in to some other work, it turns out that the breadth (number of independent positions per year) of a strategy with N assets will equal g times N.</p>
+<p>Most of our efforts have been spent on building sizable calculation engines. This was effective, although it wasn’t all that illuminating. I resolved to go in the other direction and reduce the problem to its simplest form. This reacquainted me with the paradox that it is difficult to make something appear simple. The model in the article has two parameters called g and d. The first parameter, g, describes the speed at which new information is arriving. Since this is an equilibrium model, g is also the speed at which old information is getting stale. The second parameter, d, measures the speed at which the portfolio is incorporating new information. Fast trading means d is large, slow trading means d is small.</p>
+<p>With these two parameters, it is possible to characterize the resulting strategy to a remarkable extent. The transfer coefficient and the opportunity loss due to slow trading are relatively simple functions of g and d. In a tie-in to the attribution article in this collection, the parameters g and d lead to an analytic profile of the age distribution of information in the portfolio. In a completely unanticipated tie-in to some other work, it turns out that the breadth (number of independent positions per year) of a strategy with N assets will equal g times N.</p>
 <p>There is an optimization result that tells you the appropriate trading rate for your strategy. We presume a penalty for risk and a penalty for the rate of trading. The attractive feature of this model is that once you have grasped it, you can put it into a spreadsheet and within minutes look at the sensitivity of important portfolio properties to the trading rate or the penalty associated with trading. The parameters g and d can be inferred if you have sufficient data on your portfolio’s history and the alpha forecasts.</p>
 <blockquote>
 <p>I know how to make this dynamic model more complicated, for instance by adding signals with different rates of arrival/decay. My goal is to make it as simple as possible.</p>
