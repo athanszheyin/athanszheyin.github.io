@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Point in Time -- Understanding the VIX | athans blog</title>
+<meta name="description" content="&lt;h2&gt;&lt;i&gt;&lt;b&gt;云物如故乡，山川知异路&lt;/b&gt;&lt;/i&gt;&lt;/h2&gt;">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1583803798171">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://athanszheyin.github.io">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1583803798171" class="site-logo">
+        <h1 class="site-title">athans blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://athanszheyin.github.io/post/about/" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/athanszheyin" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.weibo.com/u/2866261084" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/zheyin-zhao/" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.facebook.com/zheyin.zhao" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      <h2><i><b>云物如故乡，山川知异路</b></i></h2>
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> |
+<a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://athanszheyin.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Point in Time -- Understanding the VIX</h2>
+            <div class="post-date">2020-03-08</div>
+            
+              <div class="feature-container" style="background-image: url('http://www.cboe.com/publish/micrositecharts/VIX_SP500_Index.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>In the aftermath of the March 2020 financial market plunge, pundits were blaming the VIX, saying the index was at unprecedented levels and was, in fact, causing stock market turmoil. As much as most of the investment management community had learned about the VIX and its usefulness over the years, a segment of the community remained unformed or confused. It is obliged here to help set the record straight.</p>
+<!-- more -->
+<h3 id="inception">Inception</h3>
+<p>In 1992, the Chicago Board Options Exchange (CBOE) created an implied market volatility index based on the prices of their proprietary Standard &amp; Poor’s index options. Their motives were twofold. First, they wanted to create a new and unique index that reflected expected stock market volatility and served, more or less, as a marketing device. Second, they wanted the index to serve as a reference rate upon which they could list exchange traded derivatives. They succeeded on both counts.
+<img src="https://athanszheyin.github.io/post-images/1583803127329.jpg" alt=""></p>
+<p>Since early 1993, the CBOE Market Volatility Index, or the VIX, has been reported on a real-time basis. Within a few years, financial news shows began regularly reporting and commenting on its level throughout the day, tying changes in its level to specific market or world events. <strong>Often it is referred to as the &quot;investor fear gauge&quot;. The reason for this is that the level of the VIX is primarily driven by S&amp;P 500 put option prices</strong>. When institutional investors become nervous about the prospect of a severe market decline, they buy index puts. The excess buying pressure drives put prices up, and implied market volatility (i.e., the VIX) follows up by formulaic definition. A simple way to think of VIX is as the price of stock portfolio insurance.</p>
+<p>Suffice it to say that the CBOE’s VIX has achieved a level of recognition well beyond anything imagined in 1992. The trading of the VIX futures and options markets would allow the creation of a new asset class, market volatility. Buying and holding market volatility, if it were traded, would present a tremendous diversification opportunity for investment managers. The return correlation of the VIX with the S&amp;P 500 index portfolio is hugely negative, on the order of -0.8.</p>
+<h3 id="trading-volatility">Trading Volatility</h3>
+<p>The biggest problem with buying VIX future directly to achieve this diversification is that many institutions are barred by charter from trading in the derivatives market. If market volatility traded as security in the stock market, the floodgates would open. But how can the VIC be made into a security? After all, it is computed from the prices of a dynamic portfolio of hundreds of S&amp;P options. <strong>The answer is simple --- a fully collateralized futures position</strong>. In a market where the relation between the cash and futures markets is actively arbitraged, holding a security is no different than holding T-bills and a futures contract on that security.</p>
+<p>Fully collateralized futures positions are used all the time. Index funds, for example, use them for dividend reinvestment. The stocks in the funds pay dividends through time. Since the dividends are small and spread out over time, it is uneconomical to buy all stocks in the index portfolio with each cash dividend payment. Instead, what the funds do is put the dividends in T-bills until the cash balance is sufficiently large to permit buying the tocks in the index portfolios in a cost efficient manner. But, since holding the cash temporarily would introduce tracking error, the fund buys an appropriate number of index futures to make the cash behave like the index. Since the index futures price is inextricably linked to the index level, the cash/futures position behave like the index and virtually no tracking error is introduced. But this is a single application. <strong>Fully collateralized futures positions are used as substitutes for the underlying financial asset in any number of trading strategies and in a variety of different markets, including stocks, stock indexes, bonds, and currencies</strong>. Once VIX future volume picked up, VIX exchange-traded products (ETPs) were around the corner. And, indeed, the first ones were launched in January 2009.</p>
+<p>The VIX ETPs were an immediate success. Within two years, more than 30 different products were traded. But the market was behaving in a peculiar way. The prices were decaying through time at an incredibly high rate. In its first year, the price of VXX, the most popular VIX ETP, had fallen 68%. In its second year, it fell by 72%. Clearly it made no sense to buy and hold such a security.</p>
+<h3 id="contango-trap">Contango trap</h3>
+<p>What was causing the losses? The problem is that, unlike other futures contracts on financial assets, no one is actively arbitraging between the VIX futures and the VIX index level. Without the arbitrage, the futures price and index level are not linked. Each price along the futures curve is determined by the supply and demand conditions for that particular futures expiration.</p>
+<p>John Keynes noted this first in his book 《The Applied Theory of Money》, published in 1930, albeit in a different context. He focused on grain futures markets. In grain markets, arbitrage between the cash and futures markets is very costly and hence arbitrage activity is minimal. What shapes the futures price curve is the supply and demand for each contract expiration. The dominant hedging demand in the grain market comes from farmers who want to sell futures to lock in the price at which they will sell their crops at harvest. With excess selling pressure, prices fall until speculators are finally willing to step in and buy futures with the expectation that the price will rise as the contract approaches expiration. <strong>In a market where short hedging demand exceeds long hedging demand (sellers &gt;&gt; buyers), the futures price curve will be downward sloping --- a market condition that Keynes labeled &quot;normal backwardation&quot;</strong>.
+<img src="https://athanszheyin.github.io/post-images/1583803142019.png" alt=""></p>
+<p>The situation in the VIX futures market is simply the reverse. The lion's share of the hedging demand comes from stock portfolio managers who want to buy VIX futures to hedge tail risk. Again, speculators will pick up the imbalance. They short the contracts, but not until the futures price is high enough for them to earn a return large enough to compensate for the extraordinary risk that they bear. In such an environment, the futures price cure is upward sloping, as it is for VIX futures; the futures market is said to be in &quot;contango&quot;. The deterministic decline in VIX futures prices through time is called the &quot;contango trap&quot;.</p>
+<p>This is exactly what happens with the VIX ETPs, they buy VIX futures, and then the VIX futures prices are drawn downward toward the VIX cash index level though time. How bad can it get? Since inception, VXX, the ETP that referred earlier, has fallen in price by 99.6%. For these products, buy-and-hold is not a viable strategy. Perhaps we need to sit on the opposite side of the table (yes I am talking about XIV).</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://athanszheyin.github.io/tag/qfc8Bcn8r" class="tag">
+                    Finance
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://athanszheyin.github.io/post/literature-review-dynamic-portfolio-analysis">
+                  <h3 class="post-title">
+                    Literature Review -- Dynamic Portfolio Analysis
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

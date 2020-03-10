@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2020-02-23T05:35:31.496Z</updated>
+    <updated>2020-03-10T01:30:45.719Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -10,6 +10,33 @@
     <logo>https://athanszheyin.github.io/images/avatar.png</logo>
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, athans blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Point in Time -- Understanding the VIX]]></title>
+        <id>https://athanszheyin.github.io/post/point-in-time-understanding-the-vix</id>
+        <link href="https://athanszheyin.github.io/post/point-in-time-understanding-the-vix">
+        </link>
+        <updated>2020-03-09T01:07:10.000Z</updated>
+        <summary type="html"><![CDATA[<p>In the aftermath of the March 2020 financial market plunge, pundits were blaming the VIX, saying the index was at unprecedented levels and was, in fact, causing stock market turmoil. As much as most of the investment management community had learned about the VIX and its usefulness over the years, a segment of the community remained unformed or confused. It is obliged here to help set the record straight.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>In the aftermath of the March 2020 financial market plunge, pundits were blaming the VIX, saying the index was at unprecedented levels and was, in fact, causing stock market turmoil. As much as most of the investment management community had learned about the VIX and its usefulness over the years, a segment of the community remained unformed or confused. It is obliged here to help set the record straight.</p>
+<!-- more -->
+<h3 id="inception">Inception</h3>
+<p>In 1992, the Chicago Board Options Exchange (CBOE) created an implied market volatility index based on the prices of their proprietary Standard &amp; Poor’s index options. Their motives were twofold. First, they wanted to create a new and unique index that reflected expected stock market volatility and served, more or less, as a marketing device. Second, they wanted the index to serve as a reference rate upon which they could list exchange traded derivatives. They succeeded on both counts.
+<img src="https://athanszheyin.github.io/post-images/1583803127329.jpg" alt=""></p>
+<p>Since early 1993, the CBOE Market Volatility Index, or the VIX, has been reported on a real-time basis. Within a few years, financial news shows began regularly reporting and commenting on its level throughout the day, tying changes in its level to specific market or world events. <strong>Often it is referred to as the &quot;investor fear gauge&quot;. The reason for this is that the level of the VIX is primarily driven by S&amp;P 500 put option prices</strong>. When institutional investors become nervous about the prospect of a severe market decline, they buy index puts. The excess buying pressure drives put prices up, and implied market volatility (i.e., the VIX) follows up by formulaic definition. A simple way to think of VIX is as the price of stock portfolio insurance.</p>
+<p>Suffice it to say that the CBOE’s VIX has achieved a level of recognition well beyond anything imagined in 1992. The trading of the VIX futures and options markets would allow the creation of a new asset class, market volatility. Buying and holding market volatility, if it were traded, would present a tremendous diversification opportunity for investment managers. The return correlation of the VIX with the S&amp;P 500 index portfolio is hugely negative, on the order of -0.8.</p>
+<h3 id="trading-volatility">Trading Volatility</h3>
+<p>The biggest problem with buying VIX future directly to achieve this diversification is that many institutions are barred by charter from trading in the derivatives market. If market volatility traded as security in the stock market, the floodgates would open. But how can the VIC be made into a security? After all, it is computed from the prices of a dynamic portfolio of hundreds of S&amp;P options. <strong>The answer is simple --- a fully collateralized futures position</strong>. In a market where the relation between the cash and futures markets is actively arbitraged, holding a security is no different than holding T-bills and a futures contract on that security.</p>
+<p>Fully collateralized futures positions are used all the time. Index funds, for example, use them for dividend reinvestment. The stocks in the funds pay dividends through time. Since the dividends are small and spread out over time, it is uneconomical to buy all stocks in the index portfolio with each cash dividend payment. Instead, what the funds do is put the dividends in T-bills until the cash balance is sufficiently large to permit buying the tocks in the index portfolios in a cost efficient manner. But, since holding the cash temporarily would introduce tracking error, the fund buys an appropriate number of index futures to make the cash behave like the index. Since the index futures price is inextricably linked to the index level, the cash/futures position behave like the index and virtually no tracking error is introduced. But this is a single application. <strong>Fully collateralized futures positions are used as substitutes for the underlying financial asset in any number of trading strategies and in a variety of different markets, including stocks, stock indexes, bonds, and currencies</strong>. Once VIX future volume picked up, VIX exchange-traded products (ETPs) were around the corner. And, indeed, the first ones were launched in January 2009.</p>
+<p>The VIX ETPs were an immediate success. Within two years, more than 30 different products were traded. But the market was behaving in a peculiar way. The prices were decaying through time at an incredibly high rate. In its first year, the price of VXX, the most popular VIX ETP, had fallen 68%. In its second year, it fell by 72%. Clearly it made no sense to buy and hold such a security.</p>
+<h3 id="contango-trap">Contango trap</h3>
+<p>What was causing the losses? The problem is that, unlike other futures contracts on financial assets, no one is actively arbitraging between the VIX futures and the VIX index level. Without the arbitrage, the futures price and index level are not linked. Each price along the futures curve is determined by the supply and demand conditions for that particular futures expiration.</p>
+<p>John Keynes noted this first in his book 《The Applied Theory of Money》, published in 1930, albeit in a different context. He focused on grain futures markets. In grain markets, arbitrage between the cash and futures markets is very costly and hence arbitrage activity is minimal. What shapes the futures price curve is the supply and demand for each contract expiration. The dominant hedging demand in the grain market comes from farmers who want to sell futures to lock in the price at which they will sell their crops at harvest. With excess selling pressure, prices fall until speculators are finally willing to step in and buy futures with the expectation that the price will rise as the contract approaches expiration. <strong>In a market where short hedging demand exceeds long hedging demand (sellers &gt;&gt; buyers), the futures price curve will be downward sloping --- a market condition that Keynes labeled &quot;normal backwardation&quot;</strong>.
+<img src="https://athanszheyin.github.io/post-images/1583803142019.png" alt=""></p>
+<p>The situation in the VIX futures market is simply the reverse. The lion's share of the hedging demand comes from stock portfolio managers who want to buy VIX futures to hedge tail risk. Again, speculators will pick up the imbalance. They short the contracts, but not until the futures price is high enough for them to earn a return large enough to compensate for the extraordinary risk that they bear. In such an environment, the futures price cure is upward sloping, as it is for VIX futures; the futures market is said to be in &quot;contango&quot;. The deterministic decline in VIX futures prices through time is called the &quot;contango trap&quot;.</p>
+<p>This is exactly what happens with the VIX ETPs, they buy VIX futures, and then the VIX futures prices are drawn downward toward the VIX cash index level though time. How bad can it get? Since inception, VXX, the ETP that referred earlier, has fallen in price by 99.6%. For these products, buy-and-hold is not a viable strategy. Perhaps we need to sit on the opposite side of the table (yes I am talking about XIV).</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Literature Review -- Dynamic Portfolio Analysis]]></title>
         <id>https://athanszheyin.github.io/post/literature-review-dynamic-portfolio-analysis</id>
@@ -110,11 +137,11 @@ The author reviewed the active literatures and list out the nuts and bolts of fo
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Literature Review -- The History of Finance]]></title>
+        <title type="html"><![CDATA[Point in Time -- The History of Finance]]></title>
         <id>https://athanszheyin.github.io/post/literature-review-the-history-of-finance</id>
         <link href="https://athanszheyin.github.io/post/literature-review-the-history-of-finance">
         </link>
-        <updated>2019-12-28T14:28:20.000Z</updated>
+        <updated>2019-12-28T01:28:20.000Z</updated>
         <summary type="html"><![CDATA[<p>Let’s start with a brief introduction on the author Miller Merton. Miller’ subtitle on the paper, “An eyewitness account”, suggests his role as an economist, but he was more than an eyewitness in the field of finance. Aside from his seminal work on “M&amp;M proposition” in collaboration with Franco Modigliani in 1958, his generosity to other innovators of finance was boundless.</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>Let’s start with a brief introduction on the author Miller Merton. Miller’ subtitle on the paper, “An eyewitness account”, suggests his role as an economist, but he was more than an eyewitness in the field of finance. Aside from his seminal work on “M&amp;M proposition” in collaboration with Franco Modigliani in 1958, his generosity to other innovators of finance was boundless.</p>
@@ -211,35 +238,6 @@ The discussion of the M&amp;M propositions (also known as irrelevance of debt-eq
 <p>The very core formula for accounting is that total asset = total equity (book value) + total liabilities. total assets consists of financial assets and operating assets, and total liabilities likewise. Thus we could re-write book value = net operating assets - net financial liabilities. It reflects the fact that book value is both affected by company's operating risk and financial risk. Nevertheless, Richardson and Tuna (2007) states that future return is related more to the operating efficiency than financing activities, thus we should pay more attention to Net Operating Assets to Price ratio as a alternative to BM.</p>
 <h3 id="retained-earnings">Retained Earnings</h3>
 <p>Ball (2019) gives out the secret source of Book Value: BV = Retained Earnings + Contributed Capital. Contributed Capital, which is essentially the net issuance, only indicates investors' risk appetite whilst less related with the company's future performance (think about the frequent share buybacks and re-issuance nowadays). Retained earnings, on the other hand, reflects accumulated net profit in the past, thus a better mirror for company's realistic profiting capability. Moreover if we are proxy retained earnings for book value, then BV becomes some sort of earning to price ratio, which links the stock return to company earnings (we all know PE ratio).</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Intangible Value]]></title>
-        <id>https://athanszheyin.github.io/post/intangible-value</id>
-        <link href="https://athanszheyin.github.io/post/intangible-value">
-        </link>
-        <updated>2019-07-14T16:17:51.000Z</updated>
-        <summary type="html"><![CDATA[<p>Part I of why value factor failed recently and what have we neglected?</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Part I of why value factor failed recently and what have we neglected?</p>
-<!-- more -->
-<h3 id="book-value-trap">Book Value trap</h3>
-<p>It all starts from the complexity of valuing a firm’s assets in the digital age, but the result is that price-to-book is a less appealing guide to a stock’s true value now.</p>
-<p>Price is the creature of fickle sentiment like greed and fear. Value, in contrast, depends on a firm’s capabilities. There are various shorthand measures for value, but both academia and practitioners put the greatest store by the price-to-book ratio. Since the seminal Fama-French three factor paper, countless study have shown buying stocks with low price-to-book is a winning strategy.</p>
-<p>As the industrial age gives way to the digital age, value stocks have lagged a long way behind growth stocks. The key factor here is that the increasing intangible assets. The tangible world is easy, factories, machines, and office buildings count as capital assets on companies’ books. It is fairly straightforward to come up with a value for them – it is what the company paid, and this value is gradually written off over time to reflect wear and tear. Such fixed capital assets along with current assets (cash equivalent) typically make up the bulk of the book value.</p>
-<p>Intangible assets are left out here. These days the value of a company lies as much in its reputation, its processes, the know-how of staff and customer-suppliers relationships as in tangible assets. Putting an accounting value on these intangibles is tricky. Not every dollar of R&amp;D or advertising expenditure can be ascribed to a well-defined asset, such as a brand or patent.
-<img src="https://athanszheyin.github.io/post-images/1563337549378.jpg" alt="Intangible Asset increases in market value percentage">
-<em><strong>Intangible Asset increases in market value percentage</strong></em></p>
-<p>On the stock market, price is increasingly detached from book value. Plenty of well know companies (like FANG) – whose competitive edge rest on brands and patents – have much higher ratios or even negative book values. Yet these companies usually conducts routine buyback around earning seasons, which will rise the price-to-book value further. That is because for any company with a price-to-book ratio greater than one, buyback will diminish book value by proportionately more than it lowers the outstanding stock values.</p>
-<p>The effects of mergers will only make things murkier. If, say one company pays $100 mil for another company which has $30 mil of tangible assets, the residual $70 mil is counted as intangible assets (usually as “goodwill”. As a result, a company has acquired brands by merger will have those reflected in its book value while a company has developed its own brands will not.</p>
-<h3 id="forecast-earnings-dilemma">Forecast Earnings Dilemma</h3>
-<p>Imagine that investors could perfectly forecast the next quarters’ earnings for all companies. Then we construct a portfolio that long all the stocks that are expected to meet or beat the analysts’ forecasts consensus; while short the stocks that are supposed to fail the estimates. We start the trades two months before the quarter end and liquidate the positions one month after the quarter ends. This “perfect foresight” portfolio achieved excess return of 4+% every quarter in 1990s, but the abnormal returns dropped to 2% quarterly in recent years.</p>
-<p>We argue that the decay of the strategy is due to the rising importance of intangible investments in recent decades. The financial statements have struggled to adapt to the modern business models. If a company purchase an intangible asset (such as a patent) from other companies, it is classified as an asset on the balance sheet. However if they develop an intangible within their own business, that is classified as an expense, and will be deducted from the profits. As a result, a company pursuing an innovation strategy based on acquisitions will appear more profitable than a similar company internally developing its innovations.</p>
-<p>The outcome is – we argue – the reported earnings are no longer such a good measure of the company’s profitability, and thus not indicatable of future share performance. To test this proposition, we divided companies into five quintiles based on their intangible investment to re-run the previous “perfect foresight” strategy. Not surprisingly, the more companies spent on intangibles, the lower the excess return get harnessed by those who can correctly forecast the earnings.
-<img src="https://athanszheyin.github.io/post-images/1563337566712.jpg" alt="Increasing investment in intangibles">
-<em><strong>Increasing investment in intangibles</strong></em></p>
-<p>Yet the intangibles have spillovers. A company may undertake expensive R&amp;D, but the gains may be realized by other businesses. Only a few companies (the industry leaders like Google) can achieve the scale needed to benefit from the sunken cost. Unlike machines and equipment, intangibles have unpredictable resale values. So the risk of failure will put most companies off intangible investments</p>
-<p>The reluctance of many companies to invest in intangibles may restrict their growth scope in future. Investors looking for growth stocks will face a narrow choice and such companies will be so apparent to everyone that they will command a “seemingly too high” valuation. They are not seen as the value stocks, but they are the real “nifty fifty” (if not nifty five) stocks in the present.</p>
 ]]></content>
     </entry>
 </feed>
