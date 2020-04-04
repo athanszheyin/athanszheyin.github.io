@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>白话black-litterman模型演义 | athans blog</title>
+<meta name="description" content="&lt;h2&gt;&lt;i&gt;&lt;b&gt;云物如故乡，山川知异路&lt;/b&gt;&lt;/i&gt;&lt;/h2&gt;">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1586013444772">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://athanszheyin.github.io">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1586013444772" class="site-logo">
+        <h1 class="site-title">athans blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://athanszheyin.github.io/post/about/" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/athanszheyin" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.weibo.com/u/2866261084" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/zheyin-zhao/" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.facebook.com/zheyin.zhao" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      <h2><i><b>云物如故乡，山川知异路</b></i></h2>
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> |
+<a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://athanszheyin.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">白话black-litterman模型演义</h2>
+            <div class="post-date">2020-03-18</div>
+            
+            <div class="post-content">
+              <h3 id="起">起</h3>
+<p>由Fischer Black和Robert Litterman创建的Black-Litterman 资产配置模型是一项较为复杂的投资组合构造方法。它的出现解决了Mean Variance Optimization （MVO）资产配置模型的几项痛点，例如高集中度，对输入参数的高敏感以及对错误输入的放大化。介于上述缺陷，业界人士对于MVO优美的数学表达并不太买账，实战中并不太使用该方法构造投资组合。这里我想强调一点，MVO所需要的输入参数主要有两大类，即预期收益和预期风险，MVO模型对于预期收益率的敏感度是远高于预期风险的。所以Fischer Black和Robert Litterman指哪打哪，使用Bayesian shrinkage的框架来重塑预期收益的估计。所谓Bayesian Shrinkage这里的shrinkage指的是利用外部信息来缩小（shrink）先验假设的不确定性，结合模型来说就是我们先验地假设当前市场上已有资产的配置已经很好地反映了他们的未来收益，然后我们又从（聪明的）投资者那里得到他们对于这些资产未来收益的判断，最后综合起来得到我们对于这些资产后验的预期收益估计。在得到了更犀利的预期收益估计之后，我们还是借用MVO的方法得到最终的资产配置结果。</p>
+<p>我们先来看看MVO，以及它为什么不被业界操盘手们待见。MVO的模型核心在于以下的目标函数:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mi mathvariant="normal">⁡</mi><msup><mi>w</mi><msup><mrow></mrow><mo mathvariant="normal">′</mo></msup></msup><mi>μ</mi><mo>−</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn><mi>δ</mi><msup><mi>w</mi><msup><mrow></mrow><mo mathvariant="normal">′</mo></msup></msup><mo>∑</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">max ⁡w^{&#x27;}μ-1/2 δw^{&#x27;}∑w
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.18692em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mord">⁡</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.99248em;"><span style="top:-2.99248em;margin-right:0.05em;"><span class="pstrut" style="height:2.57948em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8278285714285715em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mord mathdefault">μ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.6000100000000002em;vertical-align:-0.55001em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.99248em;"><span style="top:-2.99248em;margin-right:0.05em;"><span class="pstrut" style="height:2.57948em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8278285714285715em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol large-op" style="position:relative;top:-0.000004999999999977245em;">∑</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span></span></p>
+<p>容易得到最佳的资产配置为：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>w</mi><mo>∗</mo></msup><mo>=</mo><mo>(</mo><mi>δ</mi><mo>∑</mo><msup><mo>)</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>μ</mi></mrow><annotation encoding="application/x-tex">w^* = (δ∑)^{-1} μ
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.738696em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.738696em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.6000100000000002em;vertical-align:-0.55001em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol large-op" style="position:relative;top:-0.000004999999999977245em;">∑</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">μ</span></span></span></span></span></p>
+<p>然而这样得到的资产权重对于输入变量的敏感度极高，同时会放大预估值的错误。注意这是两种缺陷，首先对于预期收益的估计是很难做到准确的，而收益估计的误差在经过MVO计算后会被成倍放大（high sensitivity）。其次即使我们拥有相对准确的收益估计，一旦收益估计发生了微小的变化，这样的变化也会被MVO成倍放大（error maximization）。</p>
+<h3 id="承">承</h3>
+<p>Black-Litterman模型的第一步也是从MVO这里出发去逆向思考，如果假定市场已有的资产配置已经是最优的，那么这些资产的预期收益是:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">П</mi><mo>=</mo><mi>δ</mi><mo>∑</mo><msub><mi>w</mi><mrow><mi>e</mi><mi>q</mi></mrow></msub></mrow><annotation encoding="application/x-tex">П=δ∑w_{eq}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cyrillic_fallback">П</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.6000100000000002em;vertical-align:-0.55001em;"></span><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol large-op" style="position:relative;top:-0.000004999999999977245em;">∑</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">q</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中的w_eq就是市值权重，我们假定协方差矩阵∑是已知的，那么我们可以很自然地将在市场均衡状态下的收益作为我们对于收益的先验估计。
+这里还需要注意的是风险厌恶参数δ也是可以求取的，因为δ与历史上的市场总体收益和总体风险直接相关，我们得到：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>δ</mi><mo>=</mo><msub><mi>μ</mi><mrow><mi>m</mi><mi>k</mi><mi>t</mi></mrow></msub><mi mathvariant="normal">/</mi><msubsup><mi>σ</mi><mrow><mi>m</mi><mi>k</mi><mi>t</mi></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">δ= μ_{mkt}/σ_{mkt}^2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.1141079999999999em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-2.4530000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mord mathdefault mtight">t</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>在实际中我们通常对δ直接取2-4间的固定值。</p>
+<p>如前文所说，Black-Litterman模型本质就是将先验预期结合外部信息得到后验预期的一个Bayesian过程，那么这里直接列出公式表达:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>μ</mi><mrow><mi>b</mi><mi>l</mi></mrow></msub><mo>=</mo><mo>(</mo><mo>(</mo><mi>τ</mi><mo>∑</mo><msup><mo>)</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><msup><mi>P</mi><msup><mrow></mrow><mo mathvariant="normal">′</mo></msup></msup><msup><mi mathvariant="normal">Ω</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>P</mi><msup><mo>)</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>(</mo><mo>(</mo><mi>τ</mi><mo>∑</mo><msup><mo>)</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi mathvariant="normal">П</mi><mo>+</mo><msup><mi>P</mi><msup><mrow></mrow><mo mathvariant="normal">′</mo></msup></msup><msup><mi mathvariant="normal">Ω</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>Q</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">μ_{bl}=((τ∑)^{-1}+P^{&#x27;} Ω^{-1} P)^{-1}((τ∑)^{-1} П+P^{&#x27;} Ω^{-1} Q)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.6000100000000002em;vertical-align:-0.55001em;"></span><span class="mopen">(</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.1132em;">τ</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol large-op" style="position:relative;top:-0.000004999999999977245em;">∑</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.6000100000000002em;vertical-align:-0.55001em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.99248em;"><span style="top:-2.99248em;margin-right:0.05em;"><span class="pstrut" style="height:2.57948em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8278285714285715em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.1132em;">τ</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol large-op" style="position:relative;top:-0.000004999999999977245em;">∑</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord cyrillic_fallback">П</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.24248em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.99248em;"><span style="top:-2.99248em;margin-right:0.05em;"><span class="pstrut" style="height:2.57948em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8278285714285715em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">Q</span><span class="mclose">)</span></span></span></span></span></p>
+<p>而所谓的shrinkage就体现在τ系数上。事实上，我们对于预期收益的估计应当表达为µ~N(П,τ∑) , τ作为一个乘数体现了我们对于这个先验估计的信心。理论上当我们用过去T期的历史均值来当作当期样本期望时，该估计的标准差应当是样本标准差的1/√T, 即τ=1/√T。在实际中我们通常将τ定为0.01-0.05间。
+到目前为止，Black-Litterman模型中关于先验预期的部分基本厘清了，而精彩的部分在于模型如何整合外部信息来更新我们基于市场均衡状态得到的（naïve的）收益预期。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://athanszheyin.github.io/post/point-in-time-understanding-the-vix">
+                  <h3 class="post-title">
+                    Point in Time -- Understanding the VIX
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
