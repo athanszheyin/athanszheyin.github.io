@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2020-04-19T01:07:40.194Z</updated>
+    <updated>2020-04-19T01:11:22.070Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -11,11 +11,29 @@
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, athans blog</rights>
     <entry>
-        <title type="html"><![CDATA[Literature Review --- Risk Based Portfolio Construction]]></title>
+        <title type="html"><![CDATA[Point in Time -- What is an Index]]></title>
+        <id>https://athanszheyin.github.io/post/point-in-time-what-is-an-index</id>
+        <link href="https://athanszheyin.github.io/post/point-in-time-what-is-an-index">
+        </link>
+        <updated>2020-04-18T13:08:58.000Z</updated>
+        <summary type="html"><![CDATA[<p>Passive investing can be traced to a series of individuals and institutions in the 1970s, including academics Harry Markowitz, John Lintner, Jan Mossin, Paul Samuelson, Bill Sharpe, Jim Tobin, and Jack Treynor; practitioners Jack Bogle, Bill Fouse, and John McQuown; and Wells Fargo and Vanguard. There has been a growing tension between passive and active managers ever since. This tension has inevitably led to the emergence  of two distinct cultures in investment management, one focused on the identification of mispricing and the other predicated on the inability to do so.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Passive investing can be traced to a series of individuals and institutions in the 1970s, including academics Harry Markowitz, John Lintner, Jan Mossin, Paul Samuelson, Bill Sharpe, Jim Tobin, and Jack Treynor; practitioners Jack Bogle, Bill Fouse, and John McQuown; and Wells Fargo and Vanguard. There has been a growing tension between passive and active managers ever since. This tension has inevitably led to the emergence  of two distinct cultures in investment management, one focused on the identification of mispricing and the other predicated on the inability to do so.</p>
+<!-- more -->
+<p>The definition of an index must be revised to reflect the impact of technological advances such as automated trading, ECNs, dark pools, flash orders, and the FIX protocol. In this new world order, and index must be: 1) transparent, 2) investable, 3) passive. While static market cap weighted benchmark certainly satisfies these criteria, thanks to the new technologies described above, they are no longer the only benchmarks that do so. For example, portfolios that consist of slowly varying proportions of stock index funds and bond funds --- with weights designed to tilt the portfolios from equites towards bonds as specific “target dates” draw closer --- are not necessarily static or market cap weighted, but they do satisfy our three new criteria for an index, and such target-date funds are considered passive vehicles suitable for inclusion in most retirement plans.</p>
+<p>More importantly, the primary objective of any index is to facilitate the extraction and summary of information through an algorithmic process, for example, averaging. Now typically done by computers, averaging was once a technological breakthrough in the financial industry, and one that was theoretically motivated.an important factor in the early popularity of the Dow Jones Industrial Averages, in which specific economic meaning was attributed to certain time series patterns in the index.</p>
+<p>As with most dichotomies, reality is not nearly as simple. Even as passive investing has grown exponentially since Bogle launched the Vanguard Group in 1975, a host of differentiated products has attempted to strike a balance between passive and active: hedge-fund beta replication, smart beta, fundamental indexes, risk parity, minimum-variance funds, and so on. The frequency with which this alternative to purely passive investment vehicles emerge suggests the existence of some primal urge driving investors to seek out inefficiencies regardless of the time or place in which they live.</p>
+<p>Technological advances in telecommunications, trading automation, data storage and processing, and computation have permanently changed the landscape of the financial industry. The emergence of powerful new tools such as machine learning and artificial intelligence offers some exciting new possibilities for creating highly personalized and dynamic portfolios --- algorithms that are capable of adapting not only to changing economic conditions, but also to changing personal circumstances and tastes. The vision of “precision indexes” that dynamically adjust over time – that adapt to an investor’s specific needs more effectively than a target-date fund – is likely to become reality.</p>
+<p>The next frontier for both passive and active portfolio managers is to develop a deeper understanding of “investor biology”. Why do we do the things we do, especially those things that undermine wealth accumulation? Investment managers and financial advisors are often quick to criticize retail investors for chasing performance and not focusing on the long term, but human nature is simply not wired to buy and hold when we are facing mounting losses in our nest egg. In fact, today’s passive investment products are the equivalent of a pile of auto parts from which we ask drivers to put together the right combination of engine, carburetors, chassis, dashboard and so on, to meet their driving needs. What’s needed instead are fully assembled vehicles that offer the kind of protection against human behavior that even the least expensive car offers today’s drivers: air bags, collapsible steering columns, reinforced bumpers, three-point seat belts, safety glass and so on.</p>
+<p>While self-driving portfolios may seem like science fiction right now, the same was said in 1970s of passive buy and hold portfolios that could beat most active managers. One day, passive investment products will make retirement planning as straightforward as going to the dentist, but a lot less painful and even less expensive, though they come at a cost of potential pitfalls if abused.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Literature Review -- Risk Based Portfolio Construction]]></title>
         <id>https://athanszheyin.github.io/post/literature-review-risk-based-portfolio-construction</id>
         <link href="https://athanszheyin.github.io/post/literature-review-risk-based-portfolio-construction">
         </link>
-        <updated>2020-04-18T01:01:54.000Z</updated>
+        <updated>2020-04-17T13:01:54.000Z</updated>
         <summary type="html"><![CDATA[<p>[Neuberger Berman] <strong>Wai Lee</strong></p>
 <p>Perhaps because of the ample volume of empirical tests documenting the “outperformance” of these risk-based portfolios, there seems to be a spreading belief that these betas are “smart”. But relying on the belief that the market portfolio is inefficient, whether true or not, does not make any investor or portfolio smarter. Making the debatable claim that passive capitalization weighting results in performance drag and blindly following non-capitalization-weighting, is not a prudent investment approach if one is seeking to outperform. The key is still to identify portfolios, ex ante, that will outperform when subject to a set of performance measures. Amore constructive approach to investing is to continue to advance our understanding of these portfolios. Is their performance indeed driven by exposures to some new and potentially nonlinear premia? What role does rebalancing play with regard to performance? What are the impacts of trading costs and tax efficiency versus the passive, market portfolios?</p>
 ]]></summary>
@@ -279,24 +297,6 @@ The discussion of the M&amp;M propositions (also known as irrelevance of debt-eq
 <p>放宽来讲，香港人有政治意识，却没有政治自信，这一方面是由于回归后经济上的乏善可陈，毕竟经济基础决定上层建筑。另一方面则是香港确实没能培养出土生土长的能独当一面的政治强人（这世上只有一个李光耀）。最后因其长期以来受港英政府的弹压导致了港人自身行政经验的匮乏。政治自信的缺乏让香港人拐向了无政府主义的胡同，而这对于一个经济水平业已发达，财富分配业已成型的社会来说更加危险，穷人每日盼着重新洗牌，富人缺乏安全感勒紧口袋减少投资，结局可想而知。</p>
 <p>最后聊到了地产商，陈董的逻辑在这里稍欠自洽。他对地产商限制土地供应的描述是准确的，其实这基本就点明大地产商们要对如今的乱局负主要责任！次要的原因可能包括但不限于：北京方面港人治港的政策稍微托大了，想做甩手掌柜可惜跑堂者火候未够；香港特首自身的实权不够，同时亦缺乏政治铁腕和雄心。但主要原因仍然在于以大房地产商为主的本港财阀私心过重，一副“我死后哪管洪水滔天”一步步把香港房价炒上天际。高房价（地价）是经济发展的手刹，是财富分配的铁闸，让既得利益者抽血吸髓，让新兴产业无立锥之地;对外不能吸引投资（房价地价成本高企），对内不能刺激消费（收入都拿去供楼了）。就这么把民生推向了崩溃边缘，然后再把自身资产转移，反手来一个“政治路线大讨论”，将自己的原罪洗干净，真算得上其心可诛了。</p>
 <p>如今的局势是否有解？陈董没有给出答案，可能也确实没什么好办法。天予弗取，反受其咎。时至不行，反受其殃。当年董时代的数码城如果真的有所建树，那将是一次完美的经济转型，高端芯片加互联网体系的搭建可以让香港领先大陆和新加坡至少一个身位。可是一切并没有如果，如今的香港只能靠传统精英教育产生的商法医三类职业解决就业，可是随着制造业的缺席，大批量的就业缺口已经是板上钉钉。失业率一旦上去，社会稳定就像无源之水总有耗尽的一天。所以陈董说不是民生问题，我倒觉得这像是港人对香港经济地位最后的倔强啊。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[致命分化 --《寄生虫》影评]]></title>
-        <id>https://athanszheyin.github.io/post/zhi-ming-fen-hua-lesslessji-sheng-chong-greatergreater-ying-ping</id>
-        <link href="https://athanszheyin.github.io/post/zhi-ming-fen-hua-lesslessji-sheng-chong-greatergreater-ying-ping">
-        </link>
-        <updated>2019-09-11T01:42:16.000Z</updated>
-        <summary type="html"><![CDATA[<p>长久以来我一直对韩国电影所取得的艺术成就感到羡慕和惊讶，同样是东亚电影，为什么韩国电影能像日本足球一样吊打东亚另外两国（尤其是中国）。今日看完《寄生虫》之后得到了一些启示，能诞生这么好的剧本，是因为社会分层，阶级分化在韩国在摆在台面上的话题，是全民都承认并且讨论的话题。而这样的分化，往往会带来致命的社会问题。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>长久以来我一直对韩国电影所取得的艺术成就感到羡慕和惊讶，同样是东亚电影，为什么韩国电影能像日本足球一样吊打东亚另外两国（尤其是中国）。今日看完《寄生虫》之后得到了一些启示，能诞生这么好的剧本，是因为社会分层，阶级分化在韩国在摆在台面上的话题，是全民都承认并且讨论的话题。而这样的分化，往往会带来致命的社会问题。</p>
-<!-- more -->
-<p>韩国由于其历史原因诞生的财阀经济凸显了尖锐的贫富差距，不同阶层的撕裂感和对立感，底层民众的压抑与无奈为文艺创作提供了不竭源泉。导演可以自如地从艺术角度来阐述这样地分化与不公，能从底层地视角给予观众深切的代入感，能从故事层面来表达自己的呼吁和诉求。art should disturb the comforted and comfort the disturbed，诚哉斯言。</p>
-<p>电影讲述了一个底层家庭通过当家庭教师的儿子逐步引荐，一家人先后通过串谋和伪装，成为“朴社长”一家人的艺术老师，司机和保姆，从而寄生于一个精英家庭的故事。之后通过前任管家的突然介入，引发了出人意料的身份危机。</p>
-<p>电影名称就是点睛之笔，表面上看之前生活在别墅暗房的前管家夫妇是寄生虫，依附于朴社长的男主一家也像是寄生虫；可是导演想说的是像朴社长这样的精英家庭可能才是这个社会真正的寄生虫。</p>
-<p>再说情节，导演使用了多重意象来指代底层和精英的割裂，比如阳光，比如衣物发霉的味道，以及居住区域的地势（男主一家经过漫长的下坡才从朴社长家里回到自己家）。而为了跨越这样的鸿沟，穷人们需要“计划”，之后籍由男主之口，导演无奈地说“计划”就是没有计划，跨越鸿沟其实是mission impossible。而更令人扼腕的是，男主一家最开始为家人扭转收入颓势的是儿子，而最有希望实现阶级跃迁的也是儿子，可是当儿子对上流社会的渴望与日俱增后，脑海中的“计划”就是除掉一切阻碍他升迁的障碍，于是他带着石头走向了地下室 ---  这样孤注一掷般地癫狂我们在《红与黑》甚至是伍迪艾伦的电影《赛末点》中都能找到影子。</p>
-<p>插播一下关于居住区域划分的讨论，在首尔江南区江北区的贫富划分世人皆知，可是在北京，人们至今还孜孜不倦地讨论故宫（紫禁城）“先进”的排水设计？试问当你身处城市制高点，你的建筑真的需要什么特别的排水设计吗？贫民区不就是最好的排水沟和蓄洪池？</p>
-<p>还有一处细节，前管家说设计师建造别墅暗房的初衷是为了躲避北朝鲜的核攻击，可是最终这个避难所却庇佑了一个为了债务东躲西藏的韩国人，颇有苛政猛于虎的意味。加上中间前管家和她丈夫合演的一出北朝鲜cosplay，导演似乎在表达朝韩关系其实只是障眼法，韩国面临的最大挑战仍然是财富不均和分配不公。</p>
 ]]></content>
     </entry>
 </feed>
