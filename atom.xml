@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2020-04-10T03:50:07.192Z</updated>
+    <updated>2020-04-19T01:07:40.194Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -10,6 +10,38 @@
     <logo>https://athanszheyin.github.io/images/avatar.png</logo>
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, athans blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Literature Review --- Risk Based Portfolio Construction]]></title>
+        <id>https://athanszheyin.github.io/post/literature-review-risk-based-portfolio-construction</id>
+        <link href="https://athanszheyin.github.io/post/literature-review-risk-based-portfolio-construction">
+        </link>
+        <updated>2020-04-18T01:01:54.000Z</updated>
+        <summary type="html"><![CDATA[<p>[Neuberger Berman] <strong>Wai Lee</strong></p>
+<p>Perhaps because of the ample volume of empirical tests documenting the “outperformance” of these risk-based portfolios, there seems to be a spreading belief that these betas are “smart”. But relying on the belief that the market portfolio is inefficient, whether true or not, does not make any investor or portfolio smarter. Making the debatable claim that passive capitalization weighting results in performance drag and blindly following non-capitalization-weighting, is not a prudent investment approach if one is seeking to outperform. The key is still to identify portfolios, ex ante, that will outperform when subject to a set of performance measures. Amore constructive approach to investing is to continue to advance our understanding of these portfolios. Is their performance indeed driven by exposures to some new and potentially nonlinear premia? What role does rebalancing play with regard to performance? What are the impacts of trading costs and tax efficiency versus the passive, market portfolios?</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>[Neuberger Berman] <strong>Wai Lee</strong></p>
+<p>Perhaps because of the ample volume of empirical tests documenting the “outperformance” of these risk-based portfolios, there seems to be a spreading belief that these betas are “smart”. But relying on the belief that the market portfolio is inefficient, whether true or not, does not make any investor or portfolio smarter. Making the debatable claim that passive capitalization weighting results in performance drag and blindly following non-capitalization-weighting, is not a prudent investment approach if one is seeking to outperform. The key is still to identify portfolios, ex ante, that will outperform when subject to a set of performance measures. Amore constructive approach to investing is to continue to advance our understanding of these portfolios. Is their performance indeed driven by exposures to some new and potentially nonlinear premia? What role does rebalancing play with regard to performance? What are the impacts of trading costs and tax efficiency versus the passive, market portfolios?</p>
+<!-- more -->
+<p>If some portfolios are built without a clear performance objective and without information on expected return do indeed outperform the market portfolio, it would represent a profound finding, probably requiring that financial theory be rewritten. This article share some findings to unveil the embedded active investment views behind what are generally known as risk-based portfolios. With subsequent research, it has become clear that the mean-variance optimality of each of these risk-based portfolios reflects a particular model of expected returns: They are all active portfolios with respect to the market.</p>
+<p>Many published simulations of the performance of these portfolios include ad hoc constraints imposed by the authors in order to limit some of the extreme positions, concentrations, sensitivities, and high turnovers with respect to changes in risk estimates and other factors. Subsequent research helps advance our understanding of the important analytical properties of these risk-based portfolios. All the portfolios have been shown to have various degrees of preference for assets that are expected to have lower systematic and idiosyncratic risks and, therefore, tie their performance to low-risk anomaly, to some extent. Furthermore, certain characteristics that I found surprising, such as the concentration of weights and risks in the minimum-variance and maximum-diversification portfolios, which turned out to be even greater than in the often-criticized market portfolio, have been shown to be more the norm than the exception as a result of their construction methodologies.</p>
+<p>We have witnessed significant advances in research of the low-risk anomaly, whether risk is measured by beta or volatility. The economic rationale for low-risk strategies and the possibility of persistence of their outperformance in the future are still being debated, even as the low-risk anomaly is reported to exist in other asset classes and sample periods. On top of the proven preference for low-risk anomaly in risk-based portfolios, risk-based portfolios also have loadings on other known risk premia, such as the value and size premia, according to the empirical results. Conceptually, I find it quite unlikely that these risk-based portfolios, which are all built by feeding through a covariance matrix of second moments, can be boiled down to exposures to a set of simple, linear factors.</p>
+<p>At the very least, one may interpret that these risk-based approaches were built to approximate a mean-variance optimized (MVO) world, for various reasons such as to mitigate the well-known problem of error maximization or others. To be specific, in the below four portfolio construction approaches:</p>
+<ol>
+<li>It can be shown that Equal-Weighting (EW) portfolio is indeed an MVO portfolio if all assets have the same correlations with each other, as well as identical returns and volatilities.</li>
+<li>The Global Minimum Variance (GMV) portfolio is optimal when expected excess returns of all assets are identical.</li>
+<li>Identical Sharpe Ratio for all assets is a necessary condition for the Most-Diversified Portfolio (MDP) to be MVO efficient in that universe of assets.</li>
+<li>The necessary conditions for the Risk Parity (RP) portfolio to be efficient require identical Sharpe ratios and identical correlations among all assets in the universe.</li>
+</ol>
+<p>Often we see “Risk On/Risk Off” as a description of the state of the market environment in research reports or press coverage. Most times RORO is often referenced when investors attempt to articulate how challenging the investment environment is. A pure form of RORO does not exist when search for its definitions. The best we could do is to understand the RORO environment in a normative sense, and try to use that understanding as our compass to invest, given a somewhat subjective assessment of how close we might be a state of RORO.</p>
+<p>In a near-RORO environment, the breadth of investment decisions shrinks significantly, leaving the timing of a few systematic risk factors to become the dominant determinant of performance. We can track some measures that are believed to be helpful in preemptive identification of a potential RORO. One example is the use of graph-based similarity models, such as minimum spanning tree and correlation networks, as visually powerful tools in an attempt to track the degree of tightness within a universe of assets, whether the universe consists of asset classes or individual securities. With such tools, we are able to identify and pay more attention to the origins of market tightness. In the case of managing equity portfolios, we also regularly decompose risk contributions into sources. The dynamics of idiosyncratic risks as a source of total risk in the opportunity set become a compass in guiding us on how much and where to take risks.</p>
+<p>Say the correlation between assets or securities suddenly rises and we reckon it signifies that we are actually in RORO environment, we can draw the below investment implications:</p>
+<ul>
+<li>Risk Parity portfolios will become mean-variance optimal, since portfolios of these assets, regardless of their weights, are also statistically equivalent to the single non-redundant asset. However the rise in intra-portfolio correlation does not link to their active return.</li>
+<li>If investors exist who are able to switch their focuses from a diversified set of factors to a common set of factors (assuming that such a set of factors can be precisely identified), this may imply dispersion in performance among global asset allocators. That means, investors will outperform when taking concentrated positions. Persistence of their outperformance, however, is likely to be weak.</li>
+<li>Quantitative investors who use systematic, model-driven approaches and who attend to factor related components will likely to stand out, whereas fundamental investor focus on stock picking will suffer. As in a highly correlated world, investors do not have sufficient degree of freedom to diversity their active investment decisions but instead have rely on the quality of their factor information, therefore those who have the capability to identify and predict the factor returns will likely to have a competitive edge.</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[白话black-litterman模型演义]]></title>
         <id>https://athanszheyin.github.io/post/bai-hua-black-litterman-mo-xing-yan-yi</id>
@@ -215,10 +247,10 @@ The author reviewed the active literatures and list out the nuts and bolts of fo
         <id>https://athanszheyin.github.io/post/literature-review-the-history-of-finance</id>
         <link href="https://athanszheyin.github.io/post/literature-review-the-history-of-finance">
         </link>
-        <updated>2019-12-28T01:28:20.000Z</updated>
-        <summary type="html"><![CDATA[<p>Let’s start with a brief introduction on the author Miller Merton. Miller’ subtitle on the paper, “An eyewitness account”, suggests his role as an economist, but he was more than an eyewitness in the field of finance. Aside from his seminal work on “M&amp;M proposition” in collaboration with Franco Modigliani in 1958, his generosity to other innovators of finance was boundless.</p>
+        <updated>2019-12-27T12:28:20.000Z</updated>
+        <summary type="html"><![CDATA[<p>Let’s start with a brief introduction on the author Merton Miller. Miller’ subtitle on the paper, “An eyewitness account”, suggests his role as an economist, but he was more than an eyewitness in the field of finance. Aside from his seminal work on “M&amp;M proposition” in collaboration with Franco Modigliani in 1958, his generosity to other innovators of finance was boundless.</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>Let’s start with a brief introduction on the author Miller Merton. Miller’ subtitle on the paper, “An eyewitness account”, suggests his role as an economist, but he was more than an eyewitness in the field of finance. Aside from his seminal work on “M&amp;M proposition” in collaboration with Franco Modigliani in 1958, his generosity to other innovators of finance was boundless.</p>
+        <content type="html"><![CDATA[<p>Let’s start with a brief introduction on the author Merton Miller. Miller’ subtitle on the paper, “An eyewitness account”, suggests his role as an economist, but he was more than an eyewitness in the field of finance. Aside from his seminal work on “M&amp;M proposition” in collaboration with Franco Modigliani in 1958, his generosity to other innovators of finance was boundless.</p>
 <!-- more -->
 <p>In 1959, Miller persuaded Modigliani to review an early draft of a paper by the then unknown economist Jack Treynor, in the very paper he laid out the basic principles of the capital asset pricing model (CAPM). In 1962, Miller introduced Myron Sholes to financial theory and recommend him in becoming a finance PhD at Chicago. In 1964, he encouraged the novice professor Eugene Fama to teach Harry Markowitz’s mean/variance theory when few people were taking any serious notice of this big-bang accomplishment. In the later years, Miller played a key role in promoting William Sharpe’s work on CAPM, Fischer Black and Myron Sholes’ option pricing model and other modern portfolio theory applications.</p>
 <p>Miller’s paper begins with a fundamental decomposition that he believed was central for our understanding of finance: 1. Business school approach as “micro normative”; from this perspective finance deals with agents who are maximizing some objective function, taking the prices of securities as given. 2. Economic department approach as “macro normative”; which takes the world of micro optimizers as given and then proceeds to explore how the market prices evolve under those conditions. The interaction of these two streams of thoughts, Miller concluded, has largely governed the history of finance.</p>
@@ -265,24 +297,6 @@ The discussion of the M&amp;M propositions (also known as irrelevance of debt-eq
 <p>再说情节，导演使用了多重意象来指代底层和精英的割裂，比如阳光，比如衣物发霉的味道，以及居住区域的地势（男主一家经过漫长的下坡才从朴社长家里回到自己家）。而为了跨越这样的鸿沟，穷人们需要“计划”，之后籍由男主之口，导演无奈地说“计划”就是没有计划，跨越鸿沟其实是mission impossible。而更令人扼腕的是，男主一家最开始为家人扭转收入颓势的是儿子，而最有希望实现阶级跃迁的也是儿子，可是当儿子对上流社会的渴望与日俱增后，脑海中的“计划”就是除掉一切阻碍他升迁的障碍，于是他带着石头走向了地下室 ---  这样孤注一掷般地癫狂我们在《红与黑》甚至是伍迪艾伦的电影《赛末点》中都能找到影子。</p>
 <p>插播一下关于居住区域划分的讨论，在首尔江南区江北区的贫富划分世人皆知，可是在北京，人们至今还孜孜不倦地讨论故宫（紫禁城）“先进”的排水设计？试问当你身处城市制高点，你的建筑真的需要什么特别的排水设计吗？贫民区不就是最好的排水沟和蓄洪池？</p>
 <p>还有一处细节，前管家说设计师建造别墅暗房的初衷是为了躲避北朝鲜的核攻击，可是最终这个避难所却庇佑了一个为了债务东躲西藏的韩国人，颇有苛政猛于虎的意味。加上中间前管家和她丈夫合演的一出北朝鲜cosplay，导演似乎在表达朝韩关系其实只是障眼法，韩国面临的最大挑战仍然是财富不均和分配不公。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[华为与腾讯的双城记]]></title>
-        <id>https://athanszheyin.github.io/post/hua-wei-yu-teng-xun-de-shuang-cheng-ji</id>
-        <link href="https://athanszheyin.github.io/post/hua-wei-yu-teng-xun-de-shuang-cheng-ji">
-        </link>
-        <updated>2019-08-16T16:06:25.000Z</updated>
-        <summary type="html"><![CDATA[<p>华为可以逃离北上广，而腾讯必须留守北上广，为什么？</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>华为可以逃离北上广，而腾讯必须留守北上广，为什么？</p>
-<!-- more -->
-<p>华为其实不能算作一个高科技企业而只能算高端制造业企业，它的核心竞争力是硬件 —- 把业内已有的高精尖硬件以相对低廉的成本量产出来，而这需要堆砌大量工程师（不需要业内顶尖高手，只需要专业对口）以及厂房和设备来实现。高端人才集中在硬件设计领域，硬件制造上并不需要什么精英，而华为从来不是硬件设计领域的玩家。华为并不是没有高精尖人才，之前大价钱招的phd（千金买马骨）那肯定就是行业精英了，但华为不靠他们赚钱，<strong>华为真正盈利的产品是要靠人海战术堆出来的</strong>，比如海思芯片，比如荣耀手机，更比如遍布全球各地的通讯服务。</p>
-<p>想想看，如果腾讯搬到东莞，它的成本可能会微降，但会有多少员工立刻转头跳到头条，阿里和美团，腾讯绝对无法承受这样的决策风险。但是华为搬到东莞，难道会有大批人跳到中兴？所以<strong>华为可以逃离北上广，而腾讯必须留守北上广</strong>。如果员工有议价能力，你当然希望居住在生活最便捷的地区，况且你的房产还有很大升值空间。土地价格会联动劳动力成本，地价便宜的地方一般劳动力也低廉，制造业就会不断迁徙到那里去，而<strong>如果员工依附于企业，那就只能像牛羊一样只能随牧民去迁徙去垦荒。</strong></p>
-<p><strong>企业的经营模式不同就注定了它的选址</strong>，对于腾讯和阿里来说，盖一栋新楼是增加资产而非成本，而他们必须扎根于一线城市的核心区来吸引高端人才，哪怕这些核心区的房价再怎么飞涨也不会影响它的成本，反倒会让它的资产升值 （比如盖一栋写字楼然后外租部分楼层，还可以带来租金收入）。华为以及更多的中低端制造业企业就不同了，房价每涨一分，它们的厂房租金，员工宿舍建设费用，园区管理费用就要涨一分，这些都要计入成本摊薄它们本来就低的毛利润率。</p>
-<p><strong>制造业企业比IT企业才在乎房价，因为地租和厂房建设成本占有总成本很大比例。</strong> 所以就如前文所说，我们看到的挤出效应大多是在制造业，为了维持毛利润率，制造业需要像牧民一样不停迁徙到低价房租低廉的地区（劳动力成本也会相对低廉）来控制成本。IT企业体现得更多是马太效应。<strong>IT企业最大的支出是人力（高端人才），它希望地处一个人力资源昂贵的地域，比如高等教育发达的地区，因为人力的投入产出比是非线性的。</strong> 你招到了市场价格两倍的程序员，但这个程序员的产出可能顶得上一个十人团队。而这些地方的房价通常昂贵。硅谷的公司只是把占地较多的数据中心和售后服务等低端业务挪到佛州德州（投行也这么做），但真正的研发并未离开硅谷。</p>
-<p>IT行业渐渐显得与银行业相似，因为这类企业80%的利润可能由小于1%的员工创造，Andriod系统有大牛程序员Andy Rubin一个人就可以写出来，王者荣耀的团队不过30-40人，T-Mobile合并sprint的大单，可能只需要一个少于十人的投行团队搞定。<em>为了更大概率的攫取这样的高端人才或是精英团队，相应的企业就不能吝惜地价，租金这样的成本，而是要不顾一切地靠近他们集中的区域，例如高校附近或是城市的核心区。</em></p>
-<p>举个例子吧，8090年代房价相对平稳，区域分化不大的时候，硅谷的初创企业都是车库模式，我们熟知的苹果和谷歌就是从车库发家的，因为那时候IT还不是高端产业，程序员的议价能力不高，在哪办公无所谓，不如就去便宜简陋的车库。但三十年后就不一样了，我们发现uber和airbnb这样的初创企业直接选址在旧金山市中心，租金成本那可比湾区高到不知道哪里去了。原因就是IT产业如今是高端产业，程序员觉得自身需要享受城区便利，需要高档社区的安全感，需要在市中心办公，那这些企业就得乖乖驻扎在市中心。因为Uber和airbnb们深知，租金高点无所谓（可以继续烧vc的钱来填成本窟窿），招不到顶尖程序员和产品经理才是灭顶之灾。</p>
 ]]></content>
     </entry>
 </feed>
