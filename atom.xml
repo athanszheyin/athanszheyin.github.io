@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2020-05-02T21:21:57.110Z</updated>
+    <updated>2020-06-14T21:18:59.667Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -10,6 +10,34 @@
     <logo>https://athanszheyin.github.io/images/avatar.png</logo>
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, athans blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Literature Review -- Backtest Evaluation]]></title>
+        <id>https://athanszheyin.github.io/post/literature-review-backtest-evaluation</id>
+        <link href="https://athanszheyin.github.io/post/literature-review-backtest-evaluation">
+        </link>
+        <updated>2020-06-13T18:56:44.000Z</updated>
+        <summary type="html"><![CDATA[<p>[Man AHL] <strong>Campbell Harvey</strong></p>
+<p>Very few take a backtested trading strategy’s result at face value. Experienced researchers understand that any historical backtest, no matter how careful the research design, will have some degree of overfitting. As a result, backtested results are overstated. The rule of thumb is to haircut the backtested Sharpe ratio by 50%. The idea of haircutting the Sharpe ratio is a good one – but why 50%?</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>[Man AHL] <strong>Campbell Harvey</strong></p>
+<p>Very few take a backtested trading strategy’s result at face value. Experienced researchers understand that any historical backtest, no matter how careful the research design, will have some degree of overfitting. As a result, backtested results are overstated. The rule of thumb is to haircut the backtested Sharpe ratio by 50%. The idea of haircutting the Sharpe ratio is a good one – but why 50%?</p>
+<!-- more -->
+<p>Statistical tools used to evaluate a trading strategy typically assume no one has examined the data before and only a single strategy has been tried. But where there have been multiple tests, hurdles for establishing statistical significance should be much higher. In fields such as particle physics and biomedical science, they are. In finance, often they are not. Thus many active trading strategies likely are based on findings that overstate Sharpe ratios and other statistical measures.</p>
+<p>The usual two-sigma rule only works for a single test. The two-sigma rule is associated with a 5% error rate. However, if a researcher tests 20 factors and uses the same two-sigma rule, the error rate is more like 90%. In order to control the number of false discoveries, it is essential to increase the threshold for declaring a factor &quot;significant&quot;. Two-sigma simply means the average return is two standard deviations from zero. The 5% is often associated with the p-value; that is we look for a p-value less than 5%. **When many strategies are tested, however, some strategies will have a low p-value purely by chance. As a result adjustments need to be made to ensure only a 5% error rate. **</p>
+<p>Harvey and Liu provide some easy to implement tools for adjusting evaluation methods to account for multiple tests.</p>
+<ol>
+<li>The Bonferroni method, provides a formula for increasing the standard two-sigma rule for each additional test. Suppose the researcher tries 20 strategies and identifies a strategy three standard deviations from zero with a p-value of 1%. While this is well below the 5% threshold, it is not significant under the Bonferroni adjustment. Bonferroni tells us to multiply the p-value by the number of tests. So the adjusted p-value is not 1% but 20% -- which is much greater than our threshold (and the strategy would be discarded).</li>
+<li>The Holm test takes a similar but slightly less stringent approach.</li>
+<li>The BHY formula, is similar to Holm but allows for an expected proportion of false discoveries.
+Harvey and Liu judge it the most appropriate for evaluating trading strategies. They also detail a method to gauge the extent of backtest overfitting.</li>
+</ol>
+<p>To account for multiple testing, it is common to discount reported Sharpe ratios by 50% when evaluating backtests of trading strategies. There are good economic and statistical reasons for doing so, but this rule of thumb is problematic. The multiple-testing haircut penalizes the highest Sharpe ratios only moderately, but marginal Sharpe ratios heavily.</p>
+<p><img src="https://athanszheyin.github.io/post-images/1592169342429.jpg" alt="">
+<strong>We show that the Sharpe ratio is a simple transformation of the t-statistics</strong>. We proceed as follows. The original Sharpe ratio maps to a t-statistic, and we calculate the p-value. We adjust the p-value and then derive the t-statistic associated with that particular adjusted p-value. We transform this into the haircut Sharpe ratio.</p>
+<p><strong>Our haircutting of the Sharpe ratio depends on the initial Sharpe ratio as well as on the number of tests.</strong> Of course, investors may not know the exact number of tests but it is possible nevertheless to try a range of values. The haircut Sharpe ratio is much different from the simple 50% rule. Strategies with initially large Sharpe ratio are haircut less than 50%. As the initial Sharpe ratio decreases, however, the haircut becomes much more severe, eventually as high as 100%.</p>
+<p>Harvey and Liu offer an analytical way to determine the magnitude of the haircut. We propose three multiple-testing procedures that provide adjusted p-values that correspond to t-stats, which are then transformed into new Sharpe Ratios. This method aims to answer the question: if the multiple-testing-adjusted p-value reflects genuine statistical significance, what is the equivalent single-test Sharpe ratio that should be assigned to the strategy as if there were no data mining? True out of sample tests are a cleaner way to evaluate a strategy but they are not available for most trading strategies. Harvey and Liu's method allows investors to make decisions in real time on a proposed strategy's viability.</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Point in Time -- What is an Index]]></title>
         <id>https://athanszheyin.github.io/post/point-in-time-what-is-an-index</id>
@@ -279,24 +307,6 @@ The author reviewed the active literatures and list out the nuts and bolts of fo
 The discussion of the M&amp;M propositions (also known as irrelevance of debt-equity structure theorem) is the longest part of the paper because “here, the tension between the micro normative and the macro normative approaches were evident from the outset”. “M&amp;M propositions are also ways of saying that there is no free lunch. Firms cannot hope to gain by issuing low-cost debt rather than high-cost equity”. He emphasizes that the M&amp;M propositions, like the EMH, are about equilibrium in the capital markets --- what it looks like and what forces are set in motion once it is disturbed.</p>
 <p>When Miller comes to the options theory, he acknowledged that the achievements of the Black-Scholes-Merton will resolve the conflict between the two approaches to finance. The core dilemma of finance research is that the basic unit -- “the expected rate of return, was not actually observable”. Once the Black-Scholes-Merton option pricing model was in place, finance finally had its “observable” variable (the variance of the distribution of returns on the underlying share must be estimated, but estimating variances is orders of magnitude easier than estimating the means). This forms the basis of so many financial decisions and theory, a forward step whose significance cannot be overestimated</p>
 <p>Merton concludes his essay with an answer to this question: “What would I specialize in if I were starting over and entering the field today?” And he answers, “I reduce my advice to a single word: options.” Options, in his view, will become the center of gravity in finance, resulting in a total reconstruction of the field as profound as Markowitz’s original breakthrough (the option pricing formula helps burgeoning a new specialty known as financial engineering, but I guess he didn’t foresee how it nearly destroy the Wall Street in 2008).</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[香港，又见香港]]></title>
-        <id>https://athanszheyin.github.io/post/xiang-gang-you-jian-xiang-gang</id>
-        <link href="https://athanszheyin.github.io/post/xiang-gang-you-jian-xiang-gang">
-        </link>
-        <updated>2019-12-19T11:04:36.000Z</updated>
-        <summary type="html"><![CDATA[<p>香港问题发酵至今已经成为舆论焦点，前些时候看到恒隆广场董事长陈启宗的访谈，颇有所感</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>香港问题发酵至今已经成为舆论焦点，前些时候看到恒隆广场董事长陈启宗的访谈，颇有所感</p>
-<!-- more -->
-<p>作为商人，他在敏感时期接受访谈并袒露心声，这是很难能可贵的。要知道在商言商，商人一般莫谈国事，不趟浑水。陈董一席话也道出了他对于回归后二十年之香港现状的深刻见解，角度高远，值得钦佩。
-<img src="https://athanszheyin.github.io/post-images/1576800522013.jpg" alt=""></p>
-<p>可是个别之处我也持保留看法，今一吐为快。首先便是陈董所说的香港人没有政治意识，那么何谓政治意识？我觉得港人提出的民主选举，言论自由这些诉求本身完全就是政治意识的体现。在我看来，香港人的政治觉悟稍显幼稚肤浅，以至于他们很容易被打着民主自由幌子的宣传口径所煽动洗脑；但他们的参政议政的意识是很强烈的。</p>
-<p>放宽来讲，香港人有政治意识，却没有政治自信，这一方面是由于回归后经济上的乏善可陈，毕竟经济基础决定上层建筑。另一方面则是香港确实没能培养出土生土长的能独当一面的政治强人（这世上只有一个李光耀）。最后因其长期以来受港英政府的弹压导致了港人自身行政经验的匮乏。政治自信的缺乏让香港人拐向了无政府主义的胡同，而这对于一个经济水平业已发达，财富分配业已成型的社会来说更加危险，穷人每日盼着重新洗牌，富人缺乏安全感勒紧口袋减少投资，结局可想而知。</p>
-<p>最后聊到了地产商，陈董的逻辑在这里稍欠自洽。他对地产商限制土地供应的描述是准确的，其实这基本就点明大地产商们要对如今的乱局负主要责任！次要的原因可能包括但不限于：北京方面港人治港的政策稍微托大了，想做甩手掌柜可惜跑堂者火候未够；香港特首自身的实权不够，同时亦缺乏政治铁腕和雄心。但主要原因仍然在于以大房地产商为主的本港财阀私心过重，一副“我死后哪管洪水滔天”一步步把香港房价炒上天际。高房价（地价）是经济发展的手刹，是财富分配的铁闸，让既得利益者抽血吸髓，让新兴产业无立锥之地;对外不能吸引投资（房价地价成本高企），对内不能刺激消费（收入都拿去供楼了）。就这么把民生推向了崩溃边缘，然后再把自身资产转移，反手来一个“政治路线大讨论”，将自己的原罪洗干净，真算得上其心可诛了。</p>
-<p>如今的局势是否有解？陈董没有给出答案，可能也确实没什么好办法。天予弗取，反受其咎。时至不行，反受其殃。当年董时代的数码城如果真的有所建树，那将是一次完美的经济转型，高端芯片加互联网体系的搭建可以让香港领先大陆和新加坡至少一个身位。可是一切并没有如果，如今的香港只能靠传统精英教育产生的商法医三类职业解决就业，可是随着制造业的缺席，大批量的就业缺口已经是板上钉钉。失业率一旦上去，社会稳定就像无源之水总有耗尽的一天。所以陈董说不是民生问题，我倒觉得这像是港人对香港经济地位最后的倔强啊。</p>
 ]]></content>
     </entry>
 </feed>

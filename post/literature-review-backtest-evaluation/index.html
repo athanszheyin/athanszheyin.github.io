@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Literature Review -- Backtest Evaluation | athans blog</title>
+<meta name="description" content="&lt;h2&gt;&lt;i&gt;&lt;b&gt;云物如故乡，山川知异路&lt;/b&gt;&lt;/i&gt;&lt;/h2&gt;">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1592169438135">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://athanszheyin.github.io">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1592169438135" class="site-logo">
+        <h1 class="site-title">athans blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://athanszheyin.github.io/post/about/" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/athanszheyin" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.weibo.com/u/2866261084" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/zheyin-zhao/" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.facebook.com/zheyin.zhao" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      <h2><i><b>云物如故乡，山川知异路</b></i></h2>
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> |
+<a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://athanszheyin.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Literature Review -- Backtest Evaluation</h2>
+            <div class="post-date">2020-06-13</div>
+            
+              <div class="feature-container" style="background-image: url('https://pydata.org/london2018/media/sponsor_files/Man_AHL_logo_RGB_541_-_screen.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>[Man AHL] <strong>Campbell Harvey</strong></p>
+<p>Very few take a backtested trading strategy’s result at face value. Experienced researchers understand that any historical backtest, no matter how careful the research design, will have some degree of overfitting. As a result, backtested results are overstated. The rule of thumb is to haircut the backtested Sharpe ratio by 50%. The idea of haircutting the Sharpe ratio is a good one – but why 50%?</p>
+<!-- more -->
+<p>Statistical tools used to evaluate a trading strategy typically assume no one has examined the data before and only a single strategy has been tried. But where there have been multiple tests, hurdles for establishing statistical significance should be much higher. In fields such as particle physics and biomedical science, they are. In finance, often they are not. Thus many active trading strategies likely are based on findings that overstate Sharpe ratios and other statistical measures.</p>
+<p>The usual two-sigma rule only works for a single test. The two-sigma rule is associated with a 5% error rate. However, if a researcher tests 20 factors and uses the same two-sigma rule, the error rate is more like 90%. In order to control the number of false discoveries, it is essential to increase the threshold for declaring a factor &quot;significant&quot;. Two-sigma simply means the average return is two standard deviations from zero. The 5% is often associated with the p-value; that is we look for a p-value less than 5%. **When many strategies are tested, however, some strategies will have a low p-value purely by chance. As a result adjustments need to be made to ensure only a 5% error rate. **</p>
+<p>Harvey and Liu provide some easy to implement tools for adjusting evaluation methods to account for multiple tests.</p>
+<ol>
+<li>The Bonferroni method, provides a formula for increasing the standard two-sigma rule for each additional test. Suppose the researcher tries 20 strategies and identifies a strategy three standard deviations from zero with a p-value of 1%. While this is well below the 5% threshold, it is not significant under the Bonferroni adjustment. Bonferroni tells us to multiply the p-value by the number of tests. So the adjusted p-value is not 1% but 20% -- which is much greater than our threshold (and the strategy would be discarded).</li>
+<li>The Holm test takes a similar but slightly less stringent approach.</li>
+<li>The BHY formula, is similar to Holm but allows for an expected proportion of false discoveries.
+Harvey and Liu judge it the most appropriate for evaluating trading strategies. They also detail a method to gauge the extent of backtest overfitting.</li>
+</ol>
+<p>To account for multiple testing, it is common to discount reported Sharpe ratios by 50% when evaluating backtests of trading strategies. There are good economic and statistical reasons for doing so, but this rule of thumb is problematic. The multiple-testing haircut penalizes the highest Sharpe ratios only moderately, but marginal Sharpe ratios heavily.</p>
+<p><img src="https://athanszheyin.github.io/post-images/1592169342429.jpg" alt="">
+<strong>We show that the Sharpe ratio is a simple transformation of the t-statistics</strong>. We proceed as follows. The original Sharpe ratio maps to a t-statistic, and we calculate the p-value. We adjust the p-value and then derive the t-statistic associated with that particular adjusted p-value. We transform this into the haircut Sharpe ratio.</p>
+<p><strong>Our haircutting of the Sharpe ratio depends on the initial Sharpe ratio as well as on the number of tests.</strong> Of course, investors may not know the exact number of tests but it is possible nevertheless to try a range of values. The haircut Sharpe ratio is much different from the simple 50% rule. Strategies with initially large Sharpe ratio are haircut less than 50%. As the initial Sharpe ratio decreases, however, the haircut becomes much more severe, eventually as high as 100%.</p>
+<p>Harvey and Liu offer an analytical way to determine the magnitude of the haircut. We propose three multiple-testing procedures that provide adjusted p-values that correspond to t-stats, which are then transformed into new Sharpe Ratios. This method aims to answer the question: if the multiple-testing-adjusted p-value reflects genuine statistical significance, what is the equivalent single-test Sharpe ratio that should be assigned to the strategy as if there were no data mining? True out of sample tests are a cleaner way to evaluate a strategy but they are not available for most trading strategies. Harvey and Liu's method allows investors to make decisions in real time on a proposed strategy's viability.</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://athanszheyin.github.io/tag/qfc8Bcn8r" class="tag">
+                    Finance
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://athanszheyin.github.io/post/point-in-time-what-is-an-index">
+                  <h3 class="post-title">
+                    Point in Time -- What is an Index
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
