@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2020-06-14T21:18:59.667Z</updated>
+    <updated>2020-06-15T01:03:07.187Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -15,7 +15,7 @@
         <id>https://athanszheyin.github.io/post/literature-review-backtest-evaluation</id>
         <link href="https://athanszheyin.github.io/post/literature-review-backtest-evaluation">
         </link>
-        <updated>2020-06-13T18:56:44.000Z</updated>
+        <updated>2020-06-13T06:56:44.000Z</updated>
         <summary type="html"><![CDATA[<p>[Man AHL] <strong>Campbell Harvey</strong></p>
 <p>Very few take a backtested trading strategy’s result at face value. Experienced researchers understand that any historical backtest, no matter how careful the research design, will have some degree of overfitting. As a result, backtested results are overstated. The rule of thumb is to haircut the backtested Sharpe ratio by 50%. The idea of haircutting the Sharpe ratio is a good one – but why 50%?</p>
 ]]></summary>
@@ -23,7 +23,7 @@
 <p>Very few take a backtested trading strategy’s result at face value. Experienced researchers understand that any historical backtest, no matter how careful the research design, will have some degree of overfitting. As a result, backtested results are overstated. The rule of thumb is to haircut the backtested Sharpe ratio by 50%. The idea of haircutting the Sharpe ratio is a good one – but why 50%?</p>
 <!-- more -->
 <p>Statistical tools used to evaluate a trading strategy typically assume no one has examined the data before and only a single strategy has been tried. But where there have been multiple tests, hurdles for establishing statistical significance should be much higher. In fields such as particle physics and biomedical science, they are. In finance, often they are not. Thus many active trading strategies likely are based on findings that overstate Sharpe ratios and other statistical measures.</p>
-<p>The usual two-sigma rule only works for a single test. The two-sigma rule is associated with a 5% error rate. However, if a researcher tests 20 factors and uses the same two-sigma rule, the error rate is more like 90%. In order to control the number of false discoveries, it is essential to increase the threshold for declaring a factor &quot;significant&quot;. Two-sigma simply means the average return is two standard deviations from zero. The 5% is often associated with the p-value; that is we look for a p-value less than 5%. **When many strategies are tested, however, some strategies will have a low p-value purely by chance. As a result adjustments need to be made to ensure only a 5% error rate. **</p>
+<p>The usual two-sigma rule only works for a single test. The two-sigma rule is associated with a 5% error rate. However, if a researcher tests 20 factors and uses the same two-sigma rule, the error rate is more like 90%. In order to control the number of false discoveries, it is essential to increase the threshold for declaring a factor &quot;significant&quot;. Two-sigma simply means the average return is two standard deviations from zero. The 5% is often associated with the p-value; that is we look for a p-value less than 5%. <strong>When many strategies are tested, however, some strategies will have a low p-value purely by chance. As a result adjustments need to be made to ensure only a 5% error rate</strong>.</p>
 <p>Harvey and Liu provide some easy to implement tools for adjusting evaluation methods to account for multiple tests.</p>
 <ol>
 <li>The Bonferroni method, provides a formula for increasing the standard two-sigma rule for each additional test. Suppose the researcher tries 20 strategies and identifies a strategy three standard deviations from zero with a p-value of 1%. While this is well below the 5% threshold, it is not significant under the Bonferroni adjustment. Bonferroni tells us to multiply the p-value by the number of tests. So the adjusted p-value is not 1% but 20% -- which is much greater than our threshold (and the strategy would be discarded).</li>
