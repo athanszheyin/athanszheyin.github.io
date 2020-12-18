@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2020-10-19T03:08:46.804Z</updated>
+    <updated>2020-12-18T17:36:50.326Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -10,6 +10,22 @@
     <logo>https://athanszheyin.github.io/images/avatar.png</logo>
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, athans blog</rights>
+    <entry>
+        <title type="html"><![CDATA[求是]]></title>
+        <id>https://athanszheyin.github.io/post/qiu-shi</id>
+        <link href="https://athanszheyin.github.io/post/qiu-shi">
+        </link>
+        <updated>2020-12-18T04:31:52.000Z</updated>
+        <summary type="html"><![CDATA[<p>“What I cannot create, I do not understand”by Richard Feynman</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>“What I cannot create, I do not understand”by Richard Feynman</p>
+<!-- more -->
+<p>我小时候的教育受囿于物质条件的影响，没有那么多应用场景能去体验，只能先强行记住抽象的理论框架和关键概念，然后通过有限的场景去加固记忆。做题是一种在应用场景匮乏的情况下人为构造出来的半理想半实际的应用场景。它也是一种应用场景，只是这种场景并不贴合实际，它是人为勾勒出来的场景碎片。所以我们只是通过做题更牢固地背诵了理论概念，并未锻炼到丝毫联系实际并应用的能力。</p>
+<p>当年我学数据结构就是这感觉，要知道高中时候我只用电脑来玩游戏，程序在我脑中和电影里的黑客破坏网络，特工戴着墨镜焊接电路一样是远离生活的fantasy。大一刚上来就是c语言和数据结构，如此抽象的概念对我们来说冲击有多大。实不相瞒，我以及周围大部分同学的第一反应就是背诵，把数组 链表 树和图的特点，结构，标准操作分门别类做好笔记然后记住，你敢信吗？我们当时手抄了一段一段遍历二叉树这样的代码段。我们当时还用的全英文教材，后来有同学发现了谭浩强的中文教材，编写地完全符合做题家思维，于是被我们奉为圭臬。现在想想，我们的高中教育和大学教育确实太割裂了。</p>
+<p>这一整套教育系统其实也有赖于中国数千年科举文化的路径依赖。我们习惯了先熟读诘屈聱牙的理论精髓，然后在数十年的人生轨迹里一点一点的填补应用案例。因为中国古来治学都是在学经世济民的形而上知识。这种知识几乎不可能在现实生活中找到应用场景，除非你身担正五品以上（也就是省部级）以上的官位。后来我们走的是苏系的教育系统，一切都从顶层设计开始，大概因为top down的范式符合意识形态。</p>
+<p>我们一代一代就是在这种极度匮乏应用场景的情况下学习知识，以至于我们忘记了，这世界上还有形而下的实验科学。且不说计算机这样的实验科学，很多社会科学也是实践出真知，我们需要bottom up范式，我们需要求是。理论是囫囵吞枣，实践是庖丁解牛。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[如何销售]]></title>
         <id>https://athanszheyin.github.io/post/ru-he-xiao-shou</id>
@@ -442,31 +458,6 @@ Pµ=Q
 <p>Our work is to develop a model in which portfolio turnover is endogenous. It is determined jointly with the statistical properties of the exogenous factor returns. We develop the concepts of lagged IC and horizon IC for an alpha model. An optimal model that maximizes net IR with explicit turnover consideration would use multiple signals over multiple periods depending on an expanded IC inputs as well as cross-correlation and autocorrelation structure of signals.
 <img src="https://athanszheyin.github.io/post-images/1582332785580.png" alt=""></p>
 <p>Our results are important in several ways. First, we introduce the importance of factor return autocorrelation, horizon IC and lagged IC. Second, it is imperative to consider trading costs and turnover explicitly as key elements of the optimal alpha model, especially in the current environment with the increasing volume of high frequency trading. High frequency trading has the character of acute trend following with extreme momentum signals, which can benefit some participants at the expense of others. Third, this work can expand to the broader issue of strategy capacity, including universal capacity that extends beyond the assets of a single asset manager. Convergence of the many on a common signal impacts the capacity of the few.</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Literature Review -- Minimum Variance Portfolio Composition ]]></title>
-        <id>https://athanszheyin.github.io/post/literature-reviews-minimum-variance-portfolio-composition</id>
-        <link href="https://athanszheyin.github.io/post/literature-reviews-minimum-variance-portfolio-composition">
-        </link>
-        <updated>2020-02-16T05:31:54.000Z</updated>
-        <summary type="html"><![CDATA[<p>[Analytic Investors] <strong>Roger Clarke, Harindra de Silva, and Steven Thorley</strong></p>
-<p>This paper, along with &quot;Minimum Variance Portfolios in the US Equity Market&quot;, &quot;Risk Parity, Maximum Diversification, and Minimum Variance: An analytic perspective&quot;, examine the empirical and analytic properties of minimal-risk equity portfolios, which is now a separate area of investment strategy called &quot;low risk&quot; or &quot;managed risk&quot;, and the basis of several indexes indexes and ETFs, such as SPLV and USMV.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>[Analytic Investors] <strong>Roger Clarke, Harindra de Silva, and Steven Thorley</strong></p>
-<p>This paper, along with &quot;Minimum Variance Portfolios in the US Equity Market&quot;, &quot;Risk Parity, Maximum Diversification, and Minimum Variance: An analytic perspective&quot;, examine the empirical and analytic properties of minimal-risk equity portfolios, which is now a separate area of investment strategy called &quot;low risk&quot; or &quot;managed risk&quot;, and the basis of several indexes indexes and ETFs, such as SPLV and USMV.</p>
-<!-- more -->
-<p>The reason we should care is that low relative returns to volatile stocks translates into high relative return to stable stocks. Volatile minus stable portfolios, or &quot;VMS&quot; portfolios to use a Fama/French style acronym, have negative returns. But turn the VMS factor on its head and that means positive returns against the market for carefully constructed portfolios. And even if those relatively higher returns are reduced by transaction costs and other implementation issues, returns that merely match the market with lower overall risk have a higher Sharpe ratio. A higher Sharpe ratio allows for larger equity exposures without violating risk budgets, or for explicit leveraging to market benchmark volatility and expected returns above the market. Yet another study showing how one could have beaten the market historically on a risk adjusted basis -- what's so novel about that? The collective data-mining efforts of academics and industry professionals over the past half century have produced more market anomalies than one can count.</p>
-<p>What's so novel and interesting is that minimum-variance portfolios are a concept developed by Harry Markowitz in 1952, not in 2006. Nothing has been added to the mean-variance algorithm of his &quot;Portfolio Selection&quot; (1952) paper except the computing power and econometrics to apply what Markowitz prescribed to a large number of individual securities. Construct a minimum variance portfolio on the left-most tip of the efficient frontier back then, and you would have done very well indeed. No return forecasting, no CAPM, no reliance on what we have subsequently leaned about the factors that perform well --- just aim to minimize portfolio risk. We thought that was interesting enough to publish and study.
-<img src="https://athanszheyin.github.io/post-images/1582253047972.jpg" alt=""></p>
-<p>The unique contribution of &quot;Minimum-Variance Portfolio Composition&quot; is a simple and intuitive analytic solution for the individual security weights in a long-only minimum-variance portfolio. The formula shows that, while high idiosyncratic risk can lead to low security weights, securities with high systematic risk are completely taken out of the long-only solution. In fact, the relatively small set of securities that remain all have market betas below an analytically specified threshold beta. The analytic and empirical results of this study are part of an increasing awareness that the “low volatility” anomaly is a function of the long-standing empirical critique of the traditional CAPM; low-beta stocks have relatively high average returns.</p>
-<p>In retrospect, what the institutional investing community now calls &quot;low volatility&quot; or &quot;managed
-volatility&quot; portfolio strategies were well timed for the financial crisis and other volatile regimes. We anticipate that low volatility portfolios will continue to have attractive properties in the years ahead. Results based on methodologies that are less dependent on researchers' collective data mining of the historical databases are arguably more reliable in the out-of-sample test.</p>
-<p>We are still engaged in related research, further study documents that the returns to a pure beta
-factor in the US equity market and explain that the distinction between the market return and the
-return to the cross-sectional variation in security betas also applies to portfolio performance
-measurement. All would lead to the emergence of volatility as a market-wide equity factor
-comparable to size, value and momentum.</p>
 ]]></content>
     </entry>
 </feed>
