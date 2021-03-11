@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2021-03-09T18:03:04.139Z</updated>
+    <updated>2021-03-11T20:13:14.300Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -88,7 +88,7 @@
         <id>https://athanszheyin.github.io/post/qiu-shi</id>
         <link href="https://athanszheyin.github.io/post/qiu-shi">
         </link>
-        <updated>2020-12-18T04:31:52.000Z</updated>
+        <updated>2020-12-17T15:31:52.000Z</updated>
         <summary type="html"><![CDATA[<p>“What I cannot create, I do not understand”by Richard Feynman</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>“What I cannot create, I do not understand”by Richard Feynman</p>
@@ -195,7 +195,7 @@
         <id>https://athanszheyin.github.io/post/ru-he-li-jie-shi-wu</id>
         <link href="https://athanszheyin.github.io/post/ru-he-li-jie-shi-wu">
         </link>
-        <updated>2020-07-10T12:08:20.000Z</updated>
+        <updated>2020-07-10T00:08:20.000Z</updated>
         <summary type="html"><![CDATA[<p>这是我翻译自<code>https://nabeelqu.co/understanding</code>的一篇文章，文章的主题很形而上，但文章写得很实在，于是我翻译了这洋洋洒洒的五千字。原作者的背景很有意思，他曾在牛津大学攻读哲学和政治经济学，毕业后进入英格兰银行（英国央行）做经济研究。后来投身创业圈子，现在在纽约一家独角兽里做程序员。从他的教育背景出发，不难发现他对于方法论的热衷，他的博客上也有这一系列类似这样的文章。</p>
 <p>首先要肯定此文值得一读，但从翻译的过程中可以发现很多东西方文化的差异：比如西方人钟爱反复论证，事例比喻一起上，有些例子（比如Ezra Pound）我看的莫名其妙，但经查阅才知道该案例很是经典，名声在外。有些例子则有些为赋新词强说愁，比如禅与摩托车维修的艺术那一段（当然个人认为那本书里的大部分内容就有强行拔高之嫌）。比如西方人对于数理基础还是捉急，两处关于数学的文字都让人摸不着头脑，一个是作者自己对于微分符号的“自作聪明”，还有一个是引用Andrey Kolmogorov的部分，Kolmogorov要是知道自己随手写的关于“等号”的随笔比他在概率论，信息论等等领域上的建树更引人注目，不知道他会作何感想。</p>
 ]]></summary>
