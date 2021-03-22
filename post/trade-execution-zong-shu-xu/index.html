@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Trade Execution综述 （续） | athans blog</title>
+<meta name="description" content="&lt;h2&gt;&lt;i&gt;&lt;b&gt;云物如故乡，山川知异路&lt;/b&gt;&lt;/i&gt;&lt;/h2&gt;">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1616387740325">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://athanszheyin.github.io">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1616387740325" class="site-logo">
+        <h1 class="site-title">athans blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://athanszheyin.github.io/post/about/" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/athanszheyin" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.weibo.com/u/2866261084" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/zheyin-zhao/" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.facebook.com/zheyin.zhao" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      <h2><i><b>云物如故乡，山川知异路</b></i></h2>
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> |
+<a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://athanszheyin.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Trade Execution综述 （续）</h2>
+            <div class="post-date">2021-03-18</div>
+            
+            <div class="post-content">
+              <p>谈起Trade Execution，不得不提的就是Algorithmic Trading（算法交易）。毕竟随着Markowitz的“Diversification is the only free lunch”深入人心，投资组合所含的资产数量越来越大；同时交易频率随着计算机软硬件的不断升级而越来越快，依靠算法自动交易的方式已经愈发普及。说到底，Trade Execution的目标都是优化Market Impact，所以这就和上一篇讲述的概念和模型无缝链接了起来。</p>
+<!-- more -->
+<h2 id="order-book">Order Book</h2>
+<p>交易即是买卖，但又不是简单的一手交钱一手交货的双边买卖。交易有着隐藏的第三方，即所谓的market maker（做市商）。实际交易时，买方和卖方都会提供自己的买入和卖出价格，这些价格被做市商记录于order book中，并且做市商会用自己的存货资产在相应价格买入或卖出，使得双边都能顺利完成交易。order book即是一连串limit order，这些limit order静静地躺在order book里，此时他们对市场索取了流动性。直到排在他们身前的limit order由于价格达到了市场临界的价格而被执行，他们便成了下一单即将成交的market order，与此同时他们向市场提供了流动性。</p>
+<p><img src="https://athanszheyin.github.io/post-images/1616292559784.PNG" alt="Order Book示例"></p>
+<p>从上一篇我们已经知道，<code>Market Impact是指交易执行后价格相比于未执行交易前价格的变化。而Market impact可以进一步被分为暂时性impact的和永久性impact</code>，我们在这里进一步举例阐释为什么执行交易会对资产价格造成暂时性impact的和永久性impact。</p>
+<p>假设我们需要以market order的方式卖出A资产200股，此时市场原先的均衡被打破，卖出的market order亟需流动性，而order book里的buy limit order会被激活，他们填补了market order的即时需求，释放出流动性来达到新的市场均衡。卖出的order会逐级清空order book里等待的buy limit order（bid price不断降低），但由于market order的特性这一切在一瞬间完成。假设之后没有新的市场交易发生，做市商们会逐渐在order book里挂上新的buy limit order，bid price会一点点回升。一图胜千言：
+<img src="https://athanszheyin.github.io/post-images/1616294592731.PNG" alt=""></p>
+<p>图中可以看出market impact可以分解为暂时性impact和永久性impact。研究表明，暂时性impact一般正比于交易体量的平方根，而永久性impact一般正比于交易体量。</p>
+<p>假设我们不需要即刻成交，而是可以分批次分时段卖出A资产200股（不妨假设我们分两次，一次使用market order卖出100股）。那么market impact会变成如下模式：
+<img src="https://athanszheyin.github.io/post-images/1616296512878.PNG" alt=""></p>
+<p>如此看来，将交易拆分执行成子交易似乎能显著缩小暂时性impact，进而缩减整个market impact，这么做有益无害。但其实拆分执行背后有着隐藏的代价，那就是有效执行价格的不确定性增加了，而减少的暂时性impact实际就在弥补这样的不确定性。每做一笔子交易我们都消耗order book的流动性，需要耐心等待market maker重新挂单回补流动性，子交易越多，流动性回补所需要的等待时间就越长，价格的不确定性就越高。</p>
+<h2 id="optimal-execution">Optimal Execution</h2>
+<p>交易的执行往往是在如下两个极端之间取舍：</p>
+<ol>
+<li>将所有交易在一瞬间完成，这样market impact很高，但交易所带来alpha得以保留</li>
+<li>将交易无限拆分成极小的子交易慢慢执行，这样market impact很小，但price movement risk和opportunity cost很高，交易所带来的alpha可能被削弱。</li>
+</ol>
+<p>我们需要在两个极端之间拿捏一个最优解，兼顾market impact， price movement risk和opportunity cost。数学上我们可以定义这个最优化问题如下：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><msub><mi>n</mi><msub><mi>x</mi><mi>t</mi></msub></msub><mi>E</mi><mo>(</mo><mi>C</mi><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>)</mo><mo>)</mo><mo>+</mo><mi>λ</mi><mi>V</mi><mi>a</mi><mi>r</mi><mo>(</mo><mi>C</mi><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">min_{x_t} E(C(x_t))+\lambda Var(C(x_t))
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139199999999997em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.29634285714285713em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">λ</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span></p>
+<p>其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">x_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>代表一个交易的时序安排，即多少股在时间t被交易。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span>代表交易者的风险厌恶程度，或者是一个alpha signal的时效性。如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span>无限大，即alpha signal时效性极高，则我们按照情形1执行交易；如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span>是0，即alpha signal的效用保持恒定，则我们按照情形2执行交易。</p>
+<p>具体C(x_t)的表达方式我们在上一篇提到过，即是用market impact模型来模拟。我们可以用大量market impact影响因子的回归模型来表示，但归根结底，永久性impact和交易体量以及价格波动率成正比，暂时性impact和交易体量的平方根（Almgren的paper推算出是3/5次方）以及价格波动率成正比。</p>
+<p>交易的目的是为了获取超额收益，所以我们可以把交易成本的最优化问题整合到portfolio optimization的最优化问题的架构里：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><msub><mi>x</mi><mi>w</mi></msub><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi>μ</mi><mo>−</mo><mi>λ</mi><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Σ</mi><mi>w</mi><mo>−</mo><msub><mi>λ</mi><mrow><mi>T</mi><mi>C</mi></mrow></msub><mo>(</mo><msup><mi>β</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo>+</mo><mi mathvariant="normal">∣</mi><mi>x</mi><msup><mi mathvariant="normal">∣</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Γ</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">max_w w&#x27;\mu - \lambda w&#x27;\Sigma w - \lambda_{TC}(\beta &#x27; |x|+|x|&#x27;\Gamma |x|)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.996332em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">μ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">λ</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Σ</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Γ</span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mclose">)</span></span></span></span></span></p>
+<p>其实更精细的表达式除了传统的第一项mean variance optimization和第二项transaction cost之外，还应该有第三项，即最终仓位w和被交易的仓位x之间的协方差:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><msub><mi>x</mi><mi>w</mi></msub><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi>μ</mi><mo>−</mo><mi>λ</mi><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Σ</mi><mi>w</mi><mo>−</mo><msub><mi>λ</mi><mrow><mi>T</mi><mi>C</mi></mrow></msub><mo>(</mo><msup><mi>β</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo>+</mo><mi mathvariant="normal">∣</mi><mi>x</mi><msup><mi mathvariant="normal">∣</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Γ</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo>)</mo><mo>+</mo><mi>τ</mi><mi mathvariant="normal">∣</mi><mi>x</mi><msup><mi mathvariant="normal">∣</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Σ</mi><mi>w</mi></mrow><annotation encoding="application/x-tex">max_w w&#x27;\mu - \lambda w&#x27;\Sigma w - \lambda_{TC}(\beta &#x27; |x|+|x|&#x27;\Gamma |x|)+\tau |x|&#x27;\Sigma w
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.996332em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">μ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">λ</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Σ</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Γ</span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.1132em;">τ</span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Σ</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span></span></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://athanszheyin.github.io/tag/qfc8Bcn8r" class="tag">
+                    Finance
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://athanszheyin.github.io/post/trade-execution-zong-shu">
+                  <h3 class="post-title">
+                    Trade Execution综述
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
