@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1619735011836">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1619735488007">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://athanszheyin.github.io">
-        <img src="https://athanszheyin.github.io/images/avatar.png?v=1619735011836" class="site-logo">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1619735488007" class="site-logo">
         <h1 class="site-title">athans blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -118,12 +118,13 @@
             <div class="post-content">
               <p>For understanding core datatypes in pandas, including <code>pandas.array</code>, <code>pandas.Series</code>, <code>pandas.DataFrame</code>, <code>pandas.Catgorical</code>; resampling and masking</p>
 <!-- more -->
+<h3 id="python-structure-domains-and-why-numpy-is-memory-efficient">Python structure domains and why Numpy is memory efficient</h3>
 <p>Python systems have two programmatic domains:</p>
 <ul>
 <li>program structuring</li>
 <li>computational</li>
 </ul>
-<p>In the program structuring domain, we may use lots of tools like the Python built-in types (e.g.  <code>list</code>, <code>dict</code>, <code>set</code>) as well as Python metaphors (e.g. context manager for sequenced operations, decorators for wrapped behaviors, generators for lazy computations or for explicit lexical linrarisation of implicit state-graphs)</p>
+<p>In the program structuring domain, we may use lots of tools like the Python built-in types (e.g.  <code>list</code>, <code>dict</code>, <code>set</code>) as well as Python metaphors (e.g. context manager for sequenced operations, decorators for wrapped behaviors, generators for lazy computations or for explicit lexical linearization of implicit state-graphs)</p>
 <pre><code class="language-python"># this is not a computational type,
 # otherwise these operations would be interpreted computaitonally
 xs = [1,2,3,4]
@@ -200,6 +201,7 @@ print(f'{xs.nbytes = :,}') # total number of bytes
 xs = normal(size=1000000).astype('float32')
 print(f'{xs.nbytes = :,}') # total number of bytes
 </code></pre>
+<h3 id="numpys-limitations-and-pandas-design">Numpy's limitations and Pandas design</h3>
 <p>However, <code>numpy</code> as a pure computational type has limits:</p>
 <ul>
 <li>its ergonomics aren’t great (we may prefer a ’named tensor’ like <code>xarray.DataArray</code>)</li>
@@ -211,6 +213,7 @@ print(f'{xs.dtype = }')
 xs = array([1,2,3,float('nan')])
 print(f'{xs.dtype = }')
 </code></pre>
+<p>Pandas patches useful meta data on top of the <code>numpy</code> objects, try to cater to the realistic data's characteristics and facilitate querying capabilities within these computational objects. Moreover, Pandas supports wider statistical operations and time-series operations.</p>
 <pre><code class="language-python">from pandas import array, Categorical
 
 xs = array([1,2,3,None])
