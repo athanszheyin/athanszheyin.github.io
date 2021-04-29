@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Well Designed Pandas | athans blog</title>
+<meta name="description" content="&lt;h2&gt;&lt;i&gt;&lt;b&gt;云物如故乡，山川知异路&lt;/b&gt;&lt;/i&gt;&lt;/h2&gt;">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1619735011836">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://athanszheyin.github.io">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1619735011836" class="site-logo">
+        <h1 class="site-title">athans blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://athanszheyin.github.io/post/about/" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/athanszheyin" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.weibo.com/u/2866261084" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/zheyin-zhao/" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.facebook.com/zheyin.zhao" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      <h2><i><b>云物如故乡，山川知异路</b></i></h2>
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> |
+<a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://athanszheyin.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Well Designed Pandas</h2>
+            <div class="post-date">2021-04-28</div>
+            
+              <div class="feature-container" style="background-image: url('https://miro.medium.com/max/481/1*cxfqR8NAj8HGal8CVOZ7hg.png')">
+              </div>
+            
+            <div class="post-content">
+              <p>For understanding core datatypes in pandas, including <code>pandas.array</code>, <code>pandas.Series</code>, <code>pandas.DataFrame</code>, <code>pandas.Catgorical</code>; resampling and masking</p>
+<!-- more -->
+<p>Python systems have two programmatic domains:</p>
+<ul>
+<li>program structuring</li>
+<li>computational</li>
+</ul>
+<p>In the program structuring domain, we may use lots of tools like the Python built-in types (e.g.  <code>list</code>, <code>dict</code>, <code>set</code>) as well as Python metaphors (e.g. context manager for sequenced operations, decorators for wrapped behaviors, generators for lazy computations or for explicit lexical linrarisation of implicit state-graphs)</p>
+<pre><code class="language-python"># this is not a computational type,
+# otherwise these operations would be interpreted computaitonally
+xs = [1,2,3,4]
+print(f'{xs * 2 = }') # &quot;structure&quot;-level operation -&gt; repetition
+
+ys = [5,6,7,8]
+print(f'{xs + ys =}') # &quot;structure&quot;-level operation -&gt; concatenation
+</code></pre>
+<p>The contents of a Python built-in type are references to box types, as a consequence, operations within these sturctures are hard to optimizsed and thus slow.</p>
+<pre><code class="language-python">from codetiming import Timer
+from random import randint
+
+dot = lambda xs, ys: sum(x*y for x, y in zip(xs, ys))
+
+with Timer(text='creating &quot;list&quot; with comprehension syntax: {:0.4f} seconds'):
+  xs = [randint(-100, 100) for _ in range(10000000)]
+  ys = [randint(-100, 100) for _ in range(10000000)]
+  
+with Timer(text='&quot;list&quot; dot product of xs and ys: {:0.4f} seconds'):
+  dot(xs, ys)
+</code></pre>
+<p>In comparison, <code>numpy</code> provides us with computatioinal type. This is type is a “manager class” that fully controls its contents. thus, it is free to store its contents in an optimal fashion and it is able to enfornce constraints on its contents.</p>
+<pre><code class="language-python">from codetiming import Timer
+from numpy.random import randint
+
+with Timer(text='creating &quot;numpy.ndarray&quot;: {:0.4f} seconds'):
+	xs = randint(-100, 100, size=10000000)
+	ys = randint(-100, 100, size=10000000)
+  
+with Timer(text='&quot;numpy.ndarray&quot;: dot product of xs and ys: {:0.4f} seconds'):
+  xs.dot(ys)
+</code></pre>
+<p>Additionaly, the <code>numpy.ndarray</code> is clearly a computational type. The contents are machine-typed (i.e. fixed bit-width int64). The <code>numpy.ndarray</code> array is actually just a view of some memory region.</p>
+<pre><code class="language-python">from numpy import array
+
+xs = array([1,2,3,4])
+print(f'{xs * 2 = }') # elementwise operation
+
+ys = array([5,6,7,8])
+print(f'{xs + ys =}') # elementwise operation
+
+print(f'{xs.__array_interface__[&quot;data&quot;][0] = :#_x}') # memory location
+print(f'{xs.dtype}') # intepreted type
+print(f'{xs.shape}') # intepreted shape
+print(f'{xs.strides}') # intepreted strides
+
+(ys := xs.copy()).shape = 2, 2
+print(f'{ys = }')
+
+from numpy.lib.stride_tricks import as_strided
+ys = as_strided(xs, strides=(16, 8), shape=(2, 2))
+print(f'{ys = }')
+
+from numpy import set_printoptions
+set_printoptions(linewidth=float('inf'), threshold=24)
+
+# cast VS convert
+xs = array([1,2,3,4]) * 100
+(ys := xs.copy()).dtype = 'int8'
+print('.dtype = ...'.center(20, '-'))
+print(f'{ys = }')
+
+ys = xs.copy().astype('int8')
+print('.astype(...)'.center(20, '-'))
+print(f'{ys = }')
+</code></pre>
+<p>Therefore, analysing memory usage of <code>numpy</code> code is very easy.</p>
+<pre><code class="language-python">from numpy import shares_memory
+from numpy.random import normal
+
+xs = normal(size=1000000)
+print(f'{xs.nbytes = :,}') # total number of bytes
+
+xs = normal(size=1000000).astype('float32')
+print(f'{xs.nbytes = :,}') # total number of bytes
+</code></pre>
+<p>However, <code>numpy</code> as a pure computational type has limits:</p>
+<ul>
+<li>its ergonomics aren’t great (we may prefer a ’named tensor’ like <code>xarray.DataArray</code>)</li>
+<li>it lacks business-level information, such as missing data</li>
+<li>it lacks business-level information, such as querying/filtering mechanisms</li>
+</ul>
+<pre><code class="language-python">xs = array([1,2,3,None])
+print(f'{xs.dtype = }')
+xs = array([1,2,3,float('nan')])
+print(f'{xs.dtype = }')
+</code></pre>
+<pre><code class="language-python">from pandas import array, Categorical
+
+xs = array([1,2,3,None])
+print(f'{xs.dtype = }')
+print(f'{xs._data = }')
+print(f'{xs._mask = }')
+
+from numpy import shares_memory
+from numpy.random import choice
+from string import ascii_lowercase
+
+ws = choice([*ascii_lowercase], size=(10, 4)).view('&lt;U4').ravel()
+print(f'{ws.nbytes = }')
+
+xs = array(ws)
+ys = array(choice([*ascii_lowercase], size=(100000, 4)).view('&lt;U4').ravel())
+
+print(f'{xs.memory_usage() = :,}')
+print(f'{ys.memory_usage() = :,}')
+
+print(f'{shares_memory(xs._ndarray, ws) = }')
+
+zs = Categorical(ys)
+print(f'{zs.memory_usage() = :,}')
+</code></pre>
+<pre><code class="language-python">from pandas import Series
+from numpy.random import normal
+
+s = Series(xs := normal(size=100000), name='nums')
+print(f'{shares_memory(s.array._ndarray, xs) = }')
+
+print(len(s[s &gt; 2]) / len(s))
+print(s[(s &gt;= 2) | (s &lt;= -2)])
+print(xs[(xs &gt;= 2) | (xs &lt;= -2)])
+print(s.sum())
+print(s.var())
+print(s.std())
+
+print(s[lambda s: s &gt;= 2])
+print(xs[lambda xs: xs &gt;= 2]) # NOT implemented
+print(s.shift())
+print(s.diff())
+</code></pre>
+<p>Pandas has alternative lookup modalities, <code>pandas.Series</code> provides a structure with two lookup models:</p>
+<ol>
+<li>by positional index</li>
+<li>by labelled index</li>
+</ol>
+<pre><code class="language-python">from pandas import Series, MultiIndex, to_datetime
+from numpy import arange, array
+from itertools import islice, cycle
+from datetime import datetime, timedelta
+from random import randrange
+from numpy.random import permutation
+
+s = Series(arange(size := 6), index=[*ascii_lowercase[:size]], name='nums')
+print(s.iloc[0])
+print(s.loc['a'])
+print(s.iloc[0:2]) # use half-open interval
+print(s.loc[&quot;a&quot;:&quot;c&quot;]) # use open interva
+
+index0 = 'ab'
+assert size % len(index0) == 0
+index1 = lambda off: islice(cycle(ascii_lowercase), off, off + (size // len(index0)))
+
+s.index = MultiIndex.from_tuples((x, y) for x in index0 for y in index1(ord(x)))
+print(s)
+print(s.loc[&quot;a&quot;])
+print(s.loc[&quot;a&quot;,&quot;t&quot;])
+
+s = Series(arange(size := 6), name='nums')
+s.index = to_datetime(array([timedelta(seconds=randrange(1,60)) for _ in range(size)]).cumsum() + datetime.now().replace(hour=9, minute=0, second=0, microsecond=0))
+print(s)
+print(s.loc[&quot;2021-04&quot;])
+print(s.loc[&quot;2021-04-29 09:00&quot;])
+
+print(f'{s.index.is_monotonic = }')
+s.index = permutation(s.index)
+print(f'{s.index.is_monotonic = }')
+</code></pre>
+<p>A <code>pandas.Series</code> is a one-dimentional structure with an index, looking like:</p>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>x</td>
+</tr>
+<tr>
+<td>...</td>
+<td>x</td>
+</tr>
+<tr>
+<td>...</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>pandas.DataFrame</code> is a two-dimentional structure with a major and minor index, looking like:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>“column” a</th>
+<th>index b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“row” index</td>
+<td>data</td>
+<td>data</td>
+</tr>
+<tr>
+<td>...</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>...</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>...</td>
+<td>x</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+<p>A quick guide to <code>pandas.DataFrame</code> operations:</p>
+<ul>
+<li>
+<p><code>df[x]</code> -&gt; look-up, using “column” index, labelled</p>
+</li>
+<li>
+<p><code>df[df.columns[x]]</code> -&gt; look-up, using “column” index, positional</p>
+</li>
+<li>
+<p><code>df.loc[x]</code> -&gt; look-up, using “row” index, labelled</p>
+</li>
+<li>
+<p><code>df.iloc[x]</code> -&gt; look-up, using “row” index, positional</p>
+</li>
+<li>
+<p><code>df.groupby(..., axis=0)</code> -&gt; aggregate data along rows using “row” index</p>
+</li>
+<li>
+<p><code>df.groupby(..., axis=1)</code> -&gt; aggregate data along columns using “column” index</p>
+</li>
+<li>
+<p><code>df.resample(...)</code> -&gt; perform N:M mapping of data along rows using “row” index</p>
+</li>
+<li>
+<p><code>df.stack</code> -&gt; turn “column” index into a “row” index</p>
+</li>
+<li>
+<p><code>df.unstack</code> -&gt; turn “row” index into a “index” index</p>
+</li>
+<li>
+<p><code>df.melt</code> -&gt; take data along rows with corresponding “column” index values and turn into new column</p>
+</li>
+<li>
+<p><code>df.pivot</code> -&gt; pivot data along rows into new columns</p>
+</li>
+<li>
+<p><code>df.pivot_table</code> -&gt; perform .groupby and .unstack with finger control</p>
+</li>
+</ul>
+<pre><code class="language-python">from pandas import DataFrame, to_datetime
+
+df = DataFrame({
+  'a': arange(size := 6),
+  'b': arange(10, 10+size),
+  'c': arange(100, 100+size),
+})
+
+df.index = to_datetime(array([timedelta(seconds=randrange(1,60)) for _ in range(size)]).cumsum() + datetime.now().replace(hour=9, minute=0, second=0, microsecond=0))
+
+print(df)
+df = df.transpose()
+print(df)
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://athanszheyin.github.io/tag/tech" class="tag">
+                    Tech
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://athanszheyin.github.io/post/trade-execution-zong-shu-xu">
+                  <h3 class="post-title">
+                    Trade Execution综述 （续）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2021-03-22T19:46:43.660Z</updated>
+    <updated>2021-04-29T22:23:38.288Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -10,6 +10,299 @@
     <logo>https://athanszheyin.github.io/images/avatar.png</logo>
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, athans blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Well Designed Pandas]]></title>
+        <id>https://athanszheyin.github.io/post/well-designed-pandas</id>
+        <link href="https://athanszheyin.github.io/post/well-designed-pandas">
+        </link>
+        <updated>2021-04-28T22:18:56.000Z</updated>
+        <summary type="html"><![CDATA[<p>For understanding core datatypes in pandas, including <code>pandas.array</code>, <code>pandas.Series</code>, <code>pandas.DataFrame</code>, <code>pandas.Catgorical</code>; resampling and masking</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>For understanding core datatypes in pandas, including <code>pandas.array</code>, <code>pandas.Series</code>, <code>pandas.DataFrame</code>, <code>pandas.Catgorical</code>; resampling and masking</p>
+<!-- more -->
+<p>Python systems have two programmatic domains:</p>
+<ul>
+<li>program structuring</li>
+<li>computational</li>
+</ul>
+<p>In the program structuring domain, we may use lots of tools like the Python built-in types (e.g.  <code>list</code>, <code>dict</code>, <code>set</code>) as well as Python metaphors (e.g. context manager for sequenced operations, decorators for wrapped behaviors, generators for lazy computations or for explicit lexical linrarisation of implicit state-graphs)</p>
+<pre><code class="language-python"># this is not a computational type,
+# otherwise these operations would be interpreted computaitonally
+xs = [1,2,3,4]
+print(f'{xs * 2 = }') # &quot;structure&quot;-level operation -&gt; repetition
+
+ys = [5,6,7,8]
+print(f'{xs + ys =}') # &quot;structure&quot;-level operation -&gt; concatenation
+</code></pre>
+<p>The contents of a Python built-in type are references to box types, as a consequence, operations within these sturctures are hard to optimizsed and thus slow.</p>
+<pre><code class="language-python">from codetiming import Timer
+from random import randint
+
+dot = lambda xs, ys: sum(x*y for x, y in zip(xs, ys))
+
+with Timer(text='creating &quot;list&quot; with comprehension syntax: {:0.4f} seconds'):
+  xs = [randint(-100, 100) for _ in range(10000000)]
+  ys = [randint(-100, 100) for _ in range(10000000)]
+  
+with Timer(text='&quot;list&quot; dot product of xs and ys: {:0.4f} seconds'):
+  dot(xs, ys)
+</code></pre>
+<p>In comparison, <code>numpy</code> provides us with computatioinal type. This is type is a “manager class” that fully controls its contents. thus, it is free to store its contents in an optimal fashion and it is able to enfornce constraints on its contents.</p>
+<pre><code class="language-python">from codetiming import Timer
+from numpy.random import randint
+
+with Timer(text='creating &quot;numpy.ndarray&quot;: {:0.4f} seconds'):
+	xs = randint(-100, 100, size=10000000)
+	ys = randint(-100, 100, size=10000000)
+  
+with Timer(text='&quot;numpy.ndarray&quot;: dot product of xs and ys: {:0.4f} seconds'):
+  xs.dot(ys)
+</code></pre>
+<p>Additionaly, the <code>numpy.ndarray</code> is clearly a computational type. The contents are machine-typed (i.e. fixed bit-width int64). The <code>numpy.ndarray</code> array is actually just a view of some memory region.</p>
+<pre><code class="language-python">from numpy import array
+
+xs = array([1,2,3,4])
+print(f'{xs * 2 = }') # elementwise operation
+
+ys = array([5,6,7,8])
+print(f'{xs + ys =}') # elementwise operation
+
+print(f'{xs.__array_interface__[&quot;data&quot;][0] = :#_x}') # memory location
+print(f'{xs.dtype}') # intepreted type
+print(f'{xs.shape}') # intepreted shape
+print(f'{xs.strides}') # intepreted strides
+
+(ys := xs.copy()).shape = 2, 2
+print(f'{ys = }')
+
+from numpy.lib.stride_tricks import as_strided
+ys = as_strided(xs, strides=(16, 8), shape=(2, 2))
+print(f'{ys = }')
+
+from numpy import set_printoptions
+set_printoptions(linewidth=float('inf'), threshold=24)
+
+# cast VS convert
+xs = array([1,2,3,4]) * 100
+(ys := xs.copy()).dtype = 'int8'
+print('.dtype = ...'.center(20, '-'))
+print(f'{ys = }')
+
+ys = xs.copy().astype('int8')
+print('.astype(...)'.center(20, '-'))
+print(f'{ys = }')
+</code></pre>
+<p>Therefore, analysing memory usage of <code>numpy</code> code is very easy.</p>
+<pre><code class="language-python">from numpy import shares_memory
+from numpy.random import normal
+
+xs = normal(size=1000000)
+print(f'{xs.nbytes = :,}') # total number of bytes
+
+xs = normal(size=1000000).astype('float32')
+print(f'{xs.nbytes = :,}') # total number of bytes
+</code></pre>
+<p>However, <code>numpy</code> as a pure computational type has limits:</p>
+<ul>
+<li>its ergonomics aren’t great (we may prefer a ’named tensor’ like <code>xarray.DataArray</code>)</li>
+<li>it lacks business-level information, such as missing data</li>
+<li>it lacks business-level information, such as querying/filtering mechanisms</li>
+</ul>
+<pre><code class="language-python">xs = array([1,2,3,None])
+print(f'{xs.dtype = }')
+xs = array([1,2,3,float('nan')])
+print(f'{xs.dtype = }')
+</code></pre>
+<pre><code class="language-python">from pandas import array, Categorical
+
+xs = array([1,2,3,None])
+print(f'{xs.dtype = }')
+print(f'{xs._data = }')
+print(f'{xs._mask = }')
+
+from numpy import shares_memory
+from numpy.random import choice
+from string import ascii_lowercase
+
+ws = choice([*ascii_lowercase], size=(10, 4)).view('&lt;U4').ravel()
+print(f'{ws.nbytes = }')
+
+xs = array(ws)
+ys = array(choice([*ascii_lowercase], size=(100000, 4)).view('&lt;U4').ravel())
+
+print(f'{xs.memory_usage() = :,}')
+print(f'{ys.memory_usage() = :,}')
+
+print(f'{shares_memory(xs._ndarray, ws) = }')
+
+zs = Categorical(ys)
+print(f'{zs.memory_usage() = :,}')
+</code></pre>
+<pre><code class="language-python">from pandas import Series
+from numpy.random import normal
+
+s = Series(xs := normal(size=100000), name='nums')
+print(f'{shares_memory(s.array._ndarray, xs) = }')
+
+print(len(s[s &gt; 2]) / len(s))
+print(s[(s &gt;= 2) | (s &lt;= -2)])
+print(xs[(xs &gt;= 2) | (xs &lt;= -2)])
+print(s.sum())
+print(s.var())
+print(s.std())
+
+print(s[lambda s: s &gt;= 2])
+print(xs[lambda xs: xs &gt;= 2]) # NOT implemented
+print(s.shift())
+print(s.diff())
+</code></pre>
+<p>Pandas has alternative lookup modalities, <code>pandas.Series</code> provides a structure with two lookup models:</p>
+<ol>
+<li>by positional index</li>
+<li>by labelled index</li>
+</ol>
+<pre><code class="language-python">from pandas import Series, MultiIndex, to_datetime
+from numpy import arange, array
+from itertools import islice, cycle
+from datetime import datetime, timedelta
+from random import randrange
+from numpy.random import permutation
+
+s = Series(arange(size := 6), index=[*ascii_lowercase[:size]], name='nums')
+print(s.iloc[0])
+print(s.loc['a'])
+print(s.iloc[0:2]) # use half-open interval
+print(s.loc[&quot;a&quot;:&quot;c&quot;]) # use open interva
+
+index0 = 'ab'
+assert size % len(index0) == 0
+index1 = lambda off: islice(cycle(ascii_lowercase), off, off + (size // len(index0)))
+
+s.index = MultiIndex.from_tuples((x, y) for x in index0 for y in index1(ord(x)))
+print(s)
+print(s.loc[&quot;a&quot;])
+print(s.loc[&quot;a&quot;,&quot;t&quot;])
+
+s = Series(arange(size := 6), name='nums')
+s.index = to_datetime(array([timedelta(seconds=randrange(1,60)) for _ in range(size)]).cumsum() + datetime.now().replace(hour=9, minute=0, second=0, microsecond=0))
+print(s)
+print(s.loc[&quot;2021-04&quot;])
+print(s.loc[&quot;2021-04-29 09:00&quot;])
+
+print(f'{s.index.is_monotonic = }')
+s.index = permutation(s.index)
+print(f'{s.index.is_monotonic = }')
+</code></pre>
+<p>A <code>pandas.Series</code> is a one-dimentional structure with an index, looking like:</p>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>x</td>
+</tr>
+<tr>
+<td>...</td>
+<td>x</td>
+</tr>
+<tr>
+<td>...</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>pandas.DataFrame</code> is a two-dimentional structure with a major and minor index, looking like:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>“column” a</th>
+<th>index b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“row” index</td>
+<td>data</td>
+<td>data</td>
+</tr>
+<tr>
+<td>...</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>...</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>...</td>
+<td>x</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+<p>A quick guide to <code>pandas.DataFrame</code> operations:</p>
+<ul>
+<li>
+<p><code>df[x]</code> -&gt; look-up, using “column” index, labelled</p>
+</li>
+<li>
+<p><code>df[df.columns[x]]</code> -&gt; look-up, using “column” index, positional</p>
+</li>
+<li>
+<p><code>df.loc[x]</code> -&gt; look-up, using “row” index, labelled</p>
+</li>
+<li>
+<p><code>df.iloc[x]</code> -&gt; look-up, using “row” index, positional</p>
+</li>
+<li>
+<p><code>df.groupby(..., axis=0)</code> -&gt; aggregate data along rows using “row” index</p>
+</li>
+<li>
+<p><code>df.groupby(..., axis=1)</code> -&gt; aggregate data along columns using “column” index</p>
+</li>
+<li>
+<p><code>df.resample(...)</code> -&gt; perform N:M mapping of data along rows using “row” index</p>
+</li>
+<li>
+<p><code>df.stack</code> -&gt; turn “column” index into a “row” index</p>
+</li>
+<li>
+<p><code>df.unstack</code> -&gt; turn “row” index into a “index” index</p>
+</li>
+<li>
+<p><code>df.melt</code> -&gt; take data along rows with corresponding “column” index values and turn into new column</p>
+</li>
+<li>
+<p><code>df.pivot</code> -&gt; pivot data along rows into new columns</p>
+</li>
+<li>
+<p><code>df.pivot_table</code> -&gt; perform .groupby and .unstack with finger control</p>
+</li>
+</ul>
+<pre><code class="language-python">from pandas import DataFrame, to_datetime
+
+df = DataFrame({
+  'a': arange(size := 6),
+  'b': arange(10, 10+size),
+  'c': arange(100, 100+size),
+})
+
+df.index = to_datetime(array([timedelta(seconds=randrange(1,60)) for _ in range(size)]).cumsum() + datetime.now().replace(hour=9, minute=0, second=0, microsecond=0))
+
+print(df)
+df = df.transpose()
+print(df)
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Trade Execution综述 （续）]]></title>
         <id>https://athanszheyin.github.io/post/trade-execution-zong-shu-xu</id>
@@ -511,38 +804,6 @@ Harvey and Liu judge it the most appropriate for evaluating trading strategies. 
 <p>Technological advances in telecommunications, trading automation, data storage and processing, and computation have permanently changed the landscape of the financial industry. The emergence of powerful new tools such as machine learning and artificial intelligence offers some exciting new possibilities for creating highly personalized and dynamic portfolios --- algorithms that are capable of adapting not only to changing economic conditions, but also to changing personal circumstances and tastes. The vision of “precision indexes” that dynamically adjust over time – that adapt to an investor’s specific needs more effectively than a target-date fund – is likely to become reality.</p>
 <p>The next frontier for both passive and active portfolio managers is to develop a deeper understanding of “investor biology”. Why do we do the things we do, especially those things that undermine wealth accumulation? Investment managers and financial advisors are often quick to criticize retail investors for chasing performance and not focusing on the long term, but human nature is simply not wired to buy and hold when we are facing mounting losses in our nest egg. In fact, today’s passive investment products are the equivalent of a pile of auto parts from which we ask drivers to put together the right combination of engine, carburetors, chassis, dashboard and so on, to meet their driving needs. What’s needed instead are fully assembled vehicles that offer the kind of protection against human behavior that even the least expensive car offers today’s drivers: air bags, collapsible steering columns, reinforced bumpers, three-point seat belts, safety glass and so on.</p>
 <p>While self-driving portfolios may seem like science fiction right now, the same was said in 1970s of passive buy and hold portfolios that could beat most active managers. One day, passive investment products will make retirement planning as straightforward as going to the dentist, but a lot less painful and even less expensive, though they come at a cost of potential pitfalls if abused.</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Literature Review -- Risk Based Portfolio Construction]]></title>
-        <id>https://athanszheyin.github.io/post/literature-review-risk-based-portfolio-construction</id>
-        <link href="https://athanszheyin.github.io/post/literature-review-risk-based-portfolio-construction">
-        </link>
-        <updated>2020-04-17T13:01:54.000Z</updated>
-        <summary type="html"><![CDATA[<p>[Neuberger Berman] <strong>Wai Lee</strong></p>
-<p>Perhaps because of the ample volume of empirical tests documenting the “outperformance” of these risk-based portfolios, there seems to be a spreading belief that these betas are “smart”. But relying on the belief that the market portfolio is inefficient, whether true or not, does not make any investor or portfolio smarter. Making the debatable claim that passive capitalization weighting results in performance drag and blindly following non-capitalization-weighting, is not a prudent investment approach if one is seeking to outperform. The key is still to identify portfolios, ex ante, that will outperform when subject to a set of performance measures. Amore constructive approach to investing is to continue to advance our understanding of these portfolios. Is their performance indeed driven by exposures to some new and potentially nonlinear premia? What role does rebalancing play with regard to performance? What are the impacts of trading costs and tax efficiency versus the passive, market portfolios?</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>[Neuberger Berman] <strong>Wai Lee</strong></p>
-<p>Perhaps because of the ample volume of empirical tests documenting the “outperformance” of these risk-based portfolios, there seems to be a spreading belief that these betas are “smart”. But relying on the belief that the market portfolio is inefficient, whether true or not, does not make any investor or portfolio smarter. Making the debatable claim that passive capitalization weighting results in performance drag and blindly following non-capitalization-weighting, is not a prudent investment approach if one is seeking to outperform. The key is still to identify portfolios, ex ante, that will outperform when subject to a set of performance measures. Amore constructive approach to investing is to continue to advance our understanding of these portfolios. Is their performance indeed driven by exposures to some new and potentially nonlinear premia? What role does rebalancing play with regard to performance? What are the impacts of trading costs and tax efficiency versus the passive, market portfolios?</p>
-<!-- more -->
-<p>If some portfolios are built without a clear performance objective and without information on expected return do indeed outperform the market portfolio, it would represent a profound finding, probably requiring that financial theory be rewritten. This article share some findings to unveil the embedded active investment views behind what are generally known as risk-based portfolios. With subsequent research, it has become clear that the mean-variance optimality of each of these risk-based portfolios reflects a particular model of expected returns: They are all active portfolios with respect to the market.</p>
-<p>Many published simulations of the performance of these portfolios include ad hoc constraints imposed by the authors in order to limit some of the extreme positions, concentrations, sensitivities, and high turnovers with respect to changes in risk estimates and other factors. Subsequent research helps advance our understanding of the important analytical properties of these risk-based portfolios. All the portfolios have been shown to have various degrees of preference for assets that are expected to have lower systematic and idiosyncratic risks and, therefore, tie their performance to low-risk anomaly, to some extent. Furthermore, certain characteristics that I found surprising, such as the concentration of weights and risks in the minimum-variance and maximum-diversification portfolios, which turned out to be even greater than in the often-criticized market portfolio, have been shown to be more the norm than the exception as a result of their construction methodologies.</p>
-<p>We have witnessed significant advances in research of the low-risk anomaly, whether risk is measured by beta or volatility. The economic rationale for low-risk strategies and the possibility of persistence of their outperformance in the future are still being debated, even as the low-risk anomaly is reported to exist in other asset classes and sample periods. On top of the proven preference for low-risk anomaly in risk-based portfolios, risk-based portfolios also have loadings on other known risk premia, such as the value and size premia, according to the empirical results. Conceptually, I find it quite unlikely that these risk-based portfolios, which are all built by feeding through a covariance matrix of second moments, can be boiled down to exposures to a set of simple, linear factors.</p>
-<p>At the very least, one may interpret that these risk-based approaches were built to approximate a mean-variance optimized (MVO) world, for various reasons such as to mitigate the well-known problem of error maximization or others. To be specific, in the below four portfolio construction approaches:</p>
-<ol>
-<li>It can be shown that Equal-Weighting (EW) portfolio is indeed an MVO portfolio if all assets have the same correlations with each other, as well as identical returns and volatilities.</li>
-<li>The Global Minimum Variance (GMV) portfolio is optimal when expected excess returns of all assets are identical.</li>
-<li>Identical Sharpe Ratio for all assets is a necessary condition for the Most-Diversified Portfolio (MDP) to be MVO efficient in that universe of assets.</li>
-<li>The necessary conditions for the Risk Parity (RP) portfolio to be efficient require identical Sharpe ratios and identical correlations among all assets in the universe.</li>
-</ol>
-<p>Often we see “Risk On/Risk Off” as a description of the state of the market environment in research reports or press coverage. Most times RORO is often referenced when investors attempt to articulate how challenging the investment environment is. A pure form of RORO does not exist when search for its definitions. The best we could do is to understand the RORO environment in a normative sense, and try to use that understanding as our compass to invest, given a somewhat subjective assessment of how close we might be a state of RORO.</p>
-<p>In a near-RORO environment, the breadth of investment decisions shrinks significantly, leaving the timing of a few systematic risk factors to become the dominant determinant of performance. We can track some measures that are believed to be helpful in preemptive identification of a potential RORO. One example is the use of graph-based similarity models, such as minimum spanning tree and correlation networks, as visually powerful tools in an attempt to track the degree of tightness within a universe of assets, whether the universe consists of asset classes or individual securities. With such tools, we are able to identify and pay more attention to the origins of market tightness. In the case of managing equity portfolios, we also regularly decompose risk contributions into sources. The dynamics of idiosyncratic risks as a source of total risk in the opportunity set become a compass in guiding us on how much and where to take risks.</p>
-<p>Say the correlation between assets or securities suddenly rises and we reckon it signifies that we are actually in RORO environment, we can draw the below investment implications:</p>
-<ul>
-<li>Risk Parity portfolios will become mean-variance optimal, since portfolios of these assets, regardless of their weights, are also statistically equivalent to the single non-redundant asset. However the rise in intra-portfolio correlation does not link to their active return.</li>
-<li>If investors exist who are able to switch their focuses from a diversified set of factors to a common set of factors (assuming that such a set of factors can be precisely identified), this may imply dispersion in performance among global asset allocators. That means, investors will outperform when taking concentrated positions. Persistence of their outperformance, however, is likely to be weak.</li>
-<li>Quantitative investors who use systematic, model-driven approaches and who attend to factor related components will likely to stand out, whereas fundamental investor focus on stock picking will suffer. As in a highly correlated world, investors do not have sufficient degree of freedom to diversity their active investment decisions but instead have rely on the quality of their factor information, therefore those who have the capability to identify and predict the factor returns will likely to have a competitive edge.</li>
-</ul>
 ]]></content>
     </entry>
 </feed>
