@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://athanszheyin.github.io</id>
     <title>athans blog</title>
-    <updated>2021-04-29T22:31:30.406Z</updated>
+    <updated>2021-05-13T03:17:54.593Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://athanszheyin.github.io"/>
     <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
@@ -10,6 +10,193 @@
     <logo>https://athanszheyin.github.io/images/avatar.png</logo>
     <icon>https://athanszheyin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, athans blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Get in Shape with Groupby]]></title>
+        <id>https://athanszheyin.github.io/post/get-in-shape-with-groupby</id>
+        <link href="https://athanszheyin.github.io/post/get-in-shape-with-groupby">
+        </link>
+        <updated>2021-05-12T03:13:41.000Z</updated>
+        <content type="html"><![CDATA[<p>Discussion about <code>pandas.groupby</code>,  <code>GroupBy.apply</code>, <code>GroupBy.agg</code> and <code>GroupBy.transform</code></p>
+<h3 id="all-about-groupby">All about <code>.groupby</code></h3>
+<p>Let’s start with a <code>pandas.DataFrame</code> with some random data</p>
+<ul>
+<li><code>time</code> is a <code>pandas.date_range</code> from July 4, 2021 9:00 AM ~ 1:00 PM, with some random number of minutes add to put noise on each measurement</li>
+<li><code>ticker</code> is a randomly selected four-character string</li>
+<li><code>price</code> is a random starting value on <code>[0, 100)</code> plus some random noise drawn uniformly from <code>[-5, +5)</code></li>
+</ul>
+<pre><code class="language-python">from pandas import DataFrame, date_range, to_timedelta, concat
+from numpy import repeat, array, tile
+from numpy.random import choice, random, randint
+from random import randrange
+from string import ascii_lowercase
+from datetime import timedelta
+
+df = DataFrame({
+  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
+  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
+  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
+  'signal': randint(10, size=size*rpt)
+})
+print(df.head(3))
+</code></pre>
+<p>We can use the <code>.groupby</code> method on this to perform operations on groups of <code>ticker</code>. In this case, <code>.groupby</code> method returns a <code>DataFrameGroupby</code> object that we can call further methods on to operate on the groups.</p>
+<pre><code class="language-python">_print = lambda expr: print(f'{expr} '.center(50, '-'), eval(expr), sep='\n')
+# print(f'{df.groupby(&quot;ticker&quot;) = }')
+_print('df.groupby(&quot;ticker&quot;).sum().head(2)')
+</code></pre>
+<p>The <code>pandas.DataFrameGroupBy</code> object defines a set of operations that can be performed across on <strong>all</strong> of the groups, some of which are implemented as high-performance vectorized operations.</p>
+<p>Some simple operations supported are:</p>
+<ul>
+<li><code>.count</code></li>
+<li><code>.min</code></li>
+<li><code>.max</code></li>
+<li><code>.sum</code></li>
+<li><code>.var</code></li>
+<li><code>.std</code></li>
+<li><code>.size</code></li>
+</ul>
+<p>These perform the specified reduction/aggregation operation on all relevant columns. If there are non-numeric columns, some operations may NOT be performed: e.g. <code>.sum()</code> will sum within the groups for all numeric columns and skip non=numeric columns; <code>.size</code> will return a single column with the size of the group; <code>.count</code> will count non-NaN values for all columns; <code>.min</code> and <code>.max</code> will find the minimum and maximum value for all comparable columns.</p>
+<p>The return value will be a new <code>pandas.Series</code> or <code>pandas.DataFrame</code> where the data is the result of the desired operation and the index is the group values (potentially <code>MultiIndex</code> when grouping multiple values). A <code>pandas.DataFrame</code> if there are multiple columns resulting from the desired operation; A <code>pandas.Series</code> if there is only column.</p>
+<pre><code class="language-python">for meth in 'count min max sum var std size'.split():
+  _print(f'df.groupby(&quot;ticker&quot;).{meth}().head(2)')
+</code></pre>
+<p>With the <code>.as_index=False</code> flag, you can suppress the assignment of the group labels to the index.</p>
+<pre><code class="language-python">_print = lambda expr: print('-'*50, f'{expr} '.center(50, '-'), '-'*50, eval(expr), sep='\n')
+
+from pandas import DataFrame
+from numpy.random import randint, choice, normal
+from string import ascii_lowercase, ascii_uppercase
+
+index = choice([*ascii_lowercase], size=(size:=10, 2)).view('&lt;U2').ravel()
+df = DataFrame({
+  'x': randint(0, 10, size=size),
+  'y': randint(0, 10, size=size),
+}, index=index).sort_index()
+
+_print('df.sample(2)')
+_print(&quot;df.groupby(level=0).sum().head()&quot;)
+_print(&quot;df.groupby(level=0, as_index=False).sum().head()&quot;)
+</code></pre>
+<p>Note that the <code>.groupby</code> has an axis= parameter, while we typically group down rows, it is also possible to group across columns (this is might be useful for joining similarly named columns). For the rest of the notes, we’ll ignore this possibility and assume we only wang grouping of rows (i.e. axis=0).</p>
+<pre><code class="language-python">_print = lambda expr: print(f'{expr} '.center(50, '-'), eval(expr), sep='\n')
+
+df = DataFrame({
+  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
+  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
+  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
+  'sig1': randint(10, size=size*rpt),
+  'sig2': randint(10, size=size*rpt),
+  'sig3': randint(10, size=size*rpt),
+})
+df.columns = *df.columns[:-3], 'sig', 'sig', 'sig'
+
+_print('df.groupby(level=0, axis=1).sum().head(3)')
+</code></pre>
+<p>We can perform a <code>.groupby</code> grouping by a single column, by multiple columns, or on the index. A considerable amount of time for a <code>.groupby</code> operation is spent sorting the data. If the data is pre-sorted, then we can disable this sorting with a <code>sort=False</code> flag at significant performance gain.</p>
+<p>There is also a <code>pandas.Series.GroupBy</code> object in addition to the <code>pabdas.DataFrameGroupBy</code>. This represents a <code>.groupby</code> operation being performed on a single <code>pandas.Series</code> of data</p>
+<pre><code class="language-python">index = choice([*ascii_lowercase], size=(size:=10, 2)).view('&lt;U2').ravel()
+df = DataFrame({
+  'x': normal(size=size),
+  'y': normal(size=size),
+}, index=index).sort_index()
+
+print(f'{df[&quot;x&quot;].groupby(level=0) = }')
+</code></pre>
+<p><code>.groupby</code> can also group by a piece of data that is NOT contained in the <code>DataFrame</code> or <code>Series</code>.</p>
+<pre><code class="language-python">index = choice([*ascii_lowercase], size=(size:=10, 4)).view('&lt;U4').ravel()
+df = DataFrame({
+  'x': randint(0, 10, size=size),
+  'y': randint(0, 10, size=size),
+}, index=index).sort_index()
+
+_print(&quot;df.groupby(df['x'] &lt; df['y']).sum()&quot;)
+_print(&quot;df.groupby(lambda idx_val: idx_val.lower()[:2]).sum().head(2)&quot;)
+_print(&quot;df.groupby(df.index.str.lower().str[:2]).sum().head(2)&quot;)
+</code></pre>
+<p>If we were to <code>.groupby</code> two fields, and we want the result to be non-“flat”; in other words, we want one of the fields to be the row index, the other field to be the column index, and the grouped function values to be at the intersection of these, then we can do a <code>.groupby().unstack()</code>.</p>
+<p>There is also a short-named for this operation: <code>.pivot_table()</code> which has the advantage of NOT converting the data values to a floating point if there are missing intersections fo the two groups.</p>
+<pre><code class="language-python">_print = lambda expr: print('-'*50, f'{expr} '.center(50, '-'), '-'*50, eval(expr), sep='\n')
+
+from pandas import DataFrame, MultiIndex
+from sys import maxsize
+
+index = MultiIndex.from_tuples([
+  ('a', 'aa', 'aaa'),
+  ('a', 'bb', 'aaa'),
+  ('a', 'bb', 'abb'),
+  ('b', 'aa', 'aaa'),
+  ('b', 'bb', 'aaa'),
+  ('b', 'cc', 'aaa'),
+], names='A B C'.split())
+df = DataFrame({
+  'x': randint(0, 10, size=index.size),
+  'y': 2**53 +1 # precision will be lost when converting to float type
+}, index=index)
+
+_print('df.groupby(level=(1, 2)).count().unstack()')
+_print('df.groupby(level=(1, 2)).count().unstack().fillna(0).convert_dtypes()')
+_print(&quot;df.pivot_table(index='B', columns='C', values=['x', 'y'], aggfunc='count', fill_value=0)&quot;)
+</code></pre>
+<h3 id="all-about-groupbyaggregate-apply-filter-transform">All about <code>.groupby().{aggregate, apply, filter, transform}</code></h3>
+<p>Going back to our data from before, we may want to perform a more complex operation on the gourds than a simple <code>.count</code> or <code>.sum</code>.</p>
+<p>We can iterate over the groups directly and perform operations in Python (though this should be reserved for cases where the number of groups is on the order of the program structure, NOT on the order of the program computation). We can also use the <code>.apply</code>,  <code>.aggregate</code>,  <code>.filter</code>, and<code>.transform</code> methods. These largely fit into the following categories:</p>
+<ol>
+<li><strong>aggregation</strong> (reducing the size of the group)</li>
+<li><strong>transformation</strong> (preserving the indexing of the group)</li>
+<li><strong>filtration</strong> (reducing the size of the group)</li>
+</ol>
+<p>Let’s start with filtration, using <code>.filter</code>:</p>
+<pre><code class="language-python">df = DataFrame({
+  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
+  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
+  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
+  'signal': randint(10, size=size*rpt)
+}).set_index(['ticker', 'time']).sort_index()
+
+_print(&quot;df.groupby('ticker').filter(lambda g: (g['signal'].max() - g['signal'].min()) &lt; 6).head(10)&quot;)
+</code></pre>
+<p>In a transformation, the result must be “like-indexed”. Let’s take a look at using <code>.transform</code>. The function using for <code>.transform</code> is restricted in the following ways:</p>
+<ul>
+<li>It must return a value with the same shape as the input group or something that can be broadcast to the same shape</li>
+<li>It must support being applied on a column-by-column basis
+<ul>
+<li>If it supports being applied to the entire group, then a fast path can be triggered</li>
+</ul>
+</li>
+<li>It must not change the groups in-place</li>
+</ul>
+<pre><code class="language-python">_print(&quot;df.groupby('ticker').transform(lambda g: g.round(-1)).head(10)&quot;)
+_print(&quot;df.groupby('ticker').transform(lambda g: g.round(-1).iloc[0]).head(10)&quot;)
+_print(&quot;df.groupby('ticker').transform(lambda g: g.round(-1).iloc[:-1]).head(10)&quot;) # this will fail because of shape mismatch
+_print(&quot;df.groupby('ticker').transform(lambda g: round(g, -1 if g.name == 'signal' else -2)).head(10)&quot;)
+</code></pre>
+<p>If we want to perform an aggregation, we can use <code>.aggregate</code> or <code>.agg</code>:</p>
+<pre><code class="language-python">_print(&quot;df.groupby('ticker').aggregate('sum').head(10)&quot;)
+_print(&quot;df.groupby('ticker').aggregate({'price': 'max', 'signal': ['min', 'max'], }).head(10)&quot;)
+_print(&quot;df.groupby('ticker').aggregate(max_price = NamedAgg(column='price', aggfunc='max'), min_signal = ('signal', 'min')).head(10)&quot;)
+_print(&quot;df.groupby('ticker').aggregate(lambda g: g.sum()).head(10)&quot;)
+</code></pre>
+<p>Finally, we have another means by which we can do aggregation operations: <code>.apply</code>. <code>.apply</code> is extremely flexible, but it has the downside of much slower in practice than <code>.aggregate</code> or <code>.transform</code>. <code>.apply</code> takes a function which accepts a <code>DataFrame</code> as its argument, returning a new <code>DataFrame</code>; the <code>.apply</code> machinery determines how to combine the result <code>DataFrame</code>s into a a new structure.</p>
+<pre><code class="language-python">_print(&quot;df.groupby('ticker').apply(lambda df: concat([df, df]).sort_index()).head(10)&quot;)
+_print(&quot;df.groupby('ticker').apply(lambda df: (df['signal'] + df['price']).sum()).head(10)&quot;)
+</code></pre>
+<h3 id="what-about-rolling">What about <code>.rolling</code></h3>
+<p>The <code>.groupby</code> method is NOT the only method which can operate on the <code>pandas.DataFrame._data</code> region. The <code>.rolling</code> and <code>.expanding</code> operations provide similar functionality, but on rolling windows and for expanding transformations:</p>
+<pre><code class="language-python">_print(&quot;df.rolling(10, min_periods=1).sum().head(10)&quot;)
+_print(&quot;df.groupby('ticker').transform(lambda df: df.rolling(10, min_periods=1).sum()).head(10)&quot;)
+_print(&quot;df.groupby('ticker')['price'].transform(lambda s: s.reset_index(level=0, drop=True).rolling(10).sum()).head(10)&quot;)
+
+_print(&quot;df.expanding(min_periods=1).sum().head(10)&quot;)
+_print(&quot;df.expanding(min_periods=1).count().head(10)&quot;)
+_print(&quot;df.expanding(min_periods=1).aggregate(lambda s: s[-1] - s[0]).head(10)&quot;)
+_print(&quot;df.expanding(min_periods=1).aggregate(lambda s: s.max() - s.min()).head(10)&quot;)
+
+_print(&quot;df.ewm(alpha=0.1).mean().head(10)&quot;)
+_print(&quot;df.ewm(alpha=0.1).std().head(10)&quot;)
+_print(&quot;df.ewm(alpha=0.1).var().head(10)&quot;)
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Well Designed Pandas]]></title>
         <id>https://athanszheyin.github.io/post/well-designed-pandas</id>
@@ -789,24 +976,6 @@ Harvey and Liu judge it the most appropriate for evaluating trading strategies. 
 <strong>We show that the Sharpe ratio is a simple transformation of the t-statistics</strong>. We proceed as follows. The original Sharpe ratio maps to a t-statistic, and we calculate the p-value. We adjust the p-value and then derive the t-statistic associated with that particular adjusted p-value. We transform this into the haircut Sharpe ratio.</p>
 <p><strong>Our haircutting of the Sharpe ratio depends on the initial Sharpe ratio as well as on the number of tests.</strong> Of course, investors may not know the exact number of tests but it is possible nevertheless to try a range of values. The haircut Sharpe ratio is much different from the simple 50% rule. Strategies with initially large Sharpe ratio are haircut less than 50%. As the initial Sharpe ratio decreases, however, the haircut becomes much more severe, eventually as high as 100%.</p>
 <p>Harvey and Liu offer an analytical way to determine the magnitude of the haircut. We propose three multiple-testing procedures that provide adjusted p-values that correspond to t-stats, which are then transformed into new Sharpe Ratios. This method aims to answer the question: if the multiple-testing-adjusted p-value reflects genuine statistical significance, what is the equivalent single-test Sharpe ratio that should be assigned to the strategy as if there were no data mining? True out of sample tests are a cleaner way to evaluate a strategy but they are not available for most trading strategies. Harvey and Liu's method allows investors to make decisions in real time on a proposed strategy's viability.</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Point in Time -- What is an Index]]></title>
-        <id>https://athanszheyin.github.io/post/point-in-time-what-is-an-index</id>
-        <link href="https://athanszheyin.github.io/post/point-in-time-what-is-an-index">
-        </link>
-        <updated>2020-04-18T13:08:58.000Z</updated>
-        <summary type="html"><![CDATA[<p>Passive investing can be traced to a series of individuals and institutions in the 1970s, including academics Harry Markowitz, John Lintner, Jan Mossin, Paul Samuelson, Bill Sharpe, Jim Tobin, and Jack Treynor; practitioners Jack Bogle, Bill Fouse, and John McQuown; and Wells Fargo and Vanguard. There has been a growing tension between passive and active managers ever since. This tension has inevitably led to the emergence  of two distinct cultures in investment management, one focused on the identification of mispricing and the other predicated on the inability to do so.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Passive investing can be traced to a series of individuals and institutions in the 1970s, including academics Harry Markowitz, John Lintner, Jan Mossin, Paul Samuelson, Bill Sharpe, Jim Tobin, and Jack Treynor; practitioners Jack Bogle, Bill Fouse, and John McQuown; and Wells Fargo and Vanguard. There has been a growing tension between passive and active managers ever since. This tension has inevitably led to the emergence  of two distinct cultures in investment management, one focused on the identification of mispricing and the other predicated on the inability to do so.</p>
-<!-- more -->
-<p>The definition of an index must be revised to reflect the impact of technological advances such as automated trading, ECNs, dark pools, flash orders, and the FIX protocol. In this new world order, and index must be: 1) transparent, 2) investable, 3) passive. While static market cap weighted benchmark certainly satisfies these criteria, thanks to the new technologies described above, they are no longer the only benchmarks that do so. For example, portfolios that consist of slowly varying proportions of stock index funds and bond funds --- with weights designed to tilt the portfolios from equites towards bonds as specific “target dates” draw closer --- are not necessarily static or market cap weighted, but they do satisfy our three new criteria for an index, and such target-date funds are considered passive vehicles suitable for inclusion in most retirement plans.</p>
-<p>More importantly, the primary objective of any index is to facilitate the extraction and summary of information through an algorithmic process, for example, averaging. Now typically done by computers, averaging was once a technological breakthrough in the financial industry, and one that was theoretically motivated.an important factor in the early popularity of the Dow Jones Industrial Averages, in which specific economic meaning was attributed to certain time series patterns in the index.</p>
-<p>As with most dichotomies, reality is not nearly as simple. Even as passive investing has grown exponentially since Bogle launched the Vanguard Group in 1975, a host of differentiated products has attempted to strike a balance between passive and active: hedge-fund beta replication, smart beta, fundamental indexes, risk parity, minimum-variance funds, and so on. The frequency with which this alternative to purely passive investment vehicles emerge suggests the existence of some primal urge driving investors to seek out inefficiencies regardless of the time or place in which they live.</p>
-<p>Technological advances in telecommunications, trading automation, data storage and processing, and computation have permanently changed the landscape of the financial industry. The emergence of powerful new tools such as machine learning and artificial intelligence offers some exciting new possibilities for creating highly personalized and dynamic portfolios --- algorithms that are capable of adapting not only to changing economic conditions, but also to changing personal circumstances and tastes. The vision of “precision indexes” that dynamically adjust over time – that adapt to an investor’s specific needs more effectively than a target-date fund – is likely to become reality.</p>
-<p>The next frontier for both passive and active portfolio managers is to develop a deeper understanding of “investor biology”. Why do we do the things we do, especially those things that undermine wealth accumulation? Investment managers and financial advisors are often quick to criticize retail investors for chasing performance and not focusing on the long term, but human nature is simply not wired to buy and hold when we are facing mounting losses in our nest egg. In fact, today’s passive investment products are the equivalent of a pile of auto parts from which we ask drivers to put together the right combination of engine, carburetors, chassis, dashboard and so on, to meet their driving needs. What’s needed instead are fully assembled vehicles that offer the kind of protection against human behavior that even the least expensive car offers today’s drivers: air bags, collapsible steering columns, reinforced bumpers, three-point seat belts, safety glass and so on.</p>
-<p>While self-driving portfolios may seem like science fiction right now, the same was said in 1970s of passive buy and hold portfolios that could beat most active managers. One day, passive investment products will make retirement planning as straightforward as going to the dentist, but a lot less painful and even less expensive, though they come at a cost of potential pitfalls if abused.</p>
 ]]></content>
     </entry>
 </feed>

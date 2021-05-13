@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Get in Shape with Groupby | athans blog</title>
+<meta name="description" content="&lt;h2&gt;&lt;i&gt;&lt;b&gt;云物如故乡，山川知异路&lt;/b&gt;&lt;/i&gt;&lt;/h2&gt;">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1620875867864">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://athanszheyin.github.io">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1620875867864" class="site-logo">
+        <h1 class="site-title">athans blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://athanszheyin.github.io/post/about/" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/athanszheyin" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.weibo.com/u/2866261084" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/zheyin-zhao/" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.facebook.com/zheyin.zhao" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      <h2><i><b>云物如故乡，山川知异路</b></i></h2>
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> |
+<a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://athanszheyin.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Get in Shape with Groupby</h2>
+            <div class="post-date">2021-05-11</div>
+            
+              <div class="feature-container" style="background-image: url('https://www.shanelynn.ie/wp-content/uploads/2019/10/pandas-python-group-by-named-aggregation-update.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>Discussion about <code>pandas.groupby</code>,  <code>GroupBy.apply</code>, <code>GroupBy.agg</code> and <code>GroupBy.transform</code></p>
+<h3 id="all-about-groupby">All about <code>.groupby</code></h3>
+<p>Let’s start with a <code>pandas.DataFrame</code> with some random data</p>
+<ul>
+<li><code>time</code> is a <code>pandas.date_range</code> from July 4, 2021 9:00 AM ~ 1:00 PM, with some random number of minutes add to put noise on each measurement</li>
+<li><code>ticker</code> is a randomly selected four-character string</li>
+<li><code>price</code> is a random starting value on <code>[0, 100)</code> plus some random noise drawn uniformly from <code>[-5, +5)</code></li>
+</ul>
+<pre><code class="language-python">from pandas import DataFrame, date_range, to_timedelta, concat
+from numpy import repeat, array, tile
+from numpy.random import choice, random, randint
+from random import randrange
+from string import ascii_lowercase
+from datetime import timedelta
+
+df = DataFrame({
+  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
+  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
+  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
+  'signal': randint(10, size=size*rpt)
+})
+print(df.head(3))
+</code></pre>
+<p>We can use the <code>.groupby</code> method on this to perform operations on groups of <code>ticker</code>. In this case, <code>.groupby</code> method returns a <code>DataFrameGroupby</code> object that we can call further methods on to operate on the groups.</p>
+<pre><code class="language-python">_print = lambda expr: print(f'{expr} '.center(50, '-'), eval(expr), sep='\n')
+# print(f'{df.groupby(&quot;ticker&quot;) = }')
+_print('df.groupby(&quot;ticker&quot;).sum().head(2)')
+</code></pre>
+<p>The <code>pandas.DataFrameGroupBy</code> object defines a set of operations that can be performed across on <strong>all</strong> of the groups, some of which are implemented as high-performance vectorized operations.</p>
+<p>Some simple operations supported are:</p>
+<ul>
+<li><code>.count</code></li>
+<li><code>.min</code></li>
+<li><code>.max</code></li>
+<li><code>.sum</code></li>
+<li><code>.var</code></li>
+<li><code>.std</code></li>
+<li><code>.size</code></li>
+</ul>
+<p>These perform the specified reduction/aggregation operation on all relevant columns. If there are non-numeric columns, some operations may NOT be performed: e.g. <code>.sum()</code> will sum within the groups for all numeric columns and skip non=numeric columns; <code>.size</code> will return a single column with the size of the group; <code>.count</code> will count non-NaN values for all columns; <code>.min</code> and <code>.max</code> will find the minimum and maximum value for all comparable columns.</p>
+<p>The return value will be a new <code>pandas.Series</code> or <code>pandas.DataFrame</code> where the data is the result of the desired operation and the index is the group values (potentially <code>MultiIndex</code> when grouping multiple values). A <code>pandas.DataFrame</code> if there are multiple columns resulting from the desired operation; A <code>pandas.Series</code> if there is only column.</p>
+<pre><code class="language-python">for meth in 'count min max sum var std size'.split():
+  _print(f'df.groupby(&quot;ticker&quot;).{meth}().head(2)')
+</code></pre>
+<p>With the <code>.as_index=False</code> flag, you can suppress the assignment of the group labels to the index.</p>
+<pre><code class="language-python">_print = lambda expr: print('-'*50, f'{expr} '.center(50, '-'), '-'*50, eval(expr), sep='\n')
+
+from pandas import DataFrame
+from numpy.random import randint, choice, normal
+from string import ascii_lowercase, ascii_uppercase
+
+index = choice([*ascii_lowercase], size=(size:=10, 2)).view('&lt;U2').ravel()
+df = DataFrame({
+  'x': randint(0, 10, size=size),
+  'y': randint(0, 10, size=size),
+}, index=index).sort_index()
+
+_print('df.sample(2)')
+_print(&quot;df.groupby(level=0).sum().head()&quot;)
+_print(&quot;df.groupby(level=0, as_index=False).sum().head()&quot;)
+</code></pre>
+<p>Note that the <code>.groupby</code> has an axis= parameter, while we typically group down rows, it is also possible to group across columns (this is might be useful for joining similarly named columns). For the rest of the notes, we’ll ignore this possibility and assume we only wang grouping of rows (i.e. axis=0).</p>
+<pre><code class="language-python">_print = lambda expr: print(f'{expr} '.center(50, '-'), eval(expr), sep='\n')
+
+df = DataFrame({
+  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
+  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
+  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
+  'sig1': randint(10, size=size*rpt),
+  'sig2': randint(10, size=size*rpt),
+  'sig3': randint(10, size=size*rpt),
+})
+df.columns = *df.columns[:-3], 'sig', 'sig', 'sig'
+
+_print('df.groupby(level=0, axis=1).sum().head(3)')
+</code></pre>
+<p>We can perform a <code>.groupby</code> grouping by a single column, by multiple columns, or on the index. A considerable amount of time for a <code>.groupby</code> operation is spent sorting the data. If the data is pre-sorted, then we can disable this sorting with a <code>sort=False</code> flag at significant performance gain.</p>
+<p>There is also a <code>pandas.Series.GroupBy</code> object in addition to the <code>pabdas.DataFrameGroupBy</code>. This represents a <code>.groupby</code> operation being performed on a single <code>pandas.Series</code> of data</p>
+<pre><code class="language-python">index = choice([*ascii_lowercase], size=(size:=10, 2)).view('&lt;U2').ravel()
+df = DataFrame({
+  'x': normal(size=size),
+  'y': normal(size=size),
+}, index=index).sort_index()
+
+print(f'{df[&quot;x&quot;].groupby(level=0) = }')
+</code></pre>
+<p><code>.groupby</code> can also group by a piece of data that is NOT contained in the <code>DataFrame</code> or <code>Series</code>.</p>
+<pre><code class="language-python">index = choice([*ascii_lowercase], size=(size:=10, 4)).view('&lt;U4').ravel()
+df = DataFrame({
+  'x': randint(0, 10, size=size),
+  'y': randint(0, 10, size=size),
+}, index=index).sort_index()
+
+_print(&quot;df.groupby(df['x'] &lt; df['y']).sum()&quot;)
+_print(&quot;df.groupby(lambda idx_val: idx_val.lower()[:2]).sum().head(2)&quot;)
+_print(&quot;df.groupby(df.index.str.lower().str[:2]).sum().head(2)&quot;)
+</code></pre>
+<p>If we were to <code>.groupby</code> two fields, and we want the result to be non-“flat”; in other words, we want one of the fields to be the row index, the other field to be the column index, and the grouped function values to be at the intersection of these, then we can do a <code>.groupby().unstack()</code>.</p>
+<p>There is also a short-named for this operation: <code>.pivot_table()</code> which has the advantage of NOT converting the data values to a floating point if there are missing intersections fo the two groups.</p>
+<pre><code class="language-python">_print = lambda expr: print('-'*50, f'{expr} '.center(50, '-'), '-'*50, eval(expr), sep='\n')
+
+from pandas import DataFrame, MultiIndex
+from sys import maxsize
+
+index = MultiIndex.from_tuples([
+  ('a', 'aa', 'aaa'),
+  ('a', 'bb', 'aaa'),
+  ('a', 'bb', 'abb'),
+  ('b', 'aa', 'aaa'),
+  ('b', 'bb', 'aaa'),
+  ('b', 'cc', 'aaa'),
+], names='A B C'.split())
+df = DataFrame({
+  'x': randint(0, 10, size=index.size),
+  'y': 2**53 +1 # precision will be lost when converting to float type
+}, index=index)
+
+_print('df.groupby(level=(1, 2)).count().unstack()')
+_print('df.groupby(level=(1, 2)).count().unstack().fillna(0).convert_dtypes()')
+_print(&quot;df.pivot_table(index='B', columns='C', values=['x', 'y'], aggfunc='count', fill_value=0)&quot;)
+</code></pre>
+<h3 id="all-about-groupbyaggregate-apply-filter-transform">All about <code>.groupby().{aggregate, apply, filter, transform}</code></h3>
+<p>Going back to our data from before, we may want to perform a more complex operation on the gourds than a simple <code>.count</code> or <code>.sum</code>.</p>
+<p>We can iterate over the groups directly and perform operations in Python (though this should be reserved for cases where the number of groups is on the order of the program structure, NOT on the order of the program computation). We can also use the <code>.apply</code>,  <code>.aggregate</code>,  <code>.filter</code>, and<code>.transform</code> methods. These largely fit into the following categories:</p>
+<ol>
+<li><strong>aggregation</strong> (reducing the size of the group)</li>
+<li><strong>transformation</strong> (preserving the indexing of the group)</li>
+<li><strong>filtration</strong> (reducing the size of the group)</li>
+</ol>
+<p>Let’s start with filtration, using <code>.filter</code>:</p>
+<pre><code class="language-python">df = DataFrame({
+  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
+  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
+  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
+  'signal': randint(10, size=size*rpt)
+}).set_index(['ticker', 'time']).sort_index()
+
+_print(&quot;df.groupby('ticker').filter(lambda g: (g['signal'].max() - g['signal'].min()) &lt; 6).head(10)&quot;)
+</code></pre>
+<p>In a transformation, the result must be “like-indexed”. Let’s take a look at using <code>.transform</code>. The function using for <code>.transform</code> is restricted in the following ways:</p>
+<ul>
+<li>It must return a value with the same shape as the input group or something that can be broadcast to the same shape</li>
+<li>It must support being applied on a column-by-column basis
+<ul>
+<li>If it supports being applied to the entire group, then a fast path can be triggered</li>
+</ul>
+</li>
+<li>It must not change the groups in-place</li>
+</ul>
+<pre><code class="language-python">_print(&quot;df.groupby('ticker').transform(lambda g: g.round(-1)).head(10)&quot;)
+_print(&quot;df.groupby('ticker').transform(lambda g: g.round(-1).iloc[0]).head(10)&quot;)
+_print(&quot;df.groupby('ticker').transform(lambda g: g.round(-1).iloc[:-1]).head(10)&quot;) # this will fail because of shape mismatch
+_print(&quot;df.groupby('ticker').transform(lambda g: round(g, -1 if g.name == 'signal' else -2)).head(10)&quot;)
+</code></pre>
+<p>If we want to perform an aggregation, we can use <code>.aggregate</code> or <code>.agg</code>:</p>
+<pre><code class="language-python">_print(&quot;df.groupby('ticker').aggregate('sum').head(10)&quot;)
+_print(&quot;df.groupby('ticker').aggregate({'price': 'max', 'signal': ['min', 'max'], }).head(10)&quot;)
+_print(&quot;df.groupby('ticker').aggregate(max_price = NamedAgg(column='price', aggfunc='max'), min_signal = ('signal', 'min')).head(10)&quot;)
+_print(&quot;df.groupby('ticker').aggregate(lambda g: g.sum()).head(10)&quot;)
+</code></pre>
+<p>Finally, we have another means by which we can do aggregation operations: <code>.apply</code>. <code>.apply</code> is extremely flexible, but it has the downside of much slower in practice than <code>.aggregate</code> or <code>.transform</code>. <code>.apply</code> takes a function which accepts a <code>DataFrame</code> as its argument, returning a new <code>DataFrame</code>; the <code>.apply</code> machinery determines how to combine the result <code>DataFrame</code>s into a a new structure.</p>
+<pre><code class="language-python">_print(&quot;df.groupby('ticker').apply(lambda df: concat([df, df]).sort_index()).head(10)&quot;)
+_print(&quot;df.groupby('ticker').apply(lambda df: (df['signal'] + df['price']).sum()).head(10)&quot;)
+</code></pre>
+<h3 id="what-about-rolling">What about <code>.rolling</code></h3>
+<p>The <code>.groupby</code> method is NOT the only method which can operate on the <code>pandas.DataFrame._data</code> region. The <code>.rolling</code> and <code>.expanding</code> operations provide similar functionality, but on rolling windows and for expanding transformations:</p>
+<pre><code class="language-python">_print(&quot;df.rolling(10, min_periods=1).sum().head(10)&quot;)
+_print(&quot;df.groupby('ticker').transform(lambda df: df.rolling(10, min_periods=1).sum()).head(10)&quot;)
+_print(&quot;df.groupby('ticker')['price'].transform(lambda s: s.reset_index(level=0, drop=True).rolling(10).sum()).head(10)&quot;)
+
+_print(&quot;df.expanding(min_periods=1).sum().head(10)&quot;)
+_print(&quot;df.expanding(min_periods=1).count().head(10)&quot;)
+_print(&quot;df.expanding(min_periods=1).aggregate(lambda s: s[-1] - s[0]).head(10)&quot;)
+_print(&quot;df.expanding(min_periods=1).aggregate(lambda s: s.max() - s.min()).head(10)&quot;)
+
+_print(&quot;df.ewm(alpha=0.1).mean().head(10)&quot;)
+_print(&quot;df.ewm(alpha=0.1).std().head(10)&quot;)
+_print(&quot;df.ewm(alpha=0.1).var().head(10)&quot;)
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://athanszheyin.github.io/tag/tech" class="tag">
+                    Tech
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://athanszheyin.github.io/post/well-designed-pandas">
+                  <h3 class="post-title">
+                    Well Designed Pandas
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
