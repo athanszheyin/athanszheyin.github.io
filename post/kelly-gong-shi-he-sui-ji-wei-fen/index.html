@@ -1,24 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://athanszheyin.github.io</id>
-    <title>athans blog</title>
-    <updated>2021-07-21T01:15:52.696Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://athanszheyin.github.io"/>
-    <link rel="self" href="https://athanszheyin.github.io/atom.xml"/>
-    <subtitle>&lt;h2&gt;&lt;i&gt;&lt;b&gt;云物如故乡，山川知异路&lt;/b&gt;&lt;/i&gt;&lt;/h2&gt;</subtitle>
-    <logo>https://athanszheyin.github.io/images/avatar.png</logo>
-    <icon>https://athanszheyin.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, athans blog</rights>
-    <entry>
-        <title type="html"><![CDATA[Kelly公式和随机微分]]></title>
-        <id>https://athanszheyin.github.io/post/kelly-gong-shi-he-sui-ji-wei-fen</id>
-        <link href="https://athanszheyin.github.io/post/kelly-gong-shi-he-sui-ji-wei-fen">
-        </link>
-        <updated>2021-07-18T12:50:54.000Z</updated>
-        <summary type="html"><![CDATA[<p>人们研究赌博的最优下注问题已经有上百年的时间了，发表于1956年的Kelly公式给予了一个清晰的公式化答案，但它建立在人们需要完全了解赌博的结果分布的基础上。在量化投资领域，最优下注问题实际上就是风险配置问题，但投资结果的分布却不可能是事先已知的---人们顶多去预测它。这篇文章描述了我们如何使用几何布朗运动对连续情形中下注过程进行建模，从伊藤引理自然而然推导出一个连续情形下的Kelly公式。在此过程中我们需要先简单介绍随机微分方程。推导出的Kelly公式和我们熟悉的风险方差优化也有着有趣的关联。最后从投资者角度出发，这样一个理论模型在实际运用中还是有不少限制的。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>人们研究赌博的最优下注问题已经有上百年的时间了，发表于1956年的Kelly公式给予了一个清晰的公式化答案，但它建立在人们需要完全了解赌博的结果分布的基础上。在量化投资领域，最优下注问题实际上就是风险配置问题，但投资结果的分布却不可能是事先已知的---人们顶多去预测它。这篇文章描述了我们如何使用几何布朗运动对连续情形中下注过程进行建模，从伊藤引理自然而然推导出一个连续情形下的Kelly公式。在此过程中我们需要先简单介绍随机微分方程。推导出的Kelly公式和我们熟悉的风险方差优化也有着有趣的关联。最后从投资者角度出发，这样一个理论模型在实际运用中还是有不少限制的。</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Kelly公式和随机微分 | athans blog</title>
+<meta name="description" content="&lt;h2&gt;&lt;i&gt;&lt;b&gt;云物如故乡，山川知异路&lt;/b&gt;&lt;/i&gt;&lt;/h2&gt;">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1626830090715">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://athanszheyin.github.io">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1626830090715" class="site-logo">
+        <h1 class="site-title">athans blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://athanszheyin.github.io/post/about/" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/athanszheyin" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.weibo.com/u/2866261084" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/zheyin-zhao/" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.facebook.com/zheyin.zhao" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      <h2><i><b>云物如故乡，山川知异路</b></i></h2>
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> |
+<a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://athanszheyin.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Kelly公式和随机微分</h2>
+            <div class="post-date">2021-07-18</div>
+            
+            <div class="post-content">
+              <p>人们研究赌博的最优下注问题已经有上百年的时间了，发表于1956年的Kelly公式给予了一个清晰的公式化答案，但它建立在人们需要完全了解赌博的结果分布的基础上。在量化投资领域，最优下注问题实际上就是风险配置问题，但投资结果的分布却不可能是事先已知的---人们顶多去预测它。这篇文章描述了我们如何使用几何布朗运动对连续情形中下注过程进行建模，从伊藤引理自然而然推导出一个连续情形下的Kelly公式。在此过程中我们需要先简单介绍随机微分方程。推导出的Kelly公式和我们熟悉的风险方差优化也有着有趣的关联。最后从投资者角度出发，这样一个理论模型在实际运用中还是有不少限制的。</p>
 <!-- more -->
 <h3 id="引子">引子</h3>
 <p>在很久以前人们已经开始研究如何在赌博时进行最优的下注，伯努利家族中的Daniel Bernoulli在1738年<a href="%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E7%9B%B4%E5%88%B01954%E5%B9%B4%E6%89%8D%E8%A2%AB%E8%AF%91%E6%88%90%E8%8B%B1%E6%96%87">^1</a></p>
@@ -214,863 +309,47 @@
 </ul>
 </li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[从21世纪资本论说开去]]></title>
-        <id>https://athanszheyin.github.io/post/cong-21-shi-ji-zi-ben-lun-shuo-kai-qu</id>
-        <link href="https://athanszheyin.github.io/post/cong-21-shi-ji-zi-ben-lun-shuo-kai-qu">
-        </link>
-        <updated>2021-05-27T06:15:43.000Z</updated>
-        <summary type="html"><![CDATA[<p>围绕躺平和财富分配不均的开放式谈话</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>围绕躺平和财富分配不均的开放式谈话</p>
-<!-- more -->
-<p><img src="https://athanszheyin.github.io/post-images/1622339708568.JPG" alt="">
-Q：<em>现在很多年轻人，甚至是高学历的年轻人时兴<a href="https://finance.sina.com.cn/tech/2021-05-28/doc-ikmxzfmm5250220.shtml">躺平</a>，有人说这是劳动回报率远远低于资本回报率的结果。在保证基本物质条件后，劳动投入对于个人的边际收益低于边际成本，那就不如“躺平”了。试评价这一观点？</em></p>
-<p>A：资本收益率&gt;经济增长率，这是贯穿21世纪资本论全书的核心公式，甚至有很多探讨财富分配和社会发展前景的书籍都构建于这个公式之上。我觉得，在没有技术突破的年代里，这个公式就是常态。换句话说，在历史上财富<strong>不</strong>按劳分配是一种常态，阶级固化，土地兼并等等貌似不公正的现象也都是常态。产业革命和技术革新能够带来资源和财富的再分配，但同时它们是很少见的，人类文明开启以来也就发生过屈指可数的几次，你们不能指望以持续性的技术突破来维持持续性的财富分配和阶级流动。常见的再分配方式是什么呢？是战争和天灾。人类的历史基本是一部战争史和基建（对抗天灾）史，这才是常规的洗牌方式。</p>
-<p>Q：<em>在自由市场制度下，财富必将会产生马太效应，富者愈富，贫者更贫。我国政府已经尽力抓住了教育，医疗等行业没有使之完全市场化，所以在温饱无忧的基础上，还是躺平罢。</em></p>
-<p>A：财富分配这个东西既要看制度也要看先天的地缘条件。美国说god bless America不是白说的，美国的土地条件，矿藏储备，东西各临大洋的条件真是羡慕不来。我天朝先天不足，国土面积尚可但耕地不足且肥力欠缺，资源不太够但人口数量巨大，制度上再怎么不久也很难赶得上。大部分人可能真的只能维持温饱，若是大家都“开眼看世界”，但又无法企及“外面”的生活标准，那么很难说大家能不能承受这么痛苦的真相。所以政府只能去压缩意识形态，多以理想和信仰去引导民众（类似于宗教的安抚效应）。这是维持我国大一统的代价，我们百姓只能选择理解和接受。</p>
-<p>Q：<em>我国现在已经是世界工厂了，可以在全球各地倾销产能，然后反过来进行产业升级。最近国家又在力主人民币升值，去替代美元，整体模仿二战后美国替代英国的例子，是不是未来可期？</em></p>
-<p>A：我国无法永远做世界工厂，而且一直处于世界工厂的位置也无法直接进行产业升级。产业升级需要技术需要市场需求也需要很多其他要素。美国这么好的先天条件搭配制度支持，也还是要靠一战二战这样的天量刺激加技术红利才能实现弯道超车。我们现在有这样的外部条件吗？光靠一带一路真的能做到吗？</p>
-<p>Q：<em>从数据上看，我国的工业GDP和工业人口都处于优势地位，规模大了之后成本就能降下来，其他一切都可以水到渠成。</em></p>
-<p>A：我以为，宏观的东西讲逻辑，微观的东西看数据。数据和历史一样是任人打扮的小姑娘。就像我们搞量化投资，随便拿一个信号，都可以包装成回测指标爆表的投资策略。好比这个工业人口数据，我反手哪一个出生率新低，人口老龄化的数据来说事，是不是又显得悲观起来了呢？</p>
-<p>Q：<em>除开工业人口的数量，从质量来看，中国高水平的工程师数量和对应的产业规模都比美国要大。虽然相比于总体就业人口比重不大，但工业化后期只需要少而精的队伍。</em></p>
-<p>A：这等于是说生产端不需要人，但消费端需要大量人口来产生需求，不是有点自相矛盾？</p>
-<p>Q：<em>现在西欧加美国的经济体逐步走向衰落，西欧的产业结构已崩，负利率更加说明资本无法正常注入制造业，贸易数量也上不去。美国无法再一次实施马歇尔计划，也许中国可以乘虚而入，取代美国分化西方？</em></p>
-<p>A：分化？西欧和美国从种族到语言到意识形态都是一体的，共同打赢了一战二战和冷战，可谓“一起扛过枪一起<em>过</em>”的过命友谊，仅仅凭表面皮毛的经济纠纷就能分化盎格鲁撒克逊文化圈吗？去拉拢欧洲还不如往东南亚东北亚发展。可惜东盟天生就警惕我朝，日本也基本融入西方体系了。我们唯一的优势是我们自己的内生文明体系，不会被侵蚀腐化，独立于世，但也容易“不知有汉无论魏晋”。我国的经济规模很大程度承载于我国的人口规模，可是单纯的人口优势很难持续。改革开放以来，我们抓紧了窗口期实现了工业化，这是了不起的成就。但还是之前那句话，要看制度，也要看先天，我们地缘条件在此，发展起来有天花板。不要虚耗内力甚至蒸干天下百姓去追求虚无缥缈的名头。牢记邓总设计师的那句“韬光养晦 徐图大志”</p>
-<p>Q：<em>可是有修昔底德陷阱存在，赢家通吃的诱惑太大了，坐上了第一的位置就可以全球经济殖民，捆绑其他国家印钱割韭菜。</em></p>
-<p>A：美国先天富足，而且有日不落帝国殖民全球的余荫做基础，所以才敢在远东中东都插一手，还把南美当作后花园。但即使有这样的先天基础，美国在其他地域和文明体系下多半还是做着赔本买卖。且不说还有朝鲜战争，越南战争这样的前期试错成本。人家耗得起我们耗得起吗？我们本身是内生性文明，语言文化观念认知和世界其他地区都有很大差别，别的不说，光是语言一项就已经构成高昂的成本了。为啥总想着赢家通吃，鱼肉天下呢？鱼肉天下多半需要先鱼肉乡里，谁又愿意“先为鱼肉后为刀俎”呢？</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Get in Shape with Groupby]]></title>
-        <id>https://athanszheyin.github.io/post/get-in-shape-with-groupby</id>
-        <link href="https://athanszheyin.github.io/post/get-in-shape-with-groupby">
-        </link>
-        <updated>2021-05-11T15:13:41.000Z</updated>
-        <summary type="html"><![CDATA[<p>Discussion about <code>pandas.groupby</code>,  <code>GroupBy.apply</code>, <code>GroupBy.agg</code> and <code>GroupBy.transform</code></p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Discussion about <code>pandas.groupby</code>,  <code>GroupBy.apply</code>, <code>GroupBy.agg</code> and <code>GroupBy.transform</code></p>
-<!-- more -->
-<h3 id="all-about-groupby">All about <code>.groupby</code></h3>
-<p>Let’s start with a <code>pandas.DataFrame</code> with some random data</p>
-<ul>
-<li><code>time</code> is a <code>pandas.date_range</code> from July 4, 2021 9:00 AM ~ 1:00 PM, with some random number of minutes add to put noise on each measurement</li>
-<li><code>ticker</code> is a randomly selected four-character string</li>
-<li><code>price</code> is a random starting value on <code>[0, 100)</code> plus some random noise drawn uniformly from <code>[-5, +5)</code></li>
-</ul>
-<pre><code class="language-python">from pandas import DataFrame, date_range, to_timedelta, concat
-from numpy import repeat, array, tile
-from numpy.random import choice, random, randint
-from random import randrange
-from string import ascii_lowercase
-from datetime import timedelta
 
-df = DataFrame({
-  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
-  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
-  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
-  'signal': randint(10, size=size*rpt)
-})
-print(df.head(3))
-</code></pre>
-<p>We can use the <code>.groupby</code> method on this to perform operations on groups of <code>ticker</code>. In this case, <code>.groupby</code> method returns a <code>DataFrameGroupby</code> object that we can call further methods on to operate on the groups.</p>
-<pre><code class="language-python">_print = lambda expr: print(f'{expr} '.center(50, '-'), eval(expr), sep='\n')
-# print(f'{df.groupby(&quot;ticker&quot;) = }')
-_print('df.groupby(&quot;ticker&quot;).sum().head(2)')
-</code></pre>
-<p>The <code>pandas.DataFrameGroupBy</code> object defines a set of operations that can be performed across on <strong>all</strong> of the groups, some of which are implemented as high-performance vectorized operations.</p>
-<p>Some simple operations supported are:</p>
-<ul>
-<li><code>.count</code></li>
-<li><code>.min</code></li>
-<li><code>.max</code></li>
-<li><code>.sum</code></li>
-<li><code>.var</code></li>
-<li><code>.std</code></li>
-<li><code>.size</code></li>
-</ul>
-<p>These perform the specified reduction/aggregation operation on all relevant columns. If there are non-numeric columns, some operations may NOT be performed: e.g. <code>.sum()</code> will sum within the groups for all numeric columns and skip non=numeric columns; <code>.size</code> will return a single column with the size of the group; <code>.count</code> will count non-NaN values for all columns; <code>.min</code> and <code>.max</code> will find the minimum and maximum value for all comparable columns.</p>
-<p>The return value will be a new <code>pandas.Series</code> or <code>pandas.DataFrame</code> where the data is the result of the desired operation and the index is the group values (potentially <code>MultiIndex</code> when grouping multiple values). A <code>pandas.DataFrame</code> if there are multiple columns resulting from the desired operation; A <code>pandas.Series</code> if there is only column.</p>
-<pre><code class="language-python">for meth in 'count min max sum var std size'.split():
-  _print(f'df.groupby(&quot;ticker&quot;).{meth}().head(2)')
-</code></pre>
-<p>With the <code>.as_index=False</code> flag, you can suppress the assignment of the group labels to the index.</p>
-<pre><code class="language-python">_print = lambda expr: print('-'*50, f'{expr} '.center(50, '-'), '-'*50, eval(expr), sep='\n')
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://athanszheyin.github.io/post/cong-21-shi-ji-zi-ben-lun-shuo-kai-qu">
+                  <h3 class="post-title">
+                    从21世纪资本论说开去
+                  </h3>
+                </a>
+              </div>
+            
 
-from pandas import DataFrame
-from numpy.random import randint, choice, normal
-from string import ascii_lowercase, ascii_uppercase
+            
 
-index = choice([*ascii_lowercase], size=(size:=10, 2)).view('&lt;U2').ravel()
-df = DataFrame({
-  'x': randint(0, 10, size=size),
-  'y': randint(0, 10, size=size),
-}, index=index).sort_index()
+          </div>
 
-_print('df.sample(2)')
-_print(&quot;df.groupby(level=0).sum().head()&quot;)
-_print(&quot;df.groupby(level=0, as_index=False).sum().head()&quot;)
-</code></pre>
-<p>Note that the <code>.groupby</code> has an axis= parameter, while we typically group down rows, it is also possible to group across columns (this is might be useful for joining similarly named columns). For the rest of the notes, we’ll ignore this possibility and assume we only wang grouping of rows (i.e. axis=0).</p>
-<pre><code class="language-python">_print = lambda expr: print(f'{expr} '.center(50, '-'), eval(expr), sep='\n')
+        </div>
+      </div>
+    </div>
 
-df = DataFrame({
-  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
-  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
-  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
-  'sig1': randint(10, size=size*rpt),
-  'sig2': randint(10, size=size*rpt),
-  'sig3': randint(10, size=size*rpt),
-})
-df.columns = *df.columns[:-3], 'sig', 'sig', 'sig'
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-_print('df.groupby(level=0, axis=1).sum().head(3)')
-</code></pre>
-<p>We can perform a <code>.groupby</code> grouping by a single column, by multiple columns, or on the index. A considerable amount of time for a <code>.groupby</code> operation is spent sorting the data. If the data is pre-sorted, then we can disable this sorting with a <code>sort=False</code> flag at significant performance gain.</p>
-<p>There is also a <code>pandas.Series.GroupBy</code> object in addition to the <code>pabdas.DataFrameGroupBy</code>. This represents a <code>.groupby</code> operation being performed on a single <code>pandas.Series</code> of data</p>
-<pre><code class="language-python">index = choice([*ascii_lowercase], size=(size:=10, 2)).view('&lt;U2').ravel()
-df = DataFrame({
-  'x': normal(size=size),
-  'y': normal(size=size),
-}, index=index).sort_index()
+<script type="application/javascript">
 
-print(f'{df[&quot;x&quot;].groupby(level=0) = }')
-</code></pre>
-<p><code>.groupby</code> can also group by a piece of data that is NOT contained in the <code>DataFrame</code> or <code>Series</code>.</p>
-<pre><code class="language-python">index = choice([*ascii_lowercase], size=(size:=10, 4)).view('&lt;U4').ravel()
-df = DataFrame({
-  'x': randint(0, 10, size=size),
-  'y': randint(0, 10, size=size),
-}, index=index).sort_index()
+AOS.init();
 
-_print(&quot;df.groupby(df['x'] &lt; df['y']).sum()&quot;)
-_print(&quot;df.groupby(lambda idx_val: idx_val.lower()[:2]).sum().head(2)&quot;)
-_print(&quot;df.groupby(df.index.str.lower().str[:2]).sum().head(2)&quot;)
-</code></pre>
-<p>If we were to <code>.groupby</code> two fields, and we want the result to be non-“flat”; in other words, we want one of the fields to be the row index, the other field to be the column index, and the grouped function values to be at the intersection of these, then we can do a <code>.groupby().unstack()</code>.</p>
-<p>There is also a short-named for this operation: <code>.pivot_table()</code> which has the advantage of NOT converting the data values to a floating point if there are missing intersections fo the two groups.</p>
-<pre><code class="language-python">_print = lambda expr: print('-'*50, f'{expr} '.center(50, '-'), '-'*50, eval(expr), sep='\n')
+hljs.initHighlightingOnLoad()
 
-from pandas import DataFrame, MultiIndex
-from sys import maxsize
-
-index = MultiIndex.from_tuples([
-  ('a', 'aa', 'aaa'),
-  ('a', 'bb', 'aaa'),
-  ('a', 'bb', 'abb'),
-  ('b', 'aa', 'aaa'),
-  ('b', 'bb', 'aaa'),
-  ('b', 'cc', 'aaa'),
-], names='A B C'.split())
-df = DataFrame({
-  'x': randint(0, 10, size=index.size),
-  'y': 2**53 +1 # precision will be lost when converting to float type
-}, index=index)
-
-_print('df.groupby(level=(1, 2)).count().unstack()')
-_print('df.groupby(level=(1, 2)).count().unstack().fillna(0).convert_dtypes()')
-_print(&quot;df.pivot_table(index='B', columns='C', values=['x', 'y'], aggfunc='count', fill_value=0)&quot;)
-</code></pre>
-<h3 id="all-about-groupbyaggregate-apply-filter-transform">All about <code>.groupby().{aggregate, apply, filter, transform}</code></h3>
-<p>Going back to our data from before, we may want to perform a more complex operation on the gourds than a simple <code>.count</code> or <code>.sum</code>.</p>
-<p>We can iterate over the groups directly and perform operations in Python (though this should be reserved for cases where the number of groups is on the order of the program structure, NOT on the order of the program computation). We can also use the <code>.apply</code>,  <code>.aggregate</code>,  <code>.filter</code>, and<code>.transform</code> methods. These largely fit into the following categories:</p>
-<ol>
-<li><strong>aggregation</strong> (reducing the size of the group)</li>
-<li><strong>transformation</strong> (preserving the indexing of the group)</li>
-<li><strong>filtration</strong> (reducing the size of the group)</li>
-</ol>
-<p>Let’s start with filtration, using <code>.filter</code>:</p>
-<pre><code class="language-python">df = DataFrame({
-  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
-  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
-  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
-  'signal': randint(10, size=size*rpt)
-}).set_index(['ticker', 'time']).sort_index()
-
-_print(&quot;df.groupby('ticker').filter(lambda g: (g['signal'].max() - g['signal'].min()) &lt; 6).head(10)&quot;)
-</code></pre>
-<p>In a transformation, the result must be “like-indexed”. Let’s take a look at using <code>.transform</code>. The function using for <code>.transform</code> is restricted in the following ways:</p>
-<ul>
-<li>It must return a value with the same shape as the input group or something that can be broadcast to the same shape</li>
-<li>It must support being applied on a column-by-column basis
-<ul>
-<li>If it supports being applied to the entire group, then a fast path can be triggered</li>
-</ul>
-</li>
-<li>It must not change the groups in-place</li>
-</ul>
-<pre><code class="language-python">_print(&quot;df.groupby('ticker').transform(lambda g: g.round(-1)).head(10)&quot;)
-_print(&quot;df.groupby('ticker').transform(lambda g: g.round(-1).iloc[0]).head(10)&quot;)
-_print(&quot;df.groupby('ticker').transform(lambda g: g.round(-1).iloc[:-1]).head(10)&quot;) # this will fail because of shape mismatch
-_print(&quot;df.groupby('ticker').transform(lambda g: round(g, -1 if g.name == 'signal' else -2)).head(10)&quot;)
-</code></pre>
-<p>If we want to perform an aggregation, we can use <code>.aggregate</code> or <code>.agg</code>:</p>
-<pre><code class="language-python">_print(&quot;df.groupby('ticker').aggregate('sum').head(10)&quot;)
-_print(&quot;df.groupby('ticker').aggregate({'price': 'max', 'signal': ['min', 'max'], }).head(10)&quot;)
-_print(&quot;df.groupby('ticker').aggregate(max_price = NamedAgg(column='price', aggfunc='max'), min_signal = ('signal', 'min')).head(10)&quot;)
-_print(&quot;df.groupby('ticker').aggregate(lambda g: g.sum()).head(10)&quot;)
-</code></pre>
-<p>Finally, we have another means by which we can do aggregation operations: <code>.apply</code>. <code>.apply</code> is extremely flexible, but it has the downside of much slower in practice than <code>.aggregate</code> or <code>.transform</code>. <code>.apply</code> takes a function which accepts a <code>DataFrame</code> as its argument, returning a new <code>DataFrame</code>; the <code>.apply</code> machinery determines how to combine the result <code>DataFrame</code>s into a a new structure.</p>
-<pre><code class="language-python">_print(&quot;df.groupby('ticker').apply(lambda df: concat([df, df]).sort_index()).head(10)&quot;)
-_print(&quot;df.groupby('ticker').apply(lambda df: (df['signal'] + df['price']).sum()).head(10)&quot;)
-</code></pre>
-<h3 id="what-about-rolling">What about <code>.rolling</code></h3>
-<p>The <code>.groupby</code> method is NOT the only method which can operate on the <code>pandas.DataFrame._data</code> region. The <code>.rolling</code> and <code>.expanding</code> operations provide similar functionality, but on rolling windows and for expanding transformations:</p>
-<pre><code class="language-python">_print(&quot;df.rolling(10, min_periods=1).sum().head(10)&quot;)
-_print(&quot;df.groupby('ticker').transform(lambda df: df.rolling(10, min_periods=1).sum()).head(10)&quot;)
-_print(&quot;df.groupby('ticker')['price'].transform(lambda s: s.reset_index(level=0, drop=True).rolling(10).sum()).head(10)&quot;)
-
-_print(&quot;df.expanding(min_periods=1).sum().head(10)&quot;)
-_print(&quot;df.expanding(min_periods=1).count().head(10)&quot;)
-_print(&quot;df.expanding(min_periods=1).aggregate(lambda s: s[-1] - s[0]).head(10)&quot;)
-_print(&quot;df.expanding(min_periods=1).aggregate(lambda s: s.max() - s.min()).head(10)&quot;)
-
-_print(&quot;df.ewm(alpha=0.1).mean().head(10)&quot;)
-_print(&quot;df.ewm(alpha=0.1).std().head(10)&quot;)
-_print(&quot;df.ewm(alpha=0.1).var().head(10)&quot;)
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Well Designed Pandas]]></title>
-        <id>https://athanszheyin.github.io/post/well-designed-pandas</id>
-        <link href="https://athanszheyin.github.io/post/well-designed-pandas">
-        </link>
-        <updated>2021-04-28T10:18:56.000Z</updated>
-        <summary type="html"><![CDATA[<p>For understanding core datatypes in pandas, including <code>pandas.array</code>, <code>pandas.Series</code>, <code>pandas.DataFrame</code>, <code>pandas.Catgorical</code>; resampling and masking</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>For understanding core datatypes in pandas, including <code>pandas.array</code>, <code>pandas.Series</code>, <code>pandas.DataFrame</code>, <code>pandas.Catgorical</code>; resampling and masking</p>
-<!-- more -->
-<h3 id="python-structure-domains-and-why-numpy-is-memory-efficient">Python structure domains and why Numpy is memory efficient</h3>
-<p>Python systems have two programmatic domains:</p>
-<ul>
-<li>program structuring</li>
-<li>computational</li>
-</ul>
-<p>In the program structuring domain, we may use lots of tools like the Python built-in types (e.g.  <code>list</code>, <code>dict</code>, <code>set</code>) as well as Python metaphors (e.g. context manager for sequenced operations, decorators for wrapped behaviors, generators for lazy computations or for explicit lexical linearization of implicit state-graphs)</p>
-<pre><code class="language-python"># this is not a computational type,
-# otherwise these operations would be interpreted computaitonally
-xs = [1,2,3,4]
-print(f'{xs * 2 = }') # &quot;structure&quot;-level operation -&gt; repetition
-
-ys = [5,6,7,8]
-print(f'{xs + ys =}') # &quot;structure&quot;-level operation -&gt; concatenation
-</code></pre>
-<p>The contents of a Python built-in type are references to box types, as a consequence, operations within these sturctures are hard to optimizsed and thus slow.</p>
-<pre><code class="language-python">from codetiming import Timer
-from random import randint
-
-dot = lambda xs, ys: sum(x*y for x, y in zip(xs, ys))
-
-with Timer(text='creating &quot;list&quot; with comprehension syntax: {:0.4f} seconds'):
-  xs = [randint(-100, 100) for _ in range(10000000)]
-  ys = [randint(-100, 100) for _ in range(10000000)]
-  
-with Timer(text='&quot;list&quot; dot product of xs and ys: {:0.4f} seconds'):
-  dot(xs, ys)
-</code></pre>
-<p>In comparison, <code>numpy</code> provides us with computatioinal type. This is type is a “manager class” that fully controls its contents. thus, it is free to store its contents in an optimal fashion and it is able to enfornce constraints on its contents.</p>
-<pre><code class="language-python">from codetiming import Timer
-from numpy.random import randint
-
-with Timer(text='creating &quot;numpy.ndarray&quot;: {:0.4f} seconds'):
-	xs = randint(-100, 100, size=10000000)
-	ys = randint(-100, 100, size=10000000)
-  
-with Timer(text='&quot;numpy.ndarray&quot;: dot product of xs and ys: {:0.4f} seconds'):
-  xs.dot(ys)
-</code></pre>
-<p>Additionaly, the <code>numpy.ndarray</code> is clearly a computational type. The contents are machine-typed (i.e. fixed bit-width int64). The <code>numpy.ndarray</code> array is actually just a view of some memory region.</p>
-<pre><code class="language-python">from numpy import array
-
-xs = array([1,2,3,4])
-print(f'{xs * 2 = }') # elementwise operation
-
-ys = array([5,6,7,8])
-print(f'{xs + ys =}') # elementwise operation
-
-print(f'{xs.__array_interface__[&quot;data&quot;][0] = :#_x}') # memory location
-print(f'{xs.dtype}') # intepreted type
-print(f'{xs.shape}') # intepreted shape
-print(f'{xs.strides}') # intepreted strides
-
-(ys := xs.copy()).shape = 2, 2
-print(f'{ys = }')
-
-from numpy.lib.stride_tricks import as_strided
-ys = as_strided(xs, strides=(16, 8), shape=(2, 2))
-print(f'{ys = }')
-
-from numpy import set_printoptions
-set_printoptions(linewidth=float('inf'), threshold=24)
-
-# cast VS convert
-xs = array([1,2,3,4]) * 100
-(ys := xs.copy()).dtype = 'int8'
-print('.dtype = ...'.center(20, '-'))
-print(f'{ys = }')
-
-ys = xs.copy().astype('int8')
-print('.astype(...)'.center(20, '-'))
-print(f'{ys = }')
-</code></pre>
-<p>Therefore, analysing memory usage of <code>numpy</code> code is very easy.</p>
-<pre><code class="language-python">from numpy import shares_memory
-from numpy.random import normal
-
-xs = normal(size=1000000)
-print(f'{xs.nbytes = :,}') # total number of bytes
-
-xs = normal(size=1000000).astype('float32')
-print(f'{xs.nbytes = :,}') # total number of bytes
-</code></pre>
-<h3 id="numpys-limitations-and-pandas-design">Numpy's limitations and Pandas design</h3>
-<p>However, <code>numpy</code> as a pure computational type has limits:</p>
-<ul>
-<li>its ergonomics aren’t great (we may prefer a ’named tensor’ like <code>xarray.DataArray</code>)</li>
-<li>it lacks business-level information, such as missing data</li>
-<li>it lacks business-level information, such as querying/filtering mechanisms</li>
-</ul>
-<pre><code class="language-python">xs = array([1,2,3,None])
-print(f'{xs.dtype = }')
-xs = array([1,2,3,float('nan')])
-print(f'{xs.dtype = }')
-</code></pre>
-<p>Pandas patches useful meta data on top of the <code>numpy</code> objects, try to cater to the realistic data's characteristics and facilitate querying capabilities within these computational objects. Moreover, Pandas supports wider statistical operations and time-series operations.</p>
-<pre><code class="language-python">from pandas import array, Categorical
-
-xs = array([1,2,3,None])
-print(f'{xs.dtype = }')
-print(f'{xs._data = }')
-print(f'{xs._mask = }')
-
-from numpy import shares_memory
-from numpy.random import choice
-from string import ascii_lowercase
-
-ws = choice([*ascii_lowercase], size=(10, 4)).view('&lt;U4').ravel()
-print(f'{ws.nbytes = }')
-
-xs = array(ws)
-ys = array(choice([*ascii_lowercase], size=(100000, 4)).view('&lt;U4').ravel())
-
-print(f'{xs.memory_usage() = :,}')
-print(f'{ys.memory_usage() = :,}')
-
-print(f'{shares_memory(xs._ndarray, ws) = }')
-
-zs = Categorical(ys)
-print(f'{zs.memory_usage() = :,}')
-</code></pre>
-<pre><code class="language-python">from pandas import Series
-from numpy.random import normal
-
-s = Series(xs := normal(size=100000), name='nums')
-print(f'{shares_memory(s.array._ndarray, xs) = }')
-
-print(len(s[s &gt; 2]) / len(s))
-print(s[(s &gt;= 2) | (s &lt;= -2)])
-print(xs[(xs &gt;= 2) | (xs &lt;= -2)])
-print(s.sum())
-print(s.var())
-print(s.std())
-
-print(s[lambda s: s &gt;= 2])
-print(xs[lambda xs: xs &gt;= 2]) # NOT implemented
-print(s.shift())
-print(s.diff())
-</code></pre>
-<p>Pandas has alternative lookup modalities, <code>pandas.Series</code> provides a structure with two lookup models:</p>
-<ol>
-<li>by positional index</li>
-<li>by labelled index</li>
-</ol>
-<pre><code class="language-python">from pandas import Series, MultiIndex, to_datetime
-from numpy import arange, array
-from itertools import islice, cycle
-from datetime import datetime, timedelta
-from random import randrange
-from numpy.random import permutation
-
-s = Series(arange(size := 6), index=[*ascii_lowercase[:size]], name='nums')
-print(s.iloc[0])
-print(s.loc['a'])
-print(s.iloc[0:2]) # use half-open interval
-print(s.loc[&quot;a&quot;:&quot;c&quot;]) # use open interva
-
-index0 = 'ab'
-assert size % len(index0) == 0
-index1 = lambda off: islice(cycle(ascii_lowercase), off, off + (size // len(index0)))
-
-s.index = MultiIndex.from_tuples((x, y) for x in index0 for y in index1(ord(x)))
-print(s)
-print(s.loc[&quot;a&quot;])
-print(s.loc[&quot;a&quot;,&quot;t&quot;])
-
-s = Series(arange(size := 6), name='nums')
-s.index = to_datetime(array([timedelta(seconds=randrange(1,60)) for _ in range(size)]).cumsum() + datetime.now().replace(hour=9, minute=0, second=0, microsecond=0))
-print(s)
-print(s.loc[&quot;2021-04&quot;])
-print(s.loc[&quot;2021-04-29 09:00&quot;])
-
-print(f'{s.index.is_monotonic = }')
-s.index = permutation(s.index)
-print(f'{s.index.is_monotonic = }')
-</code></pre>
-<p>A <code>pandas.Series</code> is a one-dimentional structure with an index, looking like:</p>
-<table>
-<thead>
-<tr>
-<th>index</th>
-<th>data</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>...</td>
-<td>x</td>
-</tr>
-<tr>
-<td>...</td>
-<td>x</td>
-</tr>
-<tr>
-<td>...</td>
-<td>x</td>
-</tr>
-</tbody>
-</table>
-<p>A <code>pandas.DataFrame</code> is a two-dimentional structure with a major and minor index, looking like:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>“column” a</th>
-<th>index b</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>“row” index</td>
-<td>data</td>
-<td>data</td>
-</tr>
-<tr>
-<td>...</td>
-<td>x</td>
-<td>x</td>
-</tr>
-<tr>
-<td>...</td>
-<td>x</td>
-<td>x</td>
-</tr>
-<tr>
-<td>...</td>
-<td>x</td>
-<td>x</td>
-</tr>
-</tbody>
-</table>
-<p>A quick guide to <code>pandas.DataFrame</code> operations:</p>
-<ul>
-<li>
-<p><code>df[x]</code> -&gt; look-up, using “column” index, labelled</p>
-</li>
-<li>
-<p><code>df[df.columns[x]]</code> -&gt; look-up, using “column” index, positional</p>
-</li>
-<li>
-<p><code>df.loc[x]</code> -&gt; look-up, using “row” index, labelled</p>
-</li>
-<li>
-<p><code>df.iloc[x]</code> -&gt; look-up, using “row” index, positional</p>
-</li>
-<li>
-<p><code>df.groupby(..., axis=0)</code> -&gt; aggregate data along rows using “row” index</p>
-</li>
-<li>
-<p><code>df.groupby(..., axis=1)</code> -&gt; aggregate data along columns using “column” index</p>
-</li>
-<li>
-<p><code>df.resample(...)</code> -&gt; perform N:M mapping of data along rows using “row” index</p>
-</li>
-<li>
-<p><code>df.stack</code> -&gt; turn “column” index into a “row” index</p>
-</li>
-<li>
-<p><code>df.unstack</code> -&gt; turn “row” index into a “index” index</p>
-</li>
-<li>
-<p><code>df.melt</code> -&gt; take data along rows with corresponding “column” index values and turn into new column</p>
-</li>
-<li>
-<p><code>df.pivot</code> -&gt; pivot data along rows into new columns</p>
-</li>
-<li>
-<p><code>df.pivot_table</code> -&gt; perform .groupby and .unstack with finger control</p>
-</li>
-</ul>
-<pre><code class="language-python">from pandas import DataFrame, to_datetime
-
-df = DataFrame({
-  'a': arange(size := 6),
-  'b': arange(10, 10+size),
-  'c': arange(100, 100+size),
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
 })
 
-df.index = to_datetime(array([timedelta(seconds=randrange(1,60)) for _ in range(size)]).cumsum() + datetime.now().replace(hour=9, minute=0, second=0, microsecond=0))
+</script>
 
-print(df)
-df = df.transpose()
-print(df)
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Trade Execution综述 （续）]]></title>
-        <id>https://athanszheyin.github.io/post/trade-execution-zong-shu-xu</id>
-        <link href="https://athanszheyin.github.io/post/trade-execution-zong-shu-xu">
-        </link>
-        <updated>2021-03-18T01:44:35.000Z</updated>
-        <summary type="html"><![CDATA[<p>谈起Trade Execution，不得不提的就是Algorithmic Trading（算法交易）。毕竟随着Markowitz的“Diversification is the only free lunch”深入人心，投资组合所含的资产数量越来越大；同时交易频率随着计算机软硬件的不断升级而越来越快，依靠算法自动交易的方式已经愈发普及。说到底，Trade Execution的目标都是优化Market Impact，所以这就和上一篇讲述的概念和模型无缝链接了起来。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>谈起Trade Execution，不得不提的就是Algorithmic Trading（算法交易）。毕竟随着Markowitz的“Diversification is the only free lunch”深入人心，投资组合所含的资产数量越来越大；同时交易频率随着计算机软硬件的不断升级而越来越快，依靠算法自动交易的方式已经愈发普及。说到底，Trade Execution的目标都是优化Market Impact，所以这就和上一篇讲述的概念和模型无缝链接了起来。</p>
-<!-- more -->
-<h2 id="order-book">Order Book</h2>
-<p>交易即是买卖，但又不是简单的一手交钱一手交货的双边买卖。交易有着隐藏的第三方，即所谓的market maker（做市商）。实际交易时，买方和卖方都会提供自己的买入和卖出价格，这些价格被做市商记录于order book中，并且做市商会用自己的存货资产在相应价格买入或卖出，使得双边都能顺利完成交易。order book即是一连串limit order，这些limit order静静地躺在order book里，此时他们对市场索取了流动性。直到排在他们身前的limit order由于价格达到了市场临界的价格而被执行，他们便成了下一单即将成交的market order，与此同时他们向市场提供了流动性。</p>
-<p><img src="https://athanszheyin.github.io/post-images/1616292559784.PNG" alt="Order Book示例"></p>
-<p>从上一篇我们已经知道，<code>Market Impact是指交易执行后价格相比于未执行交易前价格的变化。而Market impact可以进一步被分为暂时性impact的和永久性impact</code>，我们在这里进一步举例阐释为什么执行交易会对资产价格造成暂时性impact的和永久性impact。</p>
-<p>假设我们需要以market order的方式卖出A资产200股，此时市场原先的均衡被打破，卖出的market order亟需流动性，而order book里的buy limit order会被激活，他们填补了market order的即时需求，释放出流动性来达到新的市场均衡。卖出的order会逐级清空order book里等待的buy limit order（bid price不断降低），但由于market order的特性这一切在一瞬间完成。假设之后没有新的市场交易发生，做市商们会逐渐在order book里挂上新的buy limit order，bid price会一点点回升。一图胜千言：
-<img src="https://athanszheyin.github.io/post-images/1616294592731.PNG" alt=""></p>
-<p>图中可以看出market impact可以分解为暂时性impact和永久性impact。研究表明，暂时性impact一般正比于交易体量的平方根，而永久性impact一般正比于交易体量。</p>
-<p>假设我们不需要即刻成交，而是可以分批次分时段卖出A资产200股（不妨假设我们分两次，一次使用market order卖出100股）。那么market impact会变成如下模式：
-<img src="https://athanszheyin.github.io/post-images/1616296512878.PNG" alt=""></p>
-<p>如此看来，将交易拆分执行成子交易似乎能显著缩小暂时性impact，进而缩减整个market impact，这么做有益无害。但其实拆分执行背后有着隐藏的代价，那就是有效执行价格的不确定性增加了，而减少的暂时性impact实际就在弥补这样的不确定性。每做一笔子交易我们都消耗了order book的流动性，需要耐心等待market maker重新挂单回补流动性，子交易越多，流动性回补所需要的等待时间就越长，价格的不确定性就越高。</p>
-<h2 id="optimal-execution">Optimal Execution</h2>
-<p>交易的执行往往是在如下两个极端之间取舍：</p>
-<ol>
-<li>将所有交易在一瞬间完成，这样market impact很高，但交易所带来alpha得以保留</li>
-<li>将交易无限拆分成极小的子交易慢慢执行，这样market impact很小，但price movement risk和opportunity cost很高，交易所带来的alpha可能被削弱。</li>
-</ol>
-<p>我们需要在两个极端之间拿捏一个最优解，兼顾market impact， price movement risk和opportunity cost。数学上我们可以定义这个最优化问题如下：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><msub><mi>n</mi><msub><mi>x</mi><mi>t</mi></msub></msub><mi>E</mi><mo>(</mo><mi>C</mi><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>)</mo><mo>)</mo><mo>+</mo><mi>λ</mi><mi>V</mi><mi>a</mi><mi>r</mi><mo>(</mo><mi>C</mi><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">min_{x_t} E(C(x_t))+\lambda Var(C(x_t))
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139199999999997em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.29634285714285713em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">λ</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span></p>
-<p>其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">x_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>代表一个交易流程，即多少股在时间t被交易。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span>代表交易者的风险厌恶程度，或者是一个alpha signal的时效性。如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span>无限大，即alpha signal时效性极高，则我们按照情形1执行交易；如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span>是0，即alpha signal的效用保持恒定，则我们按照情形2执行交易。</p>
-<p>具体C(x_t)的表达方式我们在上一篇提到过，即是用market impact模型来模拟。我们可以用大量market impact影响因子的回归模型来表示，但归根结底，永久性impact和交易体量以及价格波动率成正比，暂时性impact和交易体量的平方根（Almgren的paper推算出是3/5次方）以及价格波动率成正比。</p>
-<p>交易的目的是为了获取超额收益，所以我们可以把交易成本的最优化问题整合到portfolio optimization的最优化问题的架构里：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><msub><mi>x</mi><mi>w</mi></msub><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi>μ</mi><mo>−</mo><mi>λ</mi><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Σ</mi><mi>w</mi><mo>−</mo><msub><mi>λ</mi><mrow><mi>T</mi><mi>C</mi></mrow></msub><mo>(</mo><msup><mi>β</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo>+</mo><mi mathvariant="normal">∣</mi><mi>x</mi><msup><mi mathvariant="normal">∣</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Γ</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">max_w w&#x27;\mu - \lambda w&#x27;\Sigma w - \lambda_{TC}(\beta &#x27; |x|+|x|&#x27;\Gamma |x|)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.996332em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">μ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">λ</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Σ</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Γ</span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mclose">)</span></span></span></span></span></p>
-<p>其实更精细的表达式除了传统的第一项mean variance optimization和第二项transaction cost之外，还应该有第三项，即最终仓位w和被交易的仓位x之间的协方差:</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><msub><mi>x</mi><mi>w</mi></msub><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi>μ</mi><mo>−</mo><mi>λ</mi><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Σ</mi><mi>w</mi><mo>−</mo><msub><mi>λ</mi><mrow><mi>T</mi><mi>C</mi></mrow></msub><mo>(</mo><msup><mi>β</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo>+</mo><mi mathvariant="normal">∣</mi><mi>x</mi><msup><mi mathvariant="normal">∣</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Γ</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo>)</mo><mo>+</mo><mi>τ</mi><mi mathvariant="normal">∣</mi><mi>x</mi><msup><mi mathvariant="normal">∣</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Σ</mi><mi>w</mi></mrow><annotation encoding="application/x-tex">max_w w&#x27;\mu - \lambda w&#x27;\Sigma w - \lambda_{TC}(\beta &#x27; |x|+|x|&#x27;\Gamma |x|)+\tau |x|&#x27;\Sigma w
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.996332em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">μ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">λ</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Σ</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Γ</span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.1132em;">τ</span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Σ</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span></span></p>
-<h2 id="algorithmic-trading">Algorithmic Trading</h2>
-<p>自动交易的算法是各家的镇店之宝，不会轻易示人以真面目。但是万变不离其宗，交易算法无非是要优化风险均衡下的transaction cost，进而产生一个可行的交易流程。而且交易算法千变万化，很难说孰优孰劣，根据交易背后的策略，即投资者的动机和风格的不同，会有不同的交易算法与之相匹配。</p>
-<h4 id="vwap和twap">VWAP和TWAP</h4>
-<p>VWAP（Volume Weighted Average Price）是最常见的交易算法，它的模型就是资产的交易流程和该资产日内不同时段的交易总体量相匹配，把自己的交易流程做成该资产交易总流程的一个分形。例如股票资产的日内交易量总是呈现U型，即开盘和尾盘时交易量大，中间交易量平淡；那么我们在自动交易该资产时也会将大部分交易部署在两端，中间交易量较少。</p>
-<p>TWAP（Time Weighted Average Price）和VWAP很类似，只是将交易流程按时间等比例分配。如果在一小时内需分三次总共交易300股，那么TWAP的交易流程便是在：20，：40和：60分钟分别交易100股。将VWAP和TWAP于portfolio construction做一个不成熟的类比，VWAP相当于纯被动的Market cap weighted而TWAP则直接相当于equal weighted。</p>
-<p>VWAP现在的作用大多是作为benchmark和其他交易算法比较，但这并不代表VWAP不会直接在实际交易中被采用。如果交易策略满足如下要求，那么VWAP仍然能交出很好的答卷：</p>
-<ul>
-<li>交易策略的alpha在整个交易过程中不会decay</li>
-<li>当个人交易的体量契合整体交易的体量时，market impact能被最小化</li>
-<li>待交易体量固定</li>
-</ul>
-<p>第三项要求说的是我们在执行VWAP交易算法前必须清楚地知道我们到底要交易多少体量，而当完成VWAP算法后这些体量将全部被交易。如果这一点不能确定，我们可以使用所谓的participation ratio的交易算法。这种算法和VWAP的区别在于它会实时监测市场上刚发生的交易量，然后按比例提交自己的交易流程；而VWAP则需要提前预估市场交易量。这种实时监测的代价是我们不能预先知道我们最终能完成的交易量。</p>
-<h4 id="arrival-price">Arrival Price</h4>
-<p>VWAP是一个简化的模型，它完全忽略了交易策略背后的alpha signal的属性。因此它是一种“被动”的自动交易算法，就像market cap weighted portfolio construction。Arrival Price Strategy（或者称为implementation shortfall strategy）是一种“主动”的自动交易算法，就像mean-variance optimized portfolio construction。</p>
-<p>交易策略满足如下条件是，使用Arrival Price的效果会较为理想</p>
-<ul>
-<li>交易策略有positive alpha且alpha会随着时间衰减</li>
-<li>交易者自身为risk averse且惩罚系数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span>已知</li>
-<li>当交易被拆解地越小，market impact越小</li>
-</ul>
-<p>具体的模型就是我们之前提到的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><msub><mi>n</mi><msub><mi>x</mi><mi>t</mi></msub></msub><mi>E</mi><mo>(</mo><mi>C</mi><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>)</mo><mo>)</mo><mo>+</mo><mi>λ</mi><mi>V</mi><mi>a</mi><mi>r</mi><mo>(</mo><mi>C</mi><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">min_{x_t} E(C(x_t))+\lambda Var(C(x_t))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139199999999997em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.29634285714285713em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">λ</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>，交易的越快，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>(</mo><mi>C</mi><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">E(C(x_t))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>就会越高，而 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>V</mi><mi>a</mi><mi>r</mi><mo>(</mo><mi>C</mi><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">Var(C(x_t))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>会越低，反之亦然。随着transaction cost的变化我们可以画出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>(</mo><mi>C</mi><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>)</mo><mo>)</mo><mi mathvariant="normal">，</mi><mi>V</mi><mi>a</mi><mi>r</mi><mo>(</mo><mi>C</mi><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">E(C(x_t))，Var(C(x_t))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>的efficient frontier。如果我们假设资产价格的时序变化服从Brownian Motion，那么该模型的最优解是</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>t</mi></msub><mo>=</mo><mi>X</mi><mfrac><mrow><mi>s</mi><mi>i</mi><mi>n</mi><mi>h</mi><mo>(</mo><mi>κ</mi><mo>(</mo><mi>T</mi><mo>−</mo><mi>t</mi><mo>)</mo><mo>)</mo></mrow><mrow><mi>s</mi><mi>i</mi><mi>n</mi><mi>h</mi><mo>(</mo><mi>κ</mi><mi>T</mi><mo>)</mo></mrow></mfrac><mo separator="true">,</mo><mi>w</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi><mtext> </mtext><mi>κ</mi><mo>=</mo><msqrt><mfrac><mrow><mi>λ</mi><msup><mi>σ</mi><mn>2</mn></msup></mrow><mi>η</mi></mfrac></msqrt></mrow><annotation encoding="application/x-tex">x_t = X \frac{sinh(\kappa (T-t))}{sinh(\kappa T)}, where\   \kappa = \sqrt{\frac{\lambda \sigma ^2}{\eta}}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord mathdefault">κ</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord mathdefault">κ</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mspace"> </span><span class="mord mathdefault">κ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.04em;vertical-align:-1.137791em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.902209em;"><span class="svg-align" style="top:-5em;"><span class="pstrut" style="height:5em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.417108em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">η</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.862209em;"><span class="pstrut" style="height:5em;"></span><span class="hide-tail" style="min-width:1.02em;height:3.08em;"><svg width='400em' height='3.08em' viewBox='0 0 400000 3240' preserveAspectRatio='xMinYMin slice'><path d='M473,2793c339.3,-1799.3,509.3,-2700,510,-2702
-c3.3,-7.3,9.3,-11,18,-11H400000v40H1017.7s-90.5,478,-276.2,1466c-185.7,988,
--279.5,1483,-281.5,1485c-2,6,-10,9,-24,9c-8,0,-12,-0.7,-12,-2c0,-1.3,-5.3,-32,
--16,-92c-50.7,-293.3,-119.7,-693.3,-207,-1200c0,-1.3,-5.3,8.7,-16,30c-10.7,
-21.3,-21.3,42.7,-32,64s-16,33,-16,33s-26,-26,-26,-26s76,-153,76,-153s77,-151,
-77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,104,606z
-M1001 80H400000v40H1017z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.137791em;"><span></span></span></span></span></span></span></span></span></span></p>
-<h4 id="其他">其他</h4>
-<p>除了上述两种主流的交易算法，还有许多不胜枚举。比如因为大量market impact计算会基于当日收盘价，所以有的交易算法会将绝大部分交易量留到关市前最后一刻执行，这样交易的有效执行价格会十分接近收盘价，由此计算出的market impact将会很小。</p>
-<p>市场的结构也有多种变体。通常我们接触的交易所有着一定的交易准则，数据有着很高的透明度。但一些broker dealer会组建自己的dark pool，这种dark pool可以跨交易所实现买卖，但很多order相关的数据会被隐藏起来。dark pool有自身的规则，也有与之相适应的交易算法。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Trade Execution综述]]></title>
-        <id>https://athanszheyin.github.io/post/trade-execution-zong-shu</id>
-        <link href="https://athanszheyin.github.io/post/trade-execution-zong-shu">
-        </link>
-        <updated>2021-03-07T13:05:03.000Z</updated>
-        <summary type="html"><![CDATA[<p>五年前，我曾在知乎上发布过一篇关于<a href="https://www.zhihu.com/question/31434619/answer/78148250">trading cost和market impact的帖子</a>，详细阐述了当时我对于execution上所谓implementation shortfall现象的研究。惭愧的是，现在的我并不比当年对于这一话题有更深的研究。只是我觉得我能够以更统一的视角来系统总结这一块的理论和方向，同时我对从这一话题延申出来的算法交易也有愈来愈深的兴趣，是以为记。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>五年前，我曾在知乎上发布过一篇关于<a href="https://www.zhihu.com/question/31434619/answer/78148250">trading cost和market impact的帖子</a>，详细阐述了当时我对于execution上所谓implementation shortfall现象的研究。惭愧的是，现在的我并不比当年对于这一话题有更深的研究。只是我觉得我能够以更统一的视角来系统总结这一块的理论和方向，同时我对从这一话题延申出来的算法交易也有愈来愈深的兴趣，是以为记。</p>
-<!-- more -->
-<p>从动机上来说，在市场越来越有效，alpha signal越来越难找的今天。<code>桌上的面包屑</code>也成了完全不能忽视的收益来源。且不论以吃进bid-ask spread谋生的高频做市商，transaction cost或者是市场微结构的研究是他们的立身之本。哪怕对于传统的多因子量化策略来说，transaction cost在近年来也成了炙手可热的台面上的课题。</p>
-<h2 id="解构transaction-cost-交易成本">解构Transaction Cost (交易成本)</h2>
-<p>transaction cost是一个很笼统的概念，可以从固定/浮动，显性/隐性两个象限来详细定义transaction cost的各项组成部分</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"></th>
-<th style="text-align:center">固定</th>
-<th style="text-align:center">浮动</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>显性</strong></td>
-<td style="text-align:center">Commission Fee</td>
-<td style="text-align:center">Bid-Ask Spreads, Taxes</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>隐性</strong></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">Market Impact, Price Movement Risk, Opportunity Cost</td>
-</tr>
-</tbody>
-</table>
-<p>流动性和整体的transaction cost息息相关，流动性越高的市场里大宗交易产生的transaction cost越低。流动性的一个直观体现就是bid ask spread，两者也同样是负相关。同样和bid ask spread负相关的是交易体量，交易体量越大就会往深处触及order book的挂单（这里我们假设order book由不同价位的limit order主导）。综合起来说，决定transaction cost的两大灵魂要素就是市场的流动性和交易体量。</p>
-<p>有一句有名的祷词“用勇气改变可以改变的事情，用胸怀接受不能改变的事情，并用智慧分辨二者的不同”。固定的transaction cost不随交易量和市场形势变化，而显性的transaction cost也是事先规定的，所以他们属于“不能改变的事情”；我们的勇气要用在“可以改变的事情”上，即那些浮动的隐性的transaction cost-- <strong>Market Impact, Price Movement Risk和Opportunity Cost</strong></p>
-<p>简单来说，Market Impact是指交易执行后价格相比于未执行交易前价格的变化。而Market impact可以进一步被分为暂时性impact的和永久性impact。暂时性impact指交易执行过程中资产价格的暂时性变化（买单执行后资产价格短暂变高，卖单执行后资产价格短暂变低），而这样的暂时性impact可以被认为是做市商提供流动性所需要的补偿。永久性impact指交易完成后资产价格的永久性变化（买单执行后资产价格永久变高，反之永久变低），这可以被看作是市场对于交易中所含信息量的反应（买单意味着有投资者认为资产被低估，因而价格会适当上升，反之亦然）。Market impact对于买卖双向通常是不对称的，当然也有学者认为买卖双向的Market impact孰大孰小取决于当时的市场是上升还是下降。为了减小Market Impact，最常见也最有效的办法是slice and dice，将大单切分成小单分时分批处理，这样减少了对市场的“惊扰”但同时也增大了Price Movement Risk和Opportunity Cost</p>
-<p>除了交易执行本身会影响资产价格，市场的一般性波动也会影响价格。这就属于Price Movement Risk的范畴，通常这也很难区分于我们刚提到的Market Impact（但并非不可能）。Opportunity Cost即是不交易的风险。当你有一个大单要执行，由于市场波动或其他原因，并非每一股都能被买入或卖出，等到事后资产价格开始上升或下降，那些未被执行的交易所带来的潜在损失就是你的Opportunity Cost。</p>
-<h2 id="计算market-impact-市场冲击">计算Market Impact (市场冲击)</h2>
-<p>前文中的分类能让我们更好的解构transaction cost，并意识到我们的建模应该从隐性的transaction cost尤其是market impact出发。之所以一笔交易会产生market impact，是缘于市场bid-ask挂单的机制，交易者自身对于流动性的要求和市场内其他交易者对于同一资产的交易所共同产生的价格差异。简单来说，market impact就是价格差，是实际执行价格和理想执行价格的差异。理想的执行价格并不能直接观测到，那么我需要一个<strong>fair market benchmark</strong>来替代它。这个benchmark我们一般就使用该资产的当日开盘价或前日收盘价 <code>当然如果想要更精细地定义benchmark，我们可以使用VWAP（volume weighted average price）</code> ，那么market impact就可以直接表示为</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><msub><mi>I</mi><mi>b</mi></msub><mo>=</mo><msup><mi>P</mi><mrow><mi>e</mi><mi>x</mi></mrow></msup><mi mathvariant="normal">/</mi><msup><mi>P</mi><mi>b</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">MI_{b} = P^{ex}/P^{b}-1
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.149108em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight">x</span></span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></p>
-<p>这是一个很粗浅的完全忽略当日Price Movement的表达式，因此我们可以进一步改进为</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><msub><mi>I</mi><mi>b</mi></msub><mo>=</mo><msup><mi>P</mi><mrow><mi>e</mi><mi>x</mi></mrow></msup><mi mathvariant="normal">/</mi><msup><mi>P</mi><mi>b</mi></msup><mo>−</mo><msubsup><mi>P</mi><mi>M</mi><mrow><mi>e</mi><mi>x</mi></mrow></msubsup><mi mathvariant="normal">/</mi><msubsup><mi>P</mi><mi>M</mi><mrow><mi>p</mi><mi>r</mi><mi>e</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">MI_{b} = P^{ex}/P^{b}-P^{ex}_M/P^{pre}_M
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.149108em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight">x</span></span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.075831em;vertical-align:-0.293531em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-2.4530000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7822999999999999em;"><span style="top:-2.4064690000000004em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span><span style="top:-3.180908em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.293531em;"><span></span></span></span></span></span></span></span></span></span></span></p>
-<p>这里的M表示市场指数价格
-基于对market impact的定义，我们可以量化地分析交易过程对于投资收益的影响。因为我们在回测投资策略时往往使用上述fair market benchmark来计算纸面上的投资收益，对比起实际交易的收益，纸面收益往往更高，之间的差值就是market impact。而这种现象我们就称之为<strong>Implementation Shortfall</strong> 。</p>
-<p>铺陈定义是为了ex post可以计算market impact，从而投资表现在策略和执行层面上划分开来，但光有定义还不够，为了达到在执行层面的优化，我们还需要能ex ante去预测market impact。作为quant，不论是以传统的计量经济学方法还是当下盛行的机器学习手段建立预测模型，我们首先需要识别能够左右market impact的影响因素。</p>
-<p>我们可以大致将market impact的影响因素分为交易类和资产类，交易类的因素有：</p>
-<ul>
-<li>交易量 （绝对体量或相对体量）</li>
-<li>投资者风格 （长期还是短期，技术还是价值，战略投资还是财务投资等）</li>
-<li>交易时点 （开市还是尾盘，周一还是周五，月初还是月末，是否临近节假日等）</li>
-<li>交易类型 （买还是卖，market order还是limit order）</li>
-<li>市场流动性</li>
-<li>市场其他属性</li>
-</ul>
-<p>资产类的因素有：</p>
-<ul>
-<li>价格动量 （价格处于上升区间时买入会有更大的market impact）</li>
-<li>价格波动率 （和market impact正相关）</li>
-<li>市值 （和market impact负相关）</li>
-<li>资产风格 （价值股还是成长股，类似于投资者风格）</li>
-<li>资产所处行业板块</li>
-</ul>
-<p>一. 搜集好了影响因素，我们首要的建模选择自然是线性回归：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><msub><mi>I</mi><mi>t</mi></msub><mo>=</mo><mi>α</mi><mo>+</mo><msubsup><mi mathvariant="normal">Σ</mi><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>I</mi></msubsup><msub><mi>β</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><msub><mi mathvariant="normal">ɛ</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">MI_{t} = \alpha + \Sigma_{i=1}^{I}\beta_{i}x_i+ɛ_t
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.138331em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord">Σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43055599999999994em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">ɛ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
-<p>但其中的影响因素x不尽然都与market impact都呈线性关联，<strong>我们大可以对这些因素先做非线性变换</strong>。典型的例子是交易量，经验表明交易量的平方根和market impact成正比，于是我们可以将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>V</mi><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">V^{1/2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">/</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>带入左边的自变量，甚至我们可以假设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>V</mi><mi>λ</mi></msup></mrow><annotation encoding="application/x-tex">V^{\lambda}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">λ</span></span></span></span></span></span></span></span></span></span></span></span>正比于market impact，然后通过数字模拟求解<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span>。另一种常见的转换是将市值MCap变为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>n</mi><mo>(</mo><mi>M</mi><mi>C</mi><mi>a</mi><mi>p</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">ln(MCap)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span>带入表达式左侧。而上文中提到的交易时点，交易类型，市场属性以及行业板块都可以通过dummy variable的形式带入。</p>
-<p>我们知道在使用线性回归模型时需要控制自变量的数目，一是降低多重共线性的影响，二是防止过拟合出现。所以真正对market impact影响较大的因素大概也就是交易量，价格动量，市值，市场流动性这几项。我们也可以通过regularization来让模型自身选取重要的自变量。</p>
-<p>二. 拥有了影响因素，我们也可以使用机器学历的思路来建模。使用支持向量机（SVM）或随机森林等等监督性学习模型直接建模，或是使用聚类分析（cluster analysis）将不同market impact的资产先行归类都是业界在尝试的方法。</p>
-<p>业界有许多知名厂商比如Barra和ITG提供商用的market impact model，他们的模型其实也不外乎是使用了这些因素构建的稍复杂的回归模型。但能让他们脱颖而出的是底层数据，他们会使用高质量的日内和tick-level的交易数据来计算这些影响因素，这保证了他们模型的精确和稳定。这大概也是quant界的一条普遍真理，<code>all models are wrong but some are useful</code>，<strong>数据的质量决定了模型的质量</strong>。</p>
-<h2 id="整合portfolio-optimization组合优化">整合portfolio optimization（组合优化）</h2>
-<p>单纯计算和预测market impact并不是我们的最终目的，<strong>如果将减少transaction cost</strong>（以下我们混用了transaction cost和market impact，因为这是我们唯一的可控因素）<strong>作为超额收益的来源之一的话，那将transaction cost整合到portfolio optimization的目标函数中才能最大化我们的收益风险比</strong>，当我们采用最简单的mean-variance optimization架构时，目标函数会调整为：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><msub><mi>x</mi><mi>w</mi></msub><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi>μ</mi><mo>−</mo><mi>λ</mi><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Σ</mi><mi>w</mi><mo>−</mo><msub><mi>λ</mi><mrow><mi>T</mi><mi>C</mi></mrow></msub><mi>T</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">max_w w&#x27;\mu - \lambda w&#x27;\Sigma w - \lambda_{TC}TC
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.996332em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">μ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">λ</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Σ</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span></span></p>
-<p>但真正求解这一优化问题时我们发现事情并不是多了一个transaction cost的惩罚项那么简单，因为transaction cost里往往隐含了复杂的非线性部分，使得优化求解变得困难。当然非线性因素的加入对于quant来说属于家常便饭，最直接的解决办法是使用多项式去简化近似。比如我们只保留交易体量这单一因子来描述transaction cost，可以将transaction cost（单个security i）表示为：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><msub><mi>C</mi><mi>i</mi></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msub><mi>α</mi><mi>i</mi></msub><mo>+</mo><msub><mi>β</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><msub><mi>x</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><mo>+</mo><msub><mi>γ</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><msub><mi>x</mi><mi>i</mi></msub><msup><mi mathvariant="normal">∣</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">TC_i(x) = \alpha _i + \beta _i|x_i| + \gamma _i|x_i|^2
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.73333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.1141079999999999em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
-<p>从而mean-variance optimization的目标函数变为：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><msub><mi>x</mi><mi>w</mi></msub><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi>μ</mi><mo>−</mo><mi>λ</mi><msup><mi>w</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Σ</mi><mi>w</mi><mo>−</mo><msub><mi>λ</mi><mrow><mi>T</mi><mi>C</mi></mrow></msub><mo>(</mo><msup><mi>β</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo>+</mo><mi mathvariant="normal">∣</mi><mi>x</mi><msup><mi mathvariant="normal">∣</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">Γ</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">max_w w&#x27;\mu - \lambda w&#x27;\Sigma w - \lambda_{TC}(\beta &#x27; |x|+|x|&#x27;\Gamma |x|)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.996332em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">μ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">λ</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Σ</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">Γ</span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mclose">)</span></span></span></span></span></p>
-<p>至此目标函数就变成了一个经典的quadratic optimization问题了。</p>
-<p>Barra在它的market impact model白皮书中写下了如下的投资策略分析框架</p>
-<ol>
-<li>构建真实收益预期</li>
-<li>控制投资组合风险</li>
-<li>有效控制交易成本</li>
-<li>实时监控整体表现</li>
-</ol>
-<p>私以为这虽然是无用的套话，但确实奠定了transaction cost在投资管理中的地位。如开头所说，如果quant的工作是<code>压路机前捡硬币</code>，那<code>桌上的面包屑</code>这种风险收益比客观的alpha更加值得人们的青睐。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[中东散记]]></title>
-        <id>https://athanszheyin.github.io/post/zhong-dong-san-ji</id>
-        <link href="https://athanszheyin.github.io/post/zhong-dong-san-ji">
-        </link>
-        <updated>2021-02-28T22:46:43.000Z</updated>
-        <summary type="html"><![CDATA[<p>中东的概念由西方提出，与此相对应的还有近东和远东地区。广义的中东主要包括了今埃及，土耳其，阿拉伯半岛和伊朗高原， 囊括地中海，红海和波斯湾等一众水域。</p>
-<p>通常为了搞清楚地缘政治和历史，首先需要了解是什么造就了一个国家或一个民族。而中东的历史包含的远不止简单的演义故事，<strong>它是由存在于多条时间脉络中的众多的人物，对立的信仰，竞争的民族，崇高的信仰和虚伪的政治组成</strong>。如果我们把中东的一切凝结于地图上一个点，那这个点无疑是耶路撒冷-- 三大宗教的圣地， 所有的恩怨情仇，缘起于对这座圣城的争夺。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>中东的概念由西方提出，与此相对应的还有近东和远东地区。广义的中东主要包括了今埃及，土耳其，阿拉伯半岛和伊朗高原， 囊括地中海，红海和波斯湾等一众水域。</p>
-<p>通常为了搞清楚地缘政治和历史，首先需要了解是什么造就了一个国家或一个民族。而中东的历史包含的远不止简单的演义故事，<strong>它是由存在于多条时间脉络中的众多的人物，对立的信仰，竞争的民族，崇高的信仰和虚伪的政治组成</strong>。如果我们把中东的一切凝结于地图上一个点，那这个点无疑是耶路撒冷-- 三大宗教的圣地， 所有的恩怨情仇，缘起于对这座圣城的争夺。</p>
-<!-- more -->
-<p><img src="https://athanszheyin.github.io/post-images/1615231799954.jpeg" alt=""></p>
-<h2 id="上古">上古</h2>
-<p>在近代之前，耶路撒冷极其周边的中东小国总是由置于某个强国控制之下，而这个国家往往是当时欧亚大陆的某超级帝国的行省。早期的中东仿佛各大帝国你方唱罢我登场的舞台。最早是两河流域的帝国诸如巴比伦，亚述所统辖；在中国的秦汉同期，中东隶属居鲁士，大流士治下的庞大的波斯帝国，波斯人（大略为现在的伊朗人）在中东最早以统治者身份进行了文化和宗教渗入；到了中国的隋唐时期，阿拉伯帝国从阿拉伯半岛的沙漠兴起，并接管了中东。阿拉伯人的骑兵兵锋向西横跨了整个北非并继续向北征服了伊比利亚半岛（今西班牙）大部，向东征服了中亚地区，与唐王朝接壤并发生了怛罗斯之战。阿拉伯帝国奉行较为纯粹的军事征服，所以其兴也勃其亡也忽，但其对中东地区的统治仍然绵延了数百年之久。接下来到了中国的宋，明同时期，中东的主人成了突厥人（就是被隋唐碾压而西迁的突厥人）。从开始的塞尔柱突厥，到后来的奥斯曼突厥，仅仅是部落不同但本质上同属同一民族。奥斯曼突厥人建立的土耳其帝国对中东的统治一直持续到了一战前后，是中东地区最后的大一统王朝。</p>
-<p><img src="https://athanszheyin.github.io/post-images/1615231733109.jpg" alt=""></p>
-<p><strong>综合三千年漫长的历史，波斯人（伊朗人），阿拉伯人和突厥人（土耳其人）在中东依次登场， 眼看他起朱楼，眼看他宴宾客，眼看他楼塌了。这三个民族是中东地区最大的三个民族，其形成的民族国家现在仍然在中东地区占据不可忽视的角色</strong>。中东的第四大民族并不是大部分人猜想的犹太人，而是流浪于诸国间隙的库尔德人。库尔德人其实大家应该耳熟能详，从土耳其到叙利亚，从伊拉克到高加索地区，库尔德人在满是难民的国家之间颠沛流离，可谓是流浪儿中的流浪儿，其建国的宿愿几乎不可能达成，着实令人可怜。身世相似，在全世界流浪了两千年的犹太人在中东人口排名第五，他们在二战后强行在上帝的“应许之地”巴勒斯坦建国也几乎主导了现代中东的一系列争端和冲突，这个我们之后再讨论。</p>
-<p>其实除了中东地区现存的主要民族外，在中东不得不提的另一名角便是罗马人。现在中东很多的地理称谓比如巴勒斯坦，叙利亚其实都是当时的罗马行省，国家的疆土界限也大多由当时罗马划定。耶路撒冷虽为圣城，但在过去数千年里，中东的心脏其实位于近东的君士坦丁堡（今伊斯坦布尔）。罗马人在波斯人之后统摄了中东数百年时间，基督教兴起并席卷欧洲便是发生在那期间，后来东罗马帝国（拜占庭帝国）也一直占据着近东，历经数次十字军东征连同之后绵延数百年的君士坦丁堡保卫战，拜占庭人同阿拉伯人以及突厥人对抗直到1453年君士坦丁堡陷落于土耳其人之手。可以说罗马人对中东的影响几乎等于阿拉伯人和突厥人的总和。</p>
-<h2 id="近代">近代</h2>
-<p>中东最后一个大一统王朝是奥斯曼土耳其帝国，其实我们从历史课本中对这一帝国并不陌生，大体上的映像是正因为奥斯曼帝国垄断了欧洲前往亚洲的贸易通路，倒逼西欧诸国开启了大航海的探索时代云云。当时除去帝国在东南欧和北非远端占据领土，主要领土就集中在埃及，阿拉伯半岛，伊拉克，叙利亚，巴勒斯坦和土耳其。</p>
-<p><img src="https://athanszheyin.github.io/post-images/1615231756567.jpeg" alt=""></p>
-<p>一战时奥斯曼帝国错误地站队了德国和奥匈帝国，英法等国对其的反制措施之一就是煽动贝都因人叛乱，大名鼎鼎的阿拉伯的劳伦斯就讲述了这一段史实。一战结束后，阿拉伯人加持英国人的允诺建立了中东地区第一个独立的民族国家<strong>沙特阿拉伯</strong>。这也几乎成为英国开始插手中东事务的起点。</p>
-<blockquote>
-<p>需要说明的一点是一战之前“阿拉伯人”主要被用来称呼阿拉伯半岛上蓄养骆驼的牧民，即今日所说的贝都因人，阿拉伯人这一标签当时在广大的伊斯兰世界并没有认同感。</p>
-</blockquote>
-<p>1917年，英军开进了耶路撒冷，在十字军东征的千年之后再次统领了圣城。一年后一战结束，英法俄瓜分奥斯曼帝国的尸骸，俄罗斯主要垂涎于土耳其核心的小亚细亚和高加索地区，而英法开始分割中东包括阿拉伯半岛的势力范围。1920年，国联通过决议，以托管的形式坐实了英法对中东的瓜分，中东地区被划分为埃及， 苏丹，巴勒斯坦，叙利亚，黎巴嫩，约旦，伊拉克等等托管地或半附属性质的傀儡国家。其中叙利亚 ,黎巴嫩归属法国，其余皆归英国治下，阿拉伯半岛统一的梦想从此化为泡影。一般而言国家之间常被高山大河所阻隔，也往往有语言文化的差异，但中东并非如此，被英国人用笔直分界线人为划开的是语言文字习俗几乎一样的数个国家。英国通过拉拢部落首领，默罕默德后裔等等建立了多个傀儡王权，便于其分而治之的政治平衡术。</p>
-<blockquote>
-<p>在一个星期天下午，我用一支钢笔创造了约旦——温斯顿·丘吉尔</p>
-</blockquote>
-<p>奥斯曼帝国被瓜分后只剩下最后的安纳托利亚地区，这一地区在一战后在国父凯末尔的领导下成立了世俗化的<strong>土耳其</strong>共和国，宗教领袖哈里发的职务被废止，凯末尔实施全面西化，从衣着语言一律向西欧看齐。土耳其似乎成为了中东国家的一种新范式，强权成为了真理，政权的更替循环于军事独裁和党派专制。</p>
-<p>1936年英国与埃及达成协议，承认<strong>埃及</strong>独立，但英国军队仍然驻扎在当地，准确地说就沿着苏伊士运河。英国殖民地广袤，由于统驭有术在大部分地区英国人和当地人相互尊重，但埃及却是少数仇视英国人的殖民地之一。平心而论，英国人对埃及不差，它褒有一种对落后地区的责任感，帮助埃及在尼罗河修建阿斯旺大坝，帮助当地棉农灌溉，当然棉花作为原材料会出口到英国纺织商。然而英国人没想到的是，正是这条阿斯旺大坝之后间接引发了苏伊士运河危机，也让英国丢掉了这条“黄金水道”，也让出了自己世界帝国的地位。<strong>人类历史上绝大部分冲突都是由于对资源的掠夺性竞争造成，在巴勒斯坦这种资源就是土地，在伊拉克和沙特这种资源就是石油，在埃及这种资源就是苏伊士运河。</strong></p>
-<p>1917年，几乎在进驻耶路撒冷同时，英国发布了著名的贝尔福宣言，允许犹太人移民巴勒斯坦地区并建立自己的国家。罗马人可以证明，宗教信仰里哪怕最轻微的抵触，也可以带来最严重的暴动。对于耶路撒冷这样的三教圣地而言，无论谁来统治，维持现状才能维持和平。可是随着纳粹主政德国，德国以及欧洲其他国家有越来越多犹太人选择移民进入巴勒斯坦，当地的阿拉伯人和犹太人对立日趋尖锐，英国投入大量人力维持着摇摇欲坠的和平。英国人拉一派打一派的权谋在巴勒斯坦完全吃瘪，因为两派都不愿达成协议或信守承诺。最终在1939年，在即将到来的二战面前，英国人最终放弃平衡决定全力拉拢阿拉伯人，发表白皮书承认巴勒斯坦为阿拉伯人主导的区域。英国人的一女两嫁最终引爆了二战后中东的火药桶。</p>
-<h2 id="巴以">巴以</h2>
-<h3 id="以色列建国战争">以色列建国战争</h3>
-<p>1947年联合国通过著名的<a href="https://zh.wikipedia.org/wiki/%E8%81%AF%E5%90%88%E5%9C%8B%E5%A4%A7%E6%9C%83%E7%AC%AC181%E8%99%9F%E6%B1%BA%E8%AD%B0">181号决议</a>，将巴勒斯坦划分为犹太人自治区和阿拉伯人自治区，并允许双方建立各自的民族国家。我们的教科书上有一句话形容这项决议，“时实际占巴勒斯坦人口1/3的犹太人得到了巴勒斯坦地区56%的土地，约1.52万平方公里。占巴勒斯坦人口2/3的阿拉伯人仅得到43%的土地，约1.15万平方公里。”但实际情况是，犹太人在之前有计划地合法购买了大量巴勒斯坦土地，并在无主地通过垦荒设立了大量犹太定居点，这些土地被划分给犹太人合理合法。实际上，哪怕是按照人口比例分配土地，阿拉伯国家也并不会点头，他们的唯一目标是将犹太人全数从巴勒斯坦地区驱逐。然而当时，二战纳粹德国对于犹太人的迫害已被世人尽知，六百万犹太人死于集中营。基于对犹太人的同情，全世界不会坐视他们再遭流放。</p>
-<p><strong>1948年5月14日，世界犹太复国主义组织主席戴维·本-古里安宣告“犹太国家在以色列家园建立，称为以色列国”。第二天第一次中东战争爆发。</strong> 埃及从南面，约旦伊拉克联军从西面，黎巴嫩叙利亚从东北面同时进攻以色列，这是阿拉伯国家在历次中东战争中赢面最大的一次，因为刚建国的以色列如同婴儿般脆弱，国防军由之前的半游击组织哈加纳构建，在装备人数训练水平上全面处于下风。过程简单来说就是以色列哀兵必胜，先输后赢，通过战争中第一次停战协定的28天拼命采购装备，并实施全国动员，在停战后人员和装备焕然一新，很快收复失地，并于次年逼和了埃及，约旦，叙利亚等国。以色列稳固了自己在181号决议中所划得的疆界，并牢牢将自己钉在了强敌环伺的巴勒斯坦地区。</p>
-<h3 id="苏伊士运河战争">苏伊士运河战争</h3>
-<p>“<em>没有永恒的朋友，也没有永恒的敌人，只有永恒的利益</em>”这句话在中东政局中体现的淋漓尽致，比如英国和以色列，在1917年贝尔福宣言发布时英国是以色列人的救星，1939年白皮书发布一直到1948年联合国托管巴勒斯坦之前以色列人视英国为世仇，不断制造包括大卫王酒店爆炸在内的恐怖袭击以期让英国人知难而退离开巴勒斯坦。到了1956年之后，因为苏伊士运河归属问题，共同的敌人埃及让以色列和英国人又走到了一起，并发起了第二次中东战争。</p>
-<p>1956年战争开始，以色列沿着加沙地带进袭西奈半岛，虽说不上势如破竹，但也是节节胜利，英法趁机以调停为名介入埃及事务。英法在取得绝对的制海权制空权后，兵临苏伊士运河。而埃及当时的领袖纳赛尔使出杀手锏，立即凿沉40艘船只，把苏伊士运河堵塞，所有油轮不能出入，油价实时上升，整个西方世界面临停摆，连英国法国本身的用油也告急。于是在美苏两位大佬的压力下，英法以同埃及停战，苏伊士运河彻底归属埃及。</p>
-<p>这次战争虽然在军事上毫无建树，但纳赛尔力扛英法两国的压力，收回苏伊士运河主权，奠定了自身阿拉伯联盟老大的地位。加上与苏联合作最终建成的阿斯旺大坝，纳赛尔迎来了自己的人生巅峰。但纳赛尔没有意识到的是，这次苏伊士运河危机的真正赢家是美苏，纳赛尔的声望其实是超级大国们赏赐的礼物，而这件靠运气赢得的礼物将会在日后靠实力还回去。</p>
-<h3 id="六日战争">六日战争</h3>
-<p>纳赛尔确实是一位政治天才，以低级军官的身份于1952年政变中一蹴而就推翻法鲁克王朝，建立了埃及共和国。并在任期内收回苏伊士运河，并主持修建阿斯旺大坝，这两样加上金字塔几乎就是埃及的三大象征。纳赛尔三占其二，可以担的上埃及国父的名号，可是人啊得来东西太容易会让自己失去分寸。纳赛尔由于第二次中东战争的“胜利”已经把自己摆到了阿拉伯世界的领袖位置，甚至希望带领阿拉伯诸国建立除美苏之外的第三级。而要达成这一目标，首先就需要除掉阿拉伯世界最大的耻辱--以色列。</p>
-<p>梦想是伟大的，可是刺破这美丽的泡沫只用了6天，或者说只用了两小时。埃及嘟囔着要将以色列从地图上抹除，并高调从前苏联进口大量米格战机和T-55主战坦克。与此同时，以军装配的只是法国幻影3战机和英国百夫长坦克（第二次中东战争的战地友谊长存），装备落后于埃及，更不用提在军队人数和国力上的差距。纳赛尔的理念是“不战而屈人之兵”，通过武力威胁而不是真刀真枪妄图让犹太人屈服。一切开始于1967年6月5日清晨，也结束于那个早上。<strong>以色列经过周密计划出动了全部战机（除12架留守本土）分批次突袭埃及。以色列空军几乎贴着海平面低空突防，并且伴随着朝阳的逆光开始轰炸埃及各大机场，跑道，油料库，雷达站。经过两个小时两波轰炸后以军摧毁埃及95%的战斗机，大量高价采购的米格-21战机还没起飞就被炸毁在机库。</strong> 接着以色列空军马不停蹄北上轰炸叙利亚和约旦空军，孱弱的约旦空军全灭而叙利亚同样损失了一半以上的战机。至此以色列完全掌握制空权，也奠定了第三次中东战争的胜局。</p>
-<p>六日战争给以色列带来的领土收益是巨大的，在中部收复了耶路撒冷全城和整个约旦河西岸，往北夺取戈兰高地，以军坦克和火炮直接俯视叙利亚首都大马士革；往南（再次且只用了三天）拿下整个西奈半岛，陈兵苏伊士运河东岸，并沿河修建了巴列夫防线；全部领土扩大了三倍有余且全是寸土寸金的战略要地。以埃及为首的阿拉伯军队表现拙略，以至于在以色列空军司令魏茨曼看来，“<em>以色列最好的防御在开罗上空</em>”；装甲部队上以军也是碾压之势，刨开空军的大力支持不谈，坦克手的远程炮击精度，大规模坦克运动战指挥上，以军的军队素质都超然一等。</p>
-<p><img src="https://athanszheyin.github.io/post-images/1615259269359.jpg" alt=""></p>
-<p>至此，由埃及主导的阿拉伯世界对于以色列的战争三战皆墨，且战斗过程近乎一边倒毫无亮点可言。阿拉伯人在苏伊士运河危机后收获的民族自豪感荡然无存。至于纳赛尔，他的继任萨达特在回忆时说，“<em>他并非在1970年9月28日死去，而是在1967年6月5日，在战争爆发后一个小时，他就已经死去了。</em>”六日战争的影响是深远的，它标志这代表现代和世俗的纳赛尔主义的破产，并助长了伊斯兰原教旨主义的兴起。阿拉伯世界和以色列分别将自己绑定于冷战双方的车辙上，美苏开始深度介入中东事务。阿拉伯国家开始意识到石油是他们最好的议价筹码，欧佩克开始登上历史舞台并左右世界油价，而这在之后的赎罪日战争后更是引发了旷日持久的石油危机。</p>
-<h3 id="赎罪日战争">赎罪日战争</h3>
-<p>1973年，距离以色列建国已经过去了25年，在轮番将阿拉伯诸国在军事上按在地上磨擦之后，哀兵必胜渐渐转变为了骄兵必败。在第四次中东战争，以色列罕见地放弃了先发制人的国防策略，人们普遍认为是在犹太人最神圣的节日---赎罪日的突袭太过意外，但也有说法称放弃先发制人的攻击是政治选择，否则以色列将在开战后“连一根螺丝钉的援助都不会得到”，而这将更加致命。</p>
-<p><img src="https://athanszheyin.github.io/post-images/1615259950505.jpg" alt=""></p>
-<p>不论怎样，1973年10月6号埃及军队打出了一场扬眉吐气的战斗，他们使用高压水枪冲毁了以军在苏伊士运河对岸布置的沙堡工事，并在抢滩登陆后迅速使用苏制反坦克武器（包括极为亮眼的AT-3有线制导反坦克导弹）和萨姆地对空导弹压制了以色列装甲部队和空军的反击。开战初期，以军的巴列夫防线形同虚设，埃军迅速深入西奈半岛腹地并于以军对峙。但阿拉伯集团的高光表现也差不多到此为止了。</p>
-<p>在北面，叙利亚集中了9：1的压倒性兵力和1800辆坦克泰山压顶一般平推以军防线，以军以惊人的毅力死守各个据点，并在15小时内等来了预备役的支援。在后续的大规模装甲对战中，叙利亚军队驾驶先进的苏制T-62坦克再次输给了以色列的英制坦克，最终灰头土脸地退出了戈兰高地。南部的西奈半岛上，由于超出了防空导弹的保护范围，埃军的T-62坦克们也逐渐失去了先手优势，最终由后来的以色列总理沙龙率领坦克部队向南大迂回，一举突破了苏伊士运河包抄到埃军后方。埃军第三军团在被包了饺子后这场战争的结局也很快落定。</p>
-<p>但值得一提的是，虽然以色列在军事上先败后胜，但埃及领导人又一次通过政治手段扳回一城。萨达特在1979年的戴维营协定中成功了要回了西奈半岛主权， 条件是和以色列关系正常化并保持长期和平--- 在军事上反复栽跟头之后埃及人又有什么别的选择呢？然后和平换土地的代价还不止于于此，埃及率先与以色列和解使其被阿拉伯世界除名，萨达特本人也在1981年遇刺身亡，当天正好是赎罪日战争八周年纪念日。</p>
-<h2 id="一点感想">一点感想</h2>
-<p>在我小时候所看到的电视报道和历史课本上，在有关中东问题上总是充满了对巴勒斯坦阿拉伯难民的同情，以及对以色列人霸道行径的不满。但在中东漫长历史进程中，谁对谁错已经很难分辨，犬牙交错的利益格局下我们也许应当关心谁将自身资源和禀赋发挥到了极致。以此观之，我毫无犹豫地站队犹太人，一次次地以弱敌强，以一敌多，依靠着自身的战斗决心，缜密的计划，严谨的实施走向最后的胜利。战争不是虚无缥缈的艺术，不是简单热血的格斗，是一项科学复杂的工程，涉及平时的演习训练，战时的后勤补给，充足的情报网络，临阵的指挥决断等等。更重要的是，战争是政治力量的延续，而政治力量是综合国力的表征。如何在综合国力完全劣势的情况下玩好战争游戏，这需要超高的智慧和极大的耐心。阿拉伯诸国恰恰缺少了这些特质，而以色列则把这些锤炼到了极致。以色列在中东的立足与成长，是真实世界的热血逆袭，是国家层面的励志小说，让人肃然起敬，也使人掩卷沉思。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[千手观音与独臂罗汉]]></title>
-        <id>https://athanszheyin.github.io/post/qian-shou-guan-yin-yu-du-bi-luo-han</id>
-        <link href="https://athanszheyin.github.io/post/qian-shou-guan-yin-yu-du-bi-luo-han">
-        </link>
-        <updated>2020-12-25T19:16:33.000Z</updated>
-        <summary type="html"><![CDATA[<p>电影描述的远多过于片长的90分钟或者120分钟，电影是比小说更宽广的叙事媒介，可以从理性和视觉上构建双重意义。像穆赫兰道这样一组镜头讲两个故事，像罗生门这样一个故事讲三套情节，像记忆碎片这样一套情节分四五个时空。这都是电影作为叙事媒介的优势和魅力所在，镜头本身已经够丰富够让人沉浸了，然而镜头之外还有导演隐藏的千言万语。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>电影描述的远多过于片长的90分钟或者120分钟，电影是比小说更宽广的叙事媒介，可以从理性和视觉上构建双重意义。像穆赫兰道这样一组镜头讲两个故事，像罗生门这样一个故事讲三套情节，像记忆碎片这样一套情节分四五个时空。这都是电影作为叙事媒介的优势和魅力所在，镜头本身已经够丰富够让人沉浸了，然而镜头之外还有导演隐藏的千言万语。</p>
-<!-- more -->
-<p>2020倏忽而过，今年由于疫情，上映的商业片寥寥无几，我突然感觉能够一晚上连看两三部电影的时光已经离我很远了，一方面没有这么多值得一看的电影，一方面我也实在抽不出那么多时间。于是b站成了我日常光顾的视频资源集中营，那里有很多高质量的影评短片存在，比如我最近看到的库布里克的纪念短片。</p>
-<p>库布里克能做到每拍一部类型片就能开宗立派般重新定义这一类电影，而他潇洒转身去尝试其他的类型片，这样的能力为他赢得电影之神的封号。我没有生活在库布里克的时代，在我观影启蒙时库布里克已经去世了，甚至我完整看过的库布里克的电影只有两部，《发条橙》和《全金属外壳》（观看《发条橙》也是大学那会附庸风雅的产物，当时看完感觉还不如昆汀的《落水狗》）。剩下的名片比如闪灵和2001漫游太空我只是在不同场合反复看过那些经典镜头。可以说库布里克离我比较遥远，大概和希区柯克一样远。</p>
-<p>但我依然隐隐充满了对库布里克的崇敬，可能是因为他拍摄的类型片恰好是我钟爱的那几类，战争片，精神分析片和惊悚片（好像我也不大看）。再者就是我在我很钟爱的导演之一莱德利斯科特身上看到了库布里克的影子。</p>
-<p>莱德利斯科特就是那种会尝试拍各种类型片，而且在不同类型片里都能做出开山裂石般的创新。比如太空电影《异形》，比如科幻电影《银翼杀手》，比如战争电影《天国王朝》。这些电影都是我的心头好，因为我也恰巧是半拉子科幻迷和中古史迷。库布里克的《闪灵》《太空漫游2001》和《全金属外壳》在影史的地位无疑更高，只是因为拍摄年代久远，摄像，特效和画质不够先进而使得我不那么“专宠”。莱德利斯科特可能本质上依然是商业片导演而库布里克的电影早已上升到哲学层面。</p>
-<p>马丁斯科塞斯就是另一种深耕死磕一种类型片直到地老天荒的导演了，甚至连演员班底也是从一而终的选同一票人（君不见90年代的《好家伙》和2019年的《爱尔兰人》的卡司）。但他的每部电影并非简单重复，叙事策略，摄影技法都会有一定的创新，但那种阴暗冷峻的风格是不会变的，可惜如此风格的创世者又是科波拉。马丁斯科塞斯也尝试过其他的类型片，比如他对电影本身致敬的《雨果》和宗教意味甚浓的《沉默》，虽然我甘之如饴但客观来讲作品质量只能说是稀松平常了。类似的例子还有李安，拍摄家庭伦常，洞悉人心的电影那算是轻车熟路，家庭三部曲起家，卧虎藏龙和断背山封神。可若是除开细腻情感转向宏大叙事，就有些水土不服了。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[求是]]></title>
-        <id>https://athanszheyin.github.io/post/qiu-shi</id>
-        <link href="https://athanszheyin.github.io/post/qiu-shi">
-        </link>
-        <updated>2020-12-17T15:31:52.000Z</updated>
-        <summary type="html"><![CDATA[<p>“What I cannot create, I do not understand”by Richard Feynman</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>“What I cannot create, I do not understand”by Richard Feynman</p>
-<!-- more -->
-<p>我小时候的教育受囿于物质条件的影响，没有那么多应用场景能去体验，只能先强行记住抽象的理论框架和关键概念，然后通过有限的场景去加固记忆。做题是一种在应用场景匮乏的情况下人为构造出来的半理想半实际的应用场景。它也是一种应用场景，只是这种场景并不贴合实际，它是人为勾勒出来的场景碎片。所以我们只是通过做题更牢固地背诵了理论概念，并未锻炼到丝毫联系实际并应用的能力。</p>
-<p>当年我学数据结构就是这感觉，要知道高中时候我只用电脑来玩游戏，程序在我脑中和电影里的黑客破坏网络，特工戴着墨镜焊接电路一样是远离生活的fantasy。大一刚上来就是c语言和数据结构，如此抽象的概念对我们来说冲击有多大。实不相瞒，我以及周围大部分同学的第一反应就是背诵，把数组 链表 树和图的特点，结构，标准操作分门别类做好笔记然后记住，你敢信吗？我们当时手抄了一段一段遍历二叉树这样的代码段。我们当时还用的全英文教材，后来有同学发现了谭浩强的中文教材，编写地完全符合做题家思维，于是被我们奉为圭臬。现在想想，我们的高中教育和大学教育确实太割裂了。</p>
-<p>这一整套教育系统其实也有赖于中国数千年科举文化的路径依赖。我们习惯了先熟读诘屈聱牙的理论精髓，然后在数十年的人生轨迹里一点一点的填补应用案例。因为中国古来治学都是在学经世济民的形而上知识。这种知识几乎不可能在现实生活中找到应用场景，除非你身担正五品以上（也就是省部级）以上的官位。后来我们走的是苏系的教育系统，一切都从顶层设计开始，大概因为top down的范式符合意识形态。</p>
-<p>我们一代一代就是在这种极度匮乏应用场景的情况下学习知识，以至于我们忘记了，这世界上还有形而下的实验科学。且不说计算机这样的实验科学，很多社会科学也是实践出真知，我们需要bottom up范式，我们需要求是。理论是囫囵吞枣，实践是庖丁解牛。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[如何销售]]></title>
-        <id>https://athanszheyin.github.io/post/ru-he-xiao-shou</id>
-        <link href="https://athanszheyin.github.io/post/ru-he-xiao-shou">
-        </link>
-        <updated>2020-10-17T11:05:54.000Z</updated>
-        <summary type="html"><![CDATA[<p>这一篇翻译多半是强迫症的结果，与上一篇出自同一个blog，写的也算是基于作者的真实经历和自身总结。我只是觉得拥有一个销售的思维模式是好的，即便是信息传递便捷的当今世界仍然是酒香也怕巷子深。另外做事有条理也是很重要的，作为销售可能具体的职业技能门槛并不高，难的是自律和其他精神层面的自我修行。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>这一篇翻译多半是强迫症的结果，与上一篇出自同一个blog，写的也算是基于作者的真实经历和自身总结。我只是觉得拥有一个销售的思维模式是好的，即便是信息传递便捷的当今世界仍然是酒香也怕巷子深。另外做事有条理也是很重要的，作为销售可能具体的职业技能门槛并不高，难的是自律和其他精神层面的自我修行。</p>
-<!-- more -->
-<p>这篇帖子包含了一切我想要知道，但我在加入初创公司时并不知道的从事销售的经验。不经历一些幌子你很难获知关于销售的真知，所以我将我所知尽皆写下。
-为了能够成功的销售，我经过的最大的心路转变就是意识到：
-<strong>你的工作不是去销售，你的工作是（让产品）变得契合</strong>
-如果你与你的销售对象正好契合那么实际的销售过程变得非常自如。大多数销售的痛楚来自于人们间的不契合，夸大或低估他们的产品，以至于被客户不可避免的拒绝或直接消失而感到困惑。
-一旦你找到了真正契合的客户，向他们兜售将变得易如反掌和水到渠成。这是关于销售最令人惊奇的地方。
-契合意味着问正确的问题来决定面前的人是否是你产品合适的使用者。一旦你的企业开始有匹配的产品市场，你会对什么是“契合的问题”有深刻的理解。举一个我们GoCardless的例子，这些问题就诸如“你每个月会有多少次支付”，“目前你的客户用什么方式进行支付”，“你的客户都分布在哪里”；这些问题能让我们快速探知客户的潜在需求有多大，以及他们是否是我们某种支付解决方案的合适目标。</p>
-<p><strong>打销售电话的第一条规则是：保持安静</strong>
-大多数人在销售电话里说得太多了。你应该让自己占用20%的通话时间，而让你的客户讲80%。如果你没有达到这样的比率，那么这不是一个好的销售电话。<em>销售本质上是倾听，不是倾诉。</em>
-为什么是这样？销售是匹配的过程：有人存在一定的痛点并且希望以合理的价格找到满足需求的产品，然后愉快的结束找寻过程。为了能理解他们的痛点以及他们是否需要你的产品，<em>你需要他们自己陈述他们的商业模式和他们目前如何解决这个问题。</em>
-人们通常不会在脑海中对于他们想要的产品特性有一个清晰的名单--通常他们只是好奇或有一个模糊的概念有哪里不对劲并且正好从媒体上或哪里听说了你的产品--你需要从他们那儿具化信息从而帮助他们明白你的产品是否符合需求。因此：他们的描述需要占据大多数时间。</p>
-<p><strong>每一个销售电话都需要一个（预设的）结构</strong>
-你不仅需要把这个结构摆在你面前的笔记本或纸上，<strong>你还需要在电话里口述这个结构</strong>。
-我们使用的结构是：</p>
-<ol>
-<li>介绍</li>
-<li>现有流程</li>
-<li>痛点&amp;理想解决方案/需求</li>
-<li>你的方案</li>
-<li>后续步骤&amp;时间线
-我们让销售代表将这些部分连同他们的关键启发式问题打印成表格，同时他们在头一百个左右的销售电话里能自己完成这些表格。如果你遗失了某些部分，那一般来说这是一个不成功的销售电话。
-补充一句，我阅读的关于销售最有帮助的书是“<a href="https://www.amazon.com/SPIN-Selling-Neil-Rackham/dp/0070511136">SPIN Selling</a>”。我并没有在此书中看到特定的架构，但它有着很多关于成功销售的心路转变有价值的东西。</li>
-</ol>
-<h3 id="0事前研究">0）事前研究</h3>
-<p>10到15分钟的准备可以有天壤之别。搜LinkedIn仍然是主要的方法：搜索这个人，找到他的职位，Google他们，Google他们的老板，试图建立一个清晰的组织架构图。比方说，如果他们的职位是“支付主管”，那么看看这是不是公司中一个“VP”等级职位（通常更资深）--你可以搜索{公司名字}+“支付”然后看看每个符合关键字的人的职位。
-你需要明确知道这个人有多资深，即他们是否有采购权以及他们需要说服谁来签下合同；这些我们之后讨论。
-公司越小，和它的创始人/CEO交流就越重要。公司越大，你就越需要和专家或者某一方面的主管交流。
-好了，回到电话本身：</p>
-<h3 id="1介绍">1）介绍</h3>
-<p>非常重要但也通常没被正确执行。
-首先，一定要询问这是不是合适的通话时间--“我们预定了30分钟的通话，不知道现在是否还合适”。是的，这个会议可能是提前预定的，但征询意见并得到同意总还是礼貌行为且能让人安心于之后的会议。这表示你尊重他们的时间。
-其次，一旦他们说了同意，你可以：</p>
-<ul>
-<li>简单介绍你自己，你在公司的职位</li>
-<li>列出你想要讨论的东西，比如：“我希望能讨论如下几点：你的XYZ的现有流程，你有没有任何痛点或苦恼，你理想的解决方案或对新产品的要求， 然后合适的话再讨论后续步骤，你看还有什么其他地方需要讨论吗？”</li>
-<li>询问他们需要补充任何地方
-这里也同样有着征求同意的好处：不会有出人意料的地方；你可以在既定框架下问出你想问的问题，如果他们想要在电话里讨论别的，他们可以直接提出来。
-更重要的是，以这种方式开启通话象征着你是一个了解对方的有实力的让人尊敬的对家。这种“象征性效果”非常受用：机构会因为他们面对的是一个聪明能干的销售而更倾向于从你这里采购，所以这样的象征能增加你成功的机率。</li>
-</ul>
-<h3 id="2现有流程">2）现有流程</h3>
-<p>这是目前为止通话中最重要的一环。如果你正确地完成了这一环，那你就完全了解了他们当下的境况，他们是否是合适的买家，以及他们能否积极转变。在销售里这一步是“契合”中最重要的：了解某人是否是你产品的匹配买家。（如果你没有理解这一点，那你可能还没准备好扩展你的销售流程）。
-<strong>这一步的关键准则是问一些不是“是/否”的问题，即让人们详细描述他们目前的做法。</strong>
-如果你为Zoom工作，你会问一些像“你目前如果开展视频会议”或“你们公司的同时目前如果打视频电话”的问题。然后你会继续问比如“你能更细致的描述一下吗”等等，然后让他们展开回答。
-让他们进入对你叙述的状态中。一旦他们结束了某阶段的恢复，你可以引导他们说“OK，听上去他们会先做X，那然后呢？”等。
-<strong>这一阶段的成功标准是：等到结束时，你可以在你脑中对于你自身产品中的相关流程如“播放录像”般呈现。</strong>
-如果你在销售Zoom， 你需要准确知道他们如何接听远程电话。如果你在销售Box，你需要准确了解他们如果与彼此共享文件。如果你是支付提供方，你需要准确知道支付流是怎样的并能画出来等等。
-<strong>到此时，如果对方并不匹配你的产品，直接告诉他们，并引荐给他们能匹配他们的最好的乙方（可能是你的竞争对手）。</strong>
-这一点比较反直觉，但这是我关于销售学到的最好一课。它有着诸多好处：诚实；对方常感到惊喜；它会建立你的好名声以至你之后会常被人提起；以及它节省了大家的时间。<em>许多销售的心结来自于忽视这一准则，转而试图在对大家都不利的情形下强买强卖。</em>
-举个例子，在GoCardless我们一度不支持那些还在用纸质说明的客户，所以如果一个公司，它的&gt;10%的客户支付量是纸质的，那么它就不是我们理想的客户。在此类情况下我会直接缩短通话，说道“有一些值得注意的地方：听上去你需要纸质支付的支持，而我们并不做这个，因此我们也许不是你最需要的（解决方案），如果你需要其他公司的推荐，我推荐联系{竞争者}，他们还不错。”
-最后一点：如果你正确完成了这一步，你应该有了一些关于他们想要什么，他们对目前处境的困扰等等假设，这些在下一步就能派上用场。</p>
-<h3 id="3痛点理想解决方案需求">3）痛点&amp;理想解决方案/需求</h3>
-<p>当你能理解对方的现有流程，你需要了解现有流程的哪一块出了问题。这里可以分为两部分来讨论，但我觉得他们通常可以一以论之。
-这一环节的关键问题是：</p>
-<ul>
-<li>眼下你想要修正的最大问题是什么？（-&gt;为什么是这个问题等）</li>
-<li>基于你现在正在和我通话和我们在讨论的问题。是什么让你愿意开启这段通话？</li>
-<li>你想要的是什么？如果你有一根魔杖能让你拥有完美的解决方案，你首先想到的这个方案的三件事是什么？</li>
-<li>目前什么对于你很重要？（如果他们没有回应，你可以提示“比如速度延迟？欧洲区域的支持？移动设备/ipad支持？API整合？”）
-如果这些问题都无效，你可以试着从具体处着手，比如引用他们现有流程--“你提到人们通常从做这个开始，那这对于你是一个痛点吗？”我时常觉得这么做效果并不好--就像你在钓鱼--但如果这能引出额外信息的话则值得一试。
-<strong>这一阶段成功的标志是你能准确判断客户最关心的1-3件事。</strong> 这里的额外好处是更好地契合：如果这1-3件事正好是你所擅长地，那再好不过。否则，那他们可能不能很好地匹配你的产品。比方说，那些很关心简洁易用的API的客户正式GoCardless的完美客户，因为这正是我们的早期专长--一个给力的REST API。相反，如果客户真正关心的是“人工后台支持”或类似的事情，那他们可能不是合适的甲方等等。</li>
-</ul>
-<h3 id="4你的解决方案">4）你的解决方案</h3>
-<p>你会发现到目前为止你还没有进行“销售演说”。那么好，如果你有打算作一番演说的话<strong>现在</strong>就是最好的时机。尽管如此，“销售演说”是关于销售的一个错误理念。
-通话进行到此时，对方已经确定是或不是你的匹配客户。此外如果你问了正确的问题那么他们还给了你许多其他信息，通常他们会开始期望从你这里得到信息，于是你拿到了谈话的“开火权”（在任何对话中，如果一方的输出占比爆表地话人们都会觉得别扭）。
-我不喜欢过于强势地推销，因此此时我会委婉地开场比如“很好，这就是我想要了解的全部，我觉得基于你的描述我们实在非常合适，你有什么关于我们的问题吗/你有没有机会阅读文档，或者你希望我们用一分钟来简要介绍一下？”
-这“一分钟简要介绍”避免了客户对于销售人员没玩没了描述产品地恐惧。相比于其他仅仅好奇和需要更多介绍的客户， 这也同时有利于那些真正做了功课且只想知道一些具体细节的客户。
-如果他们需要我的简要介绍，我会告诉他们公司的主营业务，随后的“演说”部分变得简单：<strong>向他们确认他们最关心的1-3件事，然后解释你的产品如何满足这些需求，辅之以可靠的证据。</strong></p>
-<ul>
-<li>“如果我理解正确的话，听上去你们需要一个快捷简单的技术整合，支付日内结算，和法国区域支持是吗？”-&gt;让他们有机会确认</li>
-<li>然后遍历每一点...“你提到过你想要XYZ，这事实上是我们公司一大专长，【明晰的证据】”比如--“你提到过因为没有足够数量的软件工程师你想要简单的技术整合。作为一个技术公司，我们拥有一个非常简洁的REST API能够在两小时内整合到客户方。通话结束后我会将文档链接发给你以便参详。”</li>
-</ul>
-<h3 id="5-后续步骤和时间线">5） 后续步骤和时间线</h3>
-<p>不要遗忘这一部分。
-这里最主要的事是你需要在通话结束前尽可能留下详尽的后续步骤。比如客户如果需要和其他人沟通，那么你要确切知道那些人是谁，客户何时能与他们通话。你需要拿到客户在合理时间窗口内的下一次通话的书面同意 --诸如“你觉得可以预定一个下周一的后续通话吗”等。
-到这一步的很多事都是关乎前面进展和对方如何回应的，有些客户在这一阶段不会承诺过多那么你也不需太过强硬地预定通话，但你对于客户做抉择所需地信息以及他们抉择后如何推进要主动询问。如果他们不透露上述事宜，那么他们极度可能不是买家，而很可能只是礼貌地拒绝。（这些经验不仅仅局限于销售）。
-相反，如果你做好了你的份内而客户有潜在意向，那么他们通常在此时会喜欢并认可你同时希望完成签约，这样他们站到了你的阵线而会给予你他们下一步的信息，项目的周期有多长等。最好的情形是他们给予你谁是最后拍板地内部消息，如何说服这个大老板，大老板的日程安排等，并且会帮忙引荐和安排后续会议。后面这一块在大型企业销售中会显得更重要。</p>
-<h3 id="6跟进">6）跟进</h3>
-<p>务必同日跟进。没有借口。不要将跟进留待明天。今日事今日毕，这表明你的重视程度而这个信号非常重要，另外拖延是销售的死穴，因此你总要干净利落地处理待办事宜。
-你的跟进应该是简短，优雅并且明确地重复双方认同地下一步动作。举个例子，如果你觉得一通后续通话是合理地，你会想写下这么几句“你提到了你可以参加下周一下午的通话，我会发出3：30的通话邀请，如有变化望知悉。”等
-最后--<strong>锲而不舍地跟进</strong>。即使销售电话进行的异常顺利，客户依然会掉线，通常因为他们很忙而不是他们讨厌你。有多少次我签订的大单都需要我跟进&gt;15次才能最后开花结果。脸皮要厚--你需要一个清晰的“不”或清晰的“好”或清晰的“我在做一项需要花费我五天的XYZ，请下周再来垂询”。我筒仓每三天左右跟进，但这里可以具体问题具体分析。</p>
-]]></content>
-    </entry>
-</feed>
+
+
+
+  </body>
+</html>
