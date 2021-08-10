@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Literature Review -- Forest through the Trees | athans blog</title>
+<meta name="description" content="&lt;h2&gt;&lt;i&gt;&lt;b&gt;云物如故乡，山川知异路&lt;/b&gt;&lt;/i&gt;&lt;/h2&gt;">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1628558083640">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://athanszheyin.github.io">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1628558083640" class="site-logo">
+        <h1 class="site-title">athans blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://athanszheyin.github.io/post/about/" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/athanszheyin" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.weibo.com/u/2866261084" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/zheyin-zhao/" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.facebook.com/zheyin.zhao" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      <h2><i><b>云物如故乡，山川知异路</b></i></h2>
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> |
+<a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://athanszheyin.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Literature Review -- Forest through the Trees</h2>
+            <div class="post-date">2021-08-08</div>
+            
+              <div class="feature-container" style="background-image: url('https://vhx.imgix.net/petuniathedestroyer/assets/a3b8741e-adf6-4ba1-84e0-ff2cc44c0d63/1280x720+forest+thru+trees.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>This paper combines machine learning with investment objectives. It extracts complex signal from vast many variables and could easily include relevant constraints, e.g. removing illiquid assets or penny stocks. The model which the author comes up with is easily interpretable and simple to use, and the economic structure the author lays helps with the low signal to noise ratio in stock returns.</p>
+<!-- more -->
+<h3 id="introduction">Introduction</h3>
+<p>Academics and practitioners have two perspectives on investments, but they actually share the same fundamental problem with the same solution. It is better to build some translations channels between the two parties first:</p>
+<ul>
+<li>Stochastic Discount Factor (<strong>SDF</strong>) = optimal portfolio with highest Sharpe ratio</li>
+<li>Basis/test assets = simple (long-only) investment strategies for optimal portfolio</li>
+<li>Sorting portfolios = (non-linear) prediction of future returns</li>
+</ul>
+<p>Academically this paper generalizes <strong>sorting</strong> to find <strong>basis/test assets</strong> to construct the <strong>Stochastic Discount Factor</strong>. From the practitioner’s angle, this paper develops a new way of predicting stock returns and constructing simple investment strategies, and then shows how to combine them to a portfolio with highest Sharpe ratio.</p>
+<p>Broadly speaking, academic finance research concerns about the <strong>efficacy</strong> of asset pricing, professors want to:</p>
+<ul>
+<li>Test assets for the accuracy of the asset pricing models</li>
+<li>Construct better asset pricing models</li>
+<li>Understand the source and size of risk premium</li>
+</ul>
+<p>Practitioners are more intrigued by the <strong>inefficacy</strong> of asset pricing, hedge fund managers in actual investment:</p>
+<ul>
+<li>Find profitable portfolios not explained by common risk factors in such model</li>
+<li>Identify mispricing = alpha opportunities in markets</li>
+</ul>
+<p>Ever since the publishing of the Fama French 3 factor paper, sorting becomes the conventional approach to construct test assets where people use to test the efficacy of new signals. If we hold the prior that one characteristic of the assets (let’s say Book-to-Market) is <strong>informative</strong> about expected returns, the sorting portfolios provides a nonparametric estimator of conditional mean returns, which is equivalent to kernel regression to predict returns. Sorting delivers simple investment strategies, and it is the foundation to construct risk factors (high bucket minus low bucket represents the value factor).</p>
+<p>If we extend our prior to multiple characteristics, the state of the literature is to do so called “double sorting” where sorting portfolio is routinely used to create cross-sections buckets based on these 2 characteristics. If our prior consists of more than 3 characteristics, then we stack several cross-sections buckets together, for example 25 size and value + 10 momentum + 10 accruals.</p>
+<p>![image-20210806235133958](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210806235133958.png)</p>
+<p>![image-20210806235211903](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210806235211903.png)</p>
+<p>In sum sorting yields the test assets we used to form the portfolio to test the efficacy of the firm characteristics. Now the apparent challenges for the sorting approach are:</p>
+<ul>
+<li>Single sorting ignores any interactions between characteristics</li>
+<li>Multiple sorting is limited to coarse double or triple interactions</li>
+<li>Not considering firm distribution, some buckets will form empty and unbalanced portfolios</li>
+</ul>
+<p>We also argue that the success of simple long-short factors is due to the overly simplistic test assets from the sorting approach, because the sorting portfolio diversify the idiosyncratic noise and are easy to interpret.</p>
+<p>We propose the <strong>Asset Pricing Trees (AP-Trees)</strong> which is cross-section of basis assets that reflect all the information including interactions and non-linearities, relying on the two steps:</p>
+<ol>
+<li>Tree-sorted portfolios: creating managed portfolios with arbitrary interactions</li>
+<li>Pruning the trees: selecting portfolios that are the most relevant for asset pricing</li>
+</ol>
+<p>The advantages of AP-Trees are that it’s simple and interpretable, it’s a generalization of prevailing sorting methodology. It takes into account the arbitrary interactions among characteristic s and non-linearities, while pruning alleviates the curse of dimensionality. It provides new basis assets to test asset pricing models and offers investment opportunities not spanned by common risk factors.</p>
+<p>For the empirical results of the AP-Trees, it has higher Sharpe Ratios than sorting portfolios or conventional factors, and is harder to price cross-sectionally, because standard sorting and stacking doesn't reflect well the underlying information and presents too low a bar. In short better results are achieved by including economic structure in machine learning algorithm.</p>
+<h3 id="sorting-trees-and-forest">Sorting, Trees, and Forest</h3>
+<p>A tree of <strong>depth</strong> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">d=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>​ can be formed based on <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>​ <strong>characteristics</strong> and the rule of 50/50 splits:</p>
+<p>![image-20210807214300805](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210807214300805.png)</p>
+<p>The simplest trees rely on the 50/50 split within each group of the assets. Conditional on the order of splits, we could generate <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>k</mi><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">k^d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span></span></span></span></span></span></span> Subtrees, with each subtree yielding <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">2^d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span></span></span></span></span></span></span> non-intersecting portfolios. The Asset Pricing Trees (AP-Trees) contain <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>k</mi><mi>d</mi></msup><mo>∗</mo><msup><mn>2</mn><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">k^d * 2^d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span></span></span></span></span></span></span> portfolios altogether, with <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi mathvariant="normal">/</mi><msup><mn>2</mn><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">N/2^d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.099108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord">/</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span></span></span></span></span></span></span>​​​​ Stocks in each leaf node <strong>independent of k</strong>.</p>
+<p>The Tree-based portfolios are the result of conditional splits, thus they reflect join distribution of characteristics without the need for parametric modeling. This is important because many characteristics have a complicated joint distribution, meaning that focusing on unconditional quantiles can produce either empty or too dense portfolios.</p>
+<p>![image-20210807220910965](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210807220910965.png)</p>
+<p>We have the dimensionality curse in AP-Trees, with only 2 characteristics and depth of 3 we have <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">2^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>​​ Subtrees, within each having <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">2^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>​​​​​​ portfolios. This is a total of 64 (intersecting) portfolios. With 3 characteristics and depth of 4 we will have 1296 final portfolios. Apparently we need some sort of dimension reduction (portfolio selections) on these 1296 final leaf nodes.</p>
+<p>![image-20210808004555568](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808004555568.png)</p>
+<p>The tricky part is that usual techniques for portfolio selections (pruning) are not applicable here, since stocks with the same expected return could have very different features, for instance small stocks within value firms and large cap stocks within growth firms.</p>
+<p>Let’s return to the tree example shown before. According to the standard bottom-up pruning approach, we want to compare the returns of 1111 and 1112, if they are different we keep them separate.</p>
+<p>![image-20210807232744867](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210807232744867.png)</p>
+<p>Now the problem is when selecting blocks for the SDF, our goal is to find the best <strong>set of basis assets (leaf nodes)</strong> with which together they should give the highest Sharpe Ratio. Whether the set is optimal <strong>depends on other nodes</strong> because the portfolio is nothing but assigning weights to stocks. That means pruning <strong>cannot be local,</strong> we need another way to take into account other nodes.</p>
+<p>Conventional machine learning tree pruning (bottom-up approach) is local in nature and works only if the current split doesn't affect other nodes. Our object is to find the optimal basis assets from the tangency portfolio, and this is a global decision problem where comparing tree portfolios locally is not sufficient. Pruning reflects the risk of not only the mean return (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span></span></span></span>) but also the covariance (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi mathvariant="normal">Σ</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat\Sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9467699999999999em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9467699999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">Σ</span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;">^</span></span></span></span></span></span></span></span></span>). Our approach is the <strong>Asset Pricing Pruning</strong> which is to create optimal mean-variance portfolios with shrinkage and applied to all the final and intermediate nodes of the tree portfolios.</p>
+<p>To elaborate this solution, we take all the final and intermediate nodes from all the trees to construct the tangency portfolio on a robust and sparse mean-variance efficient frontier:</p>
+<ol>
+<li>
+<p>Construct a portfolio frontier on training data with elastic net (under <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>μ</mi><mo separator="true">,</mo><mi mathvariant="normal">Σ</mi></mrow><annotation encoding="application/x-tex">\mu, \Sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">Σ</span></span></span></span>​ uncertainty)</p>
+<p class='katex-block katex-error' title='Error: Font metrics not found for font: .'>minimize: w^T\Sigma w+ \lambda_1||w||_1 + \lambda_2||w||_2^2 \\
+subject\ to: w^T𝟙=1 \\
+w^T\mu ≥ \mu_0
+</p>
+<p>Tuning the hyper parameters via the validation data: target return <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>μ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\mu_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, sparsity lasso shrinkage <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>λ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, ridge shrinkage <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>λ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+</li>
+<li>
+<p>Choose the robust tangency portfolio by selecting tuned parameters on the validation data set.</p>
+</li>
+</ol>
+<p>The key elements in this solution are:</p>
+<ul>
+<li>Lasso: selecting a small number of basis assets (sparsity)</li>
+<li>Ridge: stability in covariance estimation</li>
+<li>Target Return: combining tangency portfolio with the minimum-variance portfolio, and also shrinking expected returns toward their cross-sectional average</li>
+</ul>
+<p>This is to say that we come up with a fast and efficient algorithm that converts portfolio optimization to a regularized regression setup.</p>
+<p>Let’s throw some intuition for these shrinkage components (and exclude lasso for now). We first know that Unconstrained SDF – the tangency portfolio of conventional mean-variance optimization – breaks down in large dimensions.</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>w</mi><mrow><mi>n</mi><mi>a</mi><mi>i</mi><mi>v</mi><mi>e</mi></mrow><mo>∗</mo></msubsup><mo>=</mo><msup><mover accent="true"><mi mathvariant="normal">Σ</mi><mo>^</mo></mover><mrow><mo>−</mo><mn>1</mn></mrow></msup><mover accent="true"><mi>μ</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">w^*_{naive}=\hat\Sigma^{-1}\hat\mu
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9856959999999999em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7386959999999999em;"><span style="top:-2.4530000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mord mathdefault mtight">e</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.1412099999999998em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9467699999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">Σ</span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;">^</span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathdefault">μ</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.22222em;">^</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>Meanwhile our approach could be compared to a robust tangency portfolio and 2-fund separation theorem.</p>
+<p class='katex-block katex-error' title='Error: Font metrics not found for font: .'>w=(\hat\Sigma+\lambda_2l_N)^{-1}(\hat\mu+\lambda_0𝟙)∽\alpha w^*_{min.var.}+(1-\alpha)w^*_{ridge}
+</p>
+<p>We apply shrinkage in the covariance matrix and sample mean towards the average. Covariance matrix shrinkage is nothing new and we could consider mean shrinkage as combining tangency portfolio with the minimum-variance portfolio. There is a one-to-one mapping between the target mean <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>μ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\mu_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and mean shrinkage <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>λ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>​​​​, the extreme sample means are likely wrong so we pulled them toward the cross sectional average. Thus we are actually sacrifice some returns in exchange for much smaller variance (a typical bias variance tradeoff), analogue to Bloomberg’s adjusted beta shrunk towards 1. If we generate iid stocks with same know variance but different (<strong>estimated</strong>) mean returns, through simulation of out-of-sample Sharpe ratio for tangency portfolios, we see a clear edge with shrinkage.</p>
+<p>![image-20210808004653952](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808004653952.png)</p>
+<p>Another theoretical justification for the <strong>Asset Pricing Pruning</strong> comes from the robust estimation interpretation. If we are not confident about the empirical estimates of covariances and expected returns, Robust mean-variance optimization is equivalent to finding the mean-variance efficient solution under a worst case outcome for estimation uncertainty. Uncertainty sets for estimated Sharpe ratio, mean and variance are bounded:</p>
+<ul>
+<li>Uncertainty in Sharpe ratio is controlled by mean shrinkage <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>λ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>​</li>
+<li>Uncertainty in mean ratio is controlled by lasso shrinkage <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>λ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>​​</li>
+<li>Uncertainty in variance is controlled by ridge shrinkage <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>λ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>​</li>
+</ul>
+<p>In this sense, we build optimal portfolios for cautious investors who dislike uncertainty.</p>
+<p>So what did we achieve after pruning? We group stocks together with the same SDF exposure to form a smaller tree, and the magnitude of pruning is adjusted for portfolio depth.</p>
+<p>![image-20210808010244557](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808010244557.png)</p>
+<h3 id="cross-sections-empirics">Cross-Sections Empirics</h3>
+<p>The authors use the monthly stock returns from CRSP merged with Compustat from January 1964 to December 2016 (53 years) as the data sample. We also gathered 46 firm specific characteristics and consider <strong>a short list of 10 characteristics</strong> out of those: Size, Value, Operating Profitability, Investment, Momentum, Short-term Reversal, Long-term Reversal, Accrual, Asset Turnover, and Idiosyncratic Volatility. Through these 10 characteristics the authors form the basic set by picking Size plus two others, thus there will be 36 cross-sections results. The same portfolio approach will be applied to all the basis assets such that all the difference in results will be coming from using trees or triple sorting.</p>
+<p>![image-20210808090535463](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808090535463.png)</p>
+<p>The whole data is split to training, validation, and testing set, in which:</p>
+<ul>
+<li>Training: data is used to estimate the 40 basis assets metrics in the AP-Tree, then construct the weights of SDF based on the AP-Tree. The triple sorting test portfolios are formed by triple sorted with 32 assets (only one size split) and with 64 assets (two size splits).</li>
+<li>Validation: data is used to select tuning parameters</li>
+<li>Testing: data is used to conduct out-of-sample tests for AP-Trees and overall portfolios (SDF) on their Sharpe ratios, alphas and their t-stats, etc. The alphas (pricing errors) was calculated based on the following:
+<ul>
+<li>11 Factors which consist of the market factor plus all 10 cross-sectional specific factors</li>
+<li>4 Factors which consist of market factor plus the 3 picked cross-sectional specific factors</li>
+<li>Fama-French 3 and 5 factors.</li>
+</ul>
+</li>
+</ul>
+<p>Note that all the basis assets are value-weighted portfolios and exclude extreme single-sorted basis assets. The AP-Trees have a fixed depth of 4 with the pre-chosen 3 characteristics.</p>
+<p>The empirical results shows that mostly out-of-sample Sharpe Ratios of mean-variance efficient portfolios for AP-Trees win over the basis portfolios formed from triple sorting and XSF (cross sections sorted by the SR of AP-Trees)</p>
+<p>![image-20210808092752839](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808092752839.png)</p>
+<p>The t-stat of the Tree-based SDF alpha relative to market and 3 cross-section-specific factors is high, meaning AP-Tree based SDF is unspanned by traditional long-short factors.</p>
+<p>![image-20210808093100490](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808093100490.png)</p>
+<p>Similar results are shown when we calculate alpha relative to the 11 Factors model.</p>
+<p>![image-20210808093438749](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808093438749.png)</p>
+<p>Furthermore from the R squared between cross-sectional pricing of portfolios and cross-section specific factors, we show that common risk factors cannot price AP-Trees based SDF within cross-sections (low R squared), while Triple Sorting portfolios are easier to price than AP-Trees based portfolios for all the characteristics.</p>
+<p>![image-20210808093836147](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808093836147.png)</p>
+<h3 id="zooming-into-the-results">Zooming into the results</h3>
+<p>We have shown the empirical results of the 36 cross-sections testings, now let’s delve into one specific example which picks size, operating profitability and investment as the characteristics being tested. We have constructed AP-Tree with 40 portfolios (as before) and with 10 portfolios (with finer pruning), it is shown that 10 AP-Tree portfolios capture the same pricing information as 40, but the alpha t-stat is twice as large for both AP-Trees than sorting based portfolios.</p>
+<p>![image-20210808154439135](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808154439135.png)</p>
+<p>So how many basis assets do we need? From the charts below we know that 10 AP-Tree portfolios has the same Sharpe Ratio as 40, whether ex ante or ex post.</p>
+<p>![image-20210808155059009](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808155059009.png)</p>
+<p>The variance shrinkage <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>λ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and mean shrinkage <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>λ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> Are chosen optimally when <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>λ</mi><mn>0</mn></msub><mo>=</mo><mn>0.15</mn></mrow><annotation encoding="application/x-tex">\lambda_0=0.15</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span><span class="mord">5</span></span></span></span> And <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>λ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>​ close to zero.</p>
+<p>In addition, the results we have shown are not driven by micro-caps, we illustrate this by constructing the below two panels:</p>
+<ul>
+<li>Panel A: Exclude all nodes with value-weighted size quantile <strong>&lt; 0.4</strong></li>
+<li>Panel B: Only include around 600 largest stocks</li>
+</ul>
+<p>![image-20210808160700591](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808160700591.png)</p>
+<p>We could further check for turnover, rebalancing frequency, portfolio weights, time variation etc. and it is also a demonstration of how to include constraints like liquidity.</p>
+<p>We also show the optimal portfolio loadings in the characteristics space, from the charts we know conditional interaction matters and triple sorting is just too coarse (the optimal combination loads on extremes on the spectrum)</p>
+<p>![image-20210808161410772](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808161410772.png)</p>
+<p>Now if we combine all 10 characteristics and form the testing portfolios using trees, deciles, and double-sorting. We see that AP-Trees double the Sharpe Ratio of stacked decile sorted portfolios. A small number of basis assets (20-30) for Tree-based portfolios is good enough to capture pricing signals. Moreover AP-Tree extract new pricing signal since the optimal portfolios (SDF) are not priced by the 11 risk factor models.</p>
+<p>![image-20210808162355847](/Users/zheyinzhao/Library/Application Support/typora-user-images/image-20210808162355847.png)</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>As a quantitative research in a hedge fund, our fundamental problems could be roughly categorized into two types</p>
+<ol>
+<li>
+<p>Prediction signal (simple prediction): which is to find signal that predict future security returns. We could use</p>
+<ul>
+<li>Linear regression (most commonly used)</li>
+<li>Nonparametric prediction (e.g. kernel regression)</li>
+<li>Machine learning (e.g deep neural network or tree based approaches)</li>
+</ul>
+<p>to find such signals.</p>
+</li>
+<li>
+<p>Portfolio construction (ultimate goal of interest): we need to devise a portfolio to trade based on the prediction output. We could construct the portfolio using</p>
+<ul>
+<li>Long-short hedged strategies (highest decile minus lowest decile, risk factor mimicking)</li>
+<li>Mean-variance optimization</li>
+</ul>
+<p>Meanwhile we are facing portfolio constraints related to rebalancing, trading frictions, transaction costs, etc.</p>
+</li>
+</ol>
+<p>However the best overall prediction signals are <strong>NOT</strong> necessarily the best input for portfolio construction. So far machine learning techniques often focus unconditionally on step 1 when it comes to the finance realm. This paper is about extracting signal that is optimal for portfolio construction. It levers a joint approach to prediction signal <strong>and</strong> portfolio construction based on stock characteristics. It retains most benefits of traditional “machine learning” and is easily interpretable.</p>
+<p>Why is machine learning useful for investment? Generically speaking:</p>
+<ul>
+<li>It is good at extracting signals from a large information set;</li>
+<li>It could easily capture complex nonlinear/interactive relationships among variables;</li>
+<li>It works well out-of-sample and is robust to overfitting.</li>
+</ul>
+<p>On the other end, the natural pitfalls of machine learning includes:</p>
+<ul>
+<li>ML-based portfolios might be exposed to micro-caps stocks, which incur large turnover and transaction costs.</li>
+<li>ML-based portfolio construction is like a niche “black-box” approach and is not easy to sell to an average client.</li>
+<li>Asset returns in efficient markets are dominated by unforeseeable news, it is very hard to extract predictors out of data with such low signal to noise ratio.</li>
+</ul>
+<p>This paper showcases how to combine economic structure with machine learning by building cross-sections of portfolios (SDF) using decision trees designed directly for investment strategies. This SDF is simple and interpretable, can adapt the selection of the assets and the depth of sorting. It is not driven by micro-caps and can easily extended to incorporate restrictions, transaction costs, etc., and it have not been over-studied yet.</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://athanszheyin.github.io/tag/qfc8Bcn8r" class="tag">
+                    Finance
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://athanszheyin.github.io/post/kelly-gong-shi-he-sui-ji-wei-fen">
+                  <h3 class="post-title">
+                    Kelly公式和随机微分
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
