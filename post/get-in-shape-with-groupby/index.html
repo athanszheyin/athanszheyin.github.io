@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1789440938662">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1789441716777">
 <link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
@@ -26,7 +26,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://athanszheyin.github.io">
-        <img src="https://athanszheyin.github.io/images/avatar.png?v=1789440938662" class="site-logo">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1789441716777" class="site-logo">
         <h1 class="site-title">Athans Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -83,34 +83,34 @@
             <h2 class="post-title">Get in Shape with Groupby</h2>
             <div class="post-date">2021-05-11</div>
             <div class="post-content" v-pre>
-              <p>Discussion about <code>pandas.groupby</code>,  <code>GroupBy.apply</code>, <code>GroupBy.agg</code> and <code>GroupBy.transform</code></p>
+              <p>Discussion about <code>pandas.groupby</code>, <code>GroupBy.apply</code>, <code>GroupBy.agg</code> and <code>GroupBy.transform</code></p>
 <!-- more -->
-<h3 id="all-about-groupby">All about <code>.groupby</code></h3>
+<h3>All about <code>.groupby</code></h3>
 <p>Let’s start with a <code>pandas.DataFrame</code> with some random data</p>
 <ul>
 <li><code>time</code> is a <code>pandas.date_range</code> from July 4, 2021 9:00 AM ~ 1:00 PM, with some random number of minutes add to put noise on each measurement</li>
 <li><code>ticker</code> is a randomly selected four-character string</li>
 <li><code>price</code> is a random starting value on <code>[0, 100)</code> plus some random noise drawn uniformly from <code>[-5, +5)</code></li>
 </ul>
-<pre><code class="language-python">from pandas import DataFrame, date_range, to_timedelta, concat
-from numpy import repeat, array, tile
-from numpy.random import choice, random, randint
-from random import randrange
-from string import ascii_lowercase
-from datetime import timedelta
+<pre><code class="hljs"><span class="hljs-keyword">from</span> pandas <span class="hljs-keyword">import</span> DataFrame, date_range, to_timedelta, concat
+<span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> repeat, array, tile
+<span class="hljs-keyword">from</span> numpy.random <span class="hljs-keyword">import</span> choice, random, randint
+<span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> randrange
+<span class="hljs-keyword">from</span> string <span class="hljs-keyword">import</span> ascii_lowercase
+<span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> timedelta
 
 df = DataFrame({
-  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
-  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
-  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
-  'signal': randint(10, size=size*rpt)
+  <span class="hljs-string">&#x27;time&#x27;</span>: repeat(date_range(<span class="hljs-string">&#x27;2021-07-04 9:00&#x27;</span>, periods=(size:=<span class="hljs-number">5</span>), freq=<span class="hljs-string">&#x27;1H&#x27;</span>), (rpt:=<span class="hljs-number">4</span>)) + to_timedelta(randint(<span class="hljs-number">0</span>, <span class="hljs-number">59</span>, size=(size*rpt)), unit=<span class="hljs-string">&#x27;T&#x27;</span>),
+  <span class="hljs-string">&#x27;ticker&#x27;</span>: tile(choice([*ascii_lowercase], size=(size, <span class="hljs-number">4</span>)).view(<span class="hljs-string">&#x27;&lt;U4&#x27;</span>).ravel(), rpt),
+  <span class="hljs-string">&#x27;price&#x27;</span>: tile(random(size)*<span class="hljs-number">100</span>, rpt) + ((random(size*rpt) - <span class="hljs-number">.5</span>) * <span class="hljs-number">10</span>),
+  <span class="hljs-string">&#x27;signal&#x27;</span>: randint(<span class="hljs-number">10</span>, size=size*rpt)
 })
-print(df.head(3))
+<span class="hljs-built_in">print</span>(df.head(<span class="hljs-number">3</span>))
 </code></pre>
 <p>We can use the <code>.groupby</code> method on this to perform operations on groups of <code>ticker</code>. In this case, <code>.groupby</code> method returns a <code>DataFrameGroupby</code> object that we can call further methods on to operate on the groups.</p>
-<pre><code class="language-python">_print = lambda expr: print(f'{expr} '.center(50, '-'), eval(expr), sep='\n')
-# print(f'{df.groupby("ticker") = }')
-_print('df.groupby("ticker").sum().head(2)')
+<pre><code class="hljs">_<span class="hljs-built_in">print</span> = <span class="hljs-keyword">lambda</span> expr: <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;<span class="hljs-subst">{expr}</span> &#x27;</span>.center(<span class="hljs-number">50</span>, <span class="hljs-string">&#x27;-&#x27;</span>), <span class="hljs-built_in">eval</span>(expr), sep=<span class="hljs-string">&#x27;\n&#x27;</span>)
+<span class="hljs-comment"># print(f&#x27;{df.groupby(&quot;ticker&quot;) = }&#x27;)</span>
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;df.groupby(&quot;ticker&quot;).sum().head(2)&#x27;</span>)
 </code></pre>
 <p>The <code>pandas.DataFrameGroupBy</code> object defines a set of operations that can be performed across on <strong>all</strong> of the groups, some of which are implemented as high-performance vectorized operations.</p>
 <p>Some simple operations supported are:</p>
@@ -125,103 +125,103 @@ _print('df.groupby("ticker").sum().head(2)')
 </ul>
 <p>These perform the specified reduction/aggregation operation on all relevant columns. If there are non-numeric columns, some operations may NOT be performed: e.g. <code>.sum()</code> will sum within the groups for all numeric columns and skip non=numeric columns; <code>.size</code> will return a single column with the size of the group; <code>.count</code> will count non-NaN values for all columns; <code>.min</code> and <code>.max</code> will find the minimum and maximum value for all comparable columns.</p>
 <p>The return value will be a new <code>pandas.Series</code> or <code>pandas.DataFrame</code> where the data is the result of the desired operation and the index is the group values (potentially <code>MultiIndex</code> when grouping multiple values). A <code>pandas.DataFrame</code> if there are multiple columns resulting from the desired operation; A <code>pandas.Series</code> if there is only column.</p>
-<pre><code class="language-python">for meth in 'count min max sum var std size'.split():
-  _print(f'df.groupby("ticker").{meth}().head(2)')
+<pre><code class="hljs"><span class="hljs-keyword">for</span> meth <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;count min max sum var std size&#x27;</span>.split():
+  _<span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;df.groupby(&quot;ticker&quot;).<span class="hljs-subst">{meth}</span>().head(2)&#x27;</span>)
 </code></pre>
 <p>With the <code>.as_index=False</code> flag, you can suppress the assignment of the group labels to the index.</p>
-<pre><code class="language-python">_print = lambda expr: print('-'*50, f'{expr} '.center(50, '-'), '-'*50, eval(expr), sep='\n')
+<pre><code class="hljs">_<span class="hljs-built_in">print</span> = <span class="hljs-keyword">lambda</span> expr: <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-&#x27;</span>*<span class="hljs-number">50</span>, <span class="hljs-string">f&#x27;<span class="hljs-subst">{expr}</span> &#x27;</span>.center(<span class="hljs-number">50</span>, <span class="hljs-string">&#x27;-&#x27;</span>), <span class="hljs-string">&#x27;-&#x27;</span>*<span class="hljs-number">50</span>, <span class="hljs-built_in">eval</span>(expr), sep=<span class="hljs-string">&#x27;\n&#x27;</span>)
 
-from pandas import DataFrame
-from numpy.random import randint, choice, normal
-from string import ascii_lowercase, ascii_uppercase
+<span class="hljs-keyword">from</span> pandas <span class="hljs-keyword">import</span> DataFrame
+<span class="hljs-keyword">from</span> numpy.random <span class="hljs-keyword">import</span> randint, choice, normal
+<span class="hljs-keyword">from</span> string <span class="hljs-keyword">import</span> ascii_lowercase, ascii_uppercase
 
-index = choice([*ascii_lowercase], size=(size:=10, 2)).view('&lt;U2').ravel()
+index = choice([*ascii_lowercase], size=(size:=<span class="hljs-number">10</span>, <span class="hljs-number">2</span>)).view(<span class="hljs-string">&#x27;&lt;U2&#x27;</span>).ravel()
 df = DataFrame({
-  'x': randint(0, 10, size=size),
-  'y': randint(0, 10, size=size),
+  <span class="hljs-string">&#x27;x&#x27;</span>: randint(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, size=size),
+  <span class="hljs-string">&#x27;y&#x27;</span>: randint(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, size=size),
 }, index=index).sort_index()
 
-_print('df.sample(2)')
-_print("df.groupby(level=0).sum().head()")
-_print("df.groupby(level=0, as_index=False).sum().head()")
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;df.sample(2)&#x27;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(level=0).sum().head()&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(level=0, as_index=False).sum().head()&quot;</span>)
 </code></pre>
 <p>Note that the <code>.groupby</code> has an axis= parameter, while we typically group down rows, it is also possible to group across columns (this is might be useful for joining similarly named columns). For the rest of the notes, we’ll ignore this possibility and assume we only wang grouping of rows (i.e. axis=0).</p>
-<pre><code class="language-python">_print = lambda expr: print(f'{expr} '.center(50, '-'), eval(expr), sep='\n')
+<pre><code class="hljs">_<span class="hljs-built_in">print</span> = <span class="hljs-keyword">lambda</span> expr: <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;<span class="hljs-subst">{expr}</span> &#x27;</span>.center(<span class="hljs-number">50</span>, <span class="hljs-string">&#x27;-&#x27;</span>), <span class="hljs-built_in">eval</span>(expr), sep=<span class="hljs-string">&#x27;\n&#x27;</span>)
 
 df = DataFrame({
-  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
-  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
-  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
-  'sig1': randint(10, size=size*rpt),
-  'sig2': randint(10, size=size*rpt),
-  'sig3': randint(10, size=size*rpt),
+  <span class="hljs-string">&#x27;time&#x27;</span>: repeat(date_range(<span class="hljs-string">&#x27;2021-07-04 9:00&#x27;</span>, periods=(size:=<span class="hljs-number">5</span>), freq=<span class="hljs-string">&#x27;1H&#x27;</span>), (rpt:=<span class="hljs-number">4</span>)) + to_timedelta(randint(<span class="hljs-number">0</span>, <span class="hljs-number">59</span>, size=(size*rpt)), unit=<span class="hljs-string">&#x27;T&#x27;</span>),
+  <span class="hljs-string">&#x27;ticker&#x27;</span>: tile(choice([*ascii_lowercase], size=(size, <span class="hljs-number">4</span>)).view(<span class="hljs-string">&#x27;&lt;U4&#x27;</span>).ravel(), rpt),
+  <span class="hljs-string">&#x27;price&#x27;</span>: tile(random(size)*<span class="hljs-number">100</span>, rpt) + ((random(size*rpt) - <span class="hljs-number">.5</span>) * <span class="hljs-number">10</span>),
+  <span class="hljs-string">&#x27;sig1&#x27;</span>: randint(<span class="hljs-number">10</span>, size=size*rpt),
+  <span class="hljs-string">&#x27;sig2&#x27;</span>: randint(<span class="hljs-number">10</span>, size=size*rpt),
+  <span class="hljs-string">&#x27;sig3&#x27;</span>: randint(<span class="hljs-number">10</span>, size=size*rpt),
 })
-df.columns = *df.columns[:-3], 'sig', 'sig', 'sig'
+df.columns = *df.columns[:-<span class="hljs-number">3</span>], <span class="hljs-string">&#x27;sig&#x27;</span>, <span class="hljs-string">&#x27;sig&#x27;</span>, <span class="hljs-string">&#x27;sig&#x27;</span>
 
-_print('df.groupby(level=0, axis=1).sum().head(3)')
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;df.groupby(level=0, axis=1).sum().head(3)&#x27;</span>)
 </code></pre>
 <p>We can perform a <code>.groupby</code> grouping by a single column, by multiple columns, or on the index. A considerable amount of time for a <code>.groupby</code> operation is spent sorting the data. If the data is pre-sorted, then we can disable this sorting with a <code>sort=False</code> flag at significant performance gain.</p>
 <p>There is also a <code>pandas.Series.GroupBy</code> object in addition to the <code>pabdas.DataFrameGroupBy</code>. This represents a <code>.groupby</code> operation being performed on a single <code>pandas.Series</code> of data</p>
-<pre><code class="language-python">index = choice([*ascii_lowercase], size=(size:=10, 2)).view('&lt;U2').ravel()
+<pre><code class="hljs">index = choice([*ascii_lowercase], size=(size:=<span class="hljs-number">10</span>, <span class="hljs-number">2</span>)).view(<span class="hljs-string">&#x27;&lt;U2&#x27;</span>).ravel()
 df = DataFrame({
-  'x': normal(size=size),
-  'y': normal(size=size),
+  <span class="hljs-string">&#x27;x&#x27;</span>: normal(size=size),
+  <span class="hljs-string">&#x27;y&#x27;</span>: normal(size=size),
 }, index=index).sort_index()
 
-print(f'{df["x"].groupby(level=0) = }')
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;<span class="hljs-subst">{df[<span class="hljs-string">&quot;x&quot;</span>].groupby(level=<span class="hljs-number">0</span>) = }</span>&#x27;</span>)
 </code></pre>
 <p><code>.groupby</code> can also group by a piece of data that is NOT contained in the <code>DataFrame</code> or <code>Series</code>.</p>
-<pre><code class="language-python">index = choice([*ascii_lowercase], size=(size:=10, 4)).view('&lt;U4').ravel()
+<pre><code class="hljs">index = choice([*ascii_lowercase], size=(size:=<span class="hljs-number">10</span>, <span class="hljs-number">4</span>)).view(<span class="hljs-string">&#x27;&lt;U4&#x27;</span>).ravel()
 df = DataFrame({
-  'x': randint(0, 10, size=size),
-  'y': randint(0, 10, size=size),
+  <span class="hljs-string">&#x27;x&#x27;</span>: randint(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, size=size),
+  <span class="hljs-string">&#x27;y&#x27;</span>: randint(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, size=size),
 }, index=index).sort_index()
 
-_print("df.groupby(df['x'] &lt; df['y']).sum()")
-_print("df.groupby(lambda idx_val: idx_val.lower()[:2]).sum().head(2)")
-_print("df.groupby(df.index.str.lower().str[:2]).sum().head(2)")
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(df[&#x27;x&#x27;] &lt; df[&#x27;y&#x27;]).sum()&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(lambda idx_val: idx_val.lower()[:2]).sum().head(2)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(df.index.str.lower().str[:2]).sum().head(2)&quot;</span>)
 </code></pre>
 <p>If we were to <code>.groupby</code> two fields, and we want the result to be non-“flat”; in other words, we want one of the fields to be the row index, the other field to be the column index, and the grouped function values to be at the intersection of these, then we can do a <code>.groupby().unstack()</code>.</p>
 <p>There is also a short-named for this operation: <code>.pivot_table()</code> which has the advantage of NOT converting the data values to a floating point if there are missing intersections fo the two groups.</p>
-<pre><code class="language-python">_print = lambda expr: print('-'*50, f'{expr} '.center(50, '-'), '-'*50, eval(expr), sep='\n')
+<pre><code class="hljs">_<span class="hljs-built_in">print</span> = <span class="hljs-keyword">lambda</span> expr: <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-&#x27;</span>*<span class="hljs-number">50</span>, <span class="hljs-string">f&#x27;<span class="hljs-subst">{expr}</span> &#x27;</span>.center(<span class="hljs-number">50</span>, <span class="hljs-string">&#x27;-&#x27;</span>), <span class="hljs-string">&#x27;-&#x27;</span>*<span class="hljs-number">50</span>, <span class="hljs-built_in">eval</span>(expr), sep=<span class="hljs-string">&#x27;\n&#x27;</span>)
 
-from pandas import DataFrame, MultiIndex
-from sys import maxsize
+<span class="hljs-keyword">from</span> pandas <span class="hljs-keyword">import</span> DataFrame, MultiIndex
+<span class="hljs-keyword">from</span> sys <span class="hljs-keyword">import</span> maxsize
 
 index = MultiIndex.from_tuples([
-  ('a', 'aa', 'aaa'),
-  ('a', 'bb', 'aaa'),
-  ('a', 'bb', 'abb'),
-  ('b', 'aa', 'aaa'),
-  ('b', 'bb', 'aaa'),
-  ('b', 'cc', 'aaa'),
-], names='A B C'.split())
+  (<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-string">&#x27;aaa&#x27;</span>),
+  (<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;bb&#x27;</span>, <span class="hljs-string">&#x27;aaa&#x27;</span>),
+  (<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;bb&#x27;</span>, <span class="hljs-string">&#x27;abb&#x27;</span>),
+  (<span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-string">&#x27;aaa&#x27;</span>),
+  (<span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;bb&#x27;</span>, <span class="hljs-string">&#x27;aaa&#x27;</span>),
+  (<span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;cc&#x27;</span>, <span class="hljs-string">&#x27;aaa&#x27;</span>),
+], names=<span class="hljs-string">&#x27;A B C&#x27;</span>.split())
 df = DataFrame({
-  'x': randint(0, 10, size=index.size),
-  'y': 2**53 +1 # precision will be lost when converting to float type
+  <span class="hljs-string">&#x27;x&#x27;</span>: randint(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, size=index.size),
+  <span class="hljs-string">&#x27;y&#x27;</span>: <span class="hljs-number">2</span>**<span class="hljs-number">53</span> +<span class="hljs-number">1</span> <span class="hljs-comment"># precision will be lost when converting to float type</span>
 }, index=index)
 
-_print('df.groupby(level=(1, 2)).count().unstack()')
-_print('df.groupby(level=(1, 2)).count().unstack().fillna(0).convert_dtypes()')
-_print("df.pivot_table(index='B', columns='C', values=['x', 'y'], aggfunc='count', fill_value=0)")
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;df.groupby(level=(1, 2)).count().unstack()&#x27;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;df.groupby(level=(1, 2)).count().unstack().fillna(0).convert_dtypes()&#x27;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.pivot_table(index=&#x27;B&#x27;, columns=&#x27;C&#x27;, values=[&#x27;x&#x27;, &#x27;y&#x27;], aggfunc=&#x27;count&#x27;, fill_value=0)&quot;</span>)
 </code></pre>
-<h3 id="all-about-groupbyaggregate-apply-filter-transform">All about <code>.groupby().{aggregate, apply, filter, transform}</code></h3>
+<h3>All about <code>.groupby().{aggregate, apply, filter, transform}</code></h3>
 <p>Going back to our data from before, we may want to perform a more complex operation on the gourds than a simple <code>.count</code> or <code>.sum</code>.</p>
-<p>We can iterate over the groups directly and perform operations in Python (though this should be reserved for cases where the number of groups is on the order of the program structure, NOT on the order of the program computation). We can also use the <code>.apply</code>,  <code>.aggregate</code>,  <code>.filter</code>, and<code>.transform</code> methods. These largely fit into the following categories:</p>
+<p>We can iterate over the groups directly and perform operations in Python (though this should be reserved for cases where the number of groups is on the order of the program structure, NOT on the order of the program computation). We can also use the <code>.apply</code>, <code>.aggregate</code>, <code>.filter</code>, and<code>.transform</code> methods. These largely fit into the following categories:</p>
 <ol>
 <li><strong>aggregation</strong> (reducing the size of the group)</li>
 <li><strong>transformation</strong> (preserving the indexing of the group)</li>
 <li><strong>filtration</strong> (reducing the size of the group)</li>
 </ol>
 <p>Let’s start with filtration, using <code>.filter</code>:</p>
-<pre><code class="language-python">df = DataFrame({
-  'time': repeat(date_range('2021-07-04 9:00', periods=(size:=5), freq='1H'), (rpt:=4)) + to_timedelta(randint(0, 59, size=(size*rpt)), unit='T'),
-  'ticker': tile(choice([*ascii_lowercase], size=(size, 4)).view('&lt;U4').ravel(), rpt),
-  'price': tile(random(size)*100, rpt) + ((random(size*rpt) - .5) * 10),
-  'signal': randint(10, size=size*rpt)
-}).set_index(['ticker', 'time']).sort_index()
+<pre><code class="hljs">df = DataFrame({
+  <span class="hljs-string">&#x27;time&#x27;</span>: repeat(date_range(<span class="hljs-string">&#x27;2021-07-04 9:00&#x27;</span>, periods=(size:=<span class="hljs-number">5</span>), freq=<span class="hljs-string">&#x27;1H&#x27;</span>), (rpt:=<span class="hljs-number">4</span>)) + to_timedelta(randint(<span class="hljs-number">0</span>, <span class="hljs-number">59</span>, size=(size*rpt)), unit=<span class="hljs-string">&#x27;T&#x27;</span>),
+  <span class="hljs-string">&#x27;ticker&#x27;</span>: tile(choice([*ascii_lowercase], size=(size, <span class="hljs-number">4</span>)).view(<span class="hljs-string">&#x27;&lt;U4&#x27;</span>).ravel(), rpt),
+  <span class="hljs-string">&#x27;price&#x27;</span>: tile(random(size)*<span class="hljs-number">100</span>, rpt) + ((random(size*rpt) - <span class="hljs-number">.5</span>) * <span class="hljs-number">10</span>),
+  <span class="hljs-string">&#x27;signal&#x27;</span>: randint(<span class="hljs-number">10</span>, size=size*rpt)
+}).set_index([<span class="hljs-string">&#x27;ticker&#x27;</span>, <span class="hljs-string">&#x27;time&#x27;</span>]).sort_index()
 
-_print("df.groupby('ticker').filter(lambda g: (g['signal'].max() - g['signal'].min()) &lt; 6).head(10)")
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).filter(lambda g: (g[&#x27;signal&#x27;].max() - g[&#x27;signal&#x27;].min()) &lt; 6).head(10)&quot;</span>)
 </code></pre>
 <p>In a transformation, the result must be “like-indexed”. Let’s take a look at using <code>.transform</code>. The function using for <code>.transform</code> is restricted in the following ways:</p>
 <ul>
@@ -233,36 +233,37 @@ _print("df.groupby('ticker').filter(lambda g: (g['signal'].max() - g['signal'].m
 </li>
 <li>It must not change the groups in-place</li>
 </ul>
-<pre><code class="language-python">_print("df.groupby('ticker').transform(lambda g: g.round(-1)).head(10)")
-_print("df.groupby('ticker').transform(lambda g: g.round(-1).iloc[0]).head(10)")
-_print("df.groupby('ticker').transform(lambda g: g.round(-1).iloc[:-1]).head(10)") # this will fail because of shape mismatch
-_print("df.groupby('ticker').transform(lambda g: round(g, -1 if g.name == 'signal' else -2)).head(10)")
+<pre><code class="hljs">_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).transform(lambda g: g.round(-1)).head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).transform(lambda g: g.round(-1).iloc[0]).head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).transform(lambda g: g.round(-1).iloc[:-1]).head(10)&quot;</span>) <span class="hljs-comment"># this will fail because of shape mismatch</span>
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).transform(lambda g: round(g, -1 if g.name == &#x27;signal&#x27; else -2)).head(10)&quot;</span>)
 </code></pre>
 <p>If we want to perform an aggregation, we can use <code>.aggregate</code> or <code>.agg</code>:</p>
-<pre><code class="language-python">_print("df.groupby('ticker').aggregate('sum').head(10)")
-_print("df.groupby('ticker').aggregate({'price': 'max', 'signal': ['min', 'max'], }).head(10)")
-_print("df.groupby('ticker').aggregate(max_price = NamedAgg(column='price', aggfunc='max'), min_signal = ('signal', 'min')).head(10)")
-_print("df.groupby('ticker').aggregate(lambda g: g.sum()).head(10)")
+<pre><code class="hljs">_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).aggregate(&#x27;sum&#x27;).head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).aggregate({&#x27;price&#x27;: &#x27;max&#x27;, &#x27;signal&#x27;: [&#x27;min&#x27;, &#x27;max&#x27;], }).head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).aggregate(max_price = NamedAgg(column=&#x27;price&#x27;, aggfunc=&#x27;max&#x27;), min_signal = (&#x27;signal&#x27;, &#x27;min&#x27;)).head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).aggregate(lambda g: g.sum()).head(10)&quot;</span>)
 </code></pre>
 <p>Finally, we have another means by which we can do aggregation operations: <code>.apply</code>. <code>.apply</code> is extremely flexible, but it has the downside of much slower in practice than <code>.aggregate</code> or <code>.transform</code>. <code>.apply</code> takes a function which accepts a <code>DataFrame</code> as its argument, returning a new <code>DataFrame</code>; the <code>.apply</code> machinery determines how to combine the result <code>DataFrame</code>s into a a new structure.</p>
-<pre><code class="language-python">_print("df.groupby('ticker').apply(lambda df: concat([df, df]).sort_index()).head(10)")
-_print("df.groupby('ticker').apply(lambda df: (df['signal'] + df['price']).sum()).head(10)")
+<pre><code class="hljs">_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).apply(lambda df: concat([df, df]).sort_index()).head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).apply(lambda df: (df[&#x27;signal&#x27;] + df[&#x27;price&#x27;]).sum()).head(10)&quot;</span>)
 </code></pre>
-<h3 id="what-about-rolling">What about <code>.rolling</code></h3>
+<h3>What about <code>.rolling</code></h3>
 <p>The <code>.groupby</code> method is NOT the only method which can operate on the <code>pandas.DataFrame._data</code> region. The <code>.rolling</code> and <code>.expanding</code> operations provide similar functionality, but on rolling windows and for expanding transformations:</p>
-<pre><code class="language-python">_print("df.rolling(10, min_periods=1).sum().head(10)")
-_print("df.groupby('ticker').transform(lambda df: df.rolling(10, min_periods=1).sum()).head(10)")
-_print("df.groupby('ticker')['price'].transform(lambda s: s.reset_index(level=0, drop=True).rolling(10).sum()).head(10)")
+<pre><code class="hljs">_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.rolling(10, min_periods=1).sum().head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;).transform(lambda df: df.rolling(10, min_periods=1).sum()).head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.groupby(&#x27;ticker&#x27;)[&#x27;price&#x27;].transform(lambda s: s.reset_index(level=0, drop=True).rolling(10).sum()).head(10)&quot;</span>)
 
-_print("df.expanding(min_periods=1).sum().head(10)")
-_print("df.expanding(min_periods=1).count().head(10)")
-_print("df.expanding(min_periods=1).aggregate(lambda s: s[-1] - s[0]).head(10)")
-_print("df.expanding(min_periods=1).aggregate(lambda s: s.max() - s.min()).head(10)")
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.expanding(min_periods=1).sum().head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.expanding(min_periods=1).count().head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.expanding(min_periods=1).aggregate(lambda s: s[-1] - s[0]).head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.expanding(min_periods=1).aggregate(lambda s: s.max() - s.min()).head(10)&quot;</span>)
 
-_print("df.ewm(alpha=0.1).mean().head(10)")
-_print("df.ewm(alpha=0.1).std().head(10)")
-_print("df.ewm(alpha=0.1).var().head(10)")
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.ewm(alpha=0.1).mean().head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.ewm(alpha=0.1).std().head(10)&quot;</span>)
+_<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;df.ewm(alpha=0.1).var().head(10)&quot;</span>)
 </code></pre>
+
             </div>
           </div>
         </div>
