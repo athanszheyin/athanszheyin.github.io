@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Literature Review -- Multiple Alpha Sources and Active Management | Athans Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1789440938662">
+<link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <meta name="description" content="[PanAgora] Edward Qian, Eric H.Sorensen and Ronald Hua Over the years, quantitative equity portfolio management have evolved from a niche product to a generally accepted investment process. Along the " />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://athanszheyin.github.io">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1789440938662" class="site-logo">
+        <h1 class="site-title">Athans Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+                  <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+                  <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+                  <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+                  <a href="/post/about" class="site-nav">
+            关于
+          </a>
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://athanszheyin.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Literature Review -- Multiple Alpha Sources and Active Management</h2>
+            <div class="post-date">2020-02-16</div>
+            <div class="post-content" v-pre>
+              <p>[PanAgora] <strong>Edward Qian, Eric H.Sorensen and Ronald Hua</strong></p>
+<p>Over the years, quantitative equity portfolio management have evolved from a niche product to a generally accepted investment process. Along the way, practitioners have also made many improvements. Following this article, the authors extended their research to contextual models in which each stock has a unique model based on its firm characteristics or contexts ("Contextual Fundamentals, Models and Active Management", 2005), to integrated models in which transaction costs and information decay of factors are balanced to maximize the net alpha instead of "paper" alpha ("Information Horizon, Portfolio Turnover, and Optimal Alpha Models", 2007). Other relaed research are summarized in the book《Quantitative Equity Portfolio Management: Modern Techniques and Applications》 (2007).</p>
+<!-- more -->
+<blockquote>
+<p>Personally I think this is one of the two must-read books for people in the quantitative investing business, I will introduce the second one in the next article：）</p>
+</blockquote>
+<p>This article is one of the early papers on quantitative equity investment with the focus on combining factors in a multi-factor forecasting model. When the paper was out in early 2000, the conventional approach in the industry was to combine factors using either equal weights or weights proportional to factors; information coefficients, or ICs. These methods are simple and easy to use, but they ignore risks embedded in factor returns and correlations among different factor returns.</p>
+<p>We showed in the paper that a superior approach is to use a mean-variance framework, in which each factor represents an alpha-generating portfolio with expected return (average IC) and standard deviation (IC standard deviation), and different alpha-generating portfolios have different correlations (IC correlation). When viewed in that light, the traditional mean-variance analysis can be used for combining factors.
+<img src="https://athanszheyin.github.io/post-images/1582332775601.png" alt=""></p>
+<p>Clearly the largest drag on equity portfolio performance dampening the theoretical value of an alpha model is implementation cost. Trading cost or implementation shortfall is a direct function of realized transaction costs that increase with turnover., and an indirect function of the opportunity cost of not trading as the strength of the alpha model dwindles and becomes stale. As assets under management grow (for a specific manger with similar models), the problem becomes larger. One partial solution is to limit turnover. Indeed, many managers first develop and calibrate their alpha models, then implement by setting turnover constraints. This approach is ad hoc and potentially inefficient and does not consider either the likely autocorrelation and/or the investment horizon of an alpha source, or the cross-correlation structure of multiple alpha sources.</p>
+<p>Our approach here, as with prior work, is to set forth the normative objective function that maximizes the information ratio (IR). The strength and autocorrelation of alpha signals are important exogenous forces. For example, the typical momentum factor decays quite rapidly. This is the predominant ingredient of high turnover strategies. In contrast, the typical value factor may last months, quarters, and even years, depending on how it is constructed. These factors have positive information coefficients (ICs) as single factors as well as more stable combined ICs (composite ICs) depending on the cross-correlations of the individual ICs.</p>
+<p>Our work is to develop a model in which portfolio turnover is endogenous. It is determined jointly with the statistical properties of the exogenous factor returns. We develop the concepts of lagged IC and horizon IC for an alpha model. An optimal model that maximizes net IR with explicit turnover consideration would use multiple signals over multiple periods depending on an expanded IC inputs as well as cross-correlation and autocorrelation structure of signals.
+<img src="https://athanszheyin.github.io/post-images/1582332785580.png" alt=""></p>
+<p>Our results are important in several ways. First, we introduce the importance of factor return autocorrelation, horizon IC and lagged IC. Second, it is imperative to consider trading costs and turnover explicitly as key elements of the optimal alpha model, especially in the current environment with the increasing volume of high frequency trading. High frequency trading has the character of acute trend following with extreme momentum signals, which can benefit some participants at the expense of others. Third, this work can expand to the broader issue of strategy capacity, including universal capacity that extends beyond the assets of a single asset manager. Convergence of the many on a common signal impacts the capacity of the few.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

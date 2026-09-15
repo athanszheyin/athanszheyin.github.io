@@ -8,17 +8,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1717619919396">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1789440938662">
 <link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
 
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-
-
-    <meta name="description" content="温故而知新">
+    <meta name="description" content="温故而知新" />
   </head>
   <body>
     <div id="app" class="main">
@@ -27,7 +25,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://athanszheyin.github.io">
-        <img src="https://athanszheyin.github.io/images/avatar.png?v=1717619919396" class="site-logo">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1789440938662" class="site-logo">
         <h1 class="site-title">Athans Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -35,31 +33,24 @@
       </div>
     </div>
     <div>
-      
-        
-          <a href="/" class="site-nav">
+                  <a href="/" class="site-nav">
             首页
           </a>
         
       
-        
-          <a href="/archives" class="site-nav">
+                  <a href="/archives" class="site-nav">
             归档
           </a>
         
       
-        
-          <a href="/tags" class="site-nav">
+                  <a href="/tags" class="site-nav">
             标签
           </a>
         
       
-        
-          <a href="/post/about" class="site-nav">
+                  <a href="/post/about" class="site-nav">
             关于
           </a>
-        
-      
     </div>
   </div>
   <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
@@ -85,15 +76,20 @@
   </div>
 </div>
 
-
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
 
           <h2 class="archives-title">文章归档</h2>
           <div class="archives-container">
-            
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2024</h2>
+                          <h2 class="year" data-aos="fade-in" data-aos-delay="500">2024</h2>
+                              
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/deep-learning-for-sequences-part-2/">
+                      <h2 class="post-title">
+                        Deep Learning for Sequences Part 2
+                      </h2>
+                    </a>
+                  </article>
               
                 
                   <article class="post">
@@ -103,17 +99,6 @@
                       </h2>
                     </a>
                   </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://athanszheyin.github.io/post/deep-learning-for-sequences-part-2/">
-                      <h2 class="post-title">
-                        Deep Learning for Sequences Part 2
-                      </h2>
-                    </a>
-                  </article>
-                
               
                 
                   <article class="post">
@@ -123,16 +108,368 @@
                       </h2>
                     </a>
                   </article>
-                
-              
             
+              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2022</h2>
+                              
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/liang-hua-tou-zi-zhong-de-shu-xue-v-duo-chong-xian-xing-hui-gui/">
+                      <h2 class="post-title">
+                        量化投资中的数学V–多重线性回归
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/liang-hua-tou-zi-zhong-de-shu-xue-iv-jian-dan-xian-xing-hui-gui/">
+                      <h2 class="post-title">
+                        量化投资中的数学IV–线性回归
+                      </h2>
+                    </a>
+                  </article>
+            
+              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2021</h2>
+                              
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/liang-hua-tou-zi-zhong-de-shu-xue-iii-tong-ji-xue-jian-jie/">
+                      <h2 class="post-title">
+                        量化投资中的数学III–统计学简介
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/liang-hua-tou-zi-zhong-de-shu-xue-ii-gai-lu-fen-bu-jian-jie/">
+                      <h2 class="post-title">
+                        量化投资中的数学II–概率分布简介
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/liang-hua-tou-zi-zhong-de-shu-xue-i-gai-lu-li-lun-jian-jie/">
+                      <h2 class="post-title">
+                        量化投资中的数学I–概率理论简介
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/literature-review-deep-learning-in-asset-pricing/">
+                      <h2 class="post-title">
+                        Literature Review -- Deep Learning in Asset Pricing
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/forest-through-the-trees/">
+                      <h2 class="post-title">
+                        Literature Review -- Forest through the Trees
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/kelly-gong-shi-he-sui-ji-wei-fen/">
+                      <h2 class="post-title">
+                        Kelly公式和随机微分
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/cong-21-shi-ji-zi-ben-lun-shuo-kai-qu/">
+                      <h2 class="post-title">
+                        从21世纪资本论说开去
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/get-in-shape-with-groupby/">
+                      <h2 class="post-title">
+                        Get in Shape with Groupby
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/well-designed-pandas/">
+                      <h2 class="post-title">
+                        Well Designed Pandas
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/trade-execution-zong-shu-xu/">
+                      <h2 class="post-title">
+                        Trade Execution综述 （续）
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/trade-execution-zong-shu/">
+                      <h2 class="post-title">
+                        Trade Execution综述
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/zhong-dong-san-ji/">
+                      <h2 class="post-title">
+                        中东散记
+                      </h2>
+                    </a>
+                  </article>
+            
+              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2020</h2>
+                              
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/qian-shou-guan-yin-yu-du-bi-luo-han/">
+                      <h2 class="post-title">
+                        千手观音与独臂罗汉
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/qiu-shi/">
+                      <h2 class="post-title">
+                        求是
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/ru-he-xiao-shou/">
+                      <h2 class="post-title">
+                        如何销售
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/ru-he-li-jie-shi-wu/">
+                      <h2 class="post-title">
+                        如何理解事物
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/literature-review-backtest-evaluation/">
+                      <h2 class="post-title">
+                        Literature Review -- Backtest Evaluation
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/point-in-time-what-is-an-index/">
+                      <h2 class="post-title">
+                        Point in Time -- What is an Index
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/literature-review-risk-based-portfolio-construction/">
+                      <h2 class="post-title">
+                        Literature Review -- Risk Based Portfolio Construction
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/bai-hua-black-litterman-mo-xing-yan-yi/">
+                      <h2 class="post-title">
+                        白话black-litterman模型演义
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/point-in-time-understanding-the-vix/">
+                      <h2 class="post-title">
+                        Point in Time -- Understanding the VIX
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/literature-review-dynamic-portfolio-analysis/">
+                      <h2 class="post-title">
+                        Literature Review -- Dynamic Portfolio Analysis
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/literature-review-multiple-alpha-sources-and-active-management-panagora/">
+                      <h2 class="post-title">
+                        Literature Review -- Multiple Alpha Sources and Active Management
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/literature-reviews-minimum-variance-portfolio-composition/">
+                      <h2 class="post-title">
+                        Literature Review -- Minimum Variance Portfolio Composition
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/literature-review-expected-returns-on-stocks-and-bonds/">
+                      <h2 class="post-title">
+                        Literature Review -- Expected Returns on Stocks and Bonds
+                      </h2>
+                    </a>
+                  </article>
+            
+              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2019</h2>
+                              
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/literature-review-the-history-of-finance/">
+                      <h2 class="post-title">
+                        Point in Time -- The History of Finance
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/xiang-gang-you-jian-xiang-gang/">
+                      <h2 class="post-title">
+                        香港，又见香港
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/zhi-ming-fen-hua-lesslessji-sheng-chong-greatergreater-ying-ping/">
+                      <h2 class="post-title">
+                        致命分化 --《寄生虫》影评
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/hua-wei-yu-teng-xun-de-shuang-cheng-ji/">
+                      <h2 class="post-title">
+                        华为与腾讯的双城记
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/crystal-ball-for-value/">
+                      <h2 class="post-title">
+                        Crystal Ball for Value
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/intangible-value/">
+                      <h2 class="post-title">
+                        Intangible Value
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/a-brief-history-on-08-financial-crisis-subprime-market-part/">
+                      <h2 class="post-title">
+                        a brief history on 08 financial crisis --- subprime market part
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/li-yue-se-nan-ti/">
+                      <h2 class="post-title">
+                        李约瑟难题
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/zhong-hua-shi-feng-jian/">
+                      <h2 class="post-title">
+                        中华式封建
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/south%20and%20north/">
+                      <h2 class="post-title">
+                        南北易俗因何而起
+                      </h2>
+                    </a>
+                  </article>
+              
+                
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/hello-world/">
+                      <h2 class="post-title">
+                        30分钟建立静态博客指南
+                      </h2>
+                    </a>
+                  </article>
+            
+              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2018</h2>
+                              
+                  <article class="post">
+                    <a href="https://athanszheyin.github.io/post/hello-gridea/">
+                      <h2 class="post-title">
+                        Hello Gridea
+                      </h2>
+                    </a>
+                  </article>
           </div>
 
           <div class="pagination-container">
   
   
 </div>
-
         </div>
       </div>
     </div>

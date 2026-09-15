@@ -8,18 +8,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1717619919396">
+<link rel="shortcut icon" href="https://athanszheyin.github.io/favicon.ico?v=1789440938662">
 <link rel="stylesheet" href="https://athanszheyin.github.io/styles/main.css">
 
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-
-
-    <meta name="description" content="温故而知新">
-    
+    <meta name="description" content="温故而知新" />
   </head>
   <body>
     <div id="app" class="main">
@@ -28,7 +25,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://athanszheyin.github.io">
-        <img src="https://athanszheyin.github.io/images/avatar.png?v=1717619919396" class="site-logo">
+        <img src="https://athanszheyin.github.io/images/avatar.png?v=1789440938662" class="site-logo">
         <h1 class="site-title">Athans Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -36,31 +33,24 @@
       </div>
     </div>
     <div>
-      
-        
-          <a href="/" class="site-nav">
+                  <a href="/" class="site-nav">
             首页
           </a>
         
       
-        
-          <a href="/archives" class="site-nav">
+                  <a href="/archives" class="site-nav">
             归档
           </a>
         
       
-        
-          <a href="/tags" class="site-nav">
+                  <a href="/tags" class="site-nav">
             标签
           </a>
         
       
-        
-          <a href="/post/about" class="site-nav">
+                  <a href="/post/about" class="site-nav">
             关于
           </a>
-        
-      
     </div>
   </div>
   <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
@@ -86,9 +76,22 @@
   </div>
 </div>
 
-
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/deep-learning-for-sequences-part-2/">
+                  <h2 class="post-title">Deep Learning for Sequences Part 2</h2>
+                </a>
+                <div class="post-date">
+                  2024-06-05
+                </div>
+                <div class="post-abstract">
+                  <p>Recurrent Neural Networks (RNN)</p>
+                </div>
+              </div>
+              
+            </article>
           
             <article class="post-item">
               <div class="left">
@@ -100,23 +103,6 @@
                 </div>
                 <div class="post-abstract">
                   <p>GRU, LSTM, and RNN application architectures</p>
-
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://athanszheyin.github.io/post/deep-learning-for-sequences-part-2/">
-                  <h2 class="post-title">Deep Learning for Sequences Part 2</h2>
-                </a>
-                <div class="post-date">
-                  2024-06-05
-                </div>
-                <div class="post-abstract">
-                  <p>Recurrent Neural Networks (RNN)</p>
-
                 </div>
               </div>
               
@@ -132,18 +118,630 @@
                 </div>
                 <div class="post-abstract">
                   <p>Sequence processing tasks with deep learning</p>
-
                 </div>
               </div>
               
             </article>
           
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/liang-hua-tou-zi-zhong-de-shu-xue-v-duo-chong-xian-xing-hui-gui/">
+                  <h2 class="post-title">量化投资中的数学V–多重线性回归</h2>
+                </a>
+                <div class="post-date">
+                  2022-03-16
+                </div>
+                <div class="post-abstract">
+                  <p>我们从矩阵的角度来更泛化地讨论一下线性回归模型。我们先举一个关于多重线性回归的具体例子。如果我们想要研究教育和工作年限对于时薪的作用，我们建立一个线性模型：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi><mi>a</mi><mi>g</mi><mi>e</mi><mo>=</mo><msub><mi>β</mi><mn>0</mn></msub><mo>+</mo><msub><mi>β</mi><mn>1</mn></msub><mi>e</mi><mi>d</mi><mi>u</mi><mi>c</mi><mo>+</mo><msub><mi>β</mi><mn>2</mn></msub><mi>e</mi><mi>x</mi><mi>p</mi><mi>e</mi><mi>r</mi><mo>+</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">wage=\beta_0+\beta_1 educ+\beta_2 exper +u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mord mathdefault">u</span><span class="mord mathdefault">c</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>。其中响应变量是工资（wage），预测变量是教育（educ），工作年限（exper）。回归系数是：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>β</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>β</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>β</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\beta_0,\beta_1,\beta_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，噪音变量是：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/liang-hua-tou-zi-zhong-de-shu-xue-iv-jian-dan-xian-xing-hui-gui/">
+                  <h2 class="post-title">量化投资中的数学IV–线性回归</h2>
+                </a>
+                <div class="post-date">
+                  2022-01-13
+                </div>
+                <div class="post-abstract">
+                  <p>回归是一项随处可见的自然现象，人们最初开始关注回归正是从人类身高的遗传数据开始的。回归也是一种用于描述变量之间关系的统计模型，比如描述收入和食品支出关系的回归模型。回归更是一项预测未来资产价格和投资决策的有力的量化工具，比如人们曾经利用太阳耀斑数量来预测证券市场的收益（效果还不错）。</p>
+<p>我们关注线性回归是因为可以利用它进行统计推断，细说起来就是可以</p>
+<ol>
+<li>测试变量间是否存在线性关系（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi><mo>=</mo><mn>0</mn><mo>?</mo></mrow><annotation encoding="application/x-tex">\beta =0?</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mclose">?</span></span></span></span>）</li>
+<li>衡量变量间关系的不确定性（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>的置信区间）</li>
+<li>检测线性关系的假设和意外值</li>
+<li>寻找针对自变量和因变量的合适的转化方式</li>
+</ol>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/liang-hua-tou-zi-zhong-de-shu-xue-iii-tong-ji-xue-jian-jie/">
+                  <h2 class="post-title">量化投资中的数学III–统计学简介</h2>
+                </a>
+                <div class="post-date">
+                  2021-12-17
+                </div>
+                <div class="post-abstract">
+                  <p>从词根上看，统计一词在拉丁语中用于词组statisticum collegium，意为国务委员会；在意大利语中拼作statista，意为国会议员或者政治家；在德语中拼作statistik，意味国家数据的分析。总之是一个宏观政治意味很浓的词汇。</p>
+<p>显然统计学作为一门严谨的学科，和最初统计一词已有较大差别。关于统计学的历史，早期的重要人物是：贝叶斯，高尔顿（达尔文表弟，遗传统计学鼻祖），高斯；近代的关键词是：皮尔逊，费雪，内曼，Wald，Tukey；当代的领军人物是：科克斯（Cox），斯坦因（Stein）和Efron。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/liang-hua-tou-zi-zhong-de-shu-xue-ii-gai-lu-fen-bu-jian-jie/">
+                  <h2 class="post-title">量化投资中的数学II–概率分布简介</h2>
+                </a>
+                <div class="post-date">
+                  2021-12-03
+                </div>
+                <div class="post-abstract">
+                  <p>一枚骰子需要掷多少次才能掷到6？我们知道掷的次数期望为6，因为这个随机事件符合几何分布。骰子掷到6的概率是1/6，根据几何分布的性质，掷到6这一事件发生的投掷次数期望是概率的倒数，即6次。那么骰子需要掷多少次才能掷到6，同时6出现前骰子掷出的所有数字都必须是偶数？再或者，骰子需要掷多少次才能掷到6，同时6出现前骰子掷出的所有数字都必须是单挑上升的？要解决这些问题，我们需要了解一些常见的概率分布类型。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/liang-hua-tou-zi-zhong-de-shu-xue-i-gai-lu-li-lun-jian-jie/">
+                  <h2 class="post-title">量化投资中的数学I–概率理论简介</h2>
+                </a>
+                <div class="post-date">
+                  2021-11-27
+                </div>
+                <div class="post-abstract">
+                  <p>概率与统计往往被人们混为一谈，但他们在历史中初次登场相隔甚远。概率第一次作为数学分支出现在帕斯卡与费马在1654年前后的通信讨论中。统计则晚了一百年左右在1761年由贝叶斯提出，在此之前统计往往被认为是“数字骗术“。到了如今，概率和统计风头正劲，充斥于数据科学和机器学习两大热门领域中。概率和统计有什么区别呢？概率假设我们已知某个随机过程，然后去解答”什么将会发生“的问题。而统计假设我们未知某个随机过程，仅仅通过一个观测值去解答”什么已然发生“的问题。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/literature-review-deep-learning-in-asset-pricing/">
+                  <h2 class="post-title">Literature Review -- Deep Learning in Asset Pricing</h2>
+                </a>
+                <div class="post-date">
+                  2021-08-17
+                </div>
+                <div class="post-abstract">
+                  <p>The crucial question in finance is why are asset prices different from each other? No-Arbitrage Pricing Theory indicates <strong>Stochastic discount factor (SDF)</strong> explains difference in asset prices. Yet the fundamental problem of asset pricing is <strong>what is the SDF</strong>?</p>
+<p>The challenges of finding the SDF are:</p>
+<pre><code>1. Big Data: SDF should depend on all available economic information
+2. Non-Parametric: Functional form of SDF is unknown and likely complex
+3. Dynamics: SDF needs to capture time-variation in economic conditions
+4. Weak Signal: Risk premium in stock returns has a low signal-to-noise ratio
+</code></pre>
+<p>Can Machine Learning help on this issue? Machine Learning methods are very flexible in dealing with big data, but asset prices in efficient markets are dominated by unforeseeable news. This paper however disciplines the machine learning algorithm with <strong>No-Arbitrage</strong> constraint and will strongly improves the signal.</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/forest-through-the-trees/">
+                  <h2 class="post-title">Literature Review -- Forest through the Trees</h2>
+                </a>
+                <div class="post-date">
+                  2021-08-03
+                </div>
+                <div class="post-abstract">
+                  <p>This paper combines machine learning with investment objectives. It extracts complex signal from vast many variables and could easily include relevant constraints, e.g. removing illiquid assets or penny stocks. The model which the author comes up with is easily interpretable and simple to use, and the economic structure the author lays helps with the low signal to noise ratio in stock returns.</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/kelly-gong-shi-he-sui-ji-wei-fen/">
+                  <h2 class="post-title">Kelly公式和随机微分</h2>
+                </a>
+                <div class="post-date">
+                  2021-07-15
+                </div>
+                <div class="post-abstract">
+                  <p>人们研究赌博的最优下注问题已经有上百年的时间了，发表于1956年的Kelly公式给予了一个清晰的公式化答案，但它建立在人们需要完全了解赌博的结果分布的基础上。在量化投资领域，最优下注问题实际上就是风险配置问题，但投资结果的分布却不可能是事先已知的---人们顶多去预测它。这篇文章描述了我们如何使用几何布朗运动对连续情形中下注过程进行建模，从伊藤引理自然而然推导出一个连续情形下的Kelly公式。在此过程中我们需要先简单介绍随机微分方程。推导出的Kelly公式和我们熟悉的风险方差优化也有着有趣的关联。最后从投资者角度出发，这样一个理论模型在实际运用中还是有不少限制的。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/cong-21-shi-ji-zi-ben-lun-shuo-kai-qu/">
+                  <h2 class="post-title">从21世纪资本论说开去</h2>
+                </a>
+                <div class="post-date">
+                  2021-05-27
+                </div>
+                <div class="post-abstract">
+                  <p>围绕躺平和财富分配不均的开放式谈话</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/get-in-shape-with-groupby/">
+                  <h2 class="post-title">Get in Shape with Groupby</h2>
+                </a>
+                <div class="post-date">
+                  2021-05-11
+                </div>
+                <div class="post-abstract">
+                  <p>Discussion about <code>pandas.groupby</code>,  <code>GroupBy.apply</code>, <code>GroupBy.agg</code> and <code>GroupBy.transform</code></p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/well-designed-pandas/">
+                  <h2 class="post-title">Well Designed Pandas</h2>
+                </a>
+                <div class="post-date">
+                  2021-04-28
+                </div>
+                <div class="post-abstract">
+                  <p>For understanding core datatypes in pandas, including <code>pandas.array</code>, <code>pandas.Series</code>, <code>pandas.DataFrame</code>, <code>pandas.Catgorical</code>; resampling and masking</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/trade-execution-zong-shu-xu/">
+                  <h2 class="post-title">Trade Execution综述 （续）</h2>
+                </a>
+                <div class="post-date">
+                  2021-03-17
+                </div>
+                <div class="post-abstract">
+                  <p>谈起Trade Execution，不得不提的就是Algorithmic Trading（算法交易）。毕竟随着Markowitz的“Diversification is the only free lunch”深入人心，投资组合所含的资产数量越来越大；同时交易频率随着计算机软硬件的不断升级而越来越快，依靠算法自动交易的方式已经愈发普及。说到底，Trade Execution的目标都是优化Market Impact，所以这就和上一篇讲述的概念和模型无缝链接了起来。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/trade-execution-zong-shu/">
+                  <h2 class="post-title">Trade Execution综述</h2>
+                </a>
+                <div class="post-date">
+                  2021-03-07
+                </div>
+                <div class="post-abstract">
+                  <p>五年前，我曾在知乎上发布过一篇关于<a href="https://www.zhihu.com/question/31434619/answer/78148250">trading cost和market impact的帖子</a>，详细阐述了当时我对于execution上所谓implementation shortfall现象的研究。惭愧的是，现在的我并不比当年对于这一话题有更深的研究。只是我觉得我能够以更统一的视角来系统总结这一块的理论和方向，同时我对从这一话题延申出来的算法交易也有愈来愈深的兴趣，是以为记。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/zhong-dong-san-ji/">
+                  <h2 class="post-title">中东散记</h2>
+                </a>
+                <div class="post-date">
+                  2021-02-28
+                </div>
+                <div class="post-abstract">
+                  <p>中东的概念由西方提出，与此相对应的还有近东和远东地区。广义的中东主要包括了今埃及，土耳其，阿拉伯半岛和伊朗高原， 囊括地中海，红海和波斯湾等一众水域。</p>
+<p>通常为了搞清楚地缘政治和历史，首先需要了解是什么造就了一个国家或一个民族。而中东的历史包含的远不止简单的演义故事，<strong>它是由存在于多条时间脉络中的众多的人物，对立的信仰，竞争的民族，崇高的信仰和虚伪的政治组成</strong>。如果我们把中东的一切凝结于地图上一个点，那这个点无疑是耶路撒冷-- 三大宗教的圣地， 所有的恩怨情仇，缘起于对这座圣城的争夺。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/qian-shou-guan-yin-yu-du-bi-luo-han/">
+                  <h2 class="post-title">千手观音与独臂罗汉</h2>
+                </a>
+                <div class="post-date">
+                  2020-12-25
+                </div>
+                <div class="post-abstract">
+                  <p>电影描述的远多过于片长的90分钟或者120分钟，电影是比小说更宽广的叙事媒介，可以从理性和视觉上构建双重意义。像穆赫兰道这样一组镜头讲两个故事，像罗生门这样一个故事讲三套情节，像记忆碎片这样一套情节分四五个时空。这都是电影作为叙事媒介的优势和魅力所在，镜头本身已经够丰富够让人沉浸了，然而镜头之外还有导演隐藏的千言万语。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/qiu-shi/">
+                  <h2 class="post-title">求是</h2>
+                </a>
+                <div class="post-date">
+                  2020-12-17
+                </div>
+                <div class="post-abstract">
+                  <p>“What I cannot create, I do not understand”by Richard Feynman</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/ru-he-xiao-shou/">
+                  <h2 class="post-title">如何销售</h2>
+                </a>
+                <div class="post-date">
+                  2020-10-17
+                </div>
+                <div class="post-abstract">
+                  <p>这一篇翻译多半是强迫症的结果，与上一篇出自同一个blog，写的也算是基于作者的真实经历和自身总结。我只是觉得拥有一个销售的思维模式是好的，即便是信息传递便捷的当今世界仍然是酒香也怕巷子深。另外做事有条理也是很重要的，作为销售可能具体的职业技能门槛并不高，难的是自律和其他精神层面的自我修行。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/ru-he-li-jie-shi-wu/">
+                  <h2 class="post-title">如何理解事物</h2>
+                </a>
+                <div class="post-date">
+                  2020-07-09
+                </div>
+                <div class="post-abstract">
+                  <p>这是我翻译自<code>https://nabeelqu.co/understanding</code>的一篇文章，文章的主题很形而上，但文章写得很实在，于是我翻译了这洋洋洒洒的五千字。原作者的背景很有意思，他曾在牛津大学攻读哲学和政治经济学，毕业后进入英格兰银行（英国央行）做经济研究。后来投身创业圈子，现在在纽约一家独角兽里做程序员。从他的教育背景出发，不难发现他对于方法论的热衷，他的博客上也有这一系列类似这样的文章。</p>
+<p>首先要肯定此文值得一读，但从翻译的过程中可以发现很多东西方文化的差异：比如西方人钟爱反复论证，事例比喻一起上，有些例子（比如Ezra Pound）我看的莫名其妙，但经查阅才知道该案例很是经典，名声在外。有些例子则有些为赋新词强说愁，比如禅与摩托车维修的艺术那一段（当然个人认为那本书里的大部分内容就有强行拔高之嫌）。比如西方人对于数理基础还是捉急，两处关于数学的文字都让人摸不着头脑，一个是作者自己对于微分符号的“自作聪明”，还有一个是引用Andrey Kolmogorov的部分，Kolmogorov要是知道自己随手写的关于“等号”的随笔比他在概率论，信息论等等领域上的建树更引人注目，不知道他会作何感想。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/literature-review-backtest-evaluation/">
+                  <h2 class="post-title">Literature Review -- Backtest Evaluation</h2>
+                </a>
+                <div class="post-date">
+                  2020-06-13
+                </div>
+                <div class="post-abstract">
+                  <p>[Man AHL] <strong>Campbell Harvey</strong></p>
+<p>Very few take a backtested trading strategy’s result at face value. Experienced researchers understand that any historical backtest, no matter how careful the research design, will have some degree of overfitting. As a result, backtested results are overstated. The rule of thumb is to haircut the backtested Sharpe ratio by 50%. The idea of haircutting the Sharpe ratio is a good one – but why 50%?</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/point-in-time-what-is-an-index/">
+                  <h2 class="post-title">Point in Time -- What is an Index</h2>
+                </a>
+                <div class="post-date">
+                  2020-04-18
+                </div>
+                <div class="post-abstract">
+                  <p>Passive investing can be traced to a series of individuals and institutions in the 1970s, including academics Harry Markowitz, John Lintner, Jan Mossin, Paul Samuelson, Bill Sharpe, Jim Tobin, and Jack Treynor; practitioners Jack Bogle, Bill Fouse, and John McQuown; and Wells Fargo and Vanguard. There has been a growing tension between passive and active managers ever since. This tension has inevitably led to the emergence  of two distinct cultures in investment management, one focused on the identification of mispricing and the other predicated on the inability to do so.</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/literature-review-risk-based-portfolio-construction/">
+                  <h2 class="post-title">Literature Review -- Risk Based Portfolio Construction</h2>
+                </a>
+                <div class="post-date">
+                  2020-04-17
+                </div>
+                <div class="post-abstract">
+                  <p>[Neuberger Berman] <strong>Wai Lee</strong></p>
+<p>Perhaps because of the ample volume of empirical tests documenting the “outperformance” of these risk-based portfolios, there seems to be a spreading belief that these betas are “smart”. But relying on the belief that the market portfolio is inefficient, whether true or not, does not make any investor or portfolio smarter. Making the debatable claim that passive capitalization weighting results in performance drag and blindly following non-capitalization-weighting, is not a prudent investment approach if one is seeking to outperform. The key is still to identify portfolios, ex ante, that will outperform when subject to a set of performance measures. Amore constructive approach to investing is to continue to advance our understanding of these portfolios. Is their performance indeed driven by exposures to some new and potentially nonlinear premia? What role does rebalancing play with regard to performance? What are the impacts of trading costs and tax efficiency versus the passive, market portfolios?</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/bai-hua-black-litterman-mo-xing-yan-yi/">
+                  <h2 class="post-title">白话black-litterman模型演义</h2>
+                </a>
+                <div class="post-date">
+                  2020-03-31
+                </div>
+                <div class="post-abstract">
+                  <p>Black-Litterman 模型预设了未来资产的收益预期由两大信息来源构成，一是当下市场均衡状态下的收益预期，而是投资者主观判定下的收益预期。此两种预期都自带不确定性并可以用概率分布的形式表现出来。而简单来看，最终的Black-Litterman 模型就是两者的线性组合。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/point-in-time-understanding-the-vix/">
+                  <h2 class="post-title">Point in Time -- Understanding the VIX</h2>
+                </a>
+                <div class="post-date">
+                  2020-03-08
+                </div>
+                <div class="post-abstract">
+                  <p>In the aftermath of the March 2020 financial market plunge, pundits were blaming the VIX, saying the index was at unprecedented levels and was, in fact, causing stock market turmoil. As much as most of the investment management community had learned about the VIX and its usefulness over the years, a segment of the community remained unformed or confused. It is obliged here to help set the record straight.</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/literature-review-dynamic-portfolio-analysis/">
+                  <h2 class="post-title">Literature Review -- Dynamic Portfolio Analysis</h2>
+                </a>
+                <div class="post-date">
+                  2020-02-20
+                </div>
+                <div class="post-abstract">
+                  <p>[BGI] <strong>Richard Grinold</strong></p>
+<p>Over the past years, people at Barclays Global Investors (BGI) have devoted considerable time and effort to understanding the managing the dynamic aspects of portfolio management. That study underlies all the contribution to this volume.</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/literature-review-multiple-alpha-sources-and-active-management-panagora/">
+                  <h2 class="post-title">Literature Review -- Multiple Alpha Sources and Active Management</h2>
+                </a>
+                <div class="post-date">
+                  2020-02-16
+                </div>
+                <div class="post-abstract">
+                  <p>[PanAgora] <strong>Edward Qian, Eric H.Sorensen and Ronald Hua</strong></p>
+<p>Over the years, quantitative equity portfolio management have evolved from a niche product to a generally accepted investment process. Along the way, practitioners have also made many improvements. Following this article, the authors extended their research to contextual models in which each stock has a unique model based on its firm characteristics or contexts ("Contextual Fundamentals, Models and Active Management", 2005), to integrated models in which transaction costs and information decay of factors are balanced to maximize the net alpha instead of "paper" alpha ("Information Horizon, Portfolio Turnover, and Optimal Alpha Models", 2007). Other relaed research are summarized in the book《Quantitative Equity Portfolio Management: Modern Techniques and Applications》 (2007).</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/literature-reviews-minimum-variance-portfolio-composition/">
+                  <h2 class="post-title">Literature Review -- Minimum Variance Portfolio Composition</h2>
+                </a>
+                <div class="post-date">
+                  2020-02-16
+                </div>
+                <div class="post-abstract">
+                  <p>[Analytic Investors] <strong>Roger Clarke, Harindra de Silva, and Steven Thorley</strong></p>
+<p>This paper, along with "Minimum Variance Portfolios in the US Equity Market", "Risk Parity, Maximum Diversification, and Minimum Variance: An analytic perspective", examine the empirical and analytic properties of minimal-risk equity portfolios, which is now a separate area of investment strategy called "low risk" or "managed risk", and the basis of several indexes indexes and ETFs, such as SPLV and USMV.</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/literature-review-expected-returns-on-stocks-and-bonds/">
+                  <h2 class="post-title">Literature Review -- Expected Returns on Stocks and Bonds</h2>
+                </a>
+                <div class="post-date">
+                  2020-01-03
+                </div>
+                <div class="post-abstract">
+                  <p>So the author published a book based on this paper.</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/literature-review-the-history-of-finance/">
+                  <h2 class="post-title">Point in Time -- The History of Finance</h2>
+                </a>
+                <div class="post-date">
+                  2019-12-27
+                </div>
+                <div class="post-abstract">
+                  <p>Let’s start with a brief introduction on the author Merton Miller. Miller’ subtitle on the paper, “An eyewitness account”, suggests his role as an economist, but he was more than an eyewitness in the field of finance. Aside from his seminal work on “M&amp;M proposition” in collaboration with Franco Modigliani in 1958, his generosity to other innovators of finance was boundless.</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/xiang-gang-you-jian-xiang-gang/">
+                  <h2 class="post-title">香港，又见香港</h2>
+                </a>
+                <div class="post-date">
+                  2019-12-19
+                </div>
+                <div class="post-abstract">
+                  <p>香港问题发酵至今已经成为舆论焦点，前些时候看到恒隆广场董事长陈启宗的访谈，颇有所感</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/zhi-ming-fen-hua-lesslessji-sheng-chong-greatergreater-ying-ping/">
+                  <h2 class="post-title">致命分化 --《寄生虫》影评</h2>
+                </a>
+                <div class="post-date">
+                  2019-09-10
+                </div>
+                <div class="post-abstract">
+                  <p>长久以来我一直对韩国电影所取得的艺术成就感到羡慕和惊讶，同样是东亚电影，为什么韩国电影能像日本足球一样吊打东亚另外两国（尤其是中国）。今日看完《寄生虫》之后得到了一些启示，能诞生这么好的剧本，是因为社会分层，阶级分化在韩国在摆在台面上的话题，是全民都承认并且讨论的话题。而这样的分化，往往会带来致命的社会问题。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/hua-wei-yu-teng-xun-de-shuang-cheng-ji/">
+                  <h2 class="post-title">华为与腾讯的双城记</h2>
+                </a>
+                <div class="post-date">
+                  2019-08-16
+                </div>
+                <div class="post-abstract">
+                  <p>华为可以逃离北上广，而腾讯必须留守北上广，为什么？</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/crystal-ball-for-value/">
+                  <h2 class="post-title">Crystal Ball for Value</h2>
+                </a>
+                <div class="post-date">
+                  2019-07-16
+                </div>
+                <div class="post-abstract">
+                  <p>Part II of why value factor failed recently and what we could achieve?</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/intangible-value/">
+                  <h2 class="post-title">Intangible Value</h2>
+                </a>
+                <div class="post-date">
+                  2019-07-14
+                </div>
+                <div class="post-abstract">
+                  <p>Part I of why value factor failed recently and what have we neglected?</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/a-brief-history-on-08-financial-crisis-subprime-market-part/">
+                  <h2 class="post-title">a brief history on 08 financial crisis --- subprime market part</h2>
+                </a>
+                <div class="post-date">
+                  2019-06-16
+                </div>
+                <div class="post-abstract">
+                  <p>I always like the quote from the movie 《The big short》-- <code>It ain’t what you don't know that gets you into trouble. It's what you know for sure that just ain't so</code>. It's almost too simple to summarize the cause and aftermath of a financial crisis, but once you delve into it you will find many question marks along the time line.
+The financial crisis that happened more than 10 years ago entangled tons of financial institutions and millions of people, but it's really <strong>a three men show and two big trades</strong>. I am not attempting to write a overwhelming piece but only to explain things in a realively novel and simple manner based on my humble effort.</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/li-yue-se-nan-ti/">
+                  <h2 class="post-title">李约瑟难题</h2>
+                </a>
+                <div class="post-date">
+                  2019-06-07
+                </div>
+                <div class="post-abstract">
+                  <p>李约瑟难题并非单纯是一个历史科目的学术问题，它更像是海棠无香，鲥鱼多刺，红楼未完式的遗憾，时时叩问着每个中国人的内心。在人类文明发展中领先了一千多年的天朝何以在近两百年迅速掉队，所谓的修昔底德陷阱，先发优势等等定律统统失效。撇开意识形态不谈，由封建阶级进入资本阶级，由农业社会进入工业社会，由人本制度进入法治制度，中国现在到底是迎头赶上还是渐行渐远？</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/zhong-hua-shi-feng-jian/">
+                  <h2 class="post-title">中华式封建</h2>
+                </a>
+                <div class="post-date">
+                  2019-06-06
+                </div>
+                <div class="post-abstract">
+                  <p>小说演义中所写的分久必合 合久必分只叙述了表象上的朝代更替。甚至在正史中我们也可以看到诸如 <code>霸祖孤身下二州，子孙多以百城亡</code> 的论调。可是真实的历史并非是创业之主励精图治，朝代中期改革挣扎，亡国之君昏聩误国的简单循环。每个朝代都有着自己的节奏，推动宏观制度阶段性的发展和进步。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/south%20and%20north/">
+                  <h2 class="post-title">南北易俗因何而起</h2>
+                </a>
+                <div class="post-date">
+                  2019-06-05
+                </div>
+                <div class="post-abstract">
+                  <p>纵观华夏两千年帝制轮回，长期的南北分裂出现过两次，一是强汉之后的十六国南北朝时期，二是盛唐之后的五代两宋时期。而这两次南北分裂本有机会早早结束的，历史的进程偏偏于此不遂人愿，让天下一统的局面迟延数百年。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/hello-world/">
+                  <h2 class="post-title">30分钟建立静态博客指南</h2>
+                </a>
+                <div class="post-date">
+                  2019-06-03
+                </div>
+                <div class="post-abstract">
+                  <p>作为 Hello World 开篇博文，简单记录一下建站的步骤和所需技术栈👇</p>
+<ul>
+<li>GitHub Page作为博客后端服务器</li>
+<li>基于Node.js的Hexo作为前端框架</li>
+<li>使用Gridea作为用户界面来更新维护博客</li>
+</ul>
+<p>一个完美的MVC架构，而且简易实用，便于上手。</p>
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://athanszheyin.github.io/post/hello-gridea/">
+                  <h2 class="post-title">Hello Gridea</h2>
+                </a>
+                <div class="post-date">
+                  2018-12-10
+                </div>
+                <div class="post-abstract">
+                  <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+                </div>
+              </div>
+              
+            </article>
 
           <div class="pagination-container">
   
   
 </div>
-
         </div>
       </div>
     </div>
